@@ -5,8 +5,15 @@
     <link>https://dliamkin.com/projects/tos-watch</link>
     <description>Automated nightly monitoring of terms-of-service and policy documents. Entries describe detected changes in neutral, plain English. Not legal advice; not affiliated with any monitored service.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 12 Sep 2026 13:38:16 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 01 Oct 2026 17:03:45 GMT</lastBuildDate>
     <atom:link href="https://dliamkin.com/tos-watch/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Google · Privacy Policy — change detected 2026-10-01</title>
+      <link>https://dliamkin.com/projects/tos-watch</link>
+      <guid isPermaLink="false">google/privacy-policy/2026-10-01</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:00 GMT</pubDate>
+      <description>The only changes are removal of &quot;Learn more&quot; hyperlink text from two example paragraphs about Google Photos and Google Trends; the substantive descriptions of how data is used remain unchanged.</description>
+    </item>
     <item>
       <title>Anthropic · Privacy Policy — change detected 2026-09-12</title>
       <link>https://dliamkin.com/projects/tos-watch</link>

@@ -1,5 +1,21 @@
 [
   {
+    "id": "google/privacy-policy/2026-10-01",
+    "service_id": "google",
+    "service_name": "Google",
+    "document_label": "Privacy Policy",
+    "document_url": "https://policies.google.com/privacy",
+    "detected_at": "2026-10-01",
+    "report": {
+      "substantive": false,
+      "cosmetic_note": "The only changes are removal of \"Learn more\" hyperlink text from two example paragraphs about Google Photos and Google Trends; the substantive descriptions of how data is used remain unchanged.",
+      "changes": [],
+      "summary": "The changes consist solely of removing \"Learn more\" link labels from two illustrative examples, with no alteration to the underlying policy content."
+    },
+    "model": "claude-sonnet-5",
+    "pipeline_version": "1.1.1"
+  },
+  {
     "id": "anthropic/privacy-policy/2026-09-12",
     "service_id": "anthropic",
     "service_name": "Anthropic",
