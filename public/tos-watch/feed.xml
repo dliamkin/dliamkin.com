@@ -5,8 +5,15 @@
     <link>https://dliamkin.com/projects/tos-watch</link>
     <description>Automated nightly monitoring of terms-of-service and policy documents. Entries describe detected changes in neutral, plain English. Not legal advice; not affiliated with any monitored service.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 01 Oct 2026 17:03:45 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 16:18:07 GMT</lastBuildDate>
     <atom:link href="https://dliamkin.com/tos-watch/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Google · Privacy Policy — change detected 2026-10-02</title>
+      <link>https://dliamkin.com/projects/tos-watch</link>
+      <guid isPermaLink="false">google/privacy-policy/2026-10-02</guid>
+      <pubDate>Fri, 02 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Google updated its Privacy Policy to clarify that for signed-out users, activity-based personalization of search results and ads may occur across multiple devices, not just within a single session or device. (1 change detected by automated comparison — see the full entry for excerpts and details.)</description>
+    </item>
     <item>
       <title>Google · Privacy Policy — change detected 2026-10-01</title>
       <link>https://dliamkin.com/projects/tos-watch</link>

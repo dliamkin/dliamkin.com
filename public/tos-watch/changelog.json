@@ -1,5 +1,32 @@
 [
   {
+    "id": "google/privacy-policy/2026-10-02",
+    "service_id": "google",
+    "service_name": "Google",
+    "document_label": "Privacy Policy",
+    "document_url": "https://policies.google.com/privacy",
+    "detected_at": "2026-10-02",
+    "report": {
+      "substantive": true,
+      "cosmetic_note": null,
+      "changes": [
+        {
+          "title": "Cross-device activity used for non-account personalization",
+          "category": "privacy_and_data",
+          "new_excerpt": "whether to show you more relevant search results or ads based on your activity across devices",
+          "old_excerpt": "whether to show you more relevant search results or ads based on your activity",
+          "explanation": "The policy now states that for users not signed in to a Google Account, data tied to a browser, application, or device identifier may be used to personalize search results or ads based on activity tracked across multiple devices, rather than just within a single browsing session or device as previously described.",
+          "practical_effect": "Even without signing in, a user's activity on one device may be linked and used to influence search results or ads shown on another device.",
+          "impact": "favors_provider",
+          "severity": "medium"
+        }
+      ],
+      "summary": "Google updated its Privacy Policy to clarify that for signed-out users, activity-based personalization of search results and ads may occur across multiple devices, not just within a single session or device."
+    },
+    "model": "claude-sonnet-5",
+    "pipeline_version": "1.1.1"
+  },
+  {
     "id": "google/privacy-policy/2026-10-01",
     "service_id": "google",
     "service_name": "Google",
