@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // The policy knobs. Every change emits a full new Policy and re-simulates
 // (debounced upstream). "Pin as baseline" freezes the current distribution
-// as a ghost overlay — the before/after comparison IS the product.
+// as a ghost overlay - the before/after comparison IS the product.
 import { computed } from "vue";
 import Button from "primevue/button";
 import InputNumber from "primevue/inputnumber";

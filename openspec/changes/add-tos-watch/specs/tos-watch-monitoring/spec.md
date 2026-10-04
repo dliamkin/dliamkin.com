@@ -35,7 +35,7 @@ The system SHALL extract main-content text via the configured CSS selector (fall
 - **THEN** the hashes are identical and no change is detected
 
 ### Requirement: Hash-compare change detection
-The system SHALL compare the normalized text hash against the stored snapshot. When unchanged, it SHALL only update `last-checked` and invoke no model — this zero-AI-cost path is the common case. When changed, it SHALL invoke the explain pipeline.
+The system SHALL compare the normalized text hash against the stored snapshot. When unchanged, it SHALL only update `last-checked` and invoke no model - this zero-AI-cost path is the common case. When changed, it SHALL invoke the explain pipeline.
 
 #### Scenario: Unchanged document costs nothing
 - **GIVEN** a document whose normalized hash matches the stored snapshot

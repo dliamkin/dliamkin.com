@@ -16,7 +16,7 @@ import { defineSuite, type EvalCase } from "../harness";
 // risk judgment (does an unbounded "until green" step read as dangerous? does
 // a small bounded task read as calm?) and the deterministic finalization
 // layer (cost totals must be internally consistent, and structured plans must
-// be assessed step-for-step — the pipeline itself throws when they aren't).
+// be assessed step-for-step - the pipeline itself throws when they aren't).
 // Checks are deliberately generous about exact numbers: token predictions are
 // the model's judgment call, but orderings and invariants are not.
 

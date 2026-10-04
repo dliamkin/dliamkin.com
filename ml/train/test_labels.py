@@ -28,4 +28,4 @@ def test_label_order_matches_typescript():
 
 if __name__ == "__main__":
     test_label_order_matches_typescript()
-    print("OK — Python BIO labels match the TypeScript scheme (11 labels).")
+    print("OK - Python BIO labels match the TypeScript scheme (11 labels).")

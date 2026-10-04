@@ -231,7 +231,7 @@ async function onSubmit() {
 					<div v-if="status === 'success'" key="success" class="success-panel">
 						<div class="success-check"><i class="fa-solid fa-check"></i></div>
 						<h3>Message sent!</h3>
-						<p>Thanks for reaching out — I'll get back to you soon.</p>
+						<p>Thanks for reaching out - I'll get back to you soon.</p>
 						<button type="button" class="ghost-btn" @click="status = 'idle'">
 							Send another
 						</button>
@@ -587,7 +587,7 @@ textarea.field-input {
 	align-items: center;
 	justify-content: center;
 	gap: 0.6rem;
-	/* AA-contrast green (5.5:1 with white) — keep in sync with .nav-cta and .contact-me-btn. */
+	/* AA-contrast green (5.5:1 with white) - keep in sync with .nav-cta and .contact-me-btn. */
 	background: #337733;
 	color: #fff;
 	border: none;

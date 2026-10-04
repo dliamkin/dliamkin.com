@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// Real /about page (this was a placeholder stub for a long time — the
+// Real /about page (this was a placeholder stub for a long time - the
 // nightly site-health audit flagged it every run). Deliberately assembled
 // from the same sections the home page uses: the content is identical by
 // design, this page just gives it a stable, linkable home with the standard
@@ -19,7 +19,7 @@ import SiteFooter from "@/components/sections/SiteFooter.vue";
 				<p class="eyebrow">Nice to meet you</p>
 				<h1>About Me</h1>
 				<p class="intro">
-					I'm Denis Liamkin — a Senior Software Engineer in Melbourne, FL with 12+ years
+					I'm Denis Liamkin - a Senior Software Engineer in Melbourne, FL with 12+ years
 					of full-stack experience across telehealth and enterprise real estate. Below is
 					the short version of how I work and what I build with; the
 					<RouterLink to="/projects">projects page</RouterLink> shows it in practice.

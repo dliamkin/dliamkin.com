@@ -24,7 +24,7 @@ export async function loadState(): Promise<TosWatchState | null> {
 	try {
 		return JSON.parse(await readFile(STATE, "utf8")) as TosWatchState;
 	} catch {
-		return null; // first-ever run — baseline mode
+		return null; // first-ever run - baseline mode
 	}
 }
 

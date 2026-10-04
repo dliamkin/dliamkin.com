@@ -4,8 +4,8 @@ import { fileURLToPath } from "node:url";
 // Central configuration for the teacher data-generation pipeline. The scripts
 // here manufacture the student's training set: synthetic clinical notes
 // (Part 1a) labeled by the production note-structurer pipeline (Part 1b) and
-// aligned into BIO spans (Part 1c). Everything a human might want to change —
-// models, pricing, volumes, paths — lives in this one file.
+// aligned into BIO spans (Part 1c). Everything a human might want to change -
+// models, pricing, volumes, paths - lives in this one file.
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 export const REPO_ROOT = path.resolve(here, "../..");
@@ -31,13 +31,13 @@ export const GENERATION_MODEL = "claude-haiku-4-5";
 export const LABELING_MODEL = "claude-sonnet-5";
 
 // --- Pricing (USD per 1M tokens) --------------------------------------------
-// EDIT THESE to match current list pricing before any real run — the cost
+// EDIT THESE to match current list pricing before any real run - the cost
 // estimate and the 05-costs-and-metrics.md doc read straight from here. Values
 // below are placeholders in the right ballpark, not a quote.
 export const PRICING: Record<string, { input: number; output: number }> = {
 	"claude-haiku-4-5": { input: 1.0, output: 5.0 },
 	// Sonnet 5 standard list price. Intro pricing ($2 / $10 per MTok) runs
-	// through 2026-08-31 — using the standard rate keeps the estimate slightly
+	// through 2026-08-31 - using the standard rate keeps the estimate slightly
 	// conservative (a small over-estimate of spend, never under).
 	"claude-sonnet-5": { input: 3.0, output: 15.0 },
 };
@@ -56,7 +56,7 @@ export const DRY_RUN_TARGET = 50; // Gate 2 review size
 export const BATCH_SIZE = 25; // resumable checkpoint granularity
 export const SPLIT_RATIOS = { train: 0.8, val: 0.1, test: 0.1 } as const;
 
-// Generation concurrency — polite to the API, still finishes 3k in a sane
+// Generation concurrency - polite to the API, still finishes 3k in a sane
 // wall-clock. Each note is one generation call + one labeling call.
 export const CONCURRENCY = 4;
 export const STAGGER_MS = 250;

@@ -4,7 +4,7 @@ import { assembleMedications, extractMedications } from "../assembler";
 import { BIO_LABELS, LABEL_TO_ID, type BioLabel } from "../labels";
 
 // Build word-level TokenTags from a note by splitting on spaces and applying a
-// parallel array of labels — a stand-in for the subword tokens the real model
+// parallel array of labels - a stand-in for the subword tokens the real model
 // emits, sufficient to exercise decode + assembly deterministically.
 function tokenize(note: string, labels: BioLabel[]): TokenTag[] {
 	const tokens: TokenTag[] = [];

@@ -17,7 +17,7 @@ export interface SimulateWorkerResponse {
 	summary: SimulationSummary;
 }
 
-// tsconfig.app targets the DOM lib, where `self` is a Window — narrow it to
+// tsconfig.app targets the DOM lib, where `self` is a Window - narrow it to
 // the two members a dedicated worker scope actually uses here.
 const scope = self as unknown as {
 	onmessage: ((event: MessageEvent<SimulateWorkerRequest>) => void) | null;

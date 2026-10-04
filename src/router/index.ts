@@ -59,7 +59,7 @@ const router = createRouter({
 			component: () => import("../views/DryRunOracleView.vue"),
 		},
 		{
-			// Convenience alias — the canonical home is under /projects like
+			// Convenience alias - the canonical home is under /projects like
 			// every other demo.
 			path: "/dry-run-oracle",
 			redirect: "/projects/dry-run-oracle",
@@ -75,7 +75,7 @@ const router = createRouter({
 			meta: { recedeField: true },
 		},
 		{
-			// Convenience alias — the canonical home is under /projects like
+			// Convenience alias - the canonical home is under /projects like
 			// every other demo.
 			path: "/tail-risk-lab",
 			redirect: "/projects/tail-risk-lab",
@@ -91,13 +91,13 @@ const router = createRouter({
 			component: () => import("../views/ParticleEngineLab.vue"),
 		},
 		{
-			// Convenience alias — the canonical home is under /projects like
+			// Convenience alias - the canonical home is under /projects like
 			// every other demo.
 			path: "/particle-engine",
 			redirect: "/projects/particle-engine",
 		},
 		{
-			// Convenience alias — the canonical home is under /projects like
+			// Convenience alias - the canonical home is under /projects like
 			// every other demo.
 			path: "/noise-translator",
 			redirect: "/projects/noise-translator",
@@ -122,7 +122,7 @@ router.afterEach((to) => {
 
 // Report page views to Google Analytics. Auto page_view is disabled in
 // index.html (the SPA never reloads, so gtag would only ever see one), and
-// every view — including the initial load — is sent from here instead.
+// every view - including the initial load - is sent from here instead.
 // Hash-only navigations (in-page anchor links such as the "About"/"Contact"
 // nav items) keep the same path and are not page views.
 router.afterEach((to, from) => {

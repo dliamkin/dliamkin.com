@@ -1,18 +1,18 @@
 // Client-side text extraction for the lease diff demo. Files never leave the
-// browser — .txt is read directly and PDFs are parsed locally with
+// browser - .txt is read directly and PDFs are parsed locally with
 // pdfjs-dist, so only the extracted text (which the visitor can edit or
 // redact first) is ever sent to the server.
 
 // Below this, a "PDF" is almost certainly scanned page images with no text
-// layer — this demo doesn't do OCR.
+// layer - this demo doesn't do OCR.
 export const MIN_EXTRACTED_CHARS = 200;
 
-export const MAX_LEASE_FILE_BYTES = 10_000_000; // 10 MB — plenty for a lease
+export const MAX_LEASE_FILE_BYTES = 10_000_000; // 10 MB - plenty for a lease
 
 export class LeaseFileError extends Error {}
 
 async function extractPdfText(file: File): Promise<string> {
-	// pdfjs-dist is heavy (~1 MB) — dynamic imports keep it out of the
+	// pdfjs-dist is heavy (~1 MB) - dynamic imports keep it out of the
 	// initial bundle; Vite splits it into a chunk loaded only when a PDF is
 	// actually chosen.
 	const pdfjs = await import("pdfjs-dist");

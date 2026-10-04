@@ -19,7 +19,7 @@ export async function loadPreviousReport(): Promise<HealthReport | null> {
 	try {
 		return JSON.parse(await readFile(LATEST, "utf8")) as HealthReport;
 	} catch {
-		return null; // first-ever run, or an unreadable report — baseline mode
+		return null; // first-ever run, or an unreadable report - baseline mode
 	}
 }
 
@@ -64,7 +64,7 @@ export async function writeReport(report: HealthReport): Promise<void> {
 // Commits the report back to the repo with the default GITHUB_TOKEN (pushed
 // via actions/checkout's persisted credentials). [skip ci] keeps Cloudflare
 // Workers Builds from redeploying for a data-only change. This commit cannot
-// retrigger the audit itself: site-health.yml has no push trigger — schedule
+// retrigger the audit itself: site-health.yml has no push trigger - schedule
 // and workflow_dispatch only.
 export async function commitReport(report: HealthReport): Promise<void> {
 	const date = report.audited_at.slice(0, 10);

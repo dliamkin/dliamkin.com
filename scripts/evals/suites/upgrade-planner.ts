@@ -14,7 +14,7 @@ import { arrayIsEmpty, arrayNonEmpty, defineSuite, normalized, setContains, type
 // Eval suite for the Dependency Upgrade Planner. The registry layer is not
 // involved at all: every case feeds hand-built PlanRequestFact fixtures (the
 // deterministic layer has its own unit tests in src/lib/__tests__), so the
-// only thing measured — and the only thing spent — is the synthesis call.
+// only thing measured - and the only thing spent - is the synthesis call.
 // The headline check is anti-hallucination: planUpgrades post-validates the
 // model's output against the facts and strips violations into
 // validation_warnings, so "zero warnings" means every version the model named
@@ -78,7 +78,7 @@ function sharesWave(output: UpgradePlanResult, names: string[]): CheckResult {
 }
 
 // The dependent must never be sequenced BEFORE the package its peer
-// requirement needs (same wave — upgraded together — also resolves the
+// requirement needs (same wave - upgraded together - also resolves the
 // conflict, so ≤ is the correct deterministic assertion).
 function sequencedAfterOrWith(
 	output: UpgradePlanResult,
@@ -113,7 +113,7 @@ const legacyVueStack: PlanRequestFact[] = [
 		latest: "4.1.0",
 		majors_behind: 1,
 		peer_conflicts: [
-			"vuex@4.1.0 requires vue ^3.2.0, but your declared range for vue is ^2.6.10 — upgrade vue first (its latest 3.5.39 satisfies the requirement).",
+			"vuex@4.1.0 requires vue ^3.2.0, but your declared range for vue is ^2.6.10 - upgrade vue first (its latest 3.5.39 satisfies the requirement).",
 		],
 	}),
 	fact({
@@ -123,7 +123,7 @@ const legacyVueStack: PlanRequestFact[] = [
 		latest: "5.1.0",
 		majors_behind: 2,
 		peer_conflicts: [
-			"vue-router@5.1.0 requires vue ^3.5.34, but your declared range for vue is ^2.6.10 — upgrade vue first (its latest 3.5.39 satisfies the requirement).",
+			"vue-router@5.1.0 requires vue ^3.5.34, but your declared range for vue is ^2.6.10 - upgrade vue first (its latest 3.5.39 satisfies the requirement).",
 		],
 	}),
 	fact({
@@ -168,7 +168,7 @@ const coupledEcosystem: PlanRequestFact[] = [
 		latest: "5.1.0",
 		majors_behind: 2,
 		peer_conflicts: [
-			"vue-router@5.1.0 requires vue ^3.5.34, but your declared range for vue is ^2.7.16 — upgrade vue first (its latest 3.5.39 satisfies the requirement).",
+			"vue-router@5.1.0 requires vue ^3.5.34, but your declared range for vue is ^2.7.16 - upgrade vue first (its latest 3.5.39 satisfies the requirement).",
 		],
 	}),
 	fact({
@@ -178,7 +178,7 @@ const coupledEcosystem: PlanRequestFact[] = [
 		latest: "4.1.0",
 		majors_behind: 1,
 		peer_conflicts: [
-			"vuex@4.1.0 requires vue ^3.2.0, but your declared range for vue is ^2.7.16 — upgrade vue first (its latest 3.5.39 satisfies the requirement).",
+			"vuex@4.1.0 requires vue ^3.2.0, but your declared range for vue is ^2.7.16 - upgrade vue first (its latest 3.5.39 satisfies the requirement).",
 		],
 	}),
 	fact({
@@ -251,7 +251,7 @@ const reactMajors: PlanRequestFact[] = [
 		latest: "19.2.0",
 		majors_behind: 3,
 		peer_conflicts: [
-			"react-dom@19.2.0 requires react ^19.2.0, but your declared range for react is ^16.14.0 — upgrade react first (its latest 19.2.0 satisfies the requirement).",
+			"react-dom@19.2.0 requires react ^19.2.0, but your declared range for react is ^16.14.0 - upgrade react first (its latest 19.2.0 satisfies the requirement).",
 		],
 	}),
 	fact({
@@ -269,7 +269,7 @@ const cases: EvalCase<PlanRequestFact[], UpgradePlanResult>[] = [
 	{
 		id: "planner-legacy-vue-stack",
 		description:
-			"A Vue 2-era stack — deprecated request, 2-majors-behind vue-router, patch-behind lodash, and peer conflicts pointing at vue: tiers, alerts, and sequencing all at once",
+			"A Vue 2-era stack - deprecated request, 2-majors-behind vue-router, patch-behind lodash, and peer conflicts pointing at vue: tiers, alerts, and sequencing all at once",
 		input: legacyVueStack,
 		checks: [
 			{
@@ -321,7 +321,7 @@ const cases: EvalCase<PlanRequestFact[], UpgradePlanResult>[] = [
 	{
 		id: "planner-coupled-ecosystem",
 		description:
-			"vue + vue-router + vuex all major-behind — the tightly coupled framework stack must migrate as one wave",
+			"vue + vue-router + vuex all major-behind - the tightly coupled framework stack must migrate as one wave",
 		input: coupledEcosystem,
 		checks: [
 			{
@@ -345,7 +345,7 @@ const cases: EvalCase<PlanRequestFact[], UpgradePlanResult>[] = [
 	{
 		id: "planner-quiet-current",
 		description:
-			"A fully current manifest — the honest quiet case: zero waves, zero plans, everything in already_current, no padding",
+			"A fully current manifest - the honest quiet case: zero waves, zero plans, everything in already_current, no padding",
 		input: quietCurrent,
 		checks: [
 			{
@@ -385,7 +385,7 @@ const cases: EvalCase<PlanRequestFact[], UpgradePlanResult>[] = [
 	},
 	{
 		id: "planner-patch-utilities",
-		description: "Two small bumps — both safe_now, groupable in one quick wave",
+		description: "Two small bumps - both safe_now, groupable in one quick wave",
 		input: patchUtilities,
 		checks: [
 			{ name: "HEADLINE: no invented versions", run: noInventedVersions },
@@ -410,7 +410,7 @@ const cases: EvalCase<PlanRequestFact[], UpgradePlanResult>[] = [
 	{
 		id: "planner-deprecated-package",
 		description:
-			"A deprecated (but nearly current) moment — deprecation must dominate the tier and produce an alert",
+			"A deprecated (but nearly current) moment - deprecation must dominate the tier and produce an alert",
 		input: deprecatedOnly,
 		checks: [
 			{ name: "HEADLINE: no invented versions", run: noInventedVersions },

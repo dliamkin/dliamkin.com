@@ -49,7 +49,7 @@ function clearAll() {
 async function structureNote() {
 	if (!canSubmit.value) return;
 
-	// Unmodified bundled samples render their pre-generated result instantly —
+	// Unmodified bundled samples render their pre-generated result instantly -
 	// no API call, no cost.
 	const trimmed = noteText.value.trim();
 	const sample = SAMPLE_NOTES.find((s) => s.text.trim() === trimmed);
@@ -78,7 +78,7 @@ async function structureNote() {
 		try {
 			body = await response.json();
 		} catch {
-			// fall through — handled by response.ok check below
+			// fall through - handled by response.ok check below
 		}
 
 		if (!response.ok) {
@@ -92,7 +92,7 @@ async function structureNote() {
 			errorMessage.value =
 				serverError ??
 				(response.status === 429
-					? "Too many requests right now — please wait a minute and try again."
+					? "Too many requests right now - please wait a minute and try again."
 					: "Something went wrong structuring the note. Please try again.");
 			status.value = "error";
 			return;
@@ -129,8 +129,8 @@ async function structureNote() {
 				<h1>Clinical Note Structurer</h1>
 				<EvalBadge project-id="note-structurer" class="header-eval-badge" />
 				<p class="intro">
-					Paste a messy free-text visit note and watch it become structured, typed data —
-					chief complaint, medications, vitals, follow-ups — in seconds. Under the hood, a
+					Paste a messy free-text visit note and watch it become structured, typed data -
+					chief complaint, medications, vitals, follow-ups - in seconds. Under the hood, a
 					Cloudflare Worker calls the Anthropic API with a forced tool-use schema, so the
 					output is guaranteed-valid JSON rather than "hopefully JSON." This mirrors real
 					telehealth engineering work I've done, rebuilt here from scratch with synthetic
@@ -191,7 +191,7 @@ async function structureNote() {
 						/>
 					</div>
 					<p class="cost-note">
-						The three samples render instantly from pre-generated results — only custom
+						The three samples render instantly from pre-generated results - only custom
 						or edited text calls the live API.
 					</p>
 				</section>
@@ -208,7 +208,7 @@ async function structureNote() {
 					<template v-else-if="status === 'done' && result">
 						<p v-if="resultSource === 'sample'" class="source-note">
 							<i class="fa-solid fa-bolt" aria-hidden="true"></i>
-							Rendered from the bundled pre-generated result — zero API calls.
+							Rendered from the bundled pre-generated result - zero API calls.
 						</p>
 						<StructuredNoteResults :result="result" />
 					</template>
@@ -228,7 +228,7 @@ async function structureNote() {
 							JSON.stringify(result, null, 2)
 						}}</pre>
 						<p v-else class="empty">
-							Structure a note first — the exact JSON returned by the extraction
+							Structure a note first - the exact JSON returned by the extraction
 							schema will appear here.
 						</p>
 					</AccordionContent>
@@ -242,7 +242,7 @@ async function structureNote() {
 							<p>
 								This demo deliberately refuses real patient data. The bundled notes
 								are fully synthetic, the UI warns against pasting PHI, and nothing
-								typed here is stored. That's not an accident of scope — knowing
+								typed here is stored. That's not an accident of scope - knowing
 								where the PHI boundary sits, and never letting a project cross it, is
 								the first thing healthcare engineering demands. Having built
 								patient-facing telehealth systems professionally, I treat "can I use
@@ -255,14 +255,14 @@ async function structureNote() {
 								persisted, PHI redaction or de-identification before any third-party
 								call, encryption in transit and at rest, audit logging of every
 								access, and role-based access controls in front of it all. The
-								extraction logic itself would barely change — the controls around it
+								extraction logic itself would barely change - the controls around it
 								are the product.
 							</p>
 							<p>
 								The structured output comes from tool use (function calling) rather
 								than asking the model to "please respond in JSON." The API is given
 								one tool whose input schema mirrors the TypeScript interface
-								exactly, with tool choice forced and strict validation enabled — so
+								exactly, with tool choice forced and strict validation enabled - so
 								the response is schema-validated before my code ever sees it. No
 								regex extraction, no hoping the model didn't wrap the JSON in prose,
 								and the types are shared between client and server so they can't
@@ -274,7 +274,7 @@ async function structureNote() {
 								calls use a small fast model (Claude Haiku) behind a serverless
 								proxy, input is capped at 4,000 characters on both client and
 								server, and requests are rate-limited per IP. The API key lives only
-								in a server-side secret — it never reaches the browser bundle.
+								in a server-side secret - it never reaches the browser bundle.
 							</p>
 						</div>
 					</AccordionContent>

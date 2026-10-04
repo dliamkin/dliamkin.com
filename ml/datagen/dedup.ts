@@ -1,7 +1,7 @@
 import { SAMPLE_NOTES } from "../../src/data/sample-notes";
 import { DUPE_JACCARD, EVAL_OVERLAP_JACCARD, SHINGLE_SIZE } from "./config";
 
-// Hygiene: dedupe near-identical generated notes, and — critically — guard the
+// Hygiene: dedupe near-identical generated notes, and - critically - guard the
 // public eval cases. Those samples are the fair exam both teacher and student
 // sit; if a generated note leaks one into training, the student's dashboard
 // score stops meaning anything. We compare with Jaccard similarity over word
@@ -27,7 +27,7 @@ export function jaccard(a: Set<string>, b: Set<string>): number {
 // Precomputed shingle sets for every public eval sample note.
 const EVAL_SHINGLES = SAMPLE_NOTES.map((n) => shingles(n.text));
 
-// Returns true if the note is too close to any public eval sample — an exam
+// Returns true if the note is too close to any public eval sample - an exam
 // leak that must be dropped.
 export function overlapsEvalSet(noteShingles: Set<string>): boolean {
 	return EVAL_SHINGLES.some((evalSet) => jaccard(noteShingles, evalSet) >= EVAL_OVERLAP_JACCARD);

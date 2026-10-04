@@ -7,7 +7,7 @@ import type { ColumnSpec, FormationName, FormationParams } from "./types";
  * instead) and returns null.
  *
  * Determinism: generators use golden-ratio / hash sequences instead of
- * Math.random so the same inputs always produce the same shape — this keeps
+ * Math.random so the same inputs always produce the same shape - this keeps
  * them unit-testable and makes formation transitions repeatable.
  */
 
@@ -113,7 +113,7 @@ function textFormation(
 }
 
 /**
- * The fat-tailed cost curve from the Tail Risk Lab: a lognormal-ish density —
+ * The fat-tailed cost curve from the Tail Risk Lab: a lognormal-ish density -
  * sharp bump near the left, long exponential-looking right tail. Particles
  * fill the area under the curve via inverse-CDF sampling so horizontal
  * density follows the curve mass.
@@ -193,7 +193,7 @@ function columnsFormation(
 	return out;
 }
 
-/** Tight ring cluster at the viewport center — used mid-route-transition. */
+/** Tight ring cluster at the viewport center - used mid-route-transition. */
 function convergeFormation(n: number, width: number, height: number): Float32Array {
 	const out = new Float32Array(n * 2);
 	const cx = width / 2;

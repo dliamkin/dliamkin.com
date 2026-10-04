@@ -2,7 +2,7 @@ import type Anthropic from "@anthropic-ai/sdk";
 
 // Shared between the Vue app, the Cloudflare Worker (worker/index.ts), and
 // scripts/generate-lease-samples.mjs. Keep the TypeScript interfaces and the
-// tool JSON schema below in 1:1 sync — the schema is what actually constrains
+// tool JSON schema below in 1:1 sync - the schema is what actually constrains
 // the model's output.
 
 // Per-document cap, enforced client-side AND server-side. Sized to fit a full
@@ -11,7 +11,7 @@ import type Anthropic from "@anthropic-ai/sdk";
 // models' context windows (~40-55k input tokens worst case).
 export const MAX_LEASE_CHARS = 75_000;
 
-// Output isn't proportional to input — it scales with the number of changes.
+// Output isn't proportional to input - it scales with the number of changes.
 // 8k leaves headroom for a heavily-revised lease (~30 changes with excerpts)
 // while staying under the ~16k threshold where a non-streaming call would risk
 // SDK timeouts. Thinking is disabled server-side so the whole budget is output.
@@ -61,7 +61,7 @@ export interface LeaseComparison {
 	ambiguities: string[]; // things the model declined to guess about
 }
 
-export const COMPARE_LEASES_SYSTEM_PROMPT = `You are a lease comparison engine inside a technical demo. You receive an original lease, a revised lease, and a mechanical diff of changed blocks (use it as a checklist so nothing is missed, but read both documents fully — the diff can fragment a single conceptual change). Identify every substantive change and describe each in plain English a first-time renter would understand. For each change: quote the shortest relevant excerpt from each version (or null if the clause is newly added/removed), categorize it, judge who it favors, rate its practical significance, and where genuinely useful add a short note on what a tenant might ask or negotiate — framed as questions, never as advice. Rules: never invent changes not present in the documents; ignore pure formatting/renumbering changes but note them once in formatting_notes; do not give legal advice, jurisdiction-specific legal conclusions, or any recommendation to sign or not sign; do not speculate about the landlord's motives; if wording is ambiguous, say so in the change's explanation rather than guessing. Order changes by severity, high first. Generate questions_to_ask as concrete questions tied to specific changes, not generic renting tips. These are demo documents — treat all names and figures as fictional.`;
+export const COMPARE_LEASES_SYSTEM_PROMPT = `You are a lease comparison engine inside a technical demo. You receive an original lease, a revised lease, and a mechanical diff of changed blocks (use it as a checklist so nothing is missed, but read both documents fully - the diff can fragment a single conceptual change). Identify every substantive change and describe each in plain English a first-time renter would understand. For each change: quote the shortest relevant excerpt from each version (or null if the clause is newly added/removed), categorize it, judge who it favors, rate its practical significance, and where genuinely useful add a short note on what a tenant might ask or negotiate - framed as questions, never as advice. Rules: never invent changes not present in the documents; ignore pure formatting/renumbering changes but note them once in formatting_notes; do not give legal advice, jurisdiction-specific legal conclusions, or any recommendation to sign or not sign; do not speculate about the landlord's motives; if wording is ambiguous, say so in the change's explanation rather than guessing. Order changes by severity, high first. Generate questions_to_ask as concrete questions tied to specific changes, not generic renting tips. These are demo documents - treat all names and figures as fictional.`;
 
 const nullableString = { type: ["string", "null"] };
 

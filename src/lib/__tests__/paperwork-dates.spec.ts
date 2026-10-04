@@ -11,7 +11,7 @@ import {
 } from "../paperwork-dates";
 import type { DateResolution, ObligationEvent, ObligationExtraction } from "../paperwork";
 
-// The resolve-flow's arithmetic runs here, not in the model — so these tests
+// The resolve-flow's arithmetic runs here, not in the model - so these tests
 // are the actual guarantee behind "computed (from your input)" dates. Month
 // boundaries, year boundaries, and leap years are the cases that bite.
 

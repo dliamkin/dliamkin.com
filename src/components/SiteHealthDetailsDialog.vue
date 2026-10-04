@@ -37,7 +37,7 @@ onMounted(async () => {
 	}
 });
 
-// Minimal inline SVG sparkline of nightly average performance — no chart
+// Minimal inline SVG sparkline of nightly average performance - no chart
 // dependency needed for a 90-point line.
 const sparkline = computed(() => {
 	const points = history.value.map((entry) => entry.scores.performance);
@@ -63,7 +63,7 @@ const sparkline = computed(() => {
 		:style="{ width: 'min(680px, 94vw)' }"
 	>
 		<p class="dialog-framing">
-			This site audits itself nightly —
+			This site audits itself nightly -
 			<a :href="WORKFLOW_URL" target="_blank" rel="noopener noreferrer"
 				>Lighthouse + Playwright + an AI reviewer in CI</a
 			>. Findings are filed as

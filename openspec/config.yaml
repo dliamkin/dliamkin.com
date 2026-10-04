@@ -4,10 +4,10 @@ context: |
   Testing: Pytest, Pytest-asyncio (TDD: write tests before implementation)
   Linting/formatting: ruff format + ruff check (line-length 100), mypy (all configured in pyproject.toml)
   Scheduler: scheduler.py (local); migration target is AWS ECS Fargate (long-running process)
-  Domain: Finance and stock trading — equities and options paper trading,
+  Domain: Finance and stock trading - equities and options paper trading,
           driven by current-event sentiment signals from Alpaca, Kalshi, and news sources
   Money/price values: always Decimal, never float
-  Deployment note: new code must be container-friendly — no hardcoded local paths,
+  Deployment note: new code must be container-friendly - no hardcoded local paths,
                    config via environment variables, logging to stdout
 
 rules:
@@ -28,19 +28,19 @@ rules:
 
   design:
     - New database tables must include an Alembic migration in the migration plan section
-    - Signal, selector, and scoring logic should be pure functions — no DB session in the signature
+    - Signal, selector, and scoring logic should be pure functions - no DB session in the signature
     - Dash callbacks must delegate to pure functions; no business logic inside the callback itself
-    - SQLAlchemy sessions must not be reused across scheduler job boundaries — open and close per job
+    - SQLAlchemy sessions must not be reused across scheduler job boundaries - open and close per job
     - Use Decimal for all price, money, and Greeks values; document where Alpaca returns floats requiring conversion
-    - Hard-coded risk control constants belong in risk_controls.py — not in caller code
+    - Hard-coded risk control constants belong in risk_controls.py - not in caller code
     - New scheduler jobs: note whether async is required to avoid blocking (especially when mixing API calls with dbt)
     - Container-friendly design: config via environment variables, logging to stdout, no local file path assumptions
     - All new functions and methods must include type annotations (parameters and return type)
-    - Dashboard pages must use the existing VAPOR + plotly_dark theme — no inline color overrides or alternative themes
+    - Dashboard pages must use the existing VAPOR + plotly_dark theme - no inline color overrides or alternative themes
     - Reuse components from dashboard/components/ before building new ones; new shared components belong there too
-    - Financial values use Bootstrap color semantics: success (green) for profit/positive, danger (red) for loss/negative — never hardcoded hex colors
+    - Financial values use Bootstrap color semantics: success (green) for profit/positive, danger (red) for loss/negative - never hardcoded hex colors
     - State shared across callbacks goes in dcc.Store, not module-level globals
-    - Layout uses dbc.Row/dbc.Col (Bootstrap grid) — avoid html.Div with custom flexbox styles
+    - Layout uses dbc.Row/dbc.Col (Bootstrap grid) - avoid html.Div with custom flexbox styles
     - Wrap data-fetching callbacks with dcc.Loading so users see a spinner during slow queries
 
   tasks:

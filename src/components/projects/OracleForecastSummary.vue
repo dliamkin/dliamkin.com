@@ -33,7 +33,7 @@ const savings = computed(() => {
 			:closable="false"
 			class="forecast__abort"
 		>
-			The oracle recommends <strong>aborting this plan as written</strong> — apply the
+			The oracle recommends <strong>aborting this plan as written</strong> - apply the
 			suggested fixes or narrow the scope before spending a token.
 		</Message>
 
@@ -46,13 +46,13 @@ const savings = computed(() => {
 					<span class="forecast__condition">{{ weather.label }}</span>
 					<Tag
 						v-if="props.source === 'sample'"
-						value="bundled sample — 0 tokens spent"
+						value="bundled sample - 0 tokens spent"
 						severity="secondary"
 						icon="fa-solid fa-bolt"
 					/>
 					<Tag
 						v-else-if="props.source === 'cache'"
-						value="cached forecast — 0 tokens spent"
+						value="cached forecast - 0 tokens spent"
 						severity="secondary"
 						icon="fa-solid fa-bolt"
 					/>
@@ -71,7 +71,7 @@ const savings = computed(() => {
 				</p>
 				<p class="forecast__flex">
 					<i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
-					This forecast cost {{ formatUsd(props.result.oracleCostUsd) }} — potentially
+					This forecast cost {{ formatUsd(props.result.oracleCostUsd) }} - potentially
 					saving you <strong>{{ savings }}</strong> that.
 				</p>
 			</div>

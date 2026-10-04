@@ -4,7 +4,7 @@
 //
 // The headline measurement is the onset train: spectral-flux onset detection
 // gives an event rate ("clicks per second"), and autocorrelation of the onset
-// strength gives timing regularity — a highly regular 2 Hz click reads very
+// strength gives timing regularity - a highly regular 2 Hz click reads very
 // differently to a mechanic than erratic clicking.
 
 import { magnitudeSpectrum } from "./fft";
@@ -20,7 +20,7 @@ export const HIGH_BAND_MIN_HZ = 2000;
 export interface FrameAnalysis {
 	/** Per-frame RMS level, dBFS. */
 	rmsDb: Float64Array;
-	/** Per-frame spectral flux (half-wave rectified magnitude increase) — the onset strength envelope. */
+	/** Per-frame spectral flux (half-wave rectified magnitude increase) - the onset strength envelope. */
 	flux: Float64Array;
 	/** Per-frame spectral centroid, Hz (0 for silent frames). */
 	centroidHz: Float64Array;
@@ -65,7 +65,7 @@ export function analyzeFrames(pcm: Float32Array, sampleRate: number): FrameAnaly
 			total += m;
 			meanSpectrum[b] = (meanSpectrum[b] ?? 0) + m;
 		}
-		// Frame 0 has no predecessor — comparing against zeros would plant a
+		// Frame 0 has no predecessor - comparing against zeros would plant a
 		// huge artificial transient that poisons the onset statistics.
 		flux[f] = f === 0 ? 0 : fluxSum;
 		centroidHz[f] = total > 1e-9 ? weighted / total : 0;
@@ -214,7 +214,7 @@ export function measureFeatures(
 	const { rmsDb, flux, centroidHz, meanSpectrum, frameRate, binHz } = frames;
 
 	// Noise floor and activity. A frame is "active" when it clears the floor
-	// by 10 dB — but for a constant sound the floor IS the signal level, so
+	// by 10 dB - but for a constant sound the floor IS the signal level, so
 	// the threshold is capped at 25 dB below the loudest frame. Effective
 	// duration is the active time.
 	const sortedRms = Array.from(rmsDb).sort((a, b) => a - b);
@@ -228,7 +228,7 @@ export function measureFeatures(
 	const activeRatio = rmsDb.length > 0 ? activeCount / rmsDb.length : 0;
 	const effectiveDurationS = round1((activeCount / Math.max(1, rmsDb.length)) * durationS);
 
-	// Envelope variability among audible frames — the steady/eventful divider.
+	// Envelope variability among audible frames - the steady/eventful divider.
 	const audible = Array.from(rmsDb).filter((v) => v > -90);
 	const envMean = audible.reduce((a, b) => a + b, 0) / Math.max(1, audible.length);
 	const envStd = Math.sqrt(
@@ -265,7 +265,7 @@ export function measureFeatures(
 		regularity = peak >= 0.5 ? "highly_regular" : peak >= 0.25 ? "somewhat_regular" : "erratic";
 	}
 
-	// Spectral character. Broadband is detected by spectral flatness first —
+	// Spectral character. Broadband is detected by spectral flatness first -
 	// band-energy shares alone would call white noise "high" purely because
 	// the high band is 9 kHz wide and the low band 200 Hz.
 	let lowEnergy = 0;

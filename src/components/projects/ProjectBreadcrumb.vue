@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // Replaces the old eyebrow on project/eval pages. The back-arrow and the
-// breadcrumb parent are the same link — one affordance, no redundant
+// breadcrumb parent are the same link - one affordance, no redundant
 // "Back to all projects" + "Projects › …" repetition. Parent defaults to the
 // projects gallery, but any page can point it elsewhere.
 withDefaults(

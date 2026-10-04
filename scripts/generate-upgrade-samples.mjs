@@ -1,11 +1,11 @@
 // Regenerates the Dependency Upgrade Planner's bundled sample data:
-//   1. src/data/upgrade-samples/site-portfolio.json — a trimmed copy of this
+//   1. src/data/upgrade-samples/site-portfolio.json - a trimmed copy of this
 //      repo's own package.json (the meta sample: the planner, planning its
 //      own host).
-//   2. src/data/upgrade-sample-facts.json — each sample's DependencyFacts,
+//   2. src/data/upgrade-sample-facts.json - each sample's DependencyFacts,
 //      computed live against the npm registry and date-stamped (registry
 //      state drifts, so the UI shows "registry data as of {date}").
-//   3. src/data/upgrade-sample-results.json — each sample's synthesized plan,
+//   3. src/data/upgrade-sample-results.json - each sample's synthesized plan,
 //      through the same pipeline worker/index.ts uses
 //      (src/lib/pipelines/plan-upgrades.ts). Skipped with a warning when
 //      ANTHROPIC_API_KEY is not set, so the free facts snapshot can be
@@ -31,7 +31,7 @@ const samplesDir = path.join(rootDir, "src/data/upgrade-samples");
 const dataDir = path.join(rootDir, "src/data");
 
 // 1. Refresh the meta sample from the repo's real package.json (manifest
-// fields only — scripts etc. are irrelevant to the analysis and noisy in the
+// fields only - scripts etc. are irrelevant to the analysis and noisy in the
 // textarea).
 const own = JSON.parse(fs.readFileSync(path.join(rootDir, "package.json"), "utf8"));
 const sitePortfolio = {
@@ -69,7 +69,7 @@ console.log(`Wrote upgrade-sample-facts.json (registry data as of ${generatedAt}
 // 3. Plans, only when a key is present.
 if (!process.env.ANTHROPIC_API_KEY) {
 	console.warn(
-		"\nANTHROPIC_API_KEY is not set — facts snapshot refreshed, but the plans in " +
+		"\nANTHROPIC_API_KEY is not set - facts snapshot refreshed, but the plans in " +
 			"upgrade-sample-results.json were NOT regenerated. Re-run with a key to " +
 			"regenerate them against the new snapshot.",
 	);

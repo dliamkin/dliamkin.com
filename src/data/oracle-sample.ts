@@ -8,12 +8,12 @@ import {
 
 // The bundled sample forecast for the Dry-Run Oracle. Like the other demos'
 // pre-generated results, submitting the unmodified sample renders this
-// instantly — zero API calls. It deliberately exercises the UI's full range:
+// instantly - zero API calls. It deliberately exercises the UI's full range:
 // one storm-level step (an unbounded "fix all failing tests" loop) with a
 // suggested fix, a caution step, and clear steps.
 //
-// The dollar fields are computed through finalizeSimulation — the exact
-// production code path — so the sample numbers always agree with the live
+// The dollar fields are computed through finalizeSimulation - the exact
+// production code path - so the sample numbers always agree with the live
 // pricing table.
 
 export const ORACLE_SAMPLE_PLAN: AgentPlan = {
@@ -59,7 +59,7 @@ export const ORACLE_SAMPLE_PLAN: AgentPlan = {
 const SAMPLE_RAW: RawSimulation = {
 	overall_risk: "storm",
 	forecast_headline:
-		"Mostly clear through step 3, then an 85% chance of retry storms in step 4 — pack a test-attempt cap.",
+		"Mostly clear through step 3, then an 85% chance of retry storms in step 4 - pack a test-attempt cap.",
 	abort_recommended: false,
 	steps: [
 		{
@@ -90,7 +90,7 @@ const SAMPLE_RAW: RawSimulation = {
 			description: "Refactor all 40 files to the new interface",
 			risk_level: "caution",
 			failure_modes: [
-				"40 files won't fit one context window — agent will re-read the plan file every batch",
+				"40 files won't fit one context window - agent will re-read the plan file every batch",
 				"Mechanical edits drift as context fills; later files get sloppier than earlier ones",
 			],
 			loop_risk: 0.35,
@@ -105,7 +105,7 @@ const SAMPLE_RAW: RawSimulation = {
 			description: "Fix all failing tests until the suite is green",
 			risk_level: "storm",
 			failure_modes: [
-				'"Until green" is unbounded — flaky tests make this a classic retry storm',
+				'"Until green" is unbounded - flaky tests make this a classic retry storm',
 				"Each fix attempt re-runs the 6-minute suite and re-reads failing output into context",
 				'Agent may start "fixing" tests by weakening assertions instead of fixing the refactor',
 			],
@@ -149,7 +149,7 @@ export const ORACLE_SAMPLE_RESULT: SimulationResult = finalizeSimulation(
 	"2026-08-03T12:00:00.000Z",
 );
 
-// True when a request is byte-equivalent to the unmodified bundled sample —
+// True when a request is byte-equivalent to the unmodified bundled sample -
 // those render the pre-generated result instantly, spending nothing.
 export function isOracleSampleRequest(request: SimulateRequest): boolean {
 	if (request.freeform !== undefined) return false;

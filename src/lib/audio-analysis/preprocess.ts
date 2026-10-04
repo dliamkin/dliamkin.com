@@ -1,10 +1,10 @@
 // Preprocessing: decoded audio (any rate, any channel count) → the fixed-rate
 // mono PCM the feature extractor and spectrogram consume. Clipping is measured
-// BEFORE normalization — normalizing first would hide it.
+// BEFORE normalization - normalizing first would hide it.
 
 export const ANALYSIS_SAMPLE_RATE = 22050;
 
-/** Recording length hard cap, seconds — enforced at capture and again here. */
+/** Recording length hard cap, seconds - enforced at capture and again here. */
 export const MAX_CAPTURE_SECONDS = 15;
 
 export interface PreprocessedAudio {
@@ -13,7 +13,7 @@ export interface PreprocessedAudio {
 	sampleRate: number;
 	/** Duration of the original (untrimmed) capture, seconds. */
 	originalDurationS: number;
-	/** Fraction of original samples at or near full scale — measured pre-normalization. */
+	/** Fraction of original samples at or near full scale - measured pre-normalization. */
 	clippingRatio: number;
 	/** Peak level of the original capture, dBFS. */
 	peakDb: number;
@@ -84,7 +84,7 @@ export function trimSilence(
 			lastActive = f;
 		}
 	}
-	if (firstActive < 0) return pcm; // all silence — let the quality gate report it
+	if (firstActive < 0) return pcm; // all silence - let the quality gate report it
 	const margin = Math.round(sampleRate * 0.1);
 	const start = Math.max(0, firstActive * frame - margin);
 	const end = Math.min(pcm.length, (lastActive + 1) * frame + margin);

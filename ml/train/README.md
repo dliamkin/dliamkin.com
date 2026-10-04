@@ -1,4 +1,4 @@
-# ml/train — student model training & ONNX export
+# ml/train - student model training & ONNX export
 
 Self-contained Python project that fine-tunes small token-classification models
 on the distilled medication-extraction dataset (produced by `ml/datagen`),
@@ -6,7 +6,7 @@ picks a winner by the size-vs-F1 table, and exports it to int8 ONNX for
 in-browser inference via transformers.js.
 
 Runs in a **pinned Python 3.12 virtualenv managed by [uv](https://docs.astral.sh/uv/)**
-— no conda, no system Python assumptions. torch's CUDA build is auto-selected
+- no conda, no system Python assumptions. torch's CUDA build is auto-selected
 against the local driver (an RTX 2070 here); CPU also works, just slower.
 
 ## One-time setup
@@ -57,7 +57,7 @@ Or directly:
 ## Reproducibility
 
 `config.yaml` pins the seed, base checkpoints, and per-candidate
-hyperparameters. The **test split is never used for model selection** — val F1
+hyperparameters. The **test split is never used for model selection** - val F1
 drives `load_best_model_at_end`; test is scored exactly once at the end. The BIO
 label order is fixed and asserted against the TypeScript scheme by
 `test_labels.py`.

@@ -1,4 +1,4 @@
-// mulberry32 — a tiny 32-bit seeded PRNG (public domain, Tommy Ettinger).
+// mulberry32 - a tiny 32-bit seeded PRNG (public domain, Tommy Ettinger).
 // Chosen over Math.random for one reason: reproducibility. Same seed + same
 // parameters ⇒ byte-identical simulation summaries, which makes the lab's
 // results citable and the engine unit-testable.

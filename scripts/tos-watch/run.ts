@@ -32,8 +32,8 @@ import {
 
 // The nightly watchdog run. Per enabled document: fetch → extract/normalize →
 // hash-compare against the private snapshot → (only on change) explain via
-// the model + editorial gate → persist. The unchanged path — by far the
-// common case — costs zero AI spend: it's a fetch, a hash, and a timestamp.
+// the model + editorial gate → persist. The unchanged path - by far the
+// common case - costs zero AI spend: it's a fetch, a hash, and a timestamp.
 //
 // Usage:
 //   npm run tos-watch:run            full run: snapshots pushed, public files
@@ -74,7 +74,7 @@ async function main(): Promise<void> {
 	) as { services: ServiceConfig[] };
 
 	// Dry runs without a snapshot dir still exercise the whole fetch/normalize
-	// path — every document just reads as its first observation.
+	// path - every document just reads as its first observation.
 	const snapDir =
 		dry && !process.env.TOS_SNAPSHOT_DIR
 			? await mkdtemp(path.join(tmpdir(), "tos-watch-dry-"))
@@ -106,7 +106,7 @@ async function main(): Promise<void> {
 			const record = (outcome: Outcome, next: DocumentState, note = "") => {
 				counts[outcome]++;
 				documents.push(next);
-				console.log(`${outcome.padEnd(9)} ${label}${note ? ` — ${note}` : ""}`);
+				console.log(`${outcome.padEnd(9)} ${label}${note ? ` - ${note}` : ""}`);
 			};
 
 			const outcome = await fetchDocument(doc.url);
@@ -135,14 +135,14 @@ async function main(): Promise<void> {
 			}
 
 			if (outcome.kind === "failed") {
-				// A failed fetch is never a change — the document may be fine and
+				// A failed fetch is never a change - the document may be fine and
 				// the network not. Count it; escalate only on a streak.
 				const failures = (prev?.consecutive_failures ?? 0) + 1;
 				if (failures === FAILURES_BEFORE_ISSUE) {
 					issues.push({
 						fingerprint: `unreachable:${service.id}/${docSlug(doc.label)}`,
 						title: `tos-watch: ${label} unreachable ${failures} nights running`,
-						body: `Fetching ${doc.url} has failed ${failures} consecutive nightly runs (latest: ${outcome.reason}). The URL may have moved or the page may now resist automated access — check the config in watchdog/services.json.`,
+						body: `Fetching ${doc.url} has failed ${failures} consecutive nightly runs (latest: ${outcome.reason}). The URL may have moved or the page may now resist automated access - check the config in watchdog/services.json.`,
 					});
 				}
 				record("failed", {
@@ -191,7 +191,7 @@ async function main(): Promise<void> {
 				continue;
 			}
 
-			// Change detected — the one path that costs model tokens.
+			// Change detected - the one path that costs model tokens.
 			try {
 				client ??= new Anthropic();
 				const raw = await explainTosChange(
@@ -213,7 +213,7 @@ async function main(): Promise<void> {
 						title: `tos-watch: entry for ${label} held for editorial review`,
 						body: `The model's output for a detected change contained forbidden loaded language and was NOT published:\n\n${violations.map((v) => `- ${v.field}: "${v.term}" in: ${v.text}`).join("\n")}\n\nFull report JSON:\n\n\`\`\`json\n${JSON.stringify(report, null, 2)}\n\`\`\``,
 					});
-					record("held", { ...baseState, content_hash: prev?.content_hash ?? null }, "loaded-language violation — held for review");
+					record("held", { ...baseState, content_hash: prev?.content_hash ?? null }, "loaded-language violation - held for review");
 					continue;
 				}
 
@@ -234,7 +234,7 @@ async function main(): Promise<void> {
 					last_changed_at: nowIso,
 				}, report.summary);
 			} catch (error) {
-				// Model/API failure: no entry, snapshot not rotated — the change
+				// Model/API failure: no entry, snapshot not rotated - the change
 				// re-detects tomorrow. Never publish a guess.
 				record("failed", { ...baseState, content_hash: prev?.content_hash ?? null }, `pipeline error: ${error instanceof Error ? error.message : String(error)}`);
 			}
@@ -252,7 +252,7 @@ async function main(): Promise<void> {
 	);
 
 	if (dry) {
-		console.log("Dry run — nothing committed, no issues filed.");
+		console.log("Dry run - nothing committed, no issues filed.");
 		return;
 	}
 

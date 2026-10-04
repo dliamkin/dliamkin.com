@@ -1,12 +1,12 @@
 // Shared between the Vue app, the Cloudflare Worker (worker/index.ts), and
 // scripts/generate-noise-samples.mjs. Keep the TypeScript interfaces and the
-// tool JSON schema below in 1:1 sync — the schema is what actually constrains
+// tool JSON schema below in 1:1 sync - the schema is what actually constrains
 // the model's output.
 //
 // This module also holds the demo's two deterministic guardrails:
-// - the safety gate (runs in the browser BEFORE any API call — a danger
+// - the safety gate (runs in the browser BEFORE any API call - a danger
 //   phrase in the user's answers short-circuits the whole flow), and
-// - the diagnosis deny-list (runs in the worker AFTER the model call —
+// - the diagnosis deny-list (runs in the worker AFTER the model call -
 //   diagnosis language is stripped and logged; the demo describes, it never
 //   diagnoses).
 // Both are plain functions with unit tests, mirroring the ToS watchdog's
@@ -19,7 +19,7 @@ import type { MeasuredFeatures } from "./audio-analysis/types";
 // ---------------------------------------------------------------------------
 // Caps
 
-// The spectrogram is a fixed 1200x400 PNG (~100-300 KB) — the vision demos'
+// The spectrogram is a fixed 1200x400 PNG (~100-300 KB) - the vision demos'
 // shared image cap is generous headroom, reused so client and server enforce
 // the same number. See src/lib/ui-analysis.ts for the constant's rationale.
 export { MAX_IMAGE_BYTES } from "./ui-analysis";
@@ -93,7 +93,7 @@ export interface ProfessionalQuestion {
 	how_to_find_out: string;
 }
 
-/** The model's synthesized output — description only, never diagnosis. */
+/** The model's synthesized output - description only, never diagnosis. */
 export interface NoiseDescription {
 	/** 1–3 characterizations, best first. */
 	characterizations: SoundCharacterization[];
@@ -107,7 +107,7 @@ export interface NoiseDescription {
 	recording_notes: string | null;
 }
 
-/** POST /api/describe-noise request body. Raw audio never appears here — only its derived artifacts. */
+/** POST /api/describe-noise request body. Raw audio never appears here - only its derived artifacts. */
 export interface DescribeNoiseRequest {
 	/** Spectrogram PNG as base64 (no data: prefix). */
 	spectrogramPngBase64: string;
@@ -124,7 +124,7 @@ export interface DescribeNoiseResponse {
 // ---------------------------------------------------------------------------
 // System prompt
 
-export const NOISE_TRANSLATOR_SYSTEM_PROMPT = `You are a sound-description engine inside a technical demo. You receive: a spectrogram image with labeled time and frequency axes, deterministically measured acoustic features, and the user's answers about the machine and when the sound occurs. The measured features are ground truth — quote them exactly and never contradict or restate them with different numbers. Your job is translation, not diagnosis: characterize the sound in the plain physical vocabulary a technician uses (clicking, grinding, whining, squealing, rumbling, hissing, knocking, rattling), choosing only words consistent with the measurements and the spectrogram, and mark each characterization's confidence. Weave the user's context into a conditions summary. Then write a professional_summary: a short first-person paragraph the user can read aloud when calling a mechanic or technician — sound character, measured rate and regularity, frequency character, when it occurs, duration of the problem. Then list the questions a professional will most plausibly ask next for this machine type and sound pattern, each with a hint about how to find the answer, so the user can prepare. Absolute rules: never name a cause, a faulty part, or a repair — not even hedged ("it might be the bearings" is forbidden); never assess safety or tell the user the sound is or isn't serious — the surrounding application handles safety separately; if the spectrogram and features are ambiguous or the recording seems poor, say so plainly and suggest what a better recording would capture; any number you cite must be one of the measured values (or the spectrogram's labeled axis bounds) — never introduce your own numeric estimates of rates, frequencies, or durations, and that includes approximate bounds read off the image: "under about 2000 Hz" or "up to around 3 kHz" are violations unless that exact value was measured. When you want to place energy the measurements don't pin down, use qualitative wording instead — "in the low end", "well below the main tone", "toward the top of the visible range". You describe; professionals conclude.`;
+export const NOISE_TRANSLATOR_SYSTEM_PROMPT = `You are a sound-description engine inside a technical demo. You receive: a spectrogram image with labeled time and frequency axes, deterministically measured acoustic features, and the user's answers about the machine and when the sound occurs. The measured features are ground truth - quote them exactly and never contradict or restate them with different numbers. Your job is translation, not diagnosis: characterize the sound in the plain physical vocabulary a technician uses (clicking, grinding, whining, squealing, rumbling, hissing, knocking, rattling), choosing only words consistent with the measurements and the spectrogram, and mark each characterization's confidence. Weave the user's context into a conditions summary. Then write a professional_summary: a short first-person paragraph the user can read aloud when calling a mechanic or technician - sound character, measured rate and regularity, frequency character, when it occurs, duration of the problem. Then list the questions a professional will most plausibly ask next for this machine type and sound pattern, each with a hint about how to find the answer, so the user can prepare. Absolute rules: never name a cause, a faulty part, or a repair - not even hedged ("it might be the bearings" is forbidden); never assess safety or tell the user the sound is or isn't serious - the surrounding application handles safety separately; if the spectrogram and features are ambiguous or the recording seems poor, say so plainly and suggest what a better recording would capture; any number you cite must be one of the measured values (or the spectrogram's labeled axis bounds) - never introduce your own numeric estimates of rates, frequencies, or durations, and that includes approximate bounds read off the image: "under about 2000 Hz" or "up to around 3 kHz" are violations unless that exact value was measured. When you want to place energy the measurements don't pin down, use qualitative wording instead - "in the low end", "well below the main tone", "toward the top of the visible range". You describe; professionals conclude.`;
 
 // ---------------------------------------------------------------------------
 // Tool schema
@@ -172,7 +172,7 @@ export const NOISE_TRANSLATOR_TOOL: Anthropic.Tool = {
 			professional_summary: {
 				type: "string",
 				description:
-					"Short first-person paragraph to read aloud to a mechanic or technician, quoting the measured numbers exactly as given and citing no other numbers — describe unmeasured regions qualitatively, never with your own Hz/kHz estimates",
+					"Short first-person paragraph to read aloud to a mechanic or technician, quoting the measured numbers exactly as given and citing no other numbers - describe unmeasured regions qualitatively, never with your own Hz/kHz estimates",
 			},
 			likely_questions: {
 				type: "array",
@@ -218,7 +218,7 @@ export interface SafetyHit {
 	matched: string;
 }
 
-// Danger signals that end the flow: no analysis, no API call — an unmissable
+// Danger signals that end the flow: no analysis, no API call - an unmissable
 // "stop using the equipment and call a professional now" message instead.
 // Word-boundary regexes so e.g. "gas" doesn't fire on "gasket".
 const DANGER_PATTERNS: { label: string; pattern: RegExp }[] = [
@@ -269,7 +269,7 @@ export interface SafetyGateResult {
 
 /**
  * The deterministic pre-flight safety gate. A "yes" on the safety screen or a
- * danger phrase in any free-text answer blocks the flow entirely — this runs
+ * danger phrase in any free-text answer blocks the flow entirely - this runs
  * in the browser before any network request, and it is code, not model
  * behavior.
  */
@@ -305,7 +305,7 @@ const PART_WORDS =
 
 // Causal-claim language: forbidden everywhere in the output. A question like
 // "When were the brake pads last replaced?" is legitimate professional
-// vocabulary, so bare part names are NOT on this list — only claims.
+// vocabulary, so bare part names are NOT on this list - only claims.
 const CAUSAL_PATTERNS: RegExp[] = [
 	/\bthe\s+cause\s+is\b/i,
 	/\bcaused\s+by\s+(?:a|an|the|your)\b/i,
@@ -381,7 +381,7 @@ interface AllowedNumber {
 
 /**
  * Every number in professional_summary that carries an acoustic unit must
- * match a measured feature within rounding — the anti-fabrication check.
+ * match a measured feature within rounding - the anti-fabrication check.
  * Returns the sentences containing fabricated numbers (to be stripped).
  */
 export function findFabricatedNumbers(summary: string, features: MeasuredFeatures): string[] {
@@ -397,7 +397,7 @@ export function findFabricatedNumbers(summary: string, features: MeasuredFeature
 		tolerance: Math.max(50, hz * 0.1),
 	}));
 	// The spectrogram's labeled axis ceiling is readable off the image itself
-	// ("energy reaching up toward 8 kHz") — exact-match allowed, nothing near it.
+	// ("energy reaching up toward 8 kHz") - exact-match allowed, nothing near it.
 	frequencies.push({ value: SPECTROGRAM_MAX_HZ, tolerance: 0 });
 	const durations: AllowedNumber[] = [
 		{ value: features.duration_s, tolerance: 0.6 },
@@ -456,7 +456,7 @@ export function applyDescriptionGate(
 		if (findDiagnosisLanguage(`${c.descriptor}. ${c.evidence}`)) {
 			removed.push({
 				field: "characterizations",
-				sentence: `${c.descriptor} — ${c.evidence}`,
+				sentence: `${c.descriptor} - ${c.evidence}`,
 			});
 			return false;
 		}
@@ -557,7 +557,7 @@ const isNoiseContext = (value: unknown): value is NoiseContext => {
 
 /**
  * Validates a describe-noise request body. Returns the typed request or a
- * user-facing error string. The worker ALSO re-runs the safety gate here — a
+ * user-facing error string. The worker ALSO re-runs the safety gate here - a
  * defense-in-depth backstop in case a caller bypasses the client-side gate.
  */
 export function validateDescribeNoiseRequest(value: unknown): DescribeNoiseRequest | string {

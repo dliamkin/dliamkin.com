@@ -111,7 +111,7 @@ interface Produced {
 	note: string;
 	medications: DatasetExample["medications"];
 	spec: ReturnType<typeof sampleSpec>;
-	failed: boolean; // transient API failure that survived all retries — skip, don't crash
+	failed: boolean; // transient API failure that survived all retries - skip, don't crash
 }
 
 // Retry a network op with exponential backoff on top of the SDK's own retries.
@@ -144,7 +144,7 @@ async function produceOne(client: Anthropic | null, seed: number, mock: boolean)
 		await delay(STAGGER_MS);
 		return { note, medications, spec, failed: false };
 	} catch (error) {
-		// Survived all retries — skip this example, keep the run alive.
+		// Survived all retries - skip this example, keep the run alive.
 		console.warn(`  example ${seed} skipped after retries: ${(error as Error).message}`);
 		return { note: "", medications: [], spec, failed: true };
 	}
@@ -177,7 +177,7 @@ async function main(): Promise<void> {
 	const args = parseArgs(process.argv.slice(2));
 	fs.mkdirSync(RAW_DIR, { recursive: true });
 
-	console.log(`\nData generation — target ${args.target} kept examples${args.mock ? " (MOCK, no API)" : ""}`);
+	console.log(`\nData generation - target ${args.target} kept examples${args.mock ? " (MOCK, no API)" : ""}`);
 
 	if (!args.mock) {
 		const est = estimateCost(args.target);
@@ -227,7 +227,7 @@ async function main(): Promise<void> {
 			if (kept.length >= args.target) break;
 			if (p.failed) {
 				transientFailures++;
-				continue; // network skip — not a data-quality discard
+				continue; // network skip - not a data-quality discard
 			}
 			const sh = shingles(p.note);
 			if (!p.note.trim()) {
@@ -301,7 +301,7 @@ async function main(): Promise<void> {
 		console.log(ex.note);
 		console.log(
 			`  entities: ` +
-				(ex.entities.map((e) => `${e.type}="${e.text}"`).join("  ") || "(none — hard negative)"),
+				(ex.entities.map((e) => `${e.type}="${e.text}"`).join("  ") || "(none - hard negative)"),
 		);
 		console.log(`  teacher meds: ${JSON.stringify(ex.medications)}`);
 	}

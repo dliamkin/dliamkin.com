@@ -138,7 +138,7 @@ const worstPct = computed(() => {
 				/>
 				<p class="cost__gauge-caption">
 					Expected high is <strong>{{ worstPct }}%</strong> of the
-					{{ formatUsd(props.result.worstCaseCostUsd) }} worst case — the gap is what loop
+					{{ formatUsd(props.result.worstCaseCostUsd) }} worst case - the gap is what loop
 					risks would burn.
 				</p>
 			</div>

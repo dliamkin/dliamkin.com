@@ -2,14 +2,14 @@ import type Anthropic from "@anthropic-ai/sdk";
 
 // Shared between the nightly CI pipeline (scripts/site-health/) and the
 // SiteHealthWidget component. Keep the TypeScript interfaces and the tool
-// JSON schema below in 1:1 sync — the schema is what actually constrains the
+// JSON schema below in 1:1 sync - the schema is what actually constrains the
 // model's output. Unlike the demos, the model call here happens in CI only:
 // the site just fetches the committed JSON, so nothing in this file may pull
 // in runtime code (the Anthropic import is type-only).
 
 export const SITE_ORIGIN = "https://dliamkin.com";
 
-// Every route in src/router/index.ts — the spec caps the audit at 5 pages and
+// Every route in src/router/index.ts - the spec caps the audit at 5 pages and
 // the router has exactly 5. Keep in sync with the router when adding routes.
 export const AUDIT_PAGES = [
 	{ path: "/", label: "Home" },
@@ -19,7 +19,7 @@ export const AUDIT_PAGES = [
 	{ path: "/projects/screenshot-to-primevue", label: "Screenshot to PrimeVue" },
 ] as const;
 
-// One vision call per day, so judgment quality matters more than cost —
+// One vision call per day, so judgment quality matters more than cost -
 // Sonnet rather than Haiku. claude-haiku-4-5 is the cheap fallback if the
 // nightly spend ever needs trimming.
 export const AUDIT_MODEL = "claude-sonnet-4-6";
@@ -27,7 +27,7 @@ export const AUDIT_MODEL = "claude-sonnet-4-6";
 export const AUDIT_MAX_TOKENS = 4000;
 
 // Screenshot capture sizes and the downscale limit applied before the images
-// are sent to the model (JPEG, longest edge capped — full-page captures can
+// are sent to the model (JPEG, longest edge capped - full-page captures can
 // be very tall, and the model gains nothing beyond its native resolution).
 export const DESKTOP_VIEWPORT = { width: 1280, height: 800 } as const;
 export const MOBILE_VIEWPORT = { width: 390, height: 844 } as const;
@@ -66,7 +66,7 @@ export interface HealthReport {
 	error_reason: string | null; // populated only when status is "audit_error"
 }
 
-// Trimmed per-night entry appended to history.json (capped at 90 entries) —
+// Trimmed per-night entry appended to history.json (capped at 90 entries) -
 // enough for the widget's score sparkline without keeping findings around.
 export interface HealthHistoryEntry {
 	audited_at: string;
@@ -81,7 +81,7 @@ export interface HealthHistoryEntry {
 
 export const HISTORY_MAX_ENTRIES = 90;
 
-export const AUDIT_SYSTEM_PROMPT = `You are the nightly maintenance auditor for a developer's portfolio site. You receive: current screenshots of key pages (desktop and mobile), current Lighthouse scores and metrics, and the previous audit report. Compare current state against the previous report. Your job is judgment, not alarm: Lighthouse scores routinely jitter by a few points — only treat a score change as a regression if it drops more than 5 points or falls below 85, or a metric degrades materially. For visuals, look for genuine breakage: overlapping or clipped text, broken images, layout overflow on mobile, missing sections, unstyled content, contrast problems. For each page, write a one-sentence visual_fingerprint describing its current correct appearance — the next audit will use these as its memory of what the site looked like. Identify at most one top_fix: the single highest-impact improvement. Set should_file_issue to true only for real regressions or breakage a developer should act on this week — never for stable-but-imperfect scores or subjective style opinions. Be specific and terse; this report is displayed publicly on the site itself.`;
+export const AUDIT_SYSTEM_PROMPT = `You are the nightly maintenance auditor for a developer's portfolio site. You receive: current screenshots of key pages (desktop and mobile), current Lighthouse scores and metrics, and the previous audit report. Compare current state against the previous report. Your job is judgment, not alarm: Lighthouse scores routinely jitter by a few points - only treat a score change as a regression if it drops more than 5 points or falls below 85, or a metric degrades materially. For visuals, look for genuine breakage: overlapping or clipped text, broken images, layout overflow on mobile, missing sections, unstyled content, contrast problems. For each page, write a one-sentence visual_fingerprint describing its current correct appearance - the next audit will use these as its memory of what the site looked like. Identify at most one top_fix: the single highest-impact improvement. Set should_file_issue to true only for real regressions or breakage a developer should act on this week - never for stable-but-imperfect scores or subjective style opinions. Be specific and terse; this report is displayed publicly on the site itself.`;
 
 const nullableString = { type: ["string", "null"] };
 const nullableNumber = { type: ["number", "null"] };
@@ -142,7 +142,7 @@ export const RECORD_HEALTH_REPORT_TOOL: Anthropic.Tool = {
 						visual_fingerprint: {
 							type: "string",
 							description:
-								"One sentence describing the page's current correct appearance — the next audit's memory",
+								"One sentence describing the page's current correct appearance - the next audit's memory",
 						},
 					},
 					required: ["path", "lighthouse", "visual_findings", "visual_fingerprint"],

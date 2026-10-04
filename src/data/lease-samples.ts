@@ -15,7 +15,7 @@ export interface LeaseSamplePair {
 // ./lease-samples/. Their comparison results are pre-generated into
 // lease-sample-results.json (npm run generate:lease-samples) so selecting an
 // unmodified pair never hits the live API. scripts/generate-lease-samples.mjs
-// reads the same files by id — keep ids and filenames in sync.
+// reads the same files by id - keep ids and filenames in sync.
 export const LEASE_SAMPLE_PAIRS: LeaseSamplePair[] = [
 	{
 		id: "residential-renewal",
@@ -27,7 +27,7 @@ export const LEASE_SAMPLE_PAIRS: LeaseSamplePair[] = [
 	{
 		id: "month-to-month",
 		label: "Month-to-month conversion",
-		description: "A fixed term converted to month-to-month — some changes favor the tenant",
+		description: "A fixed term converted to month-to-month - some changes favor the tenant",
 		originalText: monthToMonthOriginal,
 		revisedText: monthToMonthRevised,
 	},

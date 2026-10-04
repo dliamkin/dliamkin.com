@@ -1,5 +1,5 @@
 # Training + ONNX-export dependencies for the distilled medication extractor.
-# Installed into a pinned Python 3.12 virtualenv via uv (see README.md) — no
+# Installed into a pinned Python 3.12 virtualenv via uv (see README.md) - no
 # conda assumptions. torch's CUDA build is selected automatically by uv's
 # --torch-backend=auto against the local driver; CPU works too, just slower.
 torch>=2.4

@@ -4,13 +4,13 @@ import type { DependencyFact, DependencySection } from "./upgrade-facts";
 // Phase 2 of the Dependency Upgrade Planner, shared between the Vue app, the
 // Cloudflare Worker (worker/index.ts), scripts/generate-upgrade-samples.mjs,
 // and the eval suite. Keep the TypeScript interfaces and the tool JSON schema
-// below in 1:1 sync — the schema is what actually constrains the model.
+// below in 1:1 sync - the schema is what actually constrains the model.
 //
 // The design rule this file enforces: the model receives computed facts and
 // is forbidden from altering them. It selects, tiers, and orders; every
 // version number in its output is checked against the facts afterwards
 // (validateUpgradePlan), and the install commands are rebuilt deterministically
-// in code — the model's own command strings are never the final word.
+// in code - the model's own command strings are never the final word.
 
 // Matches the facts layer's analysis cap (upgrade-facts.ts). Enforced again
 // server-side so a hand-rolled request can't inflate the synthesis input.
@@ -21,7 +21,7 @@ export const MAX_PLAN_FACTS = 150;
 // conflicts) with headroom while still capping spend.
 export const MAX_PLAN_REQUEST_BYTES = 64_000;
 
-// A 40-package plan is ~90 output tokens per package plus waves and summary —
+// A 40-package plan is ~90 output tokens per package plus waves and summary -
 // 6k covers a realistically outdated manifest before extractToolInput's
 // max_tokens truncation guard trips. (The spec'd 4k truncated on this site's
 // own 45-dependency manifest during design.)
@@ -35,13 +35,13 @@ export type NoteConfidence = "high" | "medium" | "low";
 
 export interface BreakingNote {
 	note: string;
-	confidence: NoteConfidence; // model self-assessment — the UI labels every
-	// note "from model knowledge — verify against the changelog"
+	confidence: NoteConfidence; // model self-assessment - the UI labels every
+	// note "from model knowledge - verify against the changelog"
 }
 
 export interface PackagePlan {
 	name: string; // must match a submitted fact's name
-	target_version: string; // must equal that fact's latest — enforced in code
+	target_version: string; // must equal that fact's latest - enforced in code
 	tier: RiskTier;
 	rationale: string; // 1-2 sentences
 	breaking_notes: BreakingNote[]; // empty when none known
@@ -51,7 +51,7 @@ export interface UpgradeWave {
 	order: number; // 1-based; renumbered in code after validation
 	title: string; // e.g. "Wave 2: Lint and test tooling"
 	packages: string[]; // names resolved against PackagePlan entries
-	command: string; // rebuilt deterministically from the facts — see buildWaveCommand
+	command: string; // rebuilt deterministically from the facts - see buildWaveCommand
 	verify_after: string; // what to run/check before the next wave
 	rationale: string;
 }
@@ -67,7 +67,7 @@ export interface UpgradePlan {
 }
 
 // What the worker returns: the validated plan plus what post-validation had
-// to strip or rewrite. Violations are removed and reported, not fatal — and
+// to strip or rewrite. Violations are removed and reported, not fatal - and
 // the eval suite requires this list to be empty.
 export interface UpgradePlanResult extends UpgradePlan {
 	validation_warnings: string[];
@@ -190,7 +190,7 @@ export function validatePlanRequestFacts(value: unknown): PlanRequestFact[] | st
 // ---------------------------------------------------------------------------
 // Prompt and tool schema
 
-export const PLAN_UPGRADES_SYSTEM_PROMPT = `You are an upgrade-planning engine inside a technical demo for developers. You receive computed dependency facts: current declared ranges, latest versions, versions-behind counts, deprecation flags, and detected peer conflicts. These facts are ground truth — never contradict them, never introduce version numbers not present in them. Your job is judgment: assign each package a risk tier (safe_now: patch/minor with no known breakage; needs_testing: minor with meaningful surface or ecosystem coupling; breaking_likely: major bumps, deprecated packages, or known migration efforts), group packages into ordered upgrade waves where each wave is safe to do together (keep tightly coupled ecosystems — a framework and its own plugins, router, or state store, a lint stack, a test stack — together in one single wave; for peer conflicts between otherwise-unrelated packages, order the waves so the required package lands no later than its dependent — sharing a wave counts as resolved; put tooling-only devDependencies before runtime dependencies when reasonable), and write a short rationale per wave plus concrete npm install commands. Hard rule on coupled stacks: a framework and its companion packages migrate atomically, in ONE wave listing all of them (e.g. vue + vue-router + vuex, or react + react-dom), because the application cannot build in a half-migrated intermediate state. A conflict message saying "upgrade X first" does not mean X goes in an earlier wave — it is satisfied by X sharing the same wave as its dependent, and splitting a coupled stack across waves is always wrong. When you note a known breaking change or migration (e.g. a major version's renamed API), mark your confidence (high/medium/low) — your knowledge may be outdated, and the reader will be told to verify against changelogs. If facts are sparse for a package, tier it conservatively and say why. Do not pad: a package that is current belongs in already_current, not in a wave. A deprecated package always belongs in breaking_likely with a deprecated_alerts entry naming its replacement when you know one, plainly marked as your suggestion to verify. Never emit a wave whose packages list is empty: advice to remove or replace a deprecated package belongs in deprecated_alerts and general_advice, not in a wave of its own — waves exist only to upgrade the listed packages. Write one peer_conflict_guidance entry per detected conflict explaining how the wave order resolves it. general_advice holds at most 3 concrete items — no filler.`;
+export const PLAN_UPGRADES_SYSTEM_PROMPT = `You are an upgrade-planning engine inside a technical demo for developers. You receive computed dependency facts: current declared ranges, latest versions, versions-behind counts, deprecation flags, and detected peer conflicts. These facts are ground truth - never contradict them, never introduce version numbers not present in them. Your job is judgment: assign each package a risk tier (safe_now: patch/minor with no known breakage; needs_testing: minor with meaningful surface or ecosystem coupling; breaking_likely: major bumps, deprecated packages, or known migration efforts), group packages into ordered upgrade waves where each wave is safe to do together (keep tightly coupled ecosystems - a framework and its own plugins, router, or state store, a lint stack, a test stack - together in one single wave; for peer conflicts between otherwise-unrelated packages, order the waves so the required package lands no later than its dependent - sharing a wave counts as resolved; put tooling-only devDependencies before runtime dependencies when reasonable), and write a short rationale per wave plus concrete npm install commands. Hard rule on coupled stacks: a framework and its companion packages migrate atomically, in ONE wave listing all of them (e.g. vue + vue-router + vuex, or react + react-dom), because the application cannot build in a half-migrated intermediate state. A conflict message saying "upgrade X first" does not mean X goes in an earlier wave - it is satisfied by X sharing the same wave as its dependent, and splitting a coupled stack across waves is always wrong. When you note a known breaking change or migration (e.g. a major version's renamed API), mark your confidence (high/medium/low) - your knowledge may be outdated, and the reader will be told to verify against changelogs. If facts are sparse for a package, tier it conservatively and say why. Do not pad: a package that is current belongs in already_current, not in a wave. A deprecated package always belongs in breaking_likely with a deprecated_alerts entry naming its replacement when you know one, plainly marked as your suggestion to verify. Never emit a wave whose packages list is empty: advice to remove or replace a deprecated package belongs in deprecated_alerts and general_advice, not in a wave of its own - waves exist only to upgrade the listed packages. Write one peer_conflict_guidance entry per detected conflict explaining how the wave order resolves it. general_advice holds at most 3 concrete items - no filler.`;
 
 // Mirrors UpgradePlan 1:1 (validation_warnings is added by post-validation,
 // never by the model). strict: true means the API validates the model's
@@ -344,16 +344,16 @@ export function validateUpgradePlan(
 	const factsByName = new Map(facts.map((fact) => [fact.name, fact]));
 
 	// Every plan must name a real fact, and its target must be that fact's
-	// latest — the model selects and orders, it never restates numbers.
+	// latest - the model selects and orders, it never restates numbers.
 	const plans = plan.plans.filter((entry) => {
 		const fact = factsByName.get(entry.name);
 		if (!fact) {
-			warnings.push(`Dropped plan for "${entry.name}" — not in the submitted facts.`);
+			warnings.push(`Dropped plan for "${entry.name}" - not in the submitted facts.`);
 			return false;
 		}
 		if (entry.target_version !== fact.latest) {
 			warnings.push(
-				`Dropped plan for "${entry.name}" — target ${entry.target_version} is not the computed latest (${fact.latest}).`,
+				`Dropped plan for "${entry.name}" - target ${entry.target_version} is not the computed latest (${fact.latest}).`,
 			);
 			return false;
 		}
@@ -363,11 +363,11 @@ export function validateUpgradePlan(
 
 	const alreadyCurrent = plan.already_current.filter((name) => {
 		if (!factsByName.has(name)) {
-			warnings.push(`Dropped "${name}" from already_current — not in the submitted facts.`);
+			warnings.push(`Dropped "${name}" from already_current - not in the submitted facts.`);
 			return false;
 		}
 		if (plannedNames.has(name)) {
-			warnings.push(`Dropped "${name}" from already_current — it also has an upgrade plan.`);
+			warnings.push(`Dropped "${name}" from already_current - it also has an upgrade plan.`);
 			return false;
 		}
 		return true;
@@ -379,7 +379,7 @@ export function validateUpgradePlan(
 			const packages = wave.packages.filter((name) => {
 				if (plannedNames.has(name)) return true;
 				warnings.push(
-					`Dropped "${name}" from wave "${wave.title}" — no surviving plan entry for it.`,
+					`Dropped "${name}" from wave "${wave.title}" - no surviving plan entry for it.`,
 				);
 				return false;
 			});
@@ -388,7 +388,7 @@ export function validateUpgradePlan(
 		.filter((wave) => {
 			if (wave.packages.length > 0) return true;
 			// A wave the model sent with no packages at all (e.g. a "remove the
-			// deprecated package" advice wave) contains nothing invented — drop
+			// deprecated package" advice wave) contains nothing invented - drop
 			// it silently. Only warn when stripping invented entries emptied it.
 			if (!wave.arrivedEmpty) warnings.push(`Dropped empty wave "${wave.title}".`);
 			return false;
@@ -453,11 +453,11 @@ export function upgradePlanToMarkdown(
 			const fact = factsByName.get(name);
 			if (!entry || !fact) continue;
 			lines.push(
-				`- **${name}** ${fact.declared_range} → ${fact.latest} (${tierLabel[entry.tier]}) — ${entry.rationale}`,
+				`- **${name}** ${fact.declared_range} → ${fact.latest} (${tierLabel[entry.tier]}) - ${entry.rationale}`,
 			);
 			for (const note of entry.breaking_notes) {
 				lines.push(
-					`  - ${note.note} _(model knowledge, ${note.confidence} confidence — verify against the changelog)_`,
+					`  - ${note.note} _(model knowledge, ${note.confidence} confidence - verify against the changelog)_`,
 				);
 			}
 		}
@@ -483,7 +483,7 @@ export function upgradePlanToMarkdown(
 	lines.push(
 		"---",
 		"",
-		"Facts (versions, deprecations, peer conflicts) were computed from npm registry data; tiers, waves, and notes were synthesized by a model. Breaking-change notes come from model knowledge and can be stale — always verify against each package's changelog.",
+		"Facts (versions, deprecations, peer conflicts) were computed from npm registry data; tiers, waves, and notes were synthesized by a model. Breaking-change notes come from model knowledge and can be stale - always verify against each package's changelog.",
 	);
 	return lines.join("\n");
 }

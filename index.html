@@ -14,7 +14,7 @@
 				try {
 					light = localStorage.getItem("theme") === "light";
 				} catch (e) {
-					/* storage unavailable — stay on the dark default */
+					/* storage unavailable - stay on the dark default */
 				}
 				if (light) {
 					document
@@ -28,7 +28,7 @@
 
 		<!-- The app CSS ships inside the JS bundle (vite-plugin-css-injected-by-js),
          so until the bundle runs the page has NO stylesheet. These few rules
-         keep that pre-JS frame on the correct theme background — mirror
+         keep that pre-JS frame on the correct theme background - mirror
          App.vue's --dm-bg (dark, same as the theme-color meta above) if that
          ever changes. -->
 		<style>
@@ -42,7 +42,7 @@
 		</style>
 
 		<!-- Primary SEO -->
-		<title>Denis Liamkin — Senior Software Engineer</title>
+		<title>Denis Liamkin - Senior Software Engineer</title>
 		<meta
 			name="description"
 			content="Senior Software Engineer with 12+ years building full-stack enterprise applications across telehealth and real estate. Expert in Vue, Angular, C#/.NET, AWS, and Azure."
@@ -58,7 +58,7 @@
 		<meta property="og:locale" content="en_US" />
 		<meta
 			property="og:title"
-			content="Denis Liamkin — Senior Software Engineer"
+			content="Denis Liamkin - Senior Software Engineer"
 		/>
 		<meta
 			property="og:description"
@@ -69,7 +69,7 @@
 		<meta property="og:image:height" content="630" />
 		<meta
 			property="og:image:alt"
-			content="Denis Liamkin — Senior Software Engineer"
+			content="Denis Liamkin - Senior Software Engineer"
 		/>
 
 		<!-- Twitter / X -->
@@ -77,7 +77,7 @@
 		<meta name="twitter:url" content="https://dliamkin.com/" />
 		<meta
 			name="twitter:title"
-			content="Denis Liamkin — Senior Software Engineer"
+			content="Denis Liamkin - Senior Software Engineer"
 		/>
 		<meta
 			name="twitter:description"
@@ -89,7 +89,7 @@
 		/>
 		<meta
 			name="twitter:image:alt"
-			content="Denis Liamkin — Senior Software Engineer"
+			content="Denis Liamkin - Senior Software Engineer"
 		/>
 
 		<!-- LCP: the hero portfolio wall's top two rows. The SPA only requests
@@ -134,12 +134,12 @@
          the visitor's FIRST interaction (scroll/tap/keypress), or 8 s after
          the load event as a fallback for passive readers. Even deferred to
          the load event, gtag's ~200 ms of script evaluation landed inside the
-         Lighthouse trace window and cost real LCP/TBT on throttled mobile —
+         Lighthouse trace window and cost real LCP/TBT on throttled mobile -
          interaction gating keeps it out of the load window entirely, for lab
          runs and real visitors alike. Queued events (including the first
          page_view from src/router/index.ts) flush once it arrives; sessions
          that end within 8 s with zero interaction go uncounted, an accepted
-         trade. Auto page_view stays off — the SPA reports its own. -->
+         trade. Auto page_view stays off - the SPA reports its own. -->
 		<script>
 			window.dataLayer = window.dataLayer || [];
 			function gtag() {
@@ -181,7 +181,7 @@
 		<!-- Fonts: self-hosted latin variable-font subsets (downloaded from
          Google Fonts, one file per family covering every weight the site
          uses). Inline @font-face + same-origin preloads mean the fonts are
-         discovered at HTML parse and usually land BEFORE first render — no
+         discovered at HTML parse and usually land BEFORE first render - no
          font-swap repaint. That swap was measurably expensive: the demo
          pages' LCP element is a text paragraph, and the late Raleway arrival
          re-triggered its LCP paint (~+1s); the swap also caused most of
@@ -257,7 +257,7 @@
 			crossorigin
 		/>
 		<!-- Subset by scripts/generate-fa-subset.mjs (~12KB across all three
-         styles) — small enough that late icon arrival never shifts layout. -->
+         styles) - small enough that late icon arrival never shifts layout. -->
 		<link
 			rel="preload"
 			as="font"

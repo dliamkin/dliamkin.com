@@ -2,7 +2,7 @@ import { type BioLabel, type EntitySpan, type EntityType } from "./labels";
 
 // BIO decoder: merge a per-token label sequence into entity char-spans. Shared
 // by the browser runtime (which tags each subword token from model logits) and
-// any offline check. Char-offset based, so it is tokenizer-independent — the
+// any offline check. Char-offset based, so it is tokenizer-independent - the
 // caller supplies each token's [start, end) offset into the note and its
 // predicted BIO label; we stitch runs of the same entity type together.
 //

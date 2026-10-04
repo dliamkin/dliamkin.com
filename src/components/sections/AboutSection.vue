@@ -38,7 +38,7 @@ watch(inView, (visible) => {
 					experience designing scalable, intuitive applications across the
 					<strong>telehealth</strong> and <strong>enterprise real estate</strong>
 					industries. I bridge the gap between complex backend cloud architectures and
-					seamless frontend experiences &mdash; using C#/.NET, Angular, Vue, and
+					seamless frontend experiences - using C#/.NET, Angular, Vue, and
 					serverless AWS/Azure environments to build software that users actually enjoy.
 				</p>
 

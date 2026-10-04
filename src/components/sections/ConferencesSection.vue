@@ -89,7 +89,7 @@ const { target, inView } = useInView({ threshold: 0.15 });
 			<p class="eyebrow">// On the Road</p>
 			<h2>Conferences &amp; community</h2>
 			<p class="sub">
-				Seven conferences across a decade — FE, SEO, and MFNH PropTech — because the best
+				Seven conferences across a decade - FE, SEO, and MFNH PropTech - because the best
 				ideas usually show up in hallway conversations.
 			</p>
 		</div>

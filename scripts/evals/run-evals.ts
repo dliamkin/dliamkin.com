@@ -9,7 +9,7 @@
 //   npm run eval -- --json               machine-readable report on stdout
 //
 // Needs ANTHROPIC_API_KEY in the environment (GitHub Actions secrets in CI,
-// local env for manual runs). Exits 1 when any check fails — after results
+// local env for manual runs). Exits 1 when any check fails - after results
 // are persisted, so a red run is still a published run.
 import Anthropic from "@anthropic-ai/sdk";
 import {
@@ -96,7 +96,7 @@ function printSuite(suite: SuiteResult): void {
 async function main(): Promise<void> {
 	const { project, json, noCommit } = parseArgs(process.argv.slice(2));
 	if (!process.env.ANTHROPIC_API_KEY) {
-		console.error("ANTHROPIC_API_KEY is not set — cannot run evals.");
+		console.error("ANTHROPIC_API_KEY is not set - cannot run evals.");
 		process.exit(2);
 	}
 
@@ -104,7 +104,7 @@ async function main(): Promise<void> {
 	const client = new Anthropic();
 
 	// Suites run sequentially (each already runs its cases with small internal
-	// concurrency) — keeps the global request rate polite.
+	// concurrency) - keeps the global request rate polite.
 	const results: SuiteResult[] = [];
 	for (const suite of suites) {
 		if (!json) console.log(`Running ${suite.project_label} (${suite.case_ids.length} cases)...`);
@@ -141,7 +141,7 @@ async function main(): Promise<void> {
 		if (report.regression_detail) console.log(`REGRESSION: ${report.regression_detail}`);
 	}
 
-	// Partial runs are for local iteration only — persisting one suite's
+	// Partial runs are for local iteration only - persisting one suite's
 	// results would publish a misleading latest.json.
 	if (!project) {
 		await writeReport(report);

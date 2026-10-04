@@ -11,7 +11,7 @@
     "types": ["node"],
     "noUncheckedIndexedAccess": true,
 
-    // Type-checking only — wrangler does the actual bundling.
+    // Type-checking only - wrangler does the actual bundling.
     "noEmit": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.worker.tsbuildinfo"
   }

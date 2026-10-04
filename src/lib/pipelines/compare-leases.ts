@@ -15,7 +15,7 @@ import { extractToolInput } from "./shared";
 
 // Sonnet is the default here (not Haiku like the other demos) because
 // full-length leases are long, dense legal text where missed or misread
-// clauses matter — recall justifies the ~3x cost. The worker overrides this
+// clauses matter - recall justifies the ~3x cost. The worker overrides this
 // per-environment via the LEASE_DIFF_MODEL var.
 export const COMPARE_LEASES_DEFAULT_MODEL = "claude-sonnet-5";
 

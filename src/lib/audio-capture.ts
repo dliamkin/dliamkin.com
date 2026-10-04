@@ -2,7 +2,7 @@
 // same spirit as image-prep.ts. Privacy posture is enforced here, not just
 // promised: recording starts only from an explicit user action, hard-caps at
 // MAX_CAPTURE_SECONDS, and every MediaStream track is stopped the moment
-// recording ends — the mic indicator must go dark immediately. The captured
+// recording ends - the mic indicator must go dark immediately. The captured
 // audio lives in memory only; the caller derives a spectrogram + features and
 // discards the samples.
 
@@ -43,7 +43,7 @@ export interface RecordingHandle {
 /**
  * Start a microphone recording. Resolves once the mic is live; the returned
  * handle's `done` promise resolves with the compressed clip when recording
- * stops — via stop(), or automatically at MAX_CAPTURE_SECONDS.
+ * stops - via stop(), or automatically at MAX_CAPTURE_SECONDS.
  */
 export async function startRecording(): Promise<RecordingHandle> {
 	if (!navigator.mediaDevices?.getUserMedia) {
@@ -76,7 +76,7 @@ export async function startRecording(): Promise<RecordingHandle> {
 	let stopped = false;
 
 	const releaseEverything = (): void => {
-		// The mic indicator must go dark NOW — stop every track, then tear
+		// The mic indicator must go dark NOW - stop every track, then tear
 		// down the metering graph.
 		for (const track of stream.getTracks()) track.stop();
 		void audioContext.close().catch(() => undefined);
@@ -100,7 +100,7 @@ export async function startRecording(): Promise<RecordingHandle> {
 		if (recorder.state !== "inactive") recorder.stop();
 	};
 
-	// Hard cap — recording never runs past this, whatever the UI does.
+	// Hard cap - recording never runs past this, whatever the UI does.
 	const capTimer = setTimeout(stop, MAX_CAPTURE_SECONDS * 1000);
 
 	recorder.start();
@@ -130,7 +130,7 @@ export interface DecodedAudio {
 /** Decode a recorded clip or an uploaded file to PCM. The decode is the real format gate. */
 export async function decodeAudioBlob(blob: Blob): Promise<DecodedAudio> {
 	if (blob.size > MAX_AUDIO_FILE_BYTES) {
-		throw new AudioCaptureError("That file is too large — clips up to 15 seconds are plenty.");
+		throw new AudioCaptureError("That file is too large - clips up to 15 seconds are plenty.");
 	}
 	const buffer = await blob.arrayBuffer();
 	const context = new AudioContext();

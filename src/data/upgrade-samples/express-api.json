@@ -2,7 +2,7 @@
 	"name": "billing-api",
 	"version": "3.2.0",
 	"private": true,
-	"description": "A fictional, well-maintained Express API — the honest quiet case",
+	"description": "A fictional, well-maintained Express API - the honest quiet case",
 	"dependencies": {
 		"express": "^5.2.0",
 		"cors": "^2.8.6",

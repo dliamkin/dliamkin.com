@@ -27,7 +27,7 @@ interface GithubComment {
 function api(): { base: string; headers: Record<string, string>; runUrl: string } {
 	const token = process.env.GITHUB_TOKEN;
 	const repo = process.env.GITHUB_REPOSITORY ?? "dliamkin/dliamkin";
-	if (!token) throw new Error("GITHUB_TOKEN is not set — cannot manage issues.");
+	if (!token) throw new Error("GITHUB_TOKEN is not set - cannot manage issues.");
 	const server = process.env.GITHUB_SERVER_URL ?? "https://github.com";
 	const runId = process.env.GITHUB_RUN_ID;
 	return {
@@ -74,7 +74,7 @@ export async function fileOpsIssue(issue: OpsIssue): Promise<void> {
 		);
 		const last = comments[comments.length - 1];
 		if (last && Date.now() - new Date(last.created_at).getTime() < COMMENT_COOLDOWN_MS) {
-			console.log(`Issue #${existing.number} already has a recent comment — skipping.`);
+			console.log(`Issue #${existing.number} already has a recent comment - skipping.`);
 			return;
 		}
 		await request(`${base}/issues/${existing.number}/comments`, headers, {

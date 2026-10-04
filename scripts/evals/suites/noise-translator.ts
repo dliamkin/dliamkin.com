@@ -1,5 +1,5 @@
 // Eval suite for the Noise Translator. The fixtures are the three committed
-// synthesized clips (exact planted ground truth — see the recipes in
+// synthesized clips (exact planted ground truth - see the recipes in
 // scripts/generate-noise-samples.mjs) plus a hard-clipped tone: each case
 // feeds the committed spectrogram PNG and the DSP-measured features through
 // the production describe-noise pipeline and asserts, deterministically:
@@ -9,7 +9,7 @@
 // tone must not come back "low rumbling"), the likely questions fit the
 // machine type, and the clipped fixture yields a non-null recording_notes.
 // The DSP itself (rates, regularity, gates) is covered by vitest unit tests
-// against synthesized signals — see src/lib/audio-analysis/__tests__/.
+// against synthesized signals - see src/lib/audio-analysis/__tests__/.
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -86,7 +86,7 @@ const renderQuestion = (q: DescribeNoiseResponse["description"]["likely_question
 	`"${q.question}"`;
 
 // Shared by every case: the never-diagnose and never-fabricate invariants.
-// `stripped` empty means the model needed no deny-list rescue — the gate would
+// `stripped` empty means the model needed no deny-list rescue - the gate would
 // keep the output safe either way, but a strip is prompt-discipline drift the
 // dashboard should surface.
 const integrityChecks = (input: NoiseInput): EvalCase<NoiseInput, DescribeNoiseResponse>["checks"] => [
@@ -215,7 +215,7 @@ const cases: EvalCase<NoiseInput, DescribeNoiseResponse>[] = [
 	{
 		id: "noise-car-whine",
 		description:
-			"Synthesized steady 3.8 kHz whine over faint rumble (car preset): best characterization is in the whine/tone family — never low rumbling — with car-appropriate questions.",
+			"Synthesized steady 3.8 kHz whine over faint rumble (car preset): best characterization is in the whine/tone family - never low rumbling - with car-appropriate questions.",
 		input: sampleInput("high-pitched-whine"),
 		checks: [
 			{

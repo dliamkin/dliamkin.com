@@ -124,7 +124,7 @@ function presentResult(
 
 async function onSubmit(request: SimulateRequest): Promise<void> {
 	// The unmodified bundled sample renders its pre-generated result instantly
-	// — no API call, no cost.
+	// - no API call, no cost.
 	if (isOracleSampleRequest(request)) {
 		presentResult(structuredClone(ORACLE_SAMPLE_RESULT), request, "sample");
 		return;
@@ -155,7 +155,7 @@ async function onSubmit(request: SimulateRequest): Promise<void> {
 		try {
 			body = await response.json();
 		} catch {
-			// fall through — handled below
+			// fall through - handled below
 		}
 
 		if (!response.ok) {
@@ -169,7 +169,7 @@ async function onSubmit(request: SimulateRequest): Promise<void> {
 			showError(
 				serverError ??
 					(response.status === 429
-						? "Too many forecasts right now — please wait a minute and try again."
+						? "Too many forecasts right now - please wait a minute and try again."
 						: "Something went wrong consulting the oracle. Please try again."),
 			);
 			return;
@@ -234,7 +234,7 @@ async function onApprove(): Promise<void> {
 		toast.add({
 			severity: "success",
 			summary: "Plan approved",
-			detail: "Copied as clean JSON — go spend those tokens wisely.",
+			detail: "Copied as clean JSON - go spend those tokens wisely.",
 			life: 4500,
 		});
 	} catch {
@@ -296,7 +296,7 @@ function onClearHistory(): void {
 				<EvalBadge project-id="dry-run-oracle" class="header-eval-badge" />
 				<p class="intro">
 					A weather forecast for AI spend. Before an expensive multi-step agent task runs,
-					paste the plan here — a cheap model (Claude Haiku) simulates it, predicting
+					paste the plan here - a cheap model (Claude Haiku) simulates it, predicting
 					likely failure points, retry storms, and the token bill per step. Approve, edit,
 					or abort before a single expensive token burns: spending ~$0.01 of forecast to
 					avoid wasting $5+ of agent run is the best trade in the business.
@@ -359,7 +359,7 @@ function onClearHistory(): void {
 				<p>
 					Describe the steps your agent will take (or paste a messy freeform plan), pick
 					the model it would run on, and run the dry-run. The sample forecast renders
-					instantly from a bundled result — zero API calls.
+					instantly from a bundled result - zero API calls.
 				</p>
 				<Button
 					label="Try the sample forecast"
@@ -376,7 +376,7 @@ function onClearHistory(): void {
 							JSON.stringify(result, null, 2)
 						}}</pre>
 						<p v-else class="empty">
-							Run a forecast first — the exact SimulationResult JSON will appear here.
+							Run a forecast first - the exact SimulationResult JSON will appear here.
 						</p>
 					</AccordionContent>
 				</AccordionPanel>
@@ -388,7 +388,7 @@ function onClearHistory(): void {
 								The oracle is one forced tool-use call to Claude Haiku through this
 								site's Cloudflare Worker, with the output schema strictly validated
 								by the API and the response hard-capped at 1,500 tokens. The model
-								predicts only <em>tokens, iterations, and risks</em> — every dollar
+								predicts only <em>tokens, iterations, and risks</em> - every dollar
 								figure is computed deterministically in code from a shared pricing
 								table, so the money math can't hallucinate.
 							</p>
@@ -398,14 +398,14 @@ function onClearHistory(): void {
 								<code>k</code> iterations costs about
 								<code>b × k(k+1)/2</code> input tokens, plus output × k. The worst
 								case inflates iterations by up to 2× at loop risk 1.0 and uses the
-								high token bounds — that's the "if all loop risks materialize"
+								high token bounds - that's the "if all loop risks materialize"
 								number the savings multiple is measured against.
 							</p>
 							<p>
 								The tool practices the frugality it preaches: one API call per
 								simulation, compact serialization (stripped fields, no
 								pretty-printing), a localStorage forecast cache keyed by SHA-256 of
-								the plan — unchanged plans re-render for free — and the bundled
+								the plan - unchanged plans re-render for free - and the bundled
 								sample never calls the API at all. Every report displays what the
 								forecast itself cost, straight from the real usage block.
 							</p>

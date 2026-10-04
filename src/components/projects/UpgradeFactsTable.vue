@@ -51,7 +51,7 @@ function behindLabel(fact: DependencyFact): { label: string; severity: BehindSev
 			severity: "info",
 		};
 	}
-	// Floor above latest (range newer than the published latest) — rare, but honest.
+	// Floor above latest (range newer than the published latest) - rare, but honest.
 	return { label: "ahead of latest", severity: "info" };
 }
 
@@ -144,7 +144,7 @@ function conflictTooltip(fact: DependencyFact): string {
 						:aria-label="`${data.peer_conflicts.length} peer conflicts: ${conflictTooltip(data)}`"
 						tabindex="0"
 					></i>
-					<span v-else class="no-conflict" aria-hidden="true">—</span>
+					<span v-else class="no-conflict" aria-hidden="true">-</span>
 				</template>
 			</Column>
 			<Column header="Links">
@@ -176,15 +176,15 @@ function conflictTooltip(fact: DependencyFact): string {
 			<p v-if="result.failures.length > 0" class="degraded-note">
 				<i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
 				Lookup failed for
-				{{ result.failures.map((f) => `${f.name} (${f.reason})`).join(", ") }} — the rest of
+				{{ result.failures.map((f) => `${f.name} (${f.reason})`).join(", ") }} - the rest of
 				the analysis is unaffected.
 			</p>
 			<p v-if="result.skipped.length > 0" class="skipped-note">
 				Skipped (not on the public registry):
-				{{ result.skipped.map((s) => `${s.name} — ${s.reason}`).join("; ") }}.
+				{{ result.skipped.map((s) => `${s.name} - ${s.reason}`).join("; ") }}.
 			</p>
 			<p v-if="result.truncated" class="skipped-note">
-				This manifest declares {{ result.total_declared }} registry dependencies — only the
+				This manifest declares {{ result.total_declared }} registry dependencies - only the
 				first {{ facts.length + result.failures.length }} were analyzed.
 			</p>
 		</template>

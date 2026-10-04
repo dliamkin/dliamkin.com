@@ -4,7 +4,7 @@
 # and a GitHub issue when something genuinely regressed.
 #
 # ANTHROPIC_API_KEY lives ONLY in this repo's Actions secrets. It is passed to
-# the audit step as an env var, read by the SDK, and never echoed — GitHub's
+# the audit step as an env var, read by the SDK, and never echoed - GitHub's
 # secret masking covers accidental log hits as a second line of defense.
 name: Site Health
 
@@ -14,7 +14,7 @@ name: Site Health
 on:
   schedule:
     # GitHub cron is UTC. 08:15 UTC = 4:15 AM Eastern during daylight time
-    # (3:15 AM EST in winter — close enough for a nightly audit). Off the
+    # (3:15 AM EST in winter - close enough for a nightly audit). Off the
     # top of the hour to dodge GitHub's cron congestion.
     - cron: "15 8 * * *"
   workflow_dispatch:

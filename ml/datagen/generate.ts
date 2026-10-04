@@ -4,7 +4,7 @@ import { buildGenerationPrompt } from "./templates";
 import type { NoteSpec } from "./types";
 
 // Part 1a: generate one synthetic clinical note to spec. High temperature for
-// prose diversity — the spec already pins the structural variation, so the
+// prose diversity - the spec already pins the structural variation, so the
 // model is free to vary wording, which is exactly the surface the student must
 // generalize over. Returns the trimmed note text (may be empty on a refusal or
 // a degenerate response; the caller treats empty as a discard).

@@ -22,7 +22,7 @@ import {
 	type TargetModel,
 } from "@/lib/dry-run-oracle";
 
-// The plan editor owns the draft plan state (one-way data flow — the parent
+// The plan editor owns the draft plan state (one-way data flow - the parent
 // never mutates it directly). The parent drives it through the exposed
 // methods below (setPlan / applyFix / getPlan / setMode) and listens to
 // `change` to mark a rendered report stale.
@@ -166,7 +166,7 @@ defineExpose({
 	applyFix(stepId: string, fix: string): boolean {
 		const step = plan.steps.find((s) => s.id === stepId);
 		if (!step || !fix) return false;
-		step.description = `${step.description.replace(/\s+$/, "")} — constraint: ${fix}`;
+		step.description = `${step.description.replace(/\s+$/, "")} - constraint: ${fix}`;
 		return true;
 	},
 });
@@ -282,7 +282,7 @@ defineExpose({
 
 		<div v-else class="plan-input__field">
 			<label for="oracle-freeform"
-				>Paste your messy plan — the oracle will structure it</label
+				>Paste your messy plan - the oracle will structure it</label
 			>
 			<Textarea
 				id="oracle-freeform"

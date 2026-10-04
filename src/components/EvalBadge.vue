@@ -3,7 +3,7 @@ import { computed, onMounted, ref } from "vue";
 import { EVAL_LATEST_PATH, isEvalReport, type EvalProjectId, type SuiteResult } from "@/lib/evals";
 
 // Small "Evals: N/M passing" pill shown next to each project's title, linking to
-// the /evals dashboard. Reads the same static JSON the dashboard renders — no
+// the /evals dashboard. Reads the same static JSON the dashboard renders - no
 // API, no key. Before the first eval run exists (or if the fetch fails), it
 // renders nothing.
 
@@ -11,7 +11,7 @@ const props = defineProps<{ projectId: EvalProjectId }>();
 
 const suite = ref<SuiteResult | null>(null);
 // While the fetch is in flight an invisible same-size placeholder holds the
-// badge's line in the page header — the pill popping in after the JSON
+// badge's line in the page header - the pill popping in after the JSON
 // arrived pushed everything below it down (the largest single CLS source on
 // the project pages). Only a definitive miss collapses the space.
 const pending = ref(true);
@@ -24,7 +24,7 @@ onMounted(async () => {
 		if (!isEvalReport(data)) return;
 		suite.value = data.suites.find((s) => s.project_id === props.projectId) ?? null;
 	} catch {
-		// No results yet (or unreachable) — render nothing.
+		// No results yet (or unreachable) - render nothing.
 	} finally {
 		pending.value = false;
 	}

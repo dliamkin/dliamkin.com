@@ -18,7 +18,7 @@ the /api/* worker endpoints with HMR.
 ## Drive it
 
 Playwright is a devDependency but scratchpad scripts can't resolve it by
-package name — import by absolute path:
+package name - import by absolute path:
 
 ```js
 import { chromium } from "/home/dliamkin/Repositories/dliamkin/node_modules/@playwright/test/index.mjs";
@@ -38,5 +38,5 @@ Useful flows:
   `page.on("request")` that `datatable`/heavy PrimeVue chunks are NOT
   fetched on initial load of any page.
 - Google Fonts stylesheet is async (`media="print"` onload swap) in
-  index.html — don't turn it back into a blocking link.
+  index.html - don't turn it back into a blocking link.
 - e2e suite: `npm run test:e2e` (Playwright, playwright.config.ts).

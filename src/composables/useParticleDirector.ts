@@ -14,7 +14,7 @@ import type { FormationName, FormationParams } from "@/engine/particles/types";
  *  - tool pages (meta.recedeField, or any /projects/<tool> route) → "recede":
  *    ambient 0 AND a full pause. Adaptation note: the brief's recede keeps a
  *    dim field running behind the tools, but this site's tool views have
- *    opaque backgrounds, so a running field would be invisible work — pausing
+ *    opaque backgrounds, so a running field would be invisible work - pausing
  *    gives the instruments every frame. Flip a tool view's background to
  *    transparent and remove the pause here if visible ambient texture is
  *    ever wanted.

@@ -7,7 +7,7 @@ import Aura from "@primeuix/themes/aura";
 
 // PrimeVue plugin setup, loaded as an ASYNC chunk from main.ts. The Aura
 // preset plus @primevue/core are ~200KB of source that no above-the-fold
-// component touches — keeping them out of the entry bundle keeps the
+// component touches - keeping them out of the entry bundle keeps the
 // homepage hero (the LCP element) from waiting on them. Nothing that uses
 // PrimeVue renders before this has installed: non-home routes await it in a
 // beforeResolve guard, and the home page's below-fold chunk is gated on it
@@ -37,7 +37,7 @@ export function install(app: App): void {
 		theme: {
 			preset: sitePreset,
 			// The site themes off an html.dark class (dark by default, light as
-			// an explicit visitor choice) — keep PrimeVue on the same switch.
+			// an explicit visitor choice) - keep PrimeVue on the same switch.
 			options: { darkModeSelector: ".dark" },
 		},
 	});

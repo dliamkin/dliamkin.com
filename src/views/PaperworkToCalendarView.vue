@@ -38,7 +38,7 @@ import {
 
 const SAMPLE_RESULTS = rawSampleResults as unknown as Record<string, ObligationExtraction>;
 
-// Text extraction plus a structured response — generous headroom for cold
+// Text extraction plus a structured response - generous headroom for cold
 // starts and 3-image vision requests.
 const REQUEST_TIMEOUT_MS = 90_000;
 
@@ -97,7 +97,7 @@ function onFileSelect(event: FileUploadSelectEvent) {
 async function extractFromFile(file: File) {
 	extracting.value = true;
 	try {
-		// pdfjs-dist and mammoth stay lazy — extractPaperworkText only imports
+		// pdfjs-dist and mammoth stay lazy - extractPaperworkText only imports
 		// the parser the chosen file actually needs.
 		const text = await extractPaperworkText(file);
 		documentText.value = text;
@@ -112,7 +112,7 @@ async function extractFromFile(file: File) {
 			toast.add({
 				severity: "warn",
 				summary: "Document too long",
-				detail: `The extracted text is over ${MAX_PAPERWORK_CHARS.toLocaleString()} characters — please trim it to the sections with deadlines.`,
+				detail: `The extracted text is over ${MAX_PAPERWORK_CHARS.toLocaleString()} characters - please trim it to the sections with deadlines.`,
 				life: 6000,
 			});
 		}
@@ -154,7 +154,7 @@ async function onPhotoChange(event: Event) {
 		}
 		try {
 			// Same client-side downscale/re-encode pipeline as the screenshot
-			// demo — EXIF (GPS, device) is stripped as a side effect.
+			// demo - EXIF (GPS, device) is stripped as a side effect.
 			const prepared = await prepareScreenshot(file);
 			photos.value.push({ prepared, name: file.name });
 		} catch (error) {
@@ -188,7 +188,7 @@ onBeforeUnmount(clearPhotos);
 async function submitText() {
 	if (!canSubmitText.value) return;
 
-	// Unmodified bundled samples render their pre-generated result instantly —
+	// Unmodified bundled samples render their pre-generated result instantly -
 	// no API call, no cost.
 	const sample = PAPERWORK_SAMPLES.find((s) => s.text.trim() === documentText.value.trim());
 	const bundled = sample ? SAMPLE_RESULTS[sample.id] : undefined;
@@ -231,7 +231,7 @@ async function callApi(body: Record<string, unknown>) {
 		try {
 			payload = await response.json();
 		} catch {
-			// fall through — handled by response.ok check below
+			// fall through - handled by response.ok check below
 		}
 
 		if (!response.ok) {
@@ -245,7 +245,7 @@ async function callApi(body: Record<string, unknown>) {
 			errorMessage.value =
 				serverError ??
 				(response.status === 429
-					? "Too many requests right now — please wait a minute and try again."
+					? "Too many requests right now - please wait a minute and try again."
 					: "Something went wrong extracting the obligations. Please try again.");
 			status.value = "error";
 			return;
@@ -288,8 +288,8 @@ async function callApi(body: Record<string, unknown>) {
 				<h1>Paperwork → Calendar</h1>
 				<EvalBadge project-id="paperwork-to-calendar" class="header-eval-badge" />
 				<p class="intro">
-					Paste, upload, or photograph any document with obligations buried in it — a
-					lease, a scholarship letter, an insurance policy — and get back real calendar
+					Paste, upload, or photograph any document with obligations buried in it - a
+					lease, a scholarship letter, an insurance policy - and get back real calendar
 					events: every deadline, notice window, renewal date, and recurring payment,
 					reviewable and editable, then exported as a downloadable .ics file with
 					reminders set <em>before</em> each deadline, not on it.
@@ -299,7 +299,7 @@ async function callApi(body: Record<string, unknown>) {
 			<Message severity="warn" :closable="false" class="legal-warning">
 				This is a technical demo, not legal or financial advice.
 				<strong>
-					Don't upload real documents containing personal information — use the
+					Don't upload real documents containing personal information - use the
 					synthetic samples or redact first.
 				</strong>
 				Documents are processed in memory and never stored.
@@ -345,7 +345,7 @@ async function callApi(body: Record<string, unknown>) {
 								rows="12"
 								class="document-input"
 								:invalid="overLimit"
-								placeholder="Paste the document text here — a lease, award letter, policy summary, gym contract…"
+								placeholder="Paste the document text here - a lease, award letter, policy summary, gym contract…"
 								aria-label="Document text"
 							/>
 							<div class="panel-footer">
@@ -394,7 +394,7 @@ async function callApi(body: Record<string, unknown>) {
 									@select="onFileSelect"
 								/>
 								<p class="formats">
-									Text is extracted entirely in your browser — the file never
+									Text is extracted entirely in your browser - the file never
 									leaves it. The extracted text lands in the paste tab so you can
 									review or redact it before anything is sent.
 								</p>
@@ -409,7 +409,7 @@ async function callApi(body: Record<string, unknown>) {
 							<div class="photo-zone">
 								<i class="fa-solid fa-camera" aria-hidden="true"></i>
 								<p>
-									Photograph the paper document — up to
+									Photograph the paper document - up to
 									{{ MAX_PAPERWORK_IMAGES }} pages
 								</p>
 								<input
@@ -431,7 +431,7 @@ async function callApi(body: Record<string, unknown>) {
 									@click="openPhotoPicker"
 								/>
 								<p class="formats">
-									Photos are downscaled and re-encoded in your browser first —
+									Photos are downscaled and re-encoded in your browser first -
 									EXIF metadata (location, device) is stripped before anything is
 									sent.
 								</p>
@@ -483,7 +483,7 @@ async function callApi(body: Record<string, unknown>) {
 				<p class="cost-note">
 					All file handling is client-side: PDF/.docx text extraction and photo
 					compression happen in your browser, and the exported .ics is generated in your
-					browser too — the server only ever sees text or compressed images, transiently.
+					browser too - the server only ever sees text or compressed images, transiently.
 					The three samples render instantly from pre-generated results and never call
 					the live API.
 				</p>
@@ -521,7 +521,7 @@ async function callApi(body: Record<string, unknown>) {
 					<template v-else>
 						<p v-if="resultSource === 'sample'" class="source-note">
 							<i class="fa-solid fa-bolt" aria-hidden="true"></i>
-							Rendered from the bundled pre-generated result — zero API calls.
+							Rendered from the bundled pre-generated result - zero API calls.
 						</p>
 						<PaperworkReviewPanel :extraction="result" :today-iso="resultToday" />
 					</template>
@@ -530,7 +530,7 @@ async function callApi(body: Record<string, unknown>) {
 				<div v-else class="placeholder">
 					<i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
 					<p>
-						The extracted deadlines will appear here — review and edit them, then
+						The extracted deadlines will appear here - review and edit them, then
 						download the .ics.
 					</p>
 				</div>
@@ -544,7 +544,7 @@ async function callApi(body: Record<string, unknown>) {
 							JSON.stringify(result, null, 2)
 						}}</pre>
 						<p v-else class="empty">
-							Extract a document first — the exact JSON returned by the extraction
+							Extract a document first - the exact JSON returned by the extraction
 							schema will appear here.
 						</p>
 					</AccordionContent>
@@ -557,7 +557,7 @@ async function callApi(body: Record<string, unknown>) {
 								The insight behind this demo is about delivery format:
 								deadline-bearing documents are write-once-read-never, and calendars
 								are where obligations actually get honored. So the output isn't a
-								summary to read once — it's an .ics file that plugs into the tool
+								summary to read once - it's an .ics file that plugs into the tool
 								you already check every day, with reminders set before each
 								deadline rather than on it. The generator is a small hand-rolled
 								RFC 5545 module (escaping, line folding, RRULEs, alarms, stable
@@ -569,8 +569,8 @@ async function callApi(body: Record<string, unknown>) {
 								date integrity is the design's first-class concern. Every date
 								carries a basis: <em>stated</em> in the document, <em>computed</em>
 								from an anchor with the arithmetic shown ("lease end minus 60 days
-								= July 2"), or <em>unresolved</em> — surfaced to you to fill in,
-								never guessed. The model only identifies what math is needed — the
+								= July 2"), or <em>unresolved</em> - surfaced to you to fill in,
+								never guessed. The model only identifies what math is needed - the
 								arithmetic itself always runs in tested code. For computed dates the
 								model reports the anchor and offset it found and the server re-runs
 								the calculation, overriding any slip (LLM day-counting is genuinely
@@ -585,7 +585,7 @@ async function callApi(body: Record<string, unknown>) {
 								projects: PDF and .docx text extraction run in the browser
 								(lazy-loaded pdf.js and mammoth), photos are downscaled and
 								re-encoded client-side (stripping EXIF location data), and the .ics
-								export is assembled in the browser from the reviewed events — it
+								export is assembled in the browser from the reviewed events - it
 								never round-trips through a server. Server-side, the document lives
 								in memory for the single API call; logs record only sizes,
 								duration, and outcome. The prompt additionally instructs the model
@@ -594,7 +594,7 @@ async function callApi(body: Record<string, unknown>) {
 							<p>
 								Honest limitations: no OCR beyond the photo path's vision model,
 								single-document scope, and genuinely ambiguous legal language
-								("within a reasonable time") still needs human review — which is
+								("within a reasonable time") still needs human review - which is
 								why the review step exists and why every event shows the exact
 								excerpt it came from. A production version would add multi-document
 								batching, jurisdiction-aware date rules, and calendar-API sync; the

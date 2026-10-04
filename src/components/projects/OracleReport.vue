@@ -49,7 +49,7 @@ const MARKER: Record<RiskLevel, string> = {
 <template>
 	<section class="report" aria-label="Simulation report">
 		<Message v-if="props.stale" severity="warn" :closable="false" class="report__stale">
-			The plan changed since this forecast — hit <strong>Edit &amp; Re-run</strong> for fresh
+			The plan changed since this forecast - hit <strong>Edit &amp; Re-run</strong> for fresh
 			numbers.
 		</Message>
 

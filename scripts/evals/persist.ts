@@ -23,7 +23,7 @@ export async function loadPreviousReport(): Promise<EvalReport | null> {
 	try {
 		return JSON.parse(await readFile(LATEST, "utf8")) as EvalReport;
 	} catch {
-		return null; // first-ever run, or an unreadable report — baseline mode
+		return null; // first-ever run, or an unreadable report - baseline mode
 	}
 }
 
@@ -113,7 +113,7 @@ export async function writeReport(report: EvalReport): Promise<void> {
 // via actions/checkout's persisted credentials). [skip ci] keeps Cloudflare
 // Workers Builds from redeploying for a data-only change. This commit cannot
 // retrigger the eval workflow: evals.yml's push trigger is path-filtered to
-// pipeline/prompt/eval source, which public/eval-results/ is not part of —
+// pipeline/prompt/eval source, which public/eval-results/ is not part of -
 // and [skip ci] suppresses the push event besides.
 export async function commitReport(report: EvalReport): Promise<void> {
 	const date = report.run_at.slice(0, 10);

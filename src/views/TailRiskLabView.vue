@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// Tail Risk Lab — Monte Carlo cost simulator for AI agent runs. Everything
+// Tail Risk Lab - Monte Carlo cost simulator for AI agent runs. Everything
 // happens client-side in a Web Worker; the page never calls an API.
 import { computed, onMounted, ref, watch } from "vue";
 import AppNavbar from "@/components/sections/AppNavbar.vue";
@@ -41,7 +41,7 @@ const policy = ref<Policy>(defaultPolicy());
 const { summary, baseline, simulate, simulateImmediate, pinBaseline, clearBaseline } =
 	useTailRiskSimulator();
 
-// The budget the current summary was computed against — lets us show the
+// The budget the current summary was computed against - lets us show the
 // engine's exact P(over) when the line hasn't moved, and interpolate from
 // the CDF only mid-drag while the debounced re-sim catches up.
 const simulatedBudgetUsd = ref<number | null>(null);
@@ -95,7 +95,7 @@ function onScenarioDelete(id: string): void {
 }
 
 // Switching the target model re-prices the same token samples; it doesn't
-// flip the scenario to "custom" — it's a policy knob that happens to live on
+// flip the scenario to "custom" - it's a policy knob that happens to live on
 // the scenario for pricing.
 function onModelChange(model: ModelKey): void {
 	scenario.value.targetModel = model;
@@ -119,17 +119,17 @@ function onBudgetDrag(value: number): void {
 				<ProjectBreadcrumb current="Tail Risk Lab" />
 				<h1>Tail Risk Lab</h1>
 				<p class="subtitle">
-					P50/P90/P99 budgeting for agent runs — treat AI spend the way SREs treat
+					P50/P90/P99 budgeting for agent runs - treat AI spend the way SREs treat
 					latency.
 				</p>
 				<p class="intro">
 					Point estimates lie about agent costs. Retry loops make the true distribution
-					fat-tailed: the median run is cheap, but the 99th-percentile run — the one where
-					"fix all failing tests" loops nine times with a growing context — costs several
+					fat-tailed: the median run is cheap, but the 99th-percentile run - the one where
+					"fix all failing tests" loops nine times with a growing context - costs several
 					multiples of it. This lab runs your plan thousands of times with classical Monte
 					Carlo over LLM-predicted parameters, entirely in your browser, and lets you buy
 					down tail risk with policy knobs before spending a cent. Watch the P99 collapse
-					when you cap retries — while the median barely moves.
+					when you cap retries - while the median barely moves.
 				</p>
 			</header>
 
@@ -184,7 +184,7 @@ function onBudgetDrag(value: number): void {
 			</section>
 
 			<p class="footer-note">
-				All simulation runs client-side — classical Monte Carlo, no AI in the loop, 0 tokens
+				All simulation runs client-side - classical Monte Carlo, no AI in the loop, 0 tokens
 				spent.
 				<a :href="ENGINE_SOURCE_URL" target="_blank" rel="noopener"
 					>View the engine source →</a

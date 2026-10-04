@@ -15,7 +15,7 @@ import type { Medication } from "../structured-note";
 // "Load local model" button), caches via the browser Cache API for instant
 // repeat visits, and reports which backend actually ran.
 
-// Never resolve models from the HF hub — only from our own /models/ path.
+// Never resolve models from the HF hub - only from our own /models/ path.
 env.allowRemoteModels = false;
 env.allowLocalModels = true;
 env.localModelPath = "/models/";
@@ -117,7 +117,7 @@ export async function loadLocalModel(onProgress?: (p: LoadProgress) => void): Pr
 		info = { backend, loadMs: performance.now() - started, fromCache: !sawDownload };
 	} catch (error) {
 		if (backend === "webgpu") {
-			// WebGPU init can fail on some drivers — fall back to WASM once.
+			// WebGPU init can fail on some drivers - fall back to WASM once.
 			pipe = await makePipe("wasm");
 			info = { backend: "wasm", loadMs: performance.now() - started, fromCache: !sawDownload };
 		} else {
@@ -133,7 +133,7 @@ export async function loadLocalModel(onProgress?: (p: LoadProgress) => void): Pr
  * unit-tested decoder + assembler (the same code the eval runner uses).
  */
 export async function extractLocal(note: string): Promise<LocalInference> {
-	if (!pipe || !info) throw new Error("Local model not loaded — call loadLocalModel() first.");
+	if (!pipe || !info) throw new Error("Local model not loaded - call loadLocalModel() first.");
 	const started = performance.now();
 	// aggregation_strategy 'none' + ignore_labels [] → one result per token,
 	// including O, so the BIO decoder sees run boundaries. The pipeline's own

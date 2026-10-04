@@ -2,7 +2,7 @@ import type Anthropic from "@anthropic-ai/sdk";
 
 // Shared between the Vue app, the Cloudflare Worker (worker/index.ts), and
 // scripts/generate-paperwork-samples.mjs. Keep the TypeScript interfaces and
-// the tool JSON schema below in 1:1 sync — the schema is what actually
+// the tool JSON schema below in 1:1 sync - the schema is what actually
 // constrains the model's output.
 
 // Enforced client-side AND server-side. A lease, scholarship letter, or
@@ -14,7 +14,7 @@ export const MAX_PAPERWORK_CHARS = 15_000;
 // and per-image size limits (see ui-analysis.ts).
 export const MAX_PAPERWORK_IMAGES = 3;
 
-// A dense document tops out around ~20 events with excerpts — 4k covers that
+// A dense document tops out around ~20 events with excerpts - 4k covers that
 // with headroom before extractToolInput's max_tokens truncation guard trips.
 export const PAPERWORK_MAX_TOKENS = 4000;
 
@@ -45,7 +45,7 @@ export interface RecurrenceRule {
 
 // The structured half of a computed or unresolved date: the model identifies
 // WHAT math is needed (which anchor, which offset), and the arithmetic runs
-// in tested code (paperwork-dates.ts) — server-side for computed dates
+// in tested code (paperwork-dates.ts) - server-side for computed dates
 // (reconcileComputedDates overrides any model arithmetic slip) and client-
 // side for unresolved ones once the visitor supplies the anchor. The model's
 // own arithmetic is never the final word.
@@ -84,9 +84,9 @@ export interface ObligationExtraction {
 }
 
 // {TODAY} is substituted by the pipeline (extract-obligations.ts) with the
-// server's UTC date — date arithmetic needs an anchor for "past deadline"
+// server's UTC date - date arithmetic needs an anchor for "past deadline"
 // detection and relative expressions.
-export const EXTRACT_OBLIGATIONS_SYSTEM_PROMPT = `You are an obligation-extraction engine inside a technical demo. Today's date is {TODAY}. You receive a document as text or as photographed pages. First decide whether it is a document containing obligations, deadlines, or scheduled commitments; if not, set is_obligation_document to false with a one-sentence reason and stop. Otherwise extract every dated or datable obligation: deadlines, notice windows (extract BOTH the window-opens and window-closes dates when computable), renewal and expiration dates, recurring payments, required actions. For each event, quote the exact source excerpt it came from. Date rules — these are strict: if the document states an explicit date, use it with date_basis: "stated". If a date must be computed from an anchor plus an offset (e.g. "60 days before the lease end date") and the anchor is present in the document, compute it, set date_basis: "computed", show your arithmetic in computation (e.g. "2026-08-31 minus 60 days = 2026-07-02"), and fill resolution with the anchor's label, the anchor's ISO date from the document, and the offset as numbers — the application re-runs that arithmetic in code and corrects any slip. If the anchor is missing or ambiguous, set date: null, date_basis: "unresolved", state in computation exactly what date is needed and the offset to apply (e.g. "needs: policy start date; then add 6 months"), and fill resolution with the anchor's label, anchor_date: null, and the offset — the application runs the arithmetic in code once the reader supplies the anchor. Leave resolution null only when a date is stated outright or a computed date has no single anchor-plus-offset derivation (e.g. the next occurrence of a recurring payment). When computing a date, count actual calendar days carefully — mind each month's true length and leap years (February has 29 days in leap years such as 2028) — and verify the arithmetic in your computation string before recording it. Never guess a date. Never invent obligations not in the document. Mark events whose dates are already in the past with in_past: true. For recurring obligations, extract the recurrence pattern rather than expanding instances, and set date to the first upcoming occurrence on or after today when the pattern makes it directly computable (e.g. monthly on the 1st), with date_basis: "computed". Suggest a reminder lead time per event based on stakes: long-notice items (lease non-renewal, contract cancellation windows) get 14 days, payments and filings get 3-7 days, informational dates get 1 day. Ignore and never transcribe personal identifiers (names, account numbers, SSNs) — refer to parties generically. Do not advise the reader what to do; describe what the document requires.`;
+export const EXTRACT_OBLIGATIONS_SYSTEM_PROMPT = `You are an obligation-extraction engine inside a technical demo. Today's date is {TODAY}. You receive a document as text or as photographed pages. First decide whether it is a document containing obligations, deadlines, or scheduled commitments; if not, set is_obligation_document to false with a one-sentence reason and stop. Otherwise extract every dated or datable obligation: deadlines, notice windows (extract BOTH the window-opens and window-closes dates when computable), renewal and expiration dates, recurring payments, required actions. For each event, quote the exact source excerpt it came from. Date rules - these are strict: if the document states an explicit date, use it with date_basis: "stated". If a date must be computed from an anchor plus an offset (e.g. "60 days before the lease end date") and the anchor is present in the document, compute it, set date_basis: "computed", show your arithmetic in computation (e.g. "2026-08-31 minus 60 days = 2026-07-02"), and fill resolution with the anchor's label, the anchor's ISO date from the document, and the offset as numbers - the application re-runs that arithmetic in code and corrects any slip. If the anchor is missing or ambiguous, set date: null, date_basis: "unresolved", state in computation exactly what date is needed and the offset to apply (e.g. "needs: policy start date; then add 6 months"), and fill resolution with the anchor's label, anchor_date: null, and the offset - the application runs the arithmetic in code once the reader supplies the anchor. Leave resolution null only when a date is stated outright or a computed date has no single anchor-plus-offset derivation (e.g. the next occurrence of a recurring payment). When computing a date, count actual calendar days carefully - mind each month's true length and leap years (February has 29 days in leap years such as 2028) - and verify the arithmetic in your computation string before recording it. Never guess a date. Never invent obligations not in the document. Mark events whose dates are already in the past with in_past: true. For recurring obligations, extract the recurrence pattern rather than expanding instances, and set date to the first upcoming occurrence on or after today when the pattern makes it directly computable (e.g. monthly on the 1st), with date_basis: "computed". Suggest a reminder lead time per event based on stakes: long-notice items (lease non-renewal, contract cancellation windows) get 14 days, payments and filings get 3-7 days, informational dates get 1 day. Ignore and never transcribe personal identifiers (names, account numbers, SSNs) - refer to parties generically. Do not advise the reader what to do; describe what the document requires.`;
 
 // Mirrors ObligationExtraction 1:1. `strict: true` plus
 // additionalProperties: false means the API validates the model's output

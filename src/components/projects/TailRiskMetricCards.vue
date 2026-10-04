@@ -10,7 +10,7 @@ import type { SimulationSummary } from "@/lib/tail-risk/types";
 const props = defineProps<{
 	summary: SimulationSummary | null;
 	baseline: SimulationSummary | null;
-	/** Live P(over budget) — exact after a re-sim, interpolated mid-drag. */
+	/** Live P(over budget) - exact after a re-sim, interpolated mid-drag. */
 	probOverBudget: number;
 	budgetUsd: number;
 }>();
@@ -74,7 +74,7 @@ const cards = computed<CardModel[]>(() => {
 			key: "p50",
 			label: "P50",
 			sublabel: "Median run",
-			value: s ? formatUsd(p50.value) : "—",
+			value: s ? formatUsd(p50.value) : "-",
 			delta: b && s ? deltaFor(s.p50, b.p50) : null,
 			deltaGood: !!b && !!s && s.p50 <= b.p50,
 		},
@@ -82,7 +82,7 @@ const cards = computed<CardModel[]>(() => {
 			key: "p90",
 			label: "P90",
 			sublabel: "Bad day",
-			value: s ? formatUsd(p90.value) : "—",
+			value: s ? formatUsd(p90.value) : "-",
 			delta: b && s ? deltaFor(s.p90, b.p90) : null,
 			deltaGood: !!b && !!s && s.p90 <= b.p90,
 		},
@@ -90,7 +90,7 @@ const cards = computed<CardModel[]>(() => {
 			key: "p99",
 			label: "P99",
 			sublabel: "Disaster run",
-			value: s ? formatUsd(p99.value) : "—",
+			value: s ? formatUsd(p99.value) : "-",
 			danger: true,
 			delta: b && s ? deltaFor(s.p99, b.p99) : null,
 			deltaGood: !!b && !!s && s.p99 <= b.p99,
@@ -99,7 +99,7 @@ const cards = computed<CardModel[]>(() => {
 			key: "over",
 			label: `P(> ${formatUsd(props.budgetUsd)})`,
 			sublabel: "Over budget",
-			value: s ? formatPercent(probOver.value) : "—",
+			value: s ? formatPercent(probOver.value) : "-",
 			delta:
 				baselineProbOver.value !== null && s
 					? deltaFor(props.probOverBudget, baselineProbOver.value)

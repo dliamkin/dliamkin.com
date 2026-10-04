@@ -1,6 +1,6 @@
 # Nightly ToS watchdog: fetch every configured policy document, hash-compare
-# normalized text against the private snapshot repo, and — only when a
-# document actually changed — run the diff-and-explain pipeline and publish a
+# normalized text against the private snapshot repo, and - only when a
+# document actually changed - run the diff-and-explain pipeline and publish a
 # changelog entry + RSS feed. Unchanged nights make zero model calls.
 #
 # Secrets: ANTHROPIC_API_KEY (model calls, change days only) and

@@ -17,7 +17,7 @@ import { extractToolInput } from "./shared";
 // scripts/evals/ run it directly.
 
 // Sonnet, not Haiku (the house default for demos): date arithmetic is this
-// pipeline's known failure mode, and Haiku demonstrably missed it — during
+// pipeline's known failure mode, and Haiku demonstrably missed it - during
 // sample generation it computed "2027-08-31 minus 60 days" as 2027-06-02
 // (off by a month). This demo's whole value is date correctness, so the ~3x
 // cost is worth it; the eval suite's month-boundary cases are the regression
@@ -36,7 +36,7 @@ export type PaperworkInput =
 export async function extractObligations(
 	client: Anthropic,
 	input: PaperworkInput,
-	todayIso: string, // UTC date (YYYY-MM-DD) — anchors relative expressions and in_past
+	todayIso: string, // UTC date (YYYY-MM-DD) - anchors relative expressions and in_past
 	model: string = EXTRACT_OBLIGATIONS_DEFAULT_MODEL,
 ): Promise<ObligationExtraction> {
 	const content: Anthropic.ContentBlockParam[] =
@@ -74,7 +74,7 @@ export async function extractObligations(
 			messages: [{ role: "user", content }],
 		});
 		// The model identifies anchors and offsets; the arithmetic for
-		// computed dates is re-run (and corrected) in code — see
+		// computed dates is re-run (and corrected) in code - see
 		// reconcileComputedDates for why the model's math can't be trusted.
 		return reconcileComputedDates(
 			extractToolInput<ObligationExtraction>(response, EXTRACT_OBLIGATIONS_TOOL.name),
@@ -83,7 +83,7 @@ export async function extractObligations(
 	};
 
 	const result = await callOnce();
-	// "This is an obligation document" + zero events is self-contradictory —
+	// "This is an obligation document" + zero events is self-contradictory -
 	// observed (2026-07-04, CI) as a transient degenerate response: schema-
 	// valid, near-instant, contentless. One bounded retry; if the second
 	// attempt agrees, the document may genuinely have no datable events and

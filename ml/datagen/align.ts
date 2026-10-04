@@ -9,7 +9,7 @@ import { nameVariants } from "./drug-synonyms";
 // and record it as a char-span EntitySpan; dose/route/frequency are bound to
 // the NEAREST medication name so attributes attach to the right drug. Status
 // is realized as a STATUS_CUE span over the cue word ("started" / "stopped")
-// that justifies a new/discontinued status — the assembler reads those cues
+// that justifies a new/discontinued status - the assembler reads those cues
 // back out. Alignment failures (a name that isn't in the text, a field whose
 // only occurrence is already claimed) are label noise: we discard the whole
 // example and count why, so the discard rate can go in the docs.
@@ -129,7 +129,7 @@ export function alignExample(
 			if (occs.length === 0) continue; // optional field simply not in the prose
 			const free = occs.filter(isFree);
 			if (free.length === 0) {
-				// The value is present but every occurrence is already claimed —
+				// The value is present but every occurrence is already claimed -
 				// two meds are fighting over one span. Rather than discard the whole
 				// example, leave this field untagged (the note is genuinely ambiguous
 				// about which drug it belongs to) and count it.

@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// Tail Risk Lab — data model.
+// Tail Risk Lab - data model.
 //
 // Pure types shared by the simulation engine, the Web Worker, and the UI.
 // Nothing in this file (or in engine/) may import Vue or touch the DOM: the
@@ -16,7 +16,7 @@ export interface StepParams {
 	loopRisk: number;
 	/** Geometric decay of retry probability: P(retry k) = loopRisk · loopDecay^(k−1). */
 	loopDecay: number;
-	/** Retry k re-sends input × (1 + retryContextGrowth · k) — context accretes. */
+	/** Retry k re-sends input × (1 + retryContextGrowth · k) - context accretes. */
 	retryContextGrowth: number;
 }
 
@@ -37,7 +37,7 @@ export interface Policy {
 	/** Per-step hard cap on output tokens, in thousands. null = off. */
 	outputTokenCapK: number | null;
 	trials: TrialCount;
-	/** PRNG seed — same seed + same params ⇒ identical results. */
+	/** PRNG seed - same seed + same params ⇒ identical results. */
 	seed: number;
 	/** Budget line for P(over budget); draggable on the distribution chart. */
 	budgetUsd: number;
@@ -64,16 +64,16 @@ export interface SimulationSummary {
 	/** Per-step share of total cost variance; sums to 1 (all zeros if no variance). */
 	varianceShare: { stepId: string; share: number }[];
 	trials: number;
-	/** Engine runtime in ms — shown under the chart as the perf flex. */
+	/** Engine runtime in ms - shown under the chart as the perf flex. */
 	elapsedMs: number;
 }
 
 // ---------------------------------------------------------------------------
-// Pricing. VERIFY against https://claude.com/pricing before deploying —
+// Pricing. VERIFY against https://claude.com/pricing before deploying -
 // prices change. Values are Anthropic first-party API rates as of 2026-08,
 // converted to $ per thousand tokens (the engine samples token counts in K).
 // Same figures as ORACLE_PRICING in src/lib/dry-run-oracle.ts (per MTok ÷ 1000)
-// — kept numerically in sync by hand; both carry this verify comment.
+// - kept numerically in sync by hand; both carry this verify comment.
 
 export const TAIL_RISK_PRICING: PricingTable = {
 	opus: { inputPerKTok: 0.005, outputPerKTok: 0.025 },

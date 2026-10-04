@@ -79,7 +79,7 @@ const cases: EvalCase<LeasePairInput, LeaseComparison>[] = [
 	{
 		id: "lease-residential-renewal",
 		description:
-			"Bundled renewal pair — 8 planted landlord-favoring changes: rent +$145, auto-renewal added, water shifted to tenant, lawn care shifted to tenant, guest limit halved, notice 30→60 days, new pet fee, new early-termination fee",
+			"Bundled renewal pair - 8 planted landlord-favoring changes: rent +$145, auto-renewal added, water shifted to tenant, lawn care shifted to tenant, guest limit halved, notice 30→60 days, new pet fee, new early-termination fee",
 		input: samplePair("residential-renewal"),
 		checks: [
 			{
@@ -141,7 +141,7 @@ const cases: EvalCase<LeasePairInput, LeaseComparison>[] = [
 				run: (c) =>
 					hasChange(c, "new $35/month pet fee", {
 						categories: ["fees"],
-						// Grants a pet right while adding a fee — landlord-favoring
+						// Grants a pet right while adding a fee - landlord-favoring
 						// is expected, but "unclear" is a defensible judgment.
 						impacts: ["favors_landlord", "unclear"],
 						keyword: /pet/,
@@ -165,7 +165,7 @@ const cases: EvalCase<LeasePairInput, LeaseComparison>[] = [
 	{
 		id: "lease-month-to-month",
 		description:
-			"Bundled month-to-month pair — 7 planted concepts including two tenant-favorable changes that must not be mislabeled: term conversion, +$50 premium, late grace 3→5 days (favors tenant), deposit return 21→14 days (favors tenant), termination rework, entry notice 48→24h, new insurance requirement",
+			"Bundled month-to-month pair - 7 planted concepts including two tenant-favorable changes that must not be mislabeled: term conversion, +$50 premium, late grace 3→5 days (favors tenant), deposit return 21→14 days (favors tenant), termination rework, entry notice 48→24h, new insurance requirement",
 		input: samplePair("month-to-month"),
 		checks: [
 			{
@@ -173,7 +173,7 @@ const cases: EvalCase<LeasePairInput, LeaseComparison>[] = [
 				run: (c) =>
 					hasChange(c, "conversion to month-to-month", {
 						categories: ["term_and_renewal"],
-						// Cuts both ways (flexibility vs. security) — a one-sided
+						// Cuts both ways (flexibility vs. security) - a one-sided
 						// judgment either way would be wrong.
 						impacts: ["unclear", "neutral"],
 						keyword: /month[ -]?to[ -]?month/,
@@ -268,7 +268,7 @@ const cases: EvalCase<LeasePairInput, LeaseComparison>[] = [
 	{
 		id: "lease-late-fee-rewording",
 		description:
-			"False-positive restraint pair — the maintenance clause is reworded with identical meaning (must NOT be reported); the late fee quietly rises $50→$75 inside similar rewording (must be reported)",
+			"False-positive restraint pair - the maintenance clause is reworded with identical meaning (must NOT be reported); the late fee quietly rises $50→$75 inside similar rewording (must be reported)",
 		input: fixturePair("late-fee-rewording"),
 		checks: [
 			{

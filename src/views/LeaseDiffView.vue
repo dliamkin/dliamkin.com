@@ -23,7 +23,7 @@ import { extractLeaseText, LeaseFileError } from "@/lib/lease-file-extract";
 
 const SAMPLE_RESULTS = rawSampleResults as unknown as Record<string, LeaseComparison>;
 
-// Two full-length documents on Sonnet plus a long structured response — allow
+// Two full-length documents on Sonnet plus a long structured response - allow
 // generous headroom for cold starts and large inputs.
 const REQUEST_TIMEOUT_MS = 120_000;
 
@@ -86,7 +86,7 @@ function onFileSelect(side: Side, event: FileUploadSelectEvent) {
 async function extractInto(side: Side, file: File) {
 	extracting.value[side] = true;
 	try {
-		// pdfjs-dist itself stays lazy — extractLeaseText only imports it
+		// pdfjs-dist itself stays lazy - extractLeaseText only imports it
 		// when the chosen file is actually a PDF.
 		const text = await extractLeaseText(file);
 		if (side === "original") originalText.value = text;
@@ -95,7 +95,7 @@ async function extractInto(side: Side, file: File) {
 			toast.add({
 				severity: "warn",
 				summary: "Document too long",
-				detail: `The extracted text is over ${MAX_LEASE_CHARS.toLocaleString()} characters — please trim it before comparing.`,
+				detail: `The extracted text is over ${MAX_LEASE_CHARS.toLocaleString()} characters - please trim it before comparing.`,
 				life: 6000,
 			});
 		}
@@ -118,14 +118,14 @@ async function compareLeases() {
 	if (!canSubmit.value) return;
 	identicalNotice.value = false;
 
-	// Identical documents: short-circuit client-side — don't spend an API call.
+	// Identical documents: short-circuit client-side - don't spend an API call.
 	if (originalText.value.trim() === revisedText.value.trim()) {
 		identicalNotice.value = true;
 		return;
 	}
 
 	// Unmodified bundled sample pairs render their pre-generated result
-	// instantly — no API call, no cost.
+	// instantly - no API call, no cost.
 	const pair = LEASE_SAMPLE_PAIRS.find(
 		(p) =>
 			p.originalText.trim() === originalText.value.trim() &&
@@ -159,7 +159,7 @@ async function compareLeases() {
 		try {
 			body = await response.json();
 		} catch {
-			// fall through — handled by response.ok check below
+			// fall through - handled by response.ok check below
 		}
 
 		if (!response.ok) {
@@ -173,7 +173,7 @@ async function compareLeases() {
 			errorMessage.value =
 				serverError ??
 				(response.status === 429
-					? "Too many requests right now — please wait a minute and try again."
+					? "Too many requests right now - please wait a minute and try again."
 					: "Something went wrong comparing the leases. Please try again.");
 			status.value = "error";
 			return;
@@ -211,7 +211,7 @@ async function compareLeases() {
 				<h1>Lease Diff Explainer</h1>
 				<EvalBadge project-id="lease-diff" class="header-eval-badge" />
 				<p class="intro">
-					Paste two versions of a lease — the original and a renewal or revision — and get
+					Paste two versions of a lease - the original and a renewal or revision - and get
 					a plain-English breakdown of every substantive change: who it favors, how much
 					it matters, and what a tenant should ask before signing. A classical text diff
 					grounds the model call, so mechanical change detection and semantic explanation
@@ -224,7 +224,7 @@ async function compareLeases() {
 				This is a technical demo, not legal advice, and it makes no jurisdiction-specific
 				legal conclusions.
 				<strong>
-					Don't paste real signed leases containing personal information — use the
+					Don't paste real signed leases containing personal information - use the
 					synthetic samples or redacted text.
 				</strong>
 				Documents are processed in memory and never stored.
@@ -295,7 +295,7 @@ async function compareLeases() {
 						</div>
 						<p v-if="extracting[side.key]" class="extract-note">
 							<i class="fa-solid fa-circle-notch fa-spin" aria-hidden="true"></i>
-							Extracting text in your browser — the file never leaves it.
+							Extracting text in your browser - the file never leaves it.
 						</p>
 					</div>
 				</div>
@@ -317,7 +317,7 @@ async function compareLeases() {
 					/>
 				</div>
 				<p class="cost-note">
-					PDF text extraction happens entirely in your browser — only the text is sent.
+					PDF text extraction happens entirely in your browser - only the text is sent.
 					The two sample pairs render instantly from pre-generated results; only custom or
 					edited text calls the live API.
 				</p>
@@ -325,7 +325,7 @@ async function compareLeases() {
 
 			<section class="results-section" aria-label="Comparison results" aria-live="polite">
 				<Message v-if="identicalNotice" severity="info" :closable="false">
-					These two documents look identical — there's nothing to compare. Edit one of
+					These two documents look identical - there's nothing to compare. Edit one of
 					them and try again.
 				</Message>
 
@@ -338,7 +338,7 @@ async function compareLeases() {
 				<template v-else-if="status === 'done' && result">
 					<p v-if="resultSource === 'sample'" class="source-note">
 						<i class="fa-solid fa-bolt" aria-hidden="true"></i>
-						Rendered from the bundled pre-generated result — zero API calls.
+						Rendered from the bundled pre-generated result - zero API calls.
 					</p>
 					<LeaseDiffResults :result="result" />
 				</template>
@@ -357,7 +357,7 @@ async function compareLeases() {
 							JSON.stringify(result, null, 2)
 						}}</pre>
 						<p v-else class="empty">
-							Compare two leases first — the exact JSON returned by the comparison
+							Compare two leases first - the exact JSON returned by the comparison
 							schema will appear here.
 						</p>
 					</AccordionContent>
@@ -371,7 +371,7 @@ async function compareLeases() {
 								called, the server runs a classical text diff: both documents are
 								normalized, split into clauses, and reduced to a compact list of
 								added, removed, and modified blocks. That mechanical summary goes to
-								the model alongside both full texts and acts as a checklist —
+								the model alongside both full texts and acts as a checklist -
 								deterministic change detection does what it's reliably good at, and
 								the model spends its capacity on the part only it can do: explaining
 								what each change means in plain English. The response comes back
@@ -386,13 +386,13 @@ async function compareLeases() {
 								schema makes negotiation notes question-framed by design rather than
 								hoping the model phrases them gently; and the UI pins a not-legal-
 								advice disclaimer above every result. If one layer slips, the others
-								hold — that layering, not any single rule, is what makes a real
+								hold - that layering, not any single rule, is what makes a real
 								legal-tech product defensible.
 							</p>
 							<p>
 								Privacy follows the same design-it-in approach as my other projects:
 								PDF text extraction runs entirely in the browser via a lazy-loaded
-								pdf.js, so uploaded files never leave your machine — only extracted
+								pdf.js, so uploaded files never leave your machine - only extracted
 								text you can edit or redact first is sent. Server-side, both
 								documents live in memory for the single API call and are never
 								stored; logs record only sizes, duration, and outcome. Cost is
@@ -403,11 +403,11 @@ async function compareLeases() {
 							<p>
 								Honest limitations: no OCR for scanned documents, a character cap
 								that comfortably fits a full-length residential or commercial lease
-									but not a book-length master agreement, and —
-								deliberately — no jurisdiction awareness, since tenancy law varies
+									but not a book-length master agreement, and -
+								deliberately - no jurisdiction awareness, since tenancy law varies
 								enough by state and city that pretending otherwise would be worse
 								than staying silent. A production version would add a clause
-								library, jurisdiction-specific rules, and an attorney review loop —
+								library, jurisdiction-specific rules, and an attorney review loop -
 								the pipeline shape stays the same; the controls around it become the
 								product.
 							</p>

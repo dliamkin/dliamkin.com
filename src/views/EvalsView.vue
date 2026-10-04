@@ -22,7 +22,7 @@ import {
 } from "@/lib/evals";
 
 // Public eval dashboard: renders the static JSON committed by
-// .github/workflows/evals.yml (public/eval-results/) — no API, no key, no
+// .github/workflows/evals.yml (public/eval-results/) - no API, no key, no
 // per-visitor cost. Failures are shown with the same expected/actual detail
 // the runner prints; nothing is filtered.
 
@@ -78,7 +78,7 @@ const overallPercent = computed(() =>
 	report.value ? Math.round(report.value.overall_pass_rate * 100) : 0,
 );
 
-// A suite regressed if the previous history entry had a higher pass count —
+// A suite regressed if the previous history entry had a higher pass count -
 // same comparison the runner uses to set regression_from_previous.
 function suiteRegressed(suite: SuiteResult): boolean {
 	const previous = history.value[history.value.length - 2];
@@ -92,7 +92,7 @@ function suiteStatus(suite: SuiteResult): { severity: string; label: string } {
 }
 
 // Per-suite pass-rate sparkline over the whole history, with markers where
-// the prompt hash changed — so a score move is attributable to "prompt
+// the prompt hash changed - so a score move is attributable to "prompt
 // changed here" vs "same prompt, model drifted".
 const SPARK_W = 160;
 const SPARK_H = 36;
@@ -118,7 +118,7 @@ function sparklineFor(projectId: SuiteResult["project_id"]): {
 	return { points, markers };
 }
 
-// Last-14-runs pass/fail dots for one case — single-run pass/fail hides
+// Last-14-runs pass/fail dots for one case - single-run pass/fail hides
 // instability, so flakiness is made visible per case.
 function caseDots(projectId: SuiteResult["project_id"], caseId: string): (boolean | null)[] {
 	return history.value.slice(-14).map((entry) => {
@@ -147,7 +147,7 @@ function sortedChecks(caseResult: CaseResult): CaseResult["checks"] {
 						>scheduled CI job</a
 					>
 					re-runs each project's eval suite through the exact pipeline production uses and
-					commits the results here — automatically, failures included. Regressions file
+					commits the results here - automatically, failures included. Regressions file
 					<a :href="ISSUES_URL" target="_blank" rel="noopener noreferrer"
 						>GitHub issues</a
 					>
@@ -312,7 +312,7 @@ function sortedChecks(caseResult: CaseResult): CaseResult["checks"] {
 								<p>
 									AI features don't stay tested on their own. Model updates, prompt
 									edits, and provider-side changes can all shift behavior without a
-									single line of my code changing — and "I tried it and it looked
+									single line of my code changing - and "I tried it and it looked
 									fine" is not a test suite. So every project on this site registers an
 									eval suite: planted ground truth (synthetic notes with known
 									medications, lease pairs with known changes, screenshots with known
@@ -321,8 +321,8 @@ function sortedChecks(caseResult: CaseResult): CaseResult["checks"] {
 								</p>
 								<p>
 									The design choice that matters most: the evals run the exact
-									production code path. Each project's pipeline — prompt, forced
-									tool-use schema, parsing — lives in one shared module that the
+									production code path. Each project's pipeline - prompt, forced
+									tool-use schema, parsing - lives in one shared module that the
 									serverless handler and the eval runner both import, so the suite
 									can't quietly test a stale copy of the logic. Each run also records
 									a hash of the system prompt, so when a score moves, the dashboard
@@ -338,13 +338,13 @@ function sortedChecks(caseResult: CaseResult): CaseResult["checks"] {
 								</p>
 								<p>
 									Honest limitations: deterministic checks measure extraction
-									fidelity — did the model find the planted facts, decline to invent
-									absent ones, and label judgments sanely — not prose quality or
+									fidelity - did the model find the planted facts, decline to invent
+									absent ones, and label judgments sanely - not prose quality or
 									explanation depth. A production eval system would add
 									rubric-based LLM-as-judge scoring calibrated against human labels,
 									much larger case sets, and statistical handling for flaky cases
-									rather than eyeballed dots. The bones, though — versioned prompts,
-									pinned ground truth, CI enforcement, public accountability — are
+									rather than eyeballed dots. The bones, though - versioned prompts,
+									pinned ground truth, CI enforcement, public accountability - are
 									the same ones I'd ship at work.
 								</p>
 							</div>
@@ -362,7 +362,7 @@ function sortedChecks(caseResult: CaseResult): CaseResult["checks"] {
 			<div v-else-if="loaded" class="pending">
 				<i class="fa-regular fa-hourglass-half" aria-hidden="true"></i>
 				<p>
-					First eval run pending — results will appear here automatically once the
+					First eval run pending - results will appear here automatically once the
 					<a :href="WORKFLOW_URL" target="_blank" rel="noopener noreferrer"
 						>eval workflow</a
 					>
@@ -443,7 +443,7 @@ h1 {
 .suite-cards {
 	display: grid;
 	/* minmax(0, …) so a wide case table can't blow the column out past the
-	   viewport — it scrolls inside the card instead. */
+	   viewport - it scrolls inside the card instead. */
 	grid-template-columns: minmax(0, 1fr);
 	gap: 1.5rem;
 	margin-bottom: 2rem;

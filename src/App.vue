@@ -3,7 +3,7 @@ import ParticleField from "@/components/ParticleField.vue";
 </script>
 
 <template>
-	<!-- The one persistent particle canvas — mounted once, never unmounts on
+	<!-- The one persistent particle canvas - mounted once, never unmounts on
 	     navigation. All page content renders above it (see .site-content);
 	     page roots that should reveal the field use transparent backgrounds. -->
 	<ParticleField />
@@ -18,7 +18,7 @@ import ParticleField from "@/components/ParticleField.vue";
 	color: #262626;
 	background: #ffffff;
 
-	/* Dark-mode palette tokens — every component's `html.dark` override pulls
+	/* Dark-mode palette tokens - every component's `html.dark` override pulls
 	   from these so the whole site darkens consistently. The #27a9e0 brand
 	   blue stays the accent in both themes. Dark is the site default: an
 	   inline script in index.html adds .dark to <html> before first paint
@@ -69,7 +69,7 @@ footer[id] {
 /* PrimeVue's Message mounts inside a <Transition appear> that animates its
    height open (grid-template-rows 0fr -> 1fr, 300ms). For the disclaimer
    banners that are simply part of a page, that entrance visibly pushes the
-   whole page down while it plays — the single largest CLS source on the
+   whole page down while it plays - the single largest CLS source on the
    demo pages. Messages appear instantly instead; the leave animation is
    untouched. */
 .p-message-enter-active {

@@ -121,7 +121,7 @@
         },
         {
           "case_id": "note-dose-change",
-          "description": "Dose change mid-note: atorvastatin increased 20→40 mg — the extracted dose must be the new one, not the old",
+          "description": "Dose change mid-note: atorvastatin increased 20→40 mg - the extracted dose must be the new one, not the old",
           "passed": true,
           "checks": [
             {
@@ -154,7 +154,7 @@
         },
         {
           "case_id": "note-discontinued-med",
-          "description": "Discontinued medication: HCTZ stopped for hyponatremia — status must be discontinued, not active",
+          "description": "Discontinued medication: HCTZ stopped for hyponatremia - status must be discontinued, not active",
           "passed": true,
           "checks": [
             {
@@ -181,7 +181,7 @@
         },
         {
           "case_id": "note-no-allergies",
-          "description": "Allergies never mentioned: the allergies array must stay empty — not populated with NKDA or invented entries",
+          "description": "Allergies never mentioned: the allergies array must stay empty - not populated with NKDA or invented entries",
           "passed": true,
           "checks": [
             {
@@ -229,7 +229,7 @@
         },
         {
           "case_id": "note-benign-complex-meds",
-          "description": "Nothing urgent but four chronic meds: all extracted with doses, and red_flags stays empty — no false alarms",
+          "description": "Nothing urgent but four chronic meds: all extracted with doses, and red_flags stays empty - no false alarms",
           "passed": true,
           "checks": [
             {
@@ -280,25 +280,25 @@
             {
               "name": "heart rate is null (never measured)",
               "passed": true,
-              "expected": "null (absent — not invented)",
+              "expected": "null (absent - not invented)",
               "actual": "null"
             },
             {
               "name": "temperature is null (never measured)",
               "passed": true,
-              "expected": "null (absent — not invented)",
+              "expected": "null (absent - not invented)",
               "actual": "null"
             },
             {
               "name": "oxygen saturation is null (never measured)",
               "passed": true,
-              "expected": "null (absent — not invented)",
+              "expected": "null (absent - not invented)",
               "actual": "null"
             },
             {
               "name": "weight is null (never measured)",
               "passed": true,
-              "expected": "null (absent — not invented)",
+              "expected": "null (absent - not invented)",
               "actual": "null"
             }
           ],
@@ -320,7 +320,7 @@
               "name": "the dose ambiguity lands in extraction_notes",
               "passed": true,
               "expected": "contains \"metoprolol\"",
-              "actual": "\"Metoprolol dose is uncertain—patient reports either 25 mg or 50 mg twice daily; pharmacy records pending to confirm ; Specific diuretic ('water pill') not identified; dose and frequency unknown ; Route of administration not specified for any medications ; Atorvastatin 20 mg nightly confirmed from bottle brought by patient ; Temperature, respiratory rate, oxygen saturation, and weight not documented ; No allergies documented\""
+              "actual": "\"Metoprolol dose is uncertain - patient reports either 25 mg or 50 mg twice daily; pharmacy records pending to confirm ; Specific diuretic ('water pill') not identified; dose and frequency unknown ; Route of administration not specified for any medications ; Atorvastatin 20 mg nightly confirmed from bottle brought by patient ; Temperature, respiratory rate, oxygen saturation, and weight not documented ; No allergies documented\""
             },
             {
               "name": "confirmed atorvastatin 20 mg nightly extracted normally",
@@ -344,7 +344,7 @@
       "cases": [
         {
           "case_id": "lease-residential-renewal",
-          "description": "Bundled renewal pair — 8 planted landlord-favoring changes: rent +$145, auto-renewal added, water shifted to tenant, lawn care shifted to tenant, guest limit halved, notice 30→60 days, new pet fee, new early-termination fee",
+          "description": "Bundled renewal pair - 8 planted landlord-favoring changes: rent +$145, auto-renewal added, water shifted to tenant, lawn care shifted to tenant, guest limit halved, notice 30→60 days, new pet fee, new early-termination fee",
           "passed": true,
           "checks": [
             {
@@ -407,7 +407,7 @@
         },
         {
           "case_id": "lease-month-to-month",
-          "description": "Bundled month-to-month pair — 7 planted concepts including two tenant-favorable changes that must not be mislabeled: term conversion, +$50 premium, late grace 3→5 days (favors tenant), deposit return 21→14 days (favors tenant), termination rework, entry notice 48→24h, new insurance requirement",
+          "description": "Bundled month-to-month pair - 7 planted concepts including two tenant-favorable changes that must not be mislabeled: term conversion, +$50 premium, late grace 3→5 days (favors tenant), deposit return 21→14 days (favors tenant), termination rework, entry notice 48→24h, new insurance requirement",
           "passed": true,
           "checks": [
             {
@@ -470,7 +470,7 @@
         },
         {
           "case_id": "lease-late-fee-rewording",
-          "description": "False-positive restraint pair — the maintenance clause is reworded with identical meaning (must NOT be reported); the late fee quietly rises $50→$75 inside similar rewording (must be reported)",
+          "description": "False-positive restraint pair - the maintenance clause is reworded with identical meaning (must NOT be reported); the late fee quietly rises $50→$75 inside similar rewording (must be reported)",
           "passed": true,
           "checks": [
             {
@@ -642,7 +642,7 @@
             {
               "name": "no scaffold code is generated",
               "passed": true,
-              "expected": "null (absent — not invented)",
+              "expected": "null (absent - not invented)",
               "actual": "null"
             }
           ],
@@ -675,7 +675,7 @@
             {
               "name": "no scaffold code is generated",
               "passed": true,
-              "expected": "null (absent — not invented)",
+              "expected": "null (absent - not invented)",
               "actual": "null"
             }
           ],
@@ -694,7 +694,7 @@
       "cases": [
         {
           "case_id": "paperwork-lease",
-          "description": "Bundled lease sample — stated end date, computed 60-day non-renewal deadline (month-boundary arithmetic), recurring rent, stated inspection date, and a deliberately unresolvable renewal-offer date (anniversary never defined)",
+          "description": "Bundled lease sample - stated end date, computed 60-day non-renewal deadline (month-boundary arithmetic), recurring rent, stated inspection date, and a deliberately unresolvable renewal-offer date (anniversary never defined)",
           "passed": true,
           "checks": [
             {
@@ -739,7 +739,7 @@
         },
         {
           "case_id": "paperwork-scholarship",
-          "description": "Bundled scholarship sample — stated acceptance deadline, enrollment verification computed from the stated semester start, yearly GPA report recurrence, and one already-passed date",
+          "description": "Bundled scholarship sample - stated acceptance deadline, enrollment verification computed from the stated semester start, yearly GPA report recurrence, and one already-passed date",
           "passed": true,
           "checks": [
             {
@@ -778,7 +778,7 @@
         },
         {
           "case_id": "paperwork-insurance",
-          "description": "Bundled insurance sample — stated policy expiration, cancellation notice computed across a YEAR boundary (2027-01-14 minus 30 days), monthly premium recurrence on the 15th",
+          "description": "Bundled insurance sample - stated policy expiration, cancellation notice computed across a YEAR boundary (2027-01-14 minus 30 days), monthly premium recurrence on the 15th",
           "passed": true,
           "checks": [
             {
@@ -817,7 +817,7 @@
         },
         {
           "case_id": "paperwork-gym-contract",
-          "description": "Gym contract — cancellation deadline computed 45 days before term end across February (2027-03-01 minus 45 days = 2027-01-15), monthly dues on the 5th, yearly maintenance fee",
+          "description": "Gym contract - cancellation deadline computed 45 days before term end across February (2027-03-01 minus 45 days = 2027-01-15), monthly dues on the 5th, yearly maintenance fee",
           "passed": true,
           "checks": [
             {
@@ -850,7 +850,7 @@
         },
         {
           "case_id": "paperwork-invoice-net30",
-          "description": "Invoice with net-30 terms from January 31, 2028 — leap-year arithmetic (2028-01-31 plus 30 days = 2028-03-01) plus an early-payment discount window",
+          "description": "Invoice with net-30 terms from January 31, 2028 - leap-year arithmetic (2028-01-31 plus 30 days = 2028-03-01) plus an early-payment discount window",
           "passed": true,
           "checks": [
             {
@@ -877,7 +877,7 @@
         },
         {
           "case_id": "paperwork-benefits-unresolvable",
-          "description": "Benefits notice whose deadlines all hinge on a hire date the document never states — everything datable must come back unresolved, never guessed",
+          "description": "Benefits notice whose deadlines all hinge on a hire date the document never states - everything datable must come back unresolved, never guessed",
           "passed": true,
           "checks": [
             {
@@ -910,7 +910,7 @@
         },
         {
           "case_id": "paperwork-jury-summons",
-          "description": "Jury summons with only stated dates — extraction restraint: both dates exact, nothing invented",
+          "description": "Jury summons with only stated dates - extraction restraint: both dates exact, nothing invented",
           "passed": true,
           "checks": [
             {
@@ -943,7 +943,7 @@
         },
         {
           "case_id": "paperwork-not-a-document",
-          "description": "A soup recipe — must be rejected as not an obligation document, with no events",
+          "description": "A soup recipe - must be rejected as not an obligation document, with no events",
           "passed": true,
           "checks": [
             {
@@ -974,7 +974,7 @@
       "cases": [
         {
           "case_id": "planner-legacy-vue-stack",
-          "description": "A Vue 2-era stack — deprecated request, 2-majors-behind vue-router, patch-behind lodash, and peer conflicts pointing at vue: tiers, alerts, and sequencing all at once",
+          "description": "A Vue 2-era stack - deprecated request, 2-majors-behind vue-router, patch-behind lodash, and peer conflicts pointing at vue: tiers, alerts, and sequencing all at once",
           "passed": true,
           "checks": [
             {
@@ -1031,7 +1031,7 @@
         },
         {
           "case_id": "planner-coupled-ecosystem",
-          "description": "vue + vue-router + vuex all major-behind — the tightly coupled framework stack must migrate as one wave",
+          "description": "vue + vue-router + vuex all major-behind - the tightly coupled framework stack must migrate as one wave",
           "passed": true,
           "checks": [
             {
@@ -1058,7 +1058,7 @@
         },
         {
           "case_id": "planner-quiet-current",
-          "description": "A fully current manifest — the honest quiet case: zero waves, zero plans, everything in already_current, no padding",
+          "description": "A fully current manifest - the honest quiet case: zero waves, zero plans, everything in already_current, no padding",
           "passed": true,
           "checks": [
             {
@@ -1091,7 +1091,7 @@
         },
         {
           "case_id": "planner-patch-utilities",
-          "description": "Two small bumps — both safe_now, groupable in one quick wave",
+          "description": "Two small bumps - both safe_now, groupable in one quick wave",
           "passed": true,
           "checks": [
             {
@@ -1124,7 +1124,7 @@
         },
         {
           "case_id": "planner-deprecated-package",
-          "description": "A deprecated (but nearly current) moment — deprecation must dominate the tier and produce an alert",
+          "description": "A deprecated (but nearly current) moment - deprecation must dominate the tier and produce an alert",
           "passed": true,
           "checks": [
             {
@@ -1284,7 +1284,7 @@
         },
         {
           "case_id": "tos-refund-window-extended",
-          "description": "BIAS CHECK: refund window extended 14 → 30 days — a user-favorable change that must be judged favors_user, not reflexively favors_provider.",
+          "description": "BIAS CHECK: refund window extended 14 → 30 days - a user-favorable change that must be judged favors_user, not reflexively favors_provider.",
           "passed": true,
           "checks": [
             {
@@ -1508,7 +1508,7 @@
               "name": "forecast headline present",
               "passed": true,
               "expected": "a non-trivial one-sentence forecast headline",
-              "actual": "\"Clear skies for export, but heavy conversion storms and redirect risks ahead—spot-check may mask silent failures.\""
+              "actual": "\"Clear skies for export, but heavy conversion storms and redirect risks ahead - spot-check may mask silent failures.\""
             },
             {
               "name": "cost totals internally consistent",
@@ -1595,7 +1595,7 @@
         },
         {
           "case_id": "noise-car-whine",
-          "description": "Synthesized steady 3.8 kHz whine over faint rumble (car preset): best characterization is in the whine/tone family — never low rumbling — with car-appropriate questions.",
+          "description": "Synthesized steady 3.8 kHz whine over faint rumble (car preset): best characterization is in the whine/tone family - never low rumbling - with car-appropriate questions.",
           "passed": true,
           "checks": [
             {

@@ -23,7 +23,7 @@ function metricValue(lhr: Awaited<ReturnType<typeof lighthouse>>, id: string): n
 
 // Runs Lighthouse against each audited page of the LIVE site, one run per
 // page with the default mobile emulation. This is a nightly trend, not a
-// benchmark — single-run scores jitter by ±3 points or so, and the audit
+// benchmark - single-run scores jitter by ±3 points or so, and the audit
 // prompt is written to account for that.
 export async function runLighthouse(): Promise<LighthouseResult[]> {
 	// Reuse Playwright's Chromium so CI and local runs exercise the same

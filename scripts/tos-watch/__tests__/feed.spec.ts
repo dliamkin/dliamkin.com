@@ -25,7 +25,7 @@ describe("buildFeed", () => {
 		const xml = buildFeed([entry()], new Date("2026-07-18T08:00:00Z"));
 		expect(xml).toContain(`<?xml version="1.0" encoding="UTF-8"?>`);
 		expect(xml).toContain("<rss version=\"2.0\"");
-		expect(xml).toContain("Acmecloud · Terms of Service — change detected 2026-07-18");
+		expect(xml).toContain("Acmecloud · Terms of Service - change detected 2026-07-18");
 		expect(xml).toContain(`<guid isPermaLink="false">acmecloud/terms-of-service/2026-07-18</guid>`);
 		expect(xml).toContain("<pubDate>Sat, 18 Jul 2026 00:00:00 GMT</pubDate>");
 		// Parses as XML (jsdom's DOMParser flags errors via parsererror).

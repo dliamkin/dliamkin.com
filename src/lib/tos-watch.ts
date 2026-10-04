@@ -2,12 +2,12 @@ import type Anthropic from "@anthropic-ai/sdk";
 
 // Shared between the Vue page (src/views/TosWatchView.vue), the nightly
 // watchdog scripts (scripts/tos-watch/), and the eval suite. Keep the
-// TypeScript interfaces and the tool JSON schema below in 1:1 sync — the
+// TypeScript interfaces and the tool JSON schema below in 1:1 sync - the
 // schema is what actually constrains the model's output.
 
 // Hard editorial cap: the public site quotes at most this many words per
 // excerpt. The prompt asks for it, post-processing enforces it with
-// truncation, and the eval suite checks it — never republish document text.
+// truncation, and the eval suite checks it - never republish document text.
 export const EXCERPT_MAX_WORDS = 25;
 
 // Changelog retention in public/tos-watch/changelog.json; older entries
@@ -84,14 +84,14 @@ export interface DocumentState {
 	consecutive_failures: number;
 	status: DocumentStatus;
 	// The document's own "last updated" line, captured during normalization as
-	// display metadata. Never hashed — a date bump alone must not read as a
+	// display metadata. Never hashed - a date bump alone must not read as a
 	// change.
 	self_reported_updated: string | null;
 }
 
 export interface TosWatchState {
 	generated_at: string;
-	monitoring_since: string; // ISO date of the baseline run — the page's
+	monitoring_since: string; // ISO date of the baseline run - the page's
 	// honest empty state cites this.
 	documents: DocumentState[];
 }
@@ -106,7 +106,7 @@ export function countWords(text: string): number {
 }
 
 // Hard cap, applied after the model call: the prompt asks for <= 25 words,
-// this guarantees it. Truncation is marked with a trailing "…" — consumers
+// this guarantees it. Truncation is marked with a trailing "…" - consumers
 // that verbatim-match excerpts against source text must strip it first.
 export function truncateExcerpt(excerpt: string, maxWords: number = EXCERPT_MAX_WORDS): string {
 	const words = excerpt.trim().split(/\s+/);
@@ -116,7 +116,7 @@ export function truncateExcerpt(excerpt: string, maxWords: number = EXCERPT_MAX_
 
 // Applies the excerpt cap to a whole report. Called at the pipeline boundary
 // (explainTosChange) so the TosChangeReport type's "<= EXCERPT_MAX_WORDS,
-// enforced in code" promise holds for every consumer — the nightly runner,
+// enforced in code" promise holds for every consumer - the nightly runner,
 // the site, and the eval suite all receive already-capped excerpts.
 export function capExcerpts(report: TosChangeReport): TosChangeReport {
 	return {
@@ -194,11 +194,11 @@ export function findLoadedLanguage(report: TosChangeReport): LoadedLanguageViola
 // ---------------------------------------------------------------------------
 // Model contract.
 
-// Output scales with the number of substantive changes, not document length —
+// Output scales with the number of substantive changes, not document length -
 // the pipeline sends only changed blocks, never both full documents.
 export const EXPLAIN_TOS_MAX_TOKENS = 4000;
 
-export const EXPLAIN_TOS_SYSTEM_PROMPT = `You are a terms-of-service change analyst for a public monitoring project. You receive changed text blocks (with context) between two versions of a named service's legal document, detected by automated comparison. First gate: if every change is cosmetic — formatting, renumbering, typo fixes, date updates, wording shuffles with identical meaning — set substantive to false and stop. Otherwise, describe each substantive change in neutral, factual, plain English an ordinary user can understand. For each change: categorize it, quote the single most relevant excerpt from the NEW text at 25 words or fewer (and optionally the old text, same cap), assess who it favors and its practical significance, and note in one sentence what it means for a user in practice. Excerpt rules: an excerpt must be one contiguous span copied character-for-character from the document. Never join separate fragments with an ellipsis, skip words, or paraphrase — a spliced or reworded "quote" is a fabrication. When the relevant sentence runs past 25 words, quote only its most informative contiguous portion; a partial sentence that starts or ends mid-thought is fine and expected. Count the excerpt's words before committing to it. Strict rules: describe only what the text says — never speculate about the organization's motives or use loaded language (no "quietly," "buried," "sneaky"); never state when the change was made, only what differs between the two observed versions; if a change's meaning or effect is unclear, say so plainly and mark impact unclear rather than guessing; do not give advice about whether to accept terms or leave a service. Your output is published verbatim on a public record — accuracy and neutrality over color.`;
+export const EXPLAIN_TOS_SYSTEM_PROMPT = `You are a terms-of-service change analyst for a public monitoring project. You receive changed text blocks (with context) between two versions of a named service's legal document, detected by automated comparison. First gate: if every change is cosmetic - formatting, renumbering, typo fixes, date updates, wording shuffles with identical meaning - set substantive to false and stop. Otherwise, describe each substantive change in neutral, factual, plain English an ordinary user can understand. For each change: categorize it, quote the single most relevant excerpt from the NEW text at 25 words or fewer (and optionally the old text, same cap), assess who it favors and its practical significance, and note in one sentence what it means for a user in practice. Excerpt rules: an excerpt must be one contiguous span copied character-for-character from the document. Never join separate fragments with an ellipsis, skip words, or paraphrase - a spliced or reworded "quote" is a fabrication. When the relevant sentence runs past 25 words, quote only its most informative contiguous portion; a partial sentence that starts or ends mid-thought is fine and expected. Count the excerpt's words before committing to it. Strict rules: describe only what the text says - never speculate about the organization's motives or use loaded language (no "quietly," "buried," "sneaky"); never state when the change was made, only what differs between the two observed versions; if a change's meaning or effect is unclear, say so plainly and mark impact unclear rather than guessing; do not give advice about whether to accept terms or leave a service. Your output is published verbatim on a public record - accuracy and neutrality over color.`;
 
 // Mirrors TosChangeReport 1:1. strict: true + additionalProperties: false
 // means the API validates the model's output against this schema before it
@@ -231,7 +231,7 @@ export const EXPLAIN_TOS_TOOL: Anthropic.Tool = {
 						new_excerpt: {
 							type: "string",
 							description:
-								"The single most relevant quote from the NEW text: one contiguous span copied character-for-character, 25 words or fewer. No ellipses joining fragments, no skipped words, no paraphrase — if the sentence is longer than 25 words, quote a contiguous portion of it",
+								"The single most relevant quote from the NEW text: one contiguous span copied character-for-character, 25 words or fewer. No ellipses joining fragments, no skipped words, no paraphrase - if the sentence is longer than 25 words, quote a contiguous portion of it",
 						},
 						old_excerpt: {
 							type: ["string", "null"],

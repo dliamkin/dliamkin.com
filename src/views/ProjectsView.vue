@@ -23,7 +23,7 @@ const projects: ProjectEntry[] = [
 		title: "Clinical Note Structurer",
 		tags: ["Structured output", "Healthcare", "Serverless"],
 		description:
-			"Turns a messy free-text visit note into typed, structured fields — medications, vitals, follow-ups — with a HIPAA-safe architecture write-up. Synthetic data only.",
+			"Turns a messy free-text visit note into typed, structured fields - medications, vitals, follow-ups - with a HIPAA-safe architecture write-up. Synthetic data only.",
 	},
 	{
 		to: "/projects/screenshot-to-primevue",
@@ -39,7 +39,7 @@ const projects: ProjectEntry[] = [
 		title: "Lease Diff Explainer",
 		tags: ["Hybrid diff + AI", "Real estate", "Structured output"],
 		description:
-			"Compare two versions of a lease and get a plain-English breakdown of every change — who it favors, how much it matters, and what to ask before signing. Synthetic documents only.",
+			"Compare two versions of a lease and get a plain-English breakdown of every change - who it favors, how much it matters, and what to ask before signing. Synthetic documents only.",
 	},
 	{
 		to: "/projects/paperwork-to-calendar",
@@ -47,7 +47,7 @@ const projects: ProjectEntry[] = [
 		title: "Paperwork → Calendar",
 		tags: ["Vision", "Date integrity", ".ics export"],
 		description:
-			"Paste, upload, or photograph any document with deadlines buried in it and get back a downloadable .ics — every deadline, notice window, and renewal as calendar events with reminders set before the date, not on it.",
+			"Paste, upload, or photograph any document with deadlines buried in it and get back a downloadable .ics - every deadline, notice window, and renewal as calendar events with reminders set before the date, not on it.",
 	},
 	{
 		to: "/projects/upgrade-planner",
@@ -55,7 +55,7 @@ const projects: ProjectEntry[] = [
 		title: "Dependency Upgrade Planner",
 		tags: ["npm registry", "Semver math", "Structured output"],
 		description:
-			"Paste a package.json and get computed facts — versions behind, deprecations, peer conflicts, straight from the npm registry in your browser — then an AI-synthesized upgrade plan: risk tiers, ordered waves, and the commands to run.",
+			"Paste a package.json and get computed facts - versions behind, deprecations, peer conflicts, straight from the npm registry in your browser - then an AI-synthesized upgrade plan: risk tiers, ordered waves, and the commands to run.",
 	},
 	{
 		to: "/projects/dry-run-oracle",
@@ -63,7 +63,7 @@ const projects: ProjectEntry[] = [
 		title: "Dry-Run Oracle",
 		tags: ["Pre-flight simulation", "Cost forecasting", "Cheap-model leverage"],
 		description:
-			"A weather forecast for AI spend: paste an agent plan and a cheap model simulates it — failure points, retry-storm probability, and the token bill per step — before an expensive model burns a single token. Approve, apply suggested fixes, or abort.",
+			"A weather forecast for AI spend: paste an agent plan and a cheap model simulates it - failure points, retry-storm probability, and the token bill per step - before an expensive model burns a single token. Approve, apply suggested fixes, or abort.",
 	},
 	{
 		to: "/projects/tail-risk-lab",
@@ -79,7 +79,7 @@ const projects: ProjectEntry[] = [
 			"AI Cost Engineering",
 		],
 		description:
-			"Monte Carlo cost simulator for AI agent runs. Point estimates lie about agent costs — retry loops make the distribution fat-tailed. This tool simulates a run thousands of times client-side (zero API tokens) and lets you buy down tail risk with policy knobs before spending a cent.",
+			"Monte Carlo cost simulator for AI agent runs. Point estimates lie about agent costs - retry loops make the distribution fat-tailed. This tool simulates a run thousands of times client-side (zero API tokens) and lets you buy down tail risk with policy knobs before spending a cent.",
 	},
 	{
 		to: "/projects/noise-translator",
@@ -88,7 +88,7 @@ const projects: ProjectEntry[] = [
 		featured: true,
 		tags: ["Client-side audio", "Vision", "Structured output"],
 		description:
-			"Record the sound your car, dryer, or furnace is making and your browser turns it into a spectrogram plus measured acoustic facts — then a model translates them into the precise description a mechanic needs, with the questions they'll ask next. It describes; it never diagnoses.",
+			"Record the sound your car, dryer, or furnace is making and your browser turns it into a spectrogram plus measured acoustic facts - then a model translates them into the precise description a mechanic needs, with the questions they'll ask next. It describes; it never diagnoses.",
 	},
 	{
 		to: "/projects/particle-engine",
@@ -97,7 +97,7 @@ const projects: ProjectEntry[] = [
 		featured: true,
 		tags: ["TypeScript", "Canvas", "Generative Art", "Physics", "Performance"],
 		description:
-			"The particle system running behind this site. 3,000 simulated 'tokens' with flow-field physics, formation morphing, and mouse interaction — one persistent canvas, zero libraries, 60fps. Open the playground to drive it yourself.",
+			"The particle system running behind this site. 3,000 simulated 'tokens' with flow-field physics, formation morphing, and mouse interaction - one persistent canvas, zero libraries, 60fps. Open the playground to drive it yourself.",
 	},
 	{
 		to: "/projects/tos-watch",
@@ -105,7 +105,7 @@ const projects: ProjectEntry[] = [
 		title: "ToS Watchdog",
 		tags: ["Nightly monitor", "Public record", "RSS"],
 		description:
-			"A standing nightly monitor over terms-of-service and policy documents — UF campus policies and major consumer services. Hash comparison makes unchanged nights free; when a document changes, a diff-and-explain pipeline publishes a dated, neutral changelog entry anyone can subscribe to.",
+			"A standing nightly monitor over terms-of-service and policy documents - UF campus policies and major consumer services. Hash comparison makes unchanged nights free; when a document changes, a diff-and-explain pipeline publishes a dated, neutral changelog entry anyone can subscribe to.",
 	},
 ];
 
@@ -145,13 +145,13 @@ onBeforeUnmount(() => {
 				<p class="eyebrow">Interactive</p>
 				<h1>My Projects</h1>
 				<p class="intro">
-					Working projects built into this site — each one calls a real AI model through a
+					Working projects built into this site - each one calls a real AI model through a
 					serverless proxy, with the same cost, privacy, and reliability engineering I'd
 					apply in production.
 				</p>
 				<p class="evals-link">
 					<i class="fa-solid fa-vial-circle-check" aria-hidden="true"></i>
-					Every project here is continuously tested —
+					Every project here is continuously tested -
 					<RouterLink to="/evals">see the live eval dashboard</RouterLink>.
 				</p>
 			</header>

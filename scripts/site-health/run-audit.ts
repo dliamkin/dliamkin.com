@@ -8,7 +8,7 @@ import { fileOrUpdateIssue } from "./issues";
 // Nightly site-health audit orchestrator. Degrades gracefully: if Lighthouse,
 // screenshots, or the model call fail, it still writes a status:"audit_error"
 // report (so the widget shows "audit skipped" instead of stale data), files
-// no issue, and exits 0 — the workflow run stays green.
+// no issue, and exits 0 - the workflow run stays green.
 //
 // Flags: --no-issue (skip GitHub issue filing) and --no-commit (skip the git
 // commit/push) for safe local runs via `npm run audit:local`.
@@ -43,7 +43,7 @@ async function main(): Promise<void> {
 	console.log(
 		previous
 			? `Previous report loaded (${previous.audited_at}).`
-			: "No previous report — baseline mode: no deltas, no issue filing.",
+			: "No previous report - baseline mode: no deltas, no issue filing.",
 	);
 
 	let report: HealthReport;
@@ -63,7 +63,7 @@ async function main(): Promise<void> {
 
 	if (report.pages.length !== AUDIT_PAGES.length) {
 		console.warn(
-			`Report covers ${report.pages.length}/${AUDIT_PAGES.length} pages — check the model output.`,
+			`Report covers ${report.pages.length}/${AUDIT_PAGES.length} pages - check the model output.`,
 		);
 	}
 
@@ -81,7 +81,7 @@ async function main(): Promise<void> {
 		try {
 			await fileOrUpdateIssue(report);
 		} catch (error) {
-			// A failed issue call must not fail the run — the report is
+			// A failed issue call must not fail the run - the report is
 			// already committed and next night's audit will retry.
 			console.error(`Issue filing failed: ${error instanceof Error ? error.message : error}`);
 		}

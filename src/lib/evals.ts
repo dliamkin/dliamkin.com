@@ -1,7 +1,7 @@
 // Shared between the eval runner (scripts/evals/) and the dashboard UI
 // (src/views/EvalsView.vue, src/components/EvalBadge.vue). The runner makes
 // the model calls in CI/locally and commits its results as static JSON; the
-// site just fetches that JSON — so nothing in this file may pull in runtime
+// site just fetches that JSON - so nothing in this file may pull in runtime
 // code, and no eval machinery ships to the client beyond these types.
 
 export const EVAL_PROJECT_IDS = [
@@ -36,7 +36,7 @@ export const EVAL_HISTORY_PATH = "/eval-results/history.json";
 export type EvalTrigger = "schedule" | "manual" | "push";
 
 // One deterministic assertion's outcome. `expected` and `actual` are
-// human-readable strings — they are displayed verbatim on the public
+// human-readable strings - they are displayed verbatim on the public
 // dashboard, including for failures.
 export interface CheckResult {
 	passed: boolean;
@@ -96,7 +96,7 @@ export const EVAL_HISTORY_CASE_RUNS = 14;
 
 // Shape check for the fetched JSON: the SPA fallback answers unknown paths
 // with index.html (HTTP 200), so "missing" is detected by content shape, not
-// status code — same approach as the site-health widget.
+// status code - same approach as the site-health widget.
 export function isEvalReport(value: unknown): value is EvalReport {
 	return (
 		typeof value === "object" &&

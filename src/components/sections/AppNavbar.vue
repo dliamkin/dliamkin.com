@@ -31,7 +31,7 @@ const scrollTo = (id: string) => {
 	isMobileMenuOpen.value = false;
 	const el = document.getElementById(id);
 	if (!el) {
-		// Section anchors only exist on the home page — navigate there first.
+		// Section anchors only exist on the home page - navigate there first.
 		window.location.href = `/#${id}`;
 		return;
 	}
@@ -40,7 +40,7 @@ const scrollTo = (id: string) => {
 };
 
 onMounted(() => {
-	// updateScrolled reads offsetHeight, which forces layout — inside the
+	// updateScrolled reads offsetHeight, which forces layout - inside the
 	// mount task (whole page dirty) that read cost ~40ms of main-thread time
 	// during the LCP window on every page. Deferred past first paint it's
 	// nearly free, and the pre-scroll default (not scrolled) is correct for
@@ -74,7 +74,7 @@ onUnmounted(() => {
 <template>
 	<header ref="navbarEl" class="navbar" :class="{ scrolled: isScrolled }">
 		<div class="navbar-inner">
-			<a href="/" class="brand" aria-label="Denis Liamkin — home">
+			<a href="/" class="brand" aria-label="Denis Liamkin - home">
 				<!-- Lossless WebP twins of the PNG originals, emitted by
 				     scripts/optimize-images.mjs (~half the bytes). -->
 				<img

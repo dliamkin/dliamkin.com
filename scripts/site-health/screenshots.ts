@@ -19,7 +19,7 @@ export interface Screenshot {
 }
 
 // Saved as workflow artifacts (14-day retention) so the exact images the
-// model saw can be inspected after the fact. Gitignored — screenshots never
+// model saw can be inspected after the fact. Gitignored - screenshots never
 // enter the repo; the report's visual_fingerprint text is the only memory
 // carried between runs.
 export const ARTIFACT_DIR = path.resolve("site-health-artifacts");

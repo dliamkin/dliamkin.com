@@ -3,7 +3,7 @@ build artifacts: ml/data/dataset-stats.json and
 public/models/med-extractor/model-card.json.
 
 Only the blocks between the AUTO markers are rewritten; hand-written context is
-preserved. Safe to run any time — sections whose artifact is missing show
+preserved. Safe to run any time - sections whose artifact is missing show
 "pending". Run:
 
     ml/train/.venv/bin/python ml/train/refresh_metrics.py
@@ -40,7 +40,7 @@ def cost(calls: int, model: str, kind: str) -> float:
 
 def render(stats: dict | None, card: dict | None) -> str:
     lines = [BEGIN, ""]
-    lines.append("### Dataset stats — _(auto)_")
+    lines.append("### Dataset stats - _(auto)_")
     if stats:
         d = stats["discards"]
         lines += [
@@ -62,7 +62,7 @@ def render(stats: dict | None, card: dict | None) -> str:
         lab = cost(calls, "claude-sonnet-5", "labeling")
         lines += [
             "",
-            "### Actual generation spend — _(auto, estimate from attempts)_",
+            "### Actual generation spend - _(auto, estimate from attempts)_",
             "",
             "| line | estimate |",
             "|---|---|",
@@ -73,7 +73,7 @@ def render(stats: dict | None, card: dict | None) -> str:
     else:
         lines += ["", "_⟨pending: run `npm run ml:generate-data -- --confirm` then refresh⟩_"]
 
-    lines += ["", "### Final model card — _(auto)_"]
+    lines += ["", "### Final model card - _(auto)_"]
     if card:
         lines += [
             "",
@@ -97,7 +97,7 @@ def render(stats: dict | None, card: dict | None) -> str:
 def main() -> None:
     stats, card = load(STATS), load(CARD)
     block = render(stats, card)
-    text = open(DOC).read() if os.path.exists(DOC) else f"# 05 — Costs & metrics\n\n{BEGIN}\n{END}\n"
+    text = open(DOC).read() if os.path.exists(DOC) else f"# 05 - Costs & metrics\n\n{BEGIN}\n{END}\n"
     if BEGIN in text and END in text:
         pre = text[: text.index(BEGIN)]
         post = text[text.index(END) + len(END):]

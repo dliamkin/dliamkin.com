@@ -7,7 +7,7 @@ import type {
 	SuiteResult,
 } from "../../src/lib/evals";
 
-// A deliberately small eval harness — no framework, no dependencies. Cases
+// A deliberately small eval harness - no framework, no dependencies. Cases
 // are plain data, checks are plain TypeScript assertions on the pipelines'
 // structured output, and every result is honest: one model call per case per
 // run, no retries, failures published with expected-vs-actual detail.
@@ -28,7 +28,7 @@ export interface SuiteDefinition<TInput, TOutput> {
 	project_id: EvalProjectId;
 	project_label: string;
 	model: string; // exact model string the pipeline will use
-	prompt: string; // the pipeline's actual system prompt — hashed per run so
+	prompt: string; // the pipeline's actual system prompt - hashed per run so
 	// the dashboard can attribute score changes to "prompt changed" vs
 	// "same prompt, model drifted"
 	cases: EvalCase<TInput, TOutput>[];
@@ -127,7 +127,7 @@ export function defineSuite<TInput, TOutput>(
 
 // ---------------------------------------------------------------------------
 // Grading helpers. All deterministic, all producing human-readable
-// expected/actual strings — these are rendered verbatim on the dashboard.
+// expected/actual strings - these are rendered verbatim on the dashboard.
 
 export function normalized(value: string | null | undefined): string {
 	return (value ?? "")
@@ -159,7 +159,7 @@ export function fieldEquals<T extends string | number | boolean | null>(
 export function fieldIsNull(actual: string | number | null): CheckResult {
 	return {
 		passed: actual === null,
-		expected: "null (absent — not invented)",
+		expected: "null (absent - not invented)",
 		actual: JSON.stringify(actual),
 	};
 }

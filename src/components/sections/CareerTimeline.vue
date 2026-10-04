@@ -13,20 +13,20 @@ interface Role {
 	tags: string[];
 }
 
-// Newest first — mirrors the résumé. Keep the highlights to the three that
+// Newest first - mirrors the résumé. Keep the highlights to the three that
 // carry a number or a concrete outcome; the full bullet list lives on the PDF.
 const roles: Role[] = [
 	{
 		company: "Iris Telehealth",
 		role: "Senior Software Engineer",
-		period: "2024 — 2026",
+		period: "2024 - 2026",
 		industry: "Telehealth / Clinical SaaS",
 		icon: "fa-solid fa-notes-medical",
 		accent: "#27a9e0",
 		highlights: [
 			"Designed the company's foundational CI/CD pipelines, cutting release time from ~12-minute manual deploys to ~6-minute automated releases.",
 			"Architected and owned the “Iris Insights” TypeScript / AWS Lambda monorepo while driving down monthly AWS spend through continuous cost tracking.",
-			"Led the On-Demand Services suite in Vue + PrimeVue — real-time patient trackboards used daily by Emergency Department and in-patient clinical teams.",
+			"Led the On-Demand Services suite in Vue + PrimeVue - real-time patient trackboards used daily by Emergency Department and in-patient clinical teams.",
 			"Slashed API response times with a DynamoDB active-session model and instrumented DataDog monitors that shrank mean time to detection for incidents.",
 		],
 		tags: ["Vue 3", "PrimeVue", "AWS Lambda", "DynamoDB", "DataDog", "CI/CD", "Monorepo"],
@@ -34,12 +34,12 @@ const roles: Role[] = [
 	{
 		company: "The Collier Companies",
 		role: "Senior Software Engineer",
-		period: "2016 — 2024",
+		period: "2016 - 2024",
 		industry: "Real Estate / Property Management",
 		icon: "fa-solid fa-building",
 		accent: "#5cb85c",
 		highlights: [
-			"Engineered end-to-end solutions for 10+ production applications — Angular (v2 → 16), C# / .NET, ASP.NET Core, and Swagger-documented APIs.",
+			"Engineered end-to-end solutions for 10+ production applications - Angular (v2 → 16), C# / .NET, ASP.NET Core, and Swagger-documented APIs.",
 			"Pioneered Azure sprint-based Agile delivery for the whole team and rolled out Azure DevOps CI/CD company-wide.",
 			"Built C# Azure Function Apps wired into Azure Data Factory pipelines, automating data movement that used to be manual.",
 			"Engineered token-authenticated integrations with Google Ads, Facebook, and Instagram that turned raw ad data into automated revenue reports.",
@@ -57,12 +57,12 @@ const roles: Role[] = [
 	{
 		company: "LatentData LLC",
 		role: "Owner / Principal Engineer",
-		period: "2016 — 2024",
+		period: "2016 - 2024",
 		industry: "Freelance Consultancy",
 		icon: "fa-solid fa-laptop-code",
 		accent: "#c08552",
 		highlights: [
-			"Delivered proprietary WordPress themes and custom plugins for a nationwide client base — while holding a full-time senior role.",
+			"Delivered proprietary WordPress themes and custom plugins for a nationwide client base - while holding a full-time senior role.",
 			"Deployed custom professional pages for University of Florida faculty, integrating with internal university servers to host live portfolios on official .edu domains.",
 			"Built and maintained WHM / cPanel hosting on Apache, including SSL configuration across production servers.",
 		],
@@ -71,7 +71,7 @@ const roles: Role[] = [
 	{
 		company: "StartButton LLC / Midgard Scientific",
 		role: "Software Developer",
-		period: "2014 — 2016",
+		period: "2014 - 2016",
 		industry: "Agency",
 		icon: "fa-solid fa-rocket",
 		accent: "#9b59b6",
@@ -87,12 +87,12 @@ const education = [
 	{
 		degree: "B.A.S., Computer Information Systems Technology",
 		school: "Eastern Florida State College",
-		period: "2019 — 2021",
+		period: "2019 - 2021",
 	},
 	{
 		degree: "A.A., General Studies",
 		school: "Eastern Florida State College",
-		period: "2013 — 2015",
+		period: "2013 - 2015",
 	},
 ];
 
@@ -105,7 +105,7 @@ const { target, inView } = useInView({ threshold: 0.08 });
 			<p class="eyebrow">// Career Path</p>
 			<h2>Twelve years, four chapters</h2>
 			<p class="sub">
-				From agency WordPress builds to clinical-grade serverless platforms — each role
+				From agency WordPress builds to clinical-grade serverless platforms - each role
 				layered a new part of the stack onto the last.
 			</p>
 		</div>

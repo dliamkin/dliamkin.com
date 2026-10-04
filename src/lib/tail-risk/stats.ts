@@ -1,12 +1,12 @@
 // Statistical helpers for the Tail Risk Lab engine. Pure functions over
-// sorted Float64Arrays — no DOM, no Vue, no allocation beyond the returned
+// sorted Float64Arrays - no DOM, no Vue, no allocation beyond the returned
 // structures. The engine sorts trial totals exactly once; everything here
 // assumes (and documents) that precondition.
 
 /**
  * Nearest-rank percentile on an ascending-sorted array:
  * the smallest value such that at least p% of the sample is ≤ it.
- * Exact sample statistic — no interpolation, so tests can assert equality.
+ * Exact sample statistic - no interpolation, so tests can assert equality.
  */
 export function percentileSorted(sorted: Float64Array, p: number): number {
 	const n = sorted.length;
@@ -108,7 +108,7 @@ export function exceedanceFromCdf(cdf: Cdf, value: number): number {
 }
 
 /**
- * Welford's online variance — single pass, numerically stable. The engine
+ * Welford's online variance - single pass, numerically stable. The engine
  * keeps one accumulator per step and pushes each trial's per-step cost.
  */
 export class Welford {

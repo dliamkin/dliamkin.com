@@ -1,4 +1,4 @@
-"""BIO label scheme for the medication extractor — the Python mirror of
+"""BIO label scheme for the medication extractor - the Python mirror of
 src/lib/med-extractor/labels.ts. This ordering is load-bearing: the model's
 id2label is baked into the exported ONNX config, and the browser decoder
 (src/lib/med-extractor/decode.ts) maps logit argmax → label by this exact

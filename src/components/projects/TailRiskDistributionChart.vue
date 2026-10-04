@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// Hand-rolled canvas distribution chart — deliberately no charting library.
+// Hand-rolled canvas distribution chart - deliberately no charting library.
 // Histogram (default) or CDF of total run cost, with dashed P50/P90/P99
 // markers, a semi-transparent ghost of the pinned baseline, and a draggable
 // budget line that live-updates P(over budget). DevicePixelRatio-aware.
@@ -187,7 +187,7 @@ function drawCdfLine(
 		lastY = bottom - (y[i] ?? 0) * frame.plotH;
 		ctx.lineTo(xToPx(frame, vx), lastY);
 	}
-	// Beyond the clamped domain the curve is ≥ the last drawn quantile —
+	// Beyond the clamped domain the curve is ≥ the last drawn quantile -
 	// extend flat so the line doesn't just stop mid-air.
 	ctx.lineTo(PAD.left + frame.plotW, lastY);
 	ctx.stroke();
@@ -280,7 +280,7 @@ function draw(): void {
 	drawMarker(ctx, frame, s.p90, "P90", colors.p90);
 	drawMarker(ctx, frame, s.p99, "P99", colors.p99);
 
-	// Budget line — the draggable one.
+	// Budget line - the draggable one.
 	const budgetX = xToPx(frame, Math.min(Math.max(props.budgetUsd, frame.x0), frame.x1));
 	ctx.strokeStyle = colors.budget;
 	ctx.lineWidth = 2;
@@ -302,7 +302,7 @@ function draw(): void {
 	ctx.fillText(label, budgetX > frame.width / 2 ? budgetX - 8 : budgetX + 8, PAD.top - 8);
 
 	if (mode.value === "cdf") {
-		// Annotate the budget line's intersection with the curve — the
+		// Annotate the budget line's intersection with the curve - the
 		// exceedance probability, the most information-dense pixel here.
 		const exceed = exceedanceFromCdf(s.cdf, props.budgetUsd);
 		const yAt = bottom - (1 - exceed) * frame.plotH;
@@ -313,7 +313,7 @@ function draw(): void {
 		ctx.font = "bold 11px 'Raleway', sans-serif";
 		ctx.textAlign = budgetX > frame.width / 2 ? "right" : "left";
 		// Near the top of the plot the annotation would collide with the
-		// budget label — flip it below the intersection dot instead.
+		// budget label - flip it below the intersection dot instead.
 		const annotationY = yAt - 8 < PAD.top + 12 ? yAt + 18 : yAt - 8;
 		ctx.fillText(
 			`P(> ${formatUsd(props.budgetUsd)}) = ${formatPercent(exceed)}`,
@@ -368,7 +368,7 @@ const meta = computed(() => {
 onMounted(() => {
 	resizeObserver = new ResizeObserver(() => draw());
 	if (wrapRef.value) resizeObserver.observe(wrapRef.value);
-	// The canvas can't inherit CSS theme switches — redraw when html.dark flips.
+	// The canvas can't inherit CSS theme switches - redraw when html.dark flips.
 	themeObserver = new MutationObserver(() => draw());
 	themeObserver.observe(document.documentElement, {
 		attributes: true,

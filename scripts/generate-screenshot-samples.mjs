@@ -1,8 +1,8 @@
 // Sample pipeline for the Screenshot → PrimeVue demo, in two stages:
-//   1. Render the mock pages in samples-src/ to PNGs (Playwright, 1280×800 —
+//   1. Render the mock pages in samples-src/ to PNGs (Playwright, 1280×800 -
 //      fully reproducible, no downloaded images). Demo samples land in
 //      src/assets/demo-samples/; the eval-* pages land in
-//      scripts/evals/fixtures/ (negative test cases for the eval suite —
+//      scripts/evals/fixtures/ (negative test cases for the eval suite -
 //      never shown in the demo UI, never analyzed here).
 //   2. Run each demo PNG through the same pipeline worker/index.ts uses
 //      (src/lib/pipelines/analyze-screenshot.ts) and write
@@ -37,7 +37,7 @@ const EVAL_FIXTURE_PAGES = ["eval-landscape", "eval-text-document"];
 fs.mkdirSync(outDir, { recursive: true });
 fs.mkdirSync(evalFixtureDir, { recursive: true });
 
-// Stage 1 — render mock pages to PNGs.
+// Stage 1 - render mock pages to PNGs.
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
 const render = async (id, dir) => {
@@ -60,7 +60,7 @@ if (renderOnly) {
 	process.exit(0);
 }
 
-// Stage 2 — analyze each demo PNG and write the bundled results.
+// Stage 2 - analyze each demo PNG and write the bundled results.
 const anthropic = new Anthropic();
 const results = {};
 

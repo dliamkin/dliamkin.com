@@ -1,6 +1,6 @@
 """Export the chosen fine-tuned checkpoint to ONNX, apply int8 dynamic
 quantization, measure the post-quantization F1 delta on the held-out test
-split, and lay the files out the way transformers.js expects — into
+split, and lay the files out the way transformers.js expects - into
 public/models/med-extractor/ (the one part of ml/ that IS committed and
 shipped).
 
@@ -84,7 +84,7 @@ def main() -> None:
 
     final_dir = os.path.join(resolve(cfg["output_dir"]), candidate, "final")
     if not os.path.isdir(final_dir):
-        raise SystemExit(f"No trained checkpoint at {final_dir} — run train.py first.")
+        raise SystemExit(f"No trained checkpoint at {final_dir} - run train.py first.")
 
     ship_dir = resolve("../../public/models/med-extractor")
     onnx_dir = os.path.join(ship_dir, "onnx")
@@ -108,8 +108,8 @@ def main() -> None:
 
     # 3. lay out for transformers.js: config/tokenizer at root, and ONLY the
     #    int8 weights under onnx/. The browser loads model_quantized.onnx
-    #    (dtype "q8"); the fp32 model.onnx stays in the temp dir — used just
-    #    below to measure the quantization F1 delta — so we don't commit a
+    #    (dtype "q8"); the fp32 model.onnx stays in the temp dir - used just
+    #    below to measure the quantization F1 delta - so we don't commit a
     #    ~4x-larger file nothing serves.
     for fn in os.listdir(tmp_export):
         src = os.path.join(tmp_export, fn)
@@ -118,7 +118,7 @@ def main() -> None:
         if fn == "model_quantized.onnx":
             shutil.copy2(src, os.path.join(onnx_dir, fn))
         elif fn.endswith(".onnx") or fn.endswith(".onnx_data"):
-            continue  # fp32 weights — not shipped
+            continue  # fp32 weights - not shipped
         else:
             shutil.copy2(src, os.path.join(ship_dir, fn))
 

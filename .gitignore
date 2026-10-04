@@ -56,10 +56,10 @@ playwright-report/
 # Site-health audit screenshots (uploaded as workflow artifacts, never committed)
 site-health-artifacts/
 
-# ML distillation dataset — synthetic, but thousands of clinical-style notes
+# ML distillation dataset - synthetic, but thousands of clinical-style notes
 # don't belong in the repo; the ml/datagen scripts are the artifact. The
-# exported student model (public/models/) IS committed — that's the shipped
-# deliverable — but training data and intermediate outputs are not.
+# exported student model (public/models/) IS committed - that's the shipped
+# deliverable - but training data and intermediate outputs are not.
 ml/data/
 ml/train/outputs/
 ml/train/.venv/
@@ -72,12 +72,12 @@ __pycache__/
 .ruff_cache/
 
 # Private engineering docs (public repo → these stay local only; mirror to a
-# private repo/drive for backup — see docs/internal/README.md).
+# private repo/drive for backup - see docs/internal/README.md).
 docs/internal/
 
 # ToS watchdog: local clone of the private snapshot repo (never committed here)
 tos-snapshots/
 
 # chrome-launcher under WSL can mis-resolve TEMP into a literal
-# "\\wsl.localhost\..." directory name in the cwd — never commit those.
+# "\\wsl.localhost\..." directory name in the cwd - never commit those.
 *wsl.localhost*

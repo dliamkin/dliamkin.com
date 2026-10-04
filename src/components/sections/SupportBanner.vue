@@ -6,7 +6,7 @@ import { useId } from "vue";
 import { useInView } from "@/composables/useInView";
 
 // Swap this for the Stripe Payment Link and nothing else here needs to change.
-// It stays a plain static link on purpose — no Stripe JS, no keys, no backend.
+// It stays a plain static link on purpose - no Stripe JS, no keys, no backend.
 const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/cNi00k4AbcI6gmFgm9fEk00";
 
 // "card" is the contained banner used inside a page's content column;
@@ -23,7 +23,7 @@ withDefaults(
 		variant: "card",
 		eyebrow: "Powered by real AI credits",
 		heading: "Keep these projects alive",
-		blurb: "Every demo on this page runs on live AI infrastructure — each interaction costs real compute. If something here helped or impressed you, you can chip in. Any amount helps.",
+		blurb: "Every demo on this page runs on live AI infrastructure - each interaction costs real compute. If something here helped or impressed you, you can chip in. Any amount helps.",
 		ctaLabel: "Fuel the projects",
 	},
 );
@@ -182,7 +182,7 @@ const { target, inView } = useInView();
 	margin: 0;
 }
 
-/* CTA — the gradient stays in the 700–800 range of the site accent because
+/* CTA - the gradient stays in the 700–800 range of the site accent because
    the white label needs 4.5:1 against its lightest stop. */
 .support-banner .support-cta {
 	position: relative;
@@ -207,7 +207,7 @@ const { target, inView } = useInView();
 		transform 0.15s ease;
 }
 
-/* Hover deepens the glow and lifts rather than brightening the fill —
+/* Hover deepens the glow and lifts rather than brightening the fill -
    a lighter fill would drop the white label below AA. */
 .support-banner .support-cta:hover,
 .support-banner .support-cta:active {
@@ -286,7 +286,7 @@ const { target, inView } = useInView();
 		justify-content: center;
 	}
 
-	/* Block, not flex — the lock has to flow with the text once it wraps
+	/* Block, not flex - the lock has to flow with the text once it wraps
 	   instead of floating beside the whole two-line block. */
 	.support-trust {
 		display: block;

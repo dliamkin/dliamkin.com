@@ -1,5 +1,5 @@
 // Preset scenarios. Each one is tuned to tell a specific story at default
-// policy settings (uncapped retries, 5,000 trials, seed 42) — see
+// policy settings (uncapped retries, 5,000 trials, seed 42) - see
 // docs/tail-risk-lab.md for the target numbers and the tuning script output.
 
 import {
@@ -34,7 +34,7 @@ function step(
 }
 
 // Story: one unbounded "fix the tests" step turns a tidy $2–3 refactor into a
-// fat-tailed distribution — P99 several times P50. Capping retries at 2
+// fat-tailed distribution - P99 several times P50. Capping retries at 2
 // amputates that tail while barely moving the median.
 const refactorAuth: Scenario = {
 	id: "preset-refactor-auth",
@@ -53,7 +53,7 @@ const refactorAuth: Scenario = {
 	],
 };
 
-// Story: input-token variance dominates — you don't know how big 200 pages
+// Story: input-token variance dominates - you don't know how big 200 pages
 // are until you fetch them. Moderate loop risk on the flaky scrape step.
 const scrapeSummarize: Scenario = {
 	id: "preset-scrape-200",
@@ -70,7 +70,7 @@ const scrapeSummarize: Scenario = {
 };
 
 // Story: eight individually boring steps, each with a small loop risk, still
-// compound into a real tail — you rarely get a night where nothing retries.
+// compound into a real tail - you rarely get a night where nothing retries.
 const nightlyPipeline: Scenario = {
 	id: "preset-nightly-pipeline",
 	name: "Nightly data pipeline agent",

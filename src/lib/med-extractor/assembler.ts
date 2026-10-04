@@ -4,7 +4,7 @@ import type { EntitySpan } from "./labels";
 
 // The deterministic assembler: turn decoded entity spans into Medication[],
 // matching the Medication subset of the production StructuredNote schema. This
-// is the honest division of labor — the small model does token tagging (which
+// is the honest division of labor - the small model does token tagging (which
 // it's good at), and this unit-tested TypeScript does the structured assembly
 // (which small models are bad at). The SAME module runs in the browser and in
 // the Node eval runner, so what the evals grade is exactly what ships.
@@ -36,7 +36,7 @@ interface Sentence {
 }
 
 // Split on sentence-ish boundaries (., ;, newline) keeping char offsets. Notes
-// use clinical shorthand, so this is intentionally lenient — it only needs to
+// use clinical shorthand, so this is intentionally lenient - it only needs to
 // stop a dose on one line from binding to a drug on another.
 function sentences(note: string): Sentence[] {
 	const out: Sentence[] = [];

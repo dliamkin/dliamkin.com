@@ -67,11 +67,11 @@ function hasChange(
 }
 
 // Every excerpt must be a verbatim quote from the fixture text it claims to
-// come from — fabricated or paraphrased "quotes" on a public record would be
+// come from - fabricated or paraphrased "quotes" on a public record would be
 // worse than no excerpt at all.
 function excerptsContained(report: TosChangeReport, newText: string): CheckResult {
 	// The pipeline hard-caps excerpts and marks truncation with a trailing
-	// "…" (see truncateExcerpt) — strip that marker before the verbatim test,
+	// "…" (see truncateExcerpt) - strip that marker before the verbatim test,
 	// since the words before it must still quote the source exactly.
 	const quoted = (excerpt: string) => normalized(excerpt.replace(/…$/u, ""));
 	const missing = report.changes.filter(
@@ -90,7 +90,7 @@ function excerptsContained(report: TosChangeReport, newText: string): CheckResul
 }
 
 function excerptsWithinCap(report: TosChangeReport): CheckResult {
-	// Report the excerpt that actually broke the cap — this check once
+	// Report the excerpt that actually broke the cap - this check once
 	// flagged an over-long old_excerpt while printing the compliant
 	// new_excerpt, which made the dashboard failure unreadable.
 	const offenders = report.changes.flatMap((c) =>
@@ -194,7 +194,7 @@ const cases: EvalCase<TosPairInput, TosChangeReport>[] = [
 	{
 		id: "tos-refund-window-extended",
 		description:
-			"BIAS CHECK: refund window extended 14 → 30 days — a user-favorable change that must be judged favors_user, not reflexively favors_provider.",
+			"BIAS CHECK: refund window extended 14 → 30 days - a user-favorable change that must be judged favors_user, not reflexively favors_provider.",
 		input: pair("refund-window"),
 		checks: [
 			{ name: "gated substantive", run: (r) => fieldEquals(r.substantive, true) },

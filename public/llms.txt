@@ -1,4 +1,4 @@
-# Denis Liamkin — Senior Software Engineer
+# Denis Liamkin - Senior Software Engineer
 
 > Portfolio of Denis Liamkin, a senior software engineer with 12+ years building
 > full-stack enterprise applications across telehealth and real estate (Vue,

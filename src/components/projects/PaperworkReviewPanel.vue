@@ -19,7 +19,7 @@ import type { ObligationEvent, ObligationExtraction } from "@/lib/paperwork";
 
 // The review-and-edit step: nothing goes on a calendar un-reviewed. The
 // visitor resolves unresolved dates (deterministic arithmetic in
-// paperwork-dates.ts — the model only identified what math was needed),
+// paperwork-dates.ts - the model only identified what math was needed),
 // toggles events, edits titles and reminder lead times, then exports a
 // client-side .ics. The export never round-trips through a server.
 
@@ -31,7 +31,7 @@ const props = defineProps<{
 const toast = useToast();
 
 const NOT_ADVICE_LINE =
-	"Automated extraction for demonstration — verify every date against your document. Not legal or financial advice.";
+	"Automated extraction for demonstration - verify every date against your document. Not legal or financial advice.";
 
 type ReviewBasis = "stated" | "computed" | "unresolved" | "computed_from_input";
 
@@ -57,7 +57,7 @@ function toReviewEvent(event: ObligationEvent): ReviewEvent {
 	return {
 		source: event,
 		// Dateless (unresolved), already-passed, and informational events
-		// default off — they'd pollute the calendar; resolving or re-checking
+		// default off - they'd pollute the calendar; resolving or re-checking
 		// includes them.
 		included: event.date !== null && !event.in_past && event.category !== "informational",
 		title: event.title,
@@ -133,7 +133,7 @@ function resolveConsequence(event: ReviewEvent): string {
 	if (res.offset_days === 0 && res.offset_months === 0) {
 		return "This event lands on the date you pick.";
 	}
-	return `We'll count ${formatOffset(res)} ${res.direction} the date you pick — calculated in your browser, never guessed.`;
+	return `We'll count ${formatOffset(res)} ${res.direction} the date you pick - calculated in your browser, never guessed.`;
 }
 
 // DatePicker yields a local-time Date; format via local parts (not
@@ -153,7 +153,7 @@ function applyAnchor(event: ReviewEvent) {
 		event.date = resolveDate(anchorIso, event.source.resolution);
 		event.computation = describeResolution(anchorIso, event.source.resolution);
 	} else {
-		// No structured offset — the picked date IS the event date.
+		// No structured offset - the picked date IS the event date.
 		event.date = anchorIso;
 		event.computation = "date supplied directly by you";
 	}
@@ -249,7 +249,7 @@ async function copyAsText() {
 		.map((e) => {
 			const recurring =
 				e.recurring && e.source.recurrence ? ` (${e.source.recurrence.description})` : "";
-			return `${e.date} — ${e.title}${recurring} — reminder ${e.reminderDays} day${e.reminderDays === 1 ? "" : "s"} before`;
+			return `${e.date} - ${e.title}${recurring} - reminder ${e.reminderDays} day${e.reminderDays === 1 ? "" : "s"} before`;
 		});
 	try {
 		await navigator.clipboard.writeText(lines.join("\n"));
@@ -278,7 +278,7 @@ function googleLink(event: ReviewEvent): string {
 	<div class="review-panel">
 		<p class="not-advice">
 			<i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
-			Automated extraction for demonstration — verify every date against your document.
+			Automated extraction for demonstration - verify every date against your document.
 			Not legal or financial advice.
 		</p>
 
@@ -305,7 +305,7 @@ function googleLink(event: ReviewEvent): string {
 					</p>
 					<p class="resolve-sub">
 						The document mentions {{ unresolved.length === 1 ? "a date" : "dates" }} it
-						never pins down. Fill in what you know — nothing here is guessed.
+						never pins down. Fill in what you know - nothing here is guessed.
 					</p>
 				</div>
 			</div>
@@ -441,7 +441,7 @@ function googleLink(event: ReviewEvent): string {
 		<details v-if="past.length > 0" class="past-section" :open="showPast">
 			<summary @click.prevent="showPast = !showPast">
 				<i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i>
-				Already passed ({{ past.length }}) — excluded from the export by default
+				Already passed ({{ past.length }}) - excluded from the export by default
 			</summary>
 			<ul class="event-list">
 				<li
@@ -522,7 +522,7 @@ function googleLink(event: ReviewEvent): string {
 			</summary>
 			<div class="ics-help-body">
 				<p>
-					An .ics file is the standard format calendar apps use to exchange events —
+					An .ics file is the standard format calendar apps use to exchange events -
 					every major calendar can import it. Download it above, then:
 				</p>
 				<ul>
@@ -549,7 +549,7 @@ function googleLink(event: ReviewEvent): string {
 				</ul>
 				<p>
 					Prefer one event at a time? Expand any event above and use its
-					<em>Add to Google Calendar</em> link — no file needed. If you edit events
+					<em>Add to Google Calendar</em> link - no file needed. If you edit events
 					here and download again, re-importing the new file updates your calendar
 					instead of creating duplicates.
 				</p>
@@ -558,7 +558,7 @@ function googleLink(event: ReviewEvent): string {
 
 		<p class="export-note">
 			The calendar file is generated entirely in your browser from the reviewed events
-			above — it never touches a server.
+			above - it never touches a server.
 		</p>
 	</div>
 </template>
@@ -728,7 +728,7 @@ function googleLink(event: ReviewEvent): string {
 	gap: 0.5rem;
 }
 
-/* The title reads as text until you interact with it — a visible input box
+/* The title reads as text until you interact with it - a visible input box
    on every row was the single biggest source of visual noise. */
 .title-input {
 	flex: 1;
@@ -803,7 +803,7 @@ function googleLink(event: ReviewEvent): string {
 	margin-right: 0.3rem;
 }
 
-/* Soft, quiet tag treatment — one accent per row at most. */
+/* Soft, quiet tag treatment - one accent per row at most. */
 .basis-tag,
 .stakes-tag {
 	text-transform: none;
@@ -946,7 +946,7 @@ function googleLink(event: ReviewEvent): string {
 	justify-content: space-between;
 	gap: 0.75rem;
 	border: 1px solid rgba(39, 169, 224, 0.35);
-	/* Solid fill — the bar is sticky and floats over event rows while
+	/* Solid fill - the bar is sticky and floats over event rows while
 	   scrolling, so any transparency lets row content bleed through. */
 	background: #eef8fd;
 	border-radius: 8px;
@@ -1126,7 +1126,7 @@ html.dark .ambiguities {
 	background: var(--dm-bg-soft);
 }
 
-/* Still a solid fill for the same bleed-through reason — just a dark one. */
+/* Still a solid fill for the same bleed-through reason - just a dark one. */
 html.dark .summary-bar {
 	background: #14242e;
 	border-color: rgba(39, 169, 224, 0.4);

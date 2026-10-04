@@ -12,7 +12,7 @@ import type { NoteSpec } from "./types";
 // It writes the medication attribute strings verbatim into the note (so
 // alignment succeeds), emits explicit cue words for new/discontinued status,
 // names allergy-only drugs when the spec asks (the allergy-context trap), and
-// — for a small fraction — injects a phantom medication that is NOT written
+// - for a small fraction - injects a phantom medication that is NOT written
 // into the note, exercising the "name-unlocatable" discard branch.
 
 export interface MockBuild {

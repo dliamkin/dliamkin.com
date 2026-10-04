@@ -20,9 +20,9 @@ const studies: CaseStudy[] = [
 		label: "Telehealth · Iris Telehealth",
 		title: "High-Stakes Patient Trackboards",
 		context:
-			"Spearheaded front-end enhancements for On-Demand Services — ODS Schedule, ODS Dashboard, and the Provider Portal.",
+			"Spearheaded front-end enhancements for On-Demand Services - ODS Schedule, ODS Dashboard, and the Provider Portal.",
 		challenge:
-			"Manage complex patient encounters and multi-layered data schemas without UI rendering lag, while strictly enforcing medical business logic — e.g. validating pediatric classification only when the patient is under 18.",
+			"Manage complex patient encounters and multi-layered data schemas without UI rendering lag, while strictly enforcing medical business logic - e.g. validating pediatric classification only when the patient is under 18.",
 		solution:
 			"Led front-end development in Vue + PrimeVue with highly dynamic state management, refactoring legacy structures to render UI from grouped facility options. Added a DynamoDB active-session system that cut API load times.",
 		stack: ["Vue", "PrimeVue", "TypeScript", "AWS Lambda", "DynamoDB", "DataDog"],
@@ -38,7 +38,7 @@ const studies: CaseStudy[] = [
 		challenge:
 			"Deliver end-to-end solutions for 10+ applications while standing up Agile process and deep server-side maintenance for the whole team.",
 		solution:
-			"Pioneered Azure sprint-based Agile, drove full-stack Angular + C#/.NET development, and built Azure Function Apps into Data Factory pipelines — empowering product owners to make data-driven decisions.",
+			"Pioneered Azure sprint-based Agile, drove full-stack Angular + C#/.NET development, and built Azure Function Apps into Data Factory pipelines - empowering product owners to make data-driven decisions.",
 		stack: ["Angular", "C#", ".NET", "RxJS", "Azure Functions", "SSAS/SSIS"],
 		visual: "dashboard",
 	},
@@ -52,7 +52,7 @@ const studies: CaseStudy[] = [
 		challenge:
 			"Host live faculty portfolios for University of Florida under official .edu domains, integrating directly with internal university servers.",
 		solution:
-			"Engineered custom WordPress themes and plugins, provisioned WHM/cPanel accounts on Apache, and configured SSL between production servers — shipping polished, secure .edu portals.",
+			"Engineered custom WordPress themes and plugins, provisioned WHM/cPanel accounts on Apache, and configured SSL between production servers - shipping polished, secure .edu portals.",
 		stack: ["PHP", "WordPress", "Apache", "WHM/cPanel", "SSL"],
 		visual: "portal",
 	},
@@ -146,7 +146,7 @@ const { target, inView } = useInView({ threshold: 0.05 });
 								<span class="tb-status s-grey"></span>
 								<span class="tb-name">Room 9 · IP</span>
 								<span class="tb-badge b-grey">Pending</span>
-								<span class="tb-time">&mdash;</span>
+								<span class="tb-time">-</span>
 							</div>
 						</div>
 
@@ -652,7 +652,7 @@ const { target, inView } = useInView({ threshold: 0.05 });
 	}
 }
 
-/* The mock browser windows deliberately stay light in dark mode — they read as
+/* The mock browser windows deliberately stay light in dark mode - they read as
    app screenshots, and a light window on a dark desk looks intentional. */
 html.dark .cases {
 	background: var(--dm-bg-soft);

@@ -8,7 +8,7 @@ import {
 // The editorial gate between model output and the public record. Two jobs:
 // enforce the 25-word excerpt cap in code (the prompt asks; this guarantees),
 // and scan the model's own prose for the forbidden loaded-language list. A
-// loaded-language hit means the entry is NOT auto-published — the caller
+// loaded-language hit means the entry is NOT auto-published - the caller
 // logs it and files an ops issue so editorial control stays with the owner.
 
 export interface EditorialResult {

@@ -12,8 +12,8 @@ import type {
  * Framework-free 2D-canvas particle engine. Vue only hosts and directs it
  * (see ParticleField.vue / useParticleDirector.ts).
  *
- * Public API contract — setFormation / setAmbient / pause / resume /
- * setPointer — is deliberately renderer-agnostic: a future WebGL renderer
+ * Public API contract - setFormation / setAmbient / pause / resume /
+ * setPointer - is deliberately renderer-agnostic: a future WebGL renderer
  * (Level 2: instanced geometry + vertex-shader positions) implements the same
  * interface behind the same director without touching any caller.
  */
@@ -34,7 +34,7 @@ const DEFAULT_COUNT = 3000;
 const MAX_DPR = 2;
 
 // Spring-to-target constants (formation modes). Transitions between
-// formations are purely physical — new targets, same springs — so shapes
+// formations are purely physical - new targets, same springs - so shapes
 // morph instead of teleporting.
 const STIFFNESS = 0.014;
 const SPRING_DAMPING = 0.88;
@@ -49,7 +49,7 @@ const RECEDE_ALPHA = 0.08;
 
 // Particle draw sizes per size class, in CSS px. Rects, not arc(): at 3000
 // particles per frame arc() is ~4× slower (path construction + fill per call)
-// while fillRect is a single blit — and at 1–2px nobody can see the corners.
+// while fillRect is a single blit - and at 1–2px nobody can see the corners.
 const SIZES: readonly number[] = [1.1, 1.6, 2.2];
 const SIZE_WEIGHTS: readonly number[] = [0.55, 0.33, 0.12];
 
@@ -139,7 +139,7 @@ export class ParticleEngine {
 
 	constructor(canvas: HTMLCanvasElement, opts: EngineOptions = {}) {
 		// Acceptance check for the persistent-canvas architecture: this must
-		// appear exactly once per session — a second log means the canvas
+		// appear exactly once per session - a second log means the canvas
 		// remounted on navigation, which defeats the whole design.
 		console.info("[token-field] engine constructed");
 
@@ -371,7 +371,7 @@ export class ParticleEngine {
 		this.rafId = requestAnimationFrame(this.loop);
 	}
 
-	/** Full rAF stop — no idle callback keeps ticking, no work is skipped-but-scheduled. */
+	/** Full rAF stop - no idle callback keeps ticking, no work is skipped-but-scheduled. */
 	pause(): void {
 		if (!this.running) return;
 		this.running = false;
@@ -416,7 +416,7 @@ export class ParticleEngine {
 		const t = this.time;
 		const storm = this.formation === "storm";
 		const receded = this.ambient === 0;
-		// Recede: spring stiffness halved, storm force halved — the field
+		// Recede: spring stiffness halved, storm force halved - the field
 		// settles into slow ambient texture behind the tools.
 		const stiffness = receded ? STIFFNESS * 0.5 : STIFFNESS;
 		const stormForce = receded ? STORM_FORCE * 0.5 : STORM_FORCE;
@@ -495,7 +495,7 @@ export class ParticleEngine {
 			ctx.fillStyle = this.render.trails ? this.trailFill : this.render.background;
 			ctx.fillRect(0, 0, this.width, this.height);
 		} else {
-			// Transparent site mode — no trails possible (see RenderConfig).
+			// Transparent site mode - no trails possible (see RenderConfig).
 			ctx.clearRect(0, 0, this.width, this.height);
 		}
 

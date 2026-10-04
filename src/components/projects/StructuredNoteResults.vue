@@ -21,7 +21,7 @@ const vitalsEntries = () =>
 	(Object.keys(VITALS_LABELS) as (keyof StructuredNote["vitals"])[]).map((key) => ({
 		key,
 		label: VITALS_LABELS[key],
-		value: props.result.vitals[key] ?? "—",
+		value: props.result.vitals[key] ?? "-",
 	}));
 
 const statusSeverity = (status: Medication["status"]): string => {
@@ -64,13 +64,13 @@ const statusSeverity = (status: Medication["status"]): string => {
 					<DataTable :value="result.medications" size="small">
 						<Column field="name" header="Name" />
 						<Column field="dose" header="Dose">
-							<template #body="{ data }">{{ data.dose ?? "—" }}</template>
+							<template #body="{ data }">{{ data.dose ?? "-" }}</template>
 						</Column>
 						<Column field="route" header="Route">
-							<template #body="{ data }">{{ data.route ?? "—" }}</template>
+							<template #body="{ data }">{{ data.route ?? "-" }}</template>
 						</Column>
 						<Column field="frequency" header="Frequency">
-							<template #body="{ data }">{{ data.frequency ?? "—" }}</template>
+							<template #body="{ data }">{{ data.frequency ?? "-" }}</template>
 						</Column>
 						<Column field="status" header="Status">
 							<template #body="{ data }">
@@ -138,7 +138,7 @@ const statusSeverity = (status: Medication["status"]): string => {
 						<i class="fa-regular fa-square-check" aria-hidden="true"></i>
 						<span>
 							{{ item.action }}
-							<em v-if="item.timeframe"> — {{ item.timeframe }}</em>
+							<em v-if="item.timeframe"> - {{ item.timeframe }}</em>
 						</span>
 					</li>
 				</ul>

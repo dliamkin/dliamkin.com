@@ -1,7 +1,7 @@
 ## ADDED Requirements
 
 ### Requirement: Page anatomy and disclaimers
-The `/projects/tos-watch` page SHALL follow the house page anatomy: header with project name, one-paragraph explanation, visible (not buried) standing disclaimers (automated analysis may contain errors; not legal advice; not affiliated with or endorsed by any listed service; verify against linked official documents), an RSS subscribe link, and "monitoring N documents across M services · last check {relative time}". Impact and severity labels SHALL be presented as automated assessments. No logos or brand assets — text names only.
+The `/projects/tos-watch` page SHALL follow the house page anatomy: header with project name, one-paragraph explanation, visible (not buried) standing disclaimers (automated analysis may contain errors; not legal advice; not affiliated with or endorsed by any listed service; verify against linked official documents), an RSS subscribe link, and "monitoring N documents across M services · last check {relative time}". Impact and severity labels SHALL be presented as automated assessments. No logos or brand assets - text names only.
 
 #### Scenario: Disclaimers visible without interaction
 - **WHEN** the page loads
@@ -16,7 +16,7 @@ The page SHALL render a Card per service showing document labels with last-check
 - **THEN** that document shows a warn Tag while the rest of the service renders normally
 
 ### Requirement: Changelog feed with filtering
-The page SHALL render reverse-chronological changelog entries — service name, document, "detected {date}", summary, and severity/impact Tags using the lease-demo color language — with expansion revealing each change's explanation, practical effect, and quoted excerpts styled as short quotations with a link to the official document beside them. Cosmetic entries SHALL render as a single muted line. PrimeVue filter controls SHALL filter by service, category, impact, and severity.
+The page SHALL render reverse-chronological changelog entries - service name, document, "detected {date}", summary, and severity/impact Tags using the lease-demo color language - with expansion revealing each change's explanation, practical effect, and quoted excerpts styled as short quotations with a link to the official document beside them. Cosmetic entries SHALL render as a single muted line. PrimeVue filter controls SHALL filter by service, category, impact, and severity.
 
 #### Scenario: Filtering by category
 - **GIVEN** a changelog containing entries in multiple categories
@@ -28,7 +28,7 @@ The page SHALL render reverse-chronological changelog entries — service name, 
 - **THEN** each quoted excerpt is visually styled as a quotation with a link to the official document beside it
 
 ### Requirement: Honest empty and loading states
-Before the first detected change, the feed SHALL show "No changes detected yet — monitoring began {date}" with the service grid live — no fabricated activity. While state/changelog JSON is being fetched, the page SHALL show a loading state rather than an empty flash.
+Before the first detected change, the feed SHALL show "No changes detected yet - monitoring began {date}" with the service grid live - no fabricated activity. While state/changelog JSON is being fetched, the page SHALL show a loading state rather than an empty flash.
 
 #### Scenario: Empty state before first change
 - **GIVEN** a state.json with all documents monitored and an empty changelog

@@ -9,7 +9,7 @@ import { magnitudeSpectrum } from "./fft";
 
 export const SPECTROGRAM_WIDTH = 1200;
 export const SPECTROGRAM_HEIGHT = 400;
-/** Upper edge of the rendered frequency axis — machine noise lives below this. */
+/** Upper edge of the rendered frequency axis - machine noise lives below this. */
 export const SPECTROGRAM_MAX_HZ = 8000;
 /** Rendered dynamic range below the loudest bin, dB. */
 const DYNAMIC_RANGE_DB = 70;
@@ -95,7 +95,7 @@ const AXIS_BOTTOM = 46;
 
 /**
  * Minimal structural subset of CanvasRenderingContext2D used by
- * drawSpectrogram — satisfied by both the DOM context and @napi-rs/canvas.
+ * drawSpectrogram - satisfied by both the DOM context and @napi-rs/canvas.
  */
 export interface SpectrogramContext {
 	// string | object rather than the DOM's string | CanvasGradient |
@@ -138,7 +138,7 @@ export function drawSpectrogram(ctx: SpectrogramContext, spec: SpectrogramData):
 	ctx.fillStyle = "#0b0d12";
 	ctx.fillRect(0, 0, width, height);
 
-	// Heatmap into an ImageData buffer — one pixel at a time through fillRect
+	// Heatmap into an ImageData buffer - one pixel at a time through fillRect
 	// would be thousands of times slower.
 	const image = ctx.createImageData(plotW, plotH);
 	const floorDb = spec.maxDb - DYNAMIC_RANGE_DB;
@@ -161,7 +161,7 @@ export function drawSpectrogram(ctx: SpectrogramContext, spec: SpectrogramData):
 	}
 	ctx.putImageData(image, AXIS_LEFT, AXIS_TOP);
 
-	// Axes: functional, not decorative — the model reads timings off them.
+	// Axes: functional, not decorative - the model reads timings off them.
 	ctx.strokeStyle = "#8b93a7";
 	ctx.fillStyle = "#c8cede";
 	ctx.lineWidth = 1;

@@ -2,14 +2,14 @@ import type Anthropic from "@anthropic-ai/sdk";
 
 // Shared between the Vue app, the Cloudflare Worker (worker/index.ts), and
 // scripts/generate-screenshot-samples.mjs. Keep the TypeScript interfaces and
-// the tool JSON schema below in 1:1 sync — the schema is what actually
+// the tool JSON schema below in 1:1 sync - the schema is what actually
 // constrains the model's output.
 
 // Server-side cap on the decoded image payload. The client compresses to
 // ≤ ~1.2 MB before upload, so anything larger than this is not from our UI.
 export const MAX_IMAGE_BYTES = 1_500_000;
 
-// Client-side compression target — reject after re-encode if still above this.
+// Client-side compression target - reject after re-encode if still above this.
 export const MAX_CLIENT_IMAGE_BYTES = 1_200_000;
 
 // Longest edge after client-side downscaling (matches the model's native
@@ -49,7 +49,7 @@ export interface UiAnalysis {
 	gaps: string[]; // elements with no clean PrimeVue equivalent
 }
 
-export const UI_ANALYSIS_SYSTEM_PROMPT = `You are a UI analysis engine inside a technical demo for a Vue/PrimeVue developer's portfolio. You receive one image. First decide whether it is a screenshot of a software user interface (web, mobile, or desktop). If it is not, set is_ui_screenshot to false, give a one-sentence polite reason, and leave all other fields empty. If it is a UI screenshot: identify the major visible UI elements and map each to the closest PrimeVue v4 component (e.g. DataTable, Card, Button, InputText, Select, Menubar, TabView, Chart, Tag, Avatar, Dialog, Toolbar, Paginator). For each mapping include a short rationale and key props/slots you'd configure. Then produce one clean Vue 3 <script setup lang="ts"> single-file-component scaffold that approximates the layout using those PrimeVue components with sensible placeholder data — structure and composition matter more than pixel fidelity. Rules: the scaffold must render every mapped element with its mapped PrimeVue component — a data table must appear as <DataTable> with <Column> children, never a raw <table>; never transcribe personal data visible in the screenshot (names, emails, numbers, message contents) — use generic placeholders instead; never describe or identify people; do not reproduce logos or brand assets in the scaffold, use neutral placeholder text; if part of the UI has no good PrimeVue equivalent, say so in gaps rather than forcing a bad mapping.`;
+export const UI_ANALYSIS_SYSTEM_PROMPT = `You are a UI analysis engine inside a technical demo for a Vue/PrimeVue developer's portfolio. You receive one image. First decide whether it is a screenshot of a software user interface (web, mobile, or desktop). If it is not, set is_ui_screenshot to false, give a one-sentence polite reason, and leave all other fields empty. If it is a UI screenshot: identify the major visible UI elements and map each to the closest PrimeVue v4 component (e.g. DataTable, Card, Button, InputText, Select, Menubar, TabView, Chart, Tag, Avatar, Dialog, Toolbar, Paginator). For each mapping include a short rationale and key props/slots you'd configure. Then produce one clean Vue 3 <script setup lang="ts"> single-file-component scaffold that approximates the layout using those PrimeVue components with sensible placeholder data - structure and composition matter more than pixel fidelity. Rules: the scaffold must render every mapped element with its mapped PrimeVue component - a data table must appear as <DataTable> with <Column> children, never a raw <table>; never transcribe personal data visible in the screenshot (names, emails, numbers, message contents) - use generic placeholders instead; never describe or identify people; do not reproduce logos or brand assets in the scaffold, use neutral placeholder text; if part of the UI has no good PrimeVue equivalent, say so in gaps rather than forcing a bad mapping.`;
 
 const nullableString = { type: ["string", "null"] };
 

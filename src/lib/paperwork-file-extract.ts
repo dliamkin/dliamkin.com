@@ -1,13 +1,13 @@
 // Client-side text extraction for the Paperwork → Calendar demo. Files never
-// leave the browser — .txt is read directly, PDFs are parsed locally with
-// pdfjs-dist, and .docx with mammoth — so only the extracted text (which the
+// leave the browser - .txt is read directly, PDFs are parsed locally with
+// pdfjs-dist, and .docx with mammoth - so only the extracted text (which the
 // visitor can review and redact first) is ever sent to the server.
 
 // Below this, a "PDF" is almost certainly scanned page images with no text
-// layer — this demo's OCR path is the photo tab, not the upload tab.
+// layer - this demo's OCR path is the photo tab, not the upload tab.
 export const MIN_EXTRACTED_CHARS = 200;
 
-export const MAX_PAPERWORK_FILE_BYTES = 10_000_000; // 10 MB — plenty for a document
+export const MAX_PAPERWORK_FILE_BYTES = 10_000_000; // 10 MB - plenty for a document
 
 export class PaperworkFileError extends Error {}
 
@@ -15,7 +15,7 @@ export class PaperworkFileError extends Error {}
 export class ScannedPdfError extends PaperworkFileError {}
 
 async function extractPdfText(file: File): Promise<string> {
-	// pdfjs-dist is heavy (~1 MB) — dynamic imports keep it out of the
+	// pdfjs-dist is heavy (~1 MB) - dynamic imports keep it out of the
 	// initial bundle; Vite splits it into a chunk loaded only when a PDF is
 	// actually chosen.
 	const pdfjs = await import("pdfjs-dist");
@@ -51,7 +51,7 @@ async function extractPdfText(file: File): Promise<string> {
 }
 
 async function extractDocxText(file: File): Promise<string> {
-	// mammoth is also lazy-loaded — only visitors who actually upload a .docx
+	// mammoth is also lazy-loaded - only visitors who actually upload a .docx
 	// pay for the chunk. Vite resolves the package's `browser` field, so the
 	// browser-safe unzip path is used automatically.
 	const mammoth = await import("mammoth");
@@ -86,7 +86,7 @@ export async function extractPaperworkText(file: File): Promise<string> {
 
 	if (isPdf && text.length < MIN_EXTRACTED_CHARS) {
 		throw new ScannedPdfError(
-			"That PDF appears to contain scanned images rather than selectable text. Try the “Photograph it” tab instead — the vision path reads photographed pages.",
+			"That PDF appears to contain scanned images rather than selectable text. Try the “Photograph it” tab instead - the vision path reads photographed pages.",
 		);
 	}
 	if (text.length === 0) {

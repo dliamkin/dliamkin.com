@@ -2,7 +2,7 @@ import semver from "semver";
 
 // Phase 1 of the Dependency Upgrade Planner: everything in this file is
 // deterministic and runs in the visitor's browser. The npm registry API is
-// CORS-enabled and keyless, so the browser talks to it directly — no request
+// CORS-enabled and keyless, so the browser talks to it directly - no request
 // ever touches this site's serverless infrastructure, and this phase costs
 // nothing. Version math, deprecation flags, and peer-conflict detection are
 // all computed here in tested code; the model (phase 2, upgrade-planner.ts)
@@ -10,14 +10,14 @@ import semver from "semver";
 //
 // scripts/generate-upgrade-samples.mjs runs the same functions in Node to
 // snapshot the bundled samples' facts, and the unit tests inject a mock fetch
-// — hence the injectable fetchImpl.
+// - hence the injectable fetchImpl.
 
 // Enforced client-side (analyze the first N, tell the visitor) AND
 // server-side (reject bigger plan requests). Bounds both registry courtesy
 // and the synthesis call's input size.
 export const MAX_ANALYZED_DEPENDENCIES = 150;
 
-// A 150-dependency package.json is ~6KB — this cap only exists so the
+// A 150-dependency package.json is ~6KB - this cap only exists so the
 // textarea can't be fed a novel. Client-side only: the manifest itself never
 // leaves the browser.
 export const MAX_MANIFEST_CHARS = 50_000;
@@ -33,7 +33,7 @@ export type DependencySection = "dependencies" | "devDependencies";
 
 // One detected peer-dependency conflict, attached to the package whose latest
 // version declares the requirement. Both kinds are computed with semver range
-// math — never guessed.
+// math - never guessed.
 export interface PeerConflict {
 	package: string; // the package whose latest declares the peer requirement
 	peer: string; // the peer package, also present in this manifest
@@ -50,7 +50,7 @@ export interface DependencyFact {
 	section: DependencySection;
 	declared_range: string;
 	resolved_floor: string | null; // lowest published version satisfying the
-	// declared range (best effort without a lockfile — the UI says so)
+	// declared range (best effort without a lockfile - the UI says so)
 	latest: string;
 	majors_behind: number;
 	minors_behind: number; // only counted when majors_behind is 0
@@ -111,7 +111,7 @@ export interface ParsedManifest {
 	packageName: string | null;
 }
 
-// JSON.parse's error position, turned into the offending line with a caret —
+// JSON.parse's error position, turned into the offending line with a caret -
 // a pasted package.json with a trailing comma should point at the comma, not
 // say "invalid JSON".
 function describeJsonError(text: string, error: SyntaxError): string {
@@ -148,7 +148,7 @@ function nonRegistryReason(range: string): string | null {
 
 export function parsePackageJson(text: string): ParsedManifest {
 	if (text.trim().length === 0) {
-		throw new ManifestParseError("Paste or upload a package.json first — the input is empty.");
+		throw new ManifestParseError("Paste or upload a package.json first - the input is empty.");
 	}
 	let parsed: unknown;
 	try {
@@ -184,7 +184,7 @@ export function parsePackageJson(text: string): ParsedManifest {
 				});
 				continue;
 			}
-			// dependencies wins over a duplicate devDependencies entry — npm
+			// dependencies wins over a duplicate devDependencies entry - npm
 			// installs it once.
 			if (seen.has(name)) continue;
 			seen.add(name);
@@ -199,7 +199,7 @@ export function parsePackageJson(text: string): ParsedManifest {
 
 	if (entries.length === 0 && skipped.length === 0) {
 		throw new ManifestParseError(
-			"No dependencies found — this package.json has no dependencies or devDependencies to analyze.",
+			"No dependencies found - this package.json has no dependencies or devDependencies to analyze.",
 		);
 	}
 	return {
@@ -213,8 +213,8 @@ export function parsePackageJson(text: string): ParsedManifest {
 // Registry metadata
 
 // Abbreviated metadata (Accept: application/vnd.npm.install-v1+json) carries
-// everything the version math needs — dist-tags, the version list, per-version
-// deprecation, peerDependencies, engines — at a fraction of the full
+// everything the version math needs - dist-tags, the version list, per-version
+// deprecation, peerDependencies, engines - at a fraction of the full
 // document's size. What it does NOT carry is the repository URL, so a second,
 // tiny `/{name}/latest` request fills that in; its failure is non-fatal
 // (repository_url stays null, the deterministic npm link always works).
@@ -237,7 +237,7 @@ export interface RegistryOptions {
 	registryUrl?: string;
 	concurrency?: number;
 	timeoutMs?: number;
-	// Fires as each package's lookup settles — the UI streams table rows in.
+	// Fires as each package's lookup settles - the UI streams table rows in.
 	onProgress?: (settled: number, total: number, fact: DependencyFact | null) => void;
 }
 
@@ -346,7 +346,7 @@ async function lookupPackage(
 	}
 	const latestMeta = doc.versions[latest];
 
-	// The lowest published version the declared range accepts — the best
+	// The lowest published version the declared range accepts - the best
 	// available floor without a lockfile. semver.minVersion is the fallback
 	// when the range matches nothing published (e.g. a range beyond latest).
 	const published = Object.keys(doc.versions).filter((v) => semver.valid(v));
@@ -404,7 +404,7 @@ async function lookupPackage(
 			fact.repository_url = repositoryToUrl(meta.repository);
 		}
 	} catch {
-		// repository link stays null — the npm link is always available.
+		// repository link stays null - the npm link is always available.
 	}
 
 	// Stash latest's peerDependencies for the conflict pass without widening
@@ -420,10 +420,10 @@ const peerDepsByFact = new WeakMap<DependencyFact, Record<string, string>>();
 // The gold feature: for every package's latest version, check its declared
 // peerDependencies against the OTHER packages in this same manifest. Two
 // deterministic conflict kinds:
-//   declared_range_excluded — the manifest's declared range for the peer has
+//   declared_range_excluded - the manifest's declared range for the peer has
 //     no overlap with what latest requires ("upgrading X to latest means
 //     bumping Y beyond your declared range") → a sequencing constraint.
-//   peer_latest_excluded — even the peer's latest version doesn't satisfy the
+//   peer_latest_excluded - even the peer's latest version doesn't satisfy the
 //     requirement ("X's latest doesn't support Y's latest yet") → a holdback.
 export function detectPeerConflicts(
 	facts: DependencyFact[],
@@ -442,14 +442,14 @@ export function detectPeerConflicts(
 					peer: peerName,
 					required_range: requiredRange,
 					kind: "peer_latest_excluded",
-					message: `${fact.name}@${fact.latest} requires ${peerName} ${requiredRange}, but ${peerName}'s latest is ${peer.latest} — even a full upgrade of ${peerName} won't satisfy it.`,
+					message: `${fact.name}@${fact.latest} requires ${peerName} ${requiredRange}, but ${peerName}'s latest is ${peer.latest} - even a full upgrade of ${peerName} won't satisfy it.`,
 				});
 			}
 			let intersects = true;
 			try {
 				intersects = semver.intersects(peer.declared_range, requiredRange);
 			} catch {
-				// Unparseable combination — no verdict, no conflict.
+				// Unparseable combination - no verdict, no conflict.
 			}
 			if (intersects === false && semver.satisfies(peer.latest, requiredRange)) {
 				conflicts.push({
@@ -457,7 +457,7 @@ export function detectPeerConflicts(
 					peer: peerName,
 					required_range: requiredRange,
 					kind: "declared_range_excluded",
-					message: `${fact.name}@${fact.latest} requires ${peerName} ${requiredRange}, but your declared range for ${peerName} is ${peer.declared_range} — upgrade ${peerName} first (its latest ${peer.latest} satisfies the requirement).`,
+					message: `${fact.name}@${fact.latest} requires ${peerName} ${requiredRange}, but your declared range for ${peerName} is ${peer.declared_range} - upgrade ${peerName} first (its latest ${peer.latest} satisfies the requirement).`,
 				});
 			}
 			fact.peer_conflicts.push(...conflicts);

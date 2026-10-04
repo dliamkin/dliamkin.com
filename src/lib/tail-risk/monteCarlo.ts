@@ -1,6 +1,6 @@
 // ---------------------------------------------------------------------------
 // The Monte Carlo engine. Pure function: (scenario, policy, pricing) →
-// SimulationSummary. No DOM, no Vue, no side effects — it runs identically
+// SimulationSummary. No DOM, no Vue, no side effects - it runs identically
 // inside the Web Worker, in vitest, and in a tuning script.
 //
 // Cost model, per trial, per step:

@@ -25,7 +25,7 @@ export function useTheme() {
 		try {
 			localStorage.setItem(THEME_KEY, next);
 		} catch {
-			// Storage unavailable (private browsing) — the choice just won't persist.
+			// Storage unavailable (private browsing) - the choice just won't persist.
 		}
 	}
 

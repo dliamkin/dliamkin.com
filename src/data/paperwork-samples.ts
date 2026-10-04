@@ -21,7 +21,7 @@ export const PAPERWORK_SAMPLE_TODAY = "2026-07-01";
 // paperwork-sample-results.json (npm run generate:paperwork-samples) so
 // selecting an unmodified sample never hits the live API.
 // scripts/generate-paperwork-samples.mjs and the eval suite read the same
-// files by id — keep ids and filenames in sync.
+// files by id - keep ids and filenames in sync.
 export const PAPERWORK_SAMPLES: PaperworkSample[] = [
 	{
 		id: "maple-vine-lease",

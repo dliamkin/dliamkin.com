@@ -2,7 +2,7 @@ import type Anthropic from "@anthropic-ai/sdk";
 
 // Shared between the Vue app, the Cloudflare Worker (worker/index.ts), and
 // scripts/generate-samples.mjs. Keep the TypeScript interfaces and the tool
-// JSON schema below in 1:1 sync — the schema is what actually constrains the
+// JSON schema below in 1:1 sync - the schema is what actually constrains the
 // model's output.
 
 export const MAX_NOTE_CHARS = 4000;
@@ -42,7 +42,7 @@ export interface StructuredNote {
 	extraction_notes: string[]; // ambiguities the model chose not to guess about
 }
 
-export const STRUCTURE_NOTE_SYSTEM_PROMPT = `You are a clinical documentation structuring engine inside a technical demo. You will receive a free-text clinical visit note that is SYNTHETIC (fictional). Extract its contents into the structured schema provided via the tool. Rules: extract only what is present in the note — never invent, infer, or embellish clinical facts. If a field is not mentioned, return null or an empty array for it. Preserve medication names, doses, and frequencies exactly as written. Anything ambiguous goes into the extraction_notes field rather than being guessed. Populate red_flags only with items the note itself explicitly identifies as urgent or concerning. Do not provide medical advice, diagnosis, or treatment recommendations beyond what the note states.`;
+export const STRUCTURE_NOTE_SYSTEM_PROMPT = `You are a clinical documentation structuring engine inside a technical demo. You will receive a free-text clinical visit note that is SYNTHETIC (fictional). Extract its contents into the structured schema provided via the tool. Rules: extract only what is present in the note - never invent, infer, or embellish clinical facts. If a field is not mentioned, return null or an empty array for it. Preserve medication names, doses, and frequencies exactly as written. Anything ambiguous goes into the extraction_notes field rather than being guessed. Populate red_flags only with items the note itself explicitly identifies as urgent or concerning. Do not provide medical advice, diagnosis, or treatment recommendations beyond what the note states.`;
 
 const nullableString = { type: ["string", "null"] };
 

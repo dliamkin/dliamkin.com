@@ -1,4 +1,4 @@
-"""Token-classification metrics via seqeval — entity-level (span) precision,
+"""Token-classification metrics via seqeval - entity-level (span) precision,
 recall, and F1, not per-token accuracy. Entity-level is the honest measure:
 getting 4 of 5 subwords of a drug name right is still a wrong extraction.
 """

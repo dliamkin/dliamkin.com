@@ -16,7 +16,7 @@
     "types": ["node"],
     "noUncheckedIndexedAccess": true,
 
-    // Type-checking only — tsx transpiles at run time.
+    // Type-checking only - tsx transpiles at run time.
     "noEmit": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.scripts.tsbuildinfo"
   }

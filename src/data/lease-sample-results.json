@@ -161,7 +161,7 @@
 				"explanation": "The tenant is now required to buy and maintain a renter's insurance policy with at least $100,000 in personal liability coverage and show proof of it if asked. This is a new cost and obligation that did not exist before.",
 				"impact": "favors_landlord",
 				"severity": "medium",
-				"negotiation_note": "What happens if proof of insurance is not provided when requested — is there a grace period or fee, and does the landlord require a specific insurer or policy type?"
+				"negotiation_note": "What happens if proof of insurance is not provided when requested - is there a grace period or fee, and does the landlord require a specific insurer or policy type?"
 			},
 			{
 				"title": "Security deposit return period shortened",

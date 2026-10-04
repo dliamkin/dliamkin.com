@@ -5,8 +5,8 @@ import { promisify } from "node:util";
 
 const run = promisify(execFile);
 
-// Full normalized document text lives ONLY here — in a separate, private
-// snapshot repo — retained solely so tomorrow's text has something to diff
+// Full normalized document text lives ONLY here - in a separate, private
+// snapshot repo - retained solely so tomorrow's text has something to diff
 // against. It is never published and never served. The public repo carries
 // only hashes, summaries, and <=25-word excerpts.
 //
@@ -24,7 +24,7 @@ export function snapshotDir(): string {
 	const dir = process.env.TOS_SNAPSHOT_DIR;
 	if (!dir) {
 		throw new Error(
-			"TOS_SNAPSHOT_DIR is not set — point it at a clone of the private snapshot repo (or a scratch dir for dry runs).",
+			"TOS_SNAPSHOT_DIR is not set - point it at a clone of the private snapshot repo (or a scratch dir for dry runs).",
 		);
 	}
 	return path.resolve(dir);
@@ -76,7 +76,7 @@ export async function writeSnapshot(
 // Commit + push the snapshot repo. Called once per run, after all documents
 // are processed, and BEFORE the public-side commit: if this push fails the
 // public entries are withheld and tonight's changes simply re-detect
-// tomorrow — the record can lag but never lie.
+// tomorrow - the record can lag but never lie.
 export async function commitAndPushSnapshots(baseDir: string, dateIso: string): Promise<boolean> {
 	const git = (...args: string[]) => run("git", ["-C", baseDir, ...args]);
 	if (process.env.GITHUB_ACTIONS) {

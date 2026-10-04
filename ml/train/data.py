@@ -5,7 +5,7 @@ entities. Here we tokenize each note with the model's own tokenizer (with
 offset mapping) and project the char spans onto subword tokens as BIO labels:
 the first subword of an entity gets B-<TYPE>, continuation subwords get
 I-<TYPE>, everything else O, and special tokens get -100 (ignored by the loss).
-This is the standard, tokenizer-agnostic alignment — the same char-span
+This is the standard, tokenizer-agnostic alignment - the same char-span
 representation the browser runtime decodes back into at inference time.
 """
 
@@ -38,7 +38,7 @@ def align_labels(offsets: list[tuple[int, int]], entities: list[dict[str, Any]])
     labels: list[int] = []
     prev_entity_key: tuple[int, int] | None = None
     for start, end in offsets:
-        if start == end:  # special token ([CLS]/[SEP]/pad) — offset (0,0)
+        if start == end:  # special token ([CLS]/[SEP]/pad) - offset (0,0)
             labels.append(-100)
             prev_entity_key = None
             continue

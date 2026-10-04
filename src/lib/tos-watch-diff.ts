@@ -1,8 +1,8 @@
 import { diffArrays } from "diff";
 
 // Paragraph-level mechanical diff for the ToS watchdog pipeline
-// (src/lib/pipelines/explain-tos-change.ts). Unlike the lease pipeline —
-// which sends both full documents plus the diff — this project sends the
+// (src/lib/pipelines/explain-tos-change.ts). Unlike the lease pipeline -
+// which sends both full documents plus the diff - this project sends the
 // model ONLY these changed blocks with surrounding context: ToS documents
 // run tens of thousands of words, and on a nightly monitor the diff blocks
 // are what keep the change-day token cost sane. Never imported by client
@@ -52,7 +52,7 @@ export function computeTosChangedBlocks(
 		if (!part || (!part.added && !part.removed)) continue;
 		const contextBefore = lastUnchangedBefore(i);
 
-		// A removed run followed by an added run is a modification — pair them
+		// A removed run followed by an added run is a modification - pair them
 		// up so the model sees before/after together.
 		const next = parts[i + 1];
 		if (part.removed && next?.added) {

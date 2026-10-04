@@ -20,9 +20,9 @@ import { extractToolInput } from "./shared";
 // eval suite in scripts/evals/ run it directly.
 
 // Sonnet, not Haiku (the house default for demos): reading structure off a
-// spectrogram is genuinely hard perception work — the model must align click
+// spectrogram is genuinely hard perception work - the model must align click
 // transients with the burned-in time axis and tonal ridges with the frequency
-// axis — and this endpoint's volume is low. The worker overrides this
+// axis - and this endpoint's volume is low. The worker overrides this
 // per-environment via NOISE_TRANSLATOR_MODEL (Haiku is the cheap fallback).
 export const DESCRIBE_NOISE_DEFAULT_MODEL = "claude-sonnet-5";
 

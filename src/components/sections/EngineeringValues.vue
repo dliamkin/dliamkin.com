@@ -42,7 +42,7 @@ const { target, inView } = useInView({ threshold: 0.2 });
 				<span class="q-mark">&ldquo;</span>
 				Great software is built by great teams. I cultivate a
 				<span class="hl">transparent, team-driven culture</span> where technical leadership
-				and mentorship are just as important as the code &mdash; pairing clear
+				and mentorship are just as important as the code - pairing clear
 				cross-departmental communication with the discipline of rigorous documentation and
 				strategic OKRs, so the entire team moves forward together.
 			</blockquote>

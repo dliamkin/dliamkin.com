@@ -2,8 +2,8 @@ import { diffArrays } from "diff";
 
 // Pre-computes a compact, mechanical changed-blocks summary of two lease
 // texts before the model call (worker/index.ts and
-// scripts/generate-lease-samples.mjs). This grounds the model — the diff acts
-// as a checklist so no change is missed — while the model handles the
+// scripts/generate-lease-samples.mjs). This grounds the model - the diff acts
+// as a checklist so no change is missed - while the model handles the
 // semantic explanation. Never imported by client code; the `diff` package
 // stays out of the browser bundle.
 
@@ -37,7 +37,7 @@ export function computeChangedBlocks(originalText: string, revisedText: string):
 		if (!part) continue;
 		if (part.removed) {
 			const next = parts[i + 1];
-			// A removed run followed by an added run is a modification — pair
+			// A removed run followed by an added run is a modification - pair
 			// them up so the model sees before/after together.
 			if (next?.added) {
 				const max = Math.max(part.value.length, next.value.length);

@@ -82,7 +82,7 @@ export function isPathAllowed(rules: RobotsRules, path: string): boolean {
 
 // One robots.txt fetch per host per run. "unavailable" = the server answered
 // 5xx (RFC 9309: assume disallowed); "unreachable" = no answer at all, which
-// is a host problem, not a robots policy — it flows into the document's
+// is a host problem, not a robots policy - it flows into the document's
 // normal fetch-failure path so the 3-strike unreachable escalation applies.
 const robotsCache = new Map<string, RobotsRules | "unavailable" | "unreachable">();
 
@@ -136,7 +136,7 @@ export async function fetchDocument(rawUrl: string): Promise<FetchOutcome> {
 	if (rules === "unavailable") {
 		return {
 			kind: "robots_skipped",
-			reason: `robots.txt for ${url.host} answered 5xx — treating as disallowed per RFC 9309`,
+			reason: `robots.txt for ${url.host} answered 5xx - treating as disallowed per RFC 9309`,
 		};
 	}
 	if (!isPathAllowed(rules, url.pathname)) {

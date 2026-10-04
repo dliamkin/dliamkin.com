@@ -34,7 +34,7 @@ export function useTailRiskSimulator() {
 				type: "module",
 			});
 			worker.onmessage = (event: MessageEvent<SimulateWorkerResponse>) => {
-				// A newer request is already in flight — this result is stale.
+				// A newer request is already in flight - this result is stale.
 				if (event.data.requestId !== requestId) return;
 				summary.value = event.data.summary;
 				simulating.value = false;
@@ -57,7 +57,7 @@ export function useTailRiskSimulator() {
 		const w = ensureWorker();
 		if (w) {
 			simulating.value = true;
-			// JSON round-trip strips Vue reactivity proxies — structured clone
+			// JSON round-trip strips Vue reactivity proxies - structured clone
 			// rejects them. The payload is tiny; this is not a hot path.
 			const request: SimulateWorkerRequest = JSON.parse(
 				JSON.stringify({ requestId, scenario, policy }),
@@ -72,7 +72,7 @@ export function useTailRiskSimulator() {
 		}
 	}
 
-	/** Debounced entry point — safe to call on every knob twitch. */
+	/** Debounced entry point - safe to call on every knob twitch. */
 	function simulate(scenario: Scenario, policy: Policy): void {
 		if (debounceTimer !== null) clearTimeout(debounceTimer);
 		debounceTimer = setTimeout(() => {
@@ -81,7 +81,7 @@ export function useTailRiskSimulator() {
 		}, DEBOUNCE_MS);
 	}
 
-	/** Un-debounced — for the initial render. */
+	/** Un-debounced - for the initial render. */
 	function simulateImmediate(scenario: Scenario, policy: Policy): void {
 		if (debounceTimer !== null) {
 			clearTimeout(debounceTimer);

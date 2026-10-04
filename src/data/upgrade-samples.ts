@@ -14,17 +14,17 @@ export interface UpgradeSample {
 }
 
 // Bundled samples ship with BOTH their facts snapshot (computed against the
-// live registry at generation time — registry state drifts, hence the date
+// live registry at generation time - registry state drifts, hence the date
 // stamp) and their pre-generated plan. Loading one never touches the registry
 // or the API. scripts/generate-upgrade-samples.mjs regenerates all of it and
-// refreshes site-portfolio.json from the repo's real package.json — keep ids
+// refreshes site-portfolio.json from the repo's real package.json - keep ids
 // in sync with SAMPLE_IDS there.
 export const UPGRADE_SAMPLES: UpgradeSample[] = [
 	{
 		id: "site-portfolio",
 		label: "This site's package.json",
 		description:
-			"The meta sample: the planner, planning its own host — this portfolio's real dependencies at snapshot time",
+			"The meta sample: the planner, planning its own host - this portfolio's real dependencies at snapshot time",
 		manifestText: sitePortfolio,
 	},
 	{
@@ -38,7 +38,7 @@ export const UPGRADE_SAMPLES: UpgradeSample[] = [
 		id: "express-api",
 		label: "Well-kept Express API",
 		description:
-			"A fictional, mostly-current API — the honest quiet case: almost everything already current, one small wave",
+			"A fictional, mostly-current API - the honest quiet case: almost everything already current, one small wave",
 		manifestText: expressApi,
 	},
 ];

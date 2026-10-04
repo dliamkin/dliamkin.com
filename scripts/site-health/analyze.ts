@@ -12,7 +12,7 @@ import type { Screenshot } from "./screenshots";
 
 // Exactly one Messages API call per nightly run: every screenshot and all
 // Lighthouse data go into a single request. The previous run's report (not
-// its images — those aren't retained) is the model's memory of last night.
+// its images - those aren't retained) is the model's memory of last night.
 export async function analyze(
 	screenshots: Screenshot[],
 	lighthouseResults: LighthouseResult[],
@@ -33,7 +33,7 @@ export async function analyze(
 		content.push(
 			{
 				type: "text",
-				text: `Screenshot: ${shot.label} (${shot.path}) — ${shot.viewport}, full page`,
+				text: `Screenshot: ${shot.label} (${shot.path}) - ${shot.viewport}, full page`,
 			},
 			{
 				type: "image",
@@ -44,7 +44,7 @@ export async function analyze(
 
 	content.push({
 		type: "text",
-		text: `Current Lighthouse results (mobile config, one run per page — ±3 points of jitter is normal):\n${JSON.stringify(lighthouseResults, null, 2)}`,
+		text: `Current Lighthouse results (mobile config, one run per page - ±3 points of jitter is normal):\n${JSON.stringify(lighthouseResults, null, 2)}`,
 	});
 
 	content.push({
@@ -78,7 +78,7 @@ export async function analyze(
 	// strict: true means the API already validated this against the schema.
 	const report = toolUse.input as HealthReport;
 
-	// The pipeline is authoritative for timestamps and measured numbers — the
+	// The pipeline is authoritative for timestamps and measured numbers - the
 	// model only interprets them, so transcription slips can't corrupt the
 	// published report.
 	report.audited_at = new Date().toISOString();

@@ -4,9 +4,9 @@ import type { SuiteRegression } from "./persist";
 // Issue filing with dedupe, mirroring scripts/site-health/issues.ts: the
 // fingerprint (demo + newly-failing case ids) is embedded in a hidden HTML
 // comment in the issue body. Before filing, open `evals` issues are searched
-// for the same fingerprint — a match gets at most one "still failing" comment
+// for the same fingerprint - a match gets at most one "still failing" comment
 // per 7 days instead of a duplicate issue. When every case in an open issue's
-// fingerprint passes again, a recovery comment suggests closing — the issue
+// fingerprint passes again, a recovery comment suggests closing - the issue
 // is never auto-closed.
 
 const LABEL = "evals";
@@ -32,7 +32,7 @@ interface GithubComment {
 function api(): { base: string; headers: Record<string, string>; runUrl: string } {
 	const token = process.env.GITHUB_TOKEN;
 	const repo = process.env.GITHUB_REPOSITORY ?? "dliamkin/dliamkin";
-	if (!token) throw new Error("GITHUB_TOKEN is not set — cannot manage issues.");
+	if (!token) throw new Error("GITHUB_TOKEN is not set - cannot manage issues.");
 	const server = process.env.GITHUB_SERVER_URL ?? "https://github.com";
 	const runId = process.env.GITHUB_RUN_ID;
 	return {
@@ -73,7 +73,7 @@ async function openEvalIssues(
 }
 
 // The public expected/actual detail for one regressed suite's newly-failing
-// cases — the same detail the dashboard shows.
+// cases - the same detail the dashboard shows.
 function failureDetail(report: EvalReport, regression: SuiteRegression): string {
 	const suite = report.suites.find((s) => s.project_id === regression.project_id);
 	if (!suite) return "";
@@ -112,14 +112,14 @@ export async function fileRegressionIssues(
 		const existing = open.find((issue) => issue.body?.includes(marker));
 
 		if (existing) {
-			// Same ongoing problem — comment at most once per 7 days.
+			// Same ongoing problem - comment at most once per 7 days.
 			const comments = await request<GithubComment[]>(
 				`${base}/issues/${existing.number}/comments?per_page=100`,
 				headers,
 			);
 			const last = comments[comments.length - 1];
 			if (last && Date.now() - new Date(last.created_at).getTime() < COMMENT_COOLDOWN_MS) {
-				console.log(`Issue #${existing.number} already has a recent comment — skipping.`);
+				console.log(`Issue #${existing.number} already has a recent comment - skipping.`);
 				continue;
 			}
 			await request(`${base}/issues/${existing.number}/comments`, headers, {

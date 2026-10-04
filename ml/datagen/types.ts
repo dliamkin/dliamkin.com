@@ -2,7 +2,7 @@ import type { Medication } from "../../src/lib/structured-note";
 import type { EntitySpan } from "../../src/lib/med-extractor/labels";
 
 // A generation spec: the seeded parameters that steer one synthetic note.
-// Diversity is engineered here, not left to model whim — every axis is sampled
+// Diversity is engineered here, not left to model whim - every axis is sampled
 // from a seeded PRNG so a run is reproducible and its distribution auditable.
 export interface NoteSpec {
 	seed: number;
@@ -20,7 +20,7 @@ export type TrickyFlag =
 	| "discontinued-med" // "stop lisinopril" → status discontinued, needs a cue
 	| "prn-med" // PRN frequency phrasing
 	| "look-alike-names" // hydrALAZINE vs hydrOXYzine, etc.
-	| "allergy-context" // a drug named ONLY as an allergy — must NOT be extracted
+	| "allergy-context" // a drug named ONLY as an allergy - must NOT be extracted
 	| "new-med"; // "start metformin" → status new, needs a cue
 
 // One finished training example. Written as a JSONL line to ml/data/. The
@@ -42,13 +42,13 @@ export interface DatasetExample {
 	};
 }
 
-// Why an aligned example was thrown away — logged and counted so the discard
+// Why an aligned example was thrown away - logged and counted so the discard
 // rate (a label-noise proxy) can go in the docs.
 export type DiscardReason =
 	| "name-unlocatable" // a teacher medication name not found in the note text
 	| "ambiguous-span" // a field matched in multiple equally-plausible places
 	| "near-duplicate" // too similar to another generated note
-	| "eval-overlap" // too similar to a public eval sample — exam leak
+	| "eval-overlap" // too similar to a public eval sample - exam leak
 	| "empty-note"; // generation returned nothing usable
 
 export interface AlignmentResult {
@@ -56,7 +56,7 @@ export interface AlignmentResult {
 	discarded: DiscardReason | null;
 	// Count of optional attribute fields (dose/route/frequency) the teacher
 	// extracted but the aligner declined to tag because their only occurrence was
-	// already claimed by another medication — genuinely ambiguous, so left
+	// already claimed by another medication - genuinely ambiguous, so left
 	// untagged rather than bound to the wrong drug. A dataset-quality stat, not a
 	// discard: the example is still kept.
 	skippedAmbiguousFields: number;

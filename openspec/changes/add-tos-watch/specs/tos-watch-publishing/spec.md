@@ -22,7 +22,7 @@ The system SHALL store, per document in the private snapshot repo, the latest no
 - **THEN** no changelog entry is committed for it this run (state stays consistent; the change re-detects next run)
 
 ### Requirement: Public state and changelog files
-The system SHALL maintain `public/tos-watch/state.json` (per document: last-checked, last-changed, current hash, consecutive-failure count, status) and `public/tos-watch/changelog.json` (append-only, newest first, capped at ~500 entries with the oldest overflowed to an archive file). Entries SHALL use `detected_at` dating — "change detected on", never a claim of when the change occurred.
+The system SHALL maintain `public/tos-watch/state.json` (per document: last-checked, last-changed, current hash, consecutive-failure count, status) and `public/tos-watch/changelog.json` (append-only, newest first, capped at ~500 entries with the oldest overflowed to an archive file). Entries SHALL use `detected_at` dating - "change detected on", never a claim of when the change occurred.
 
 #### Scenario: Changelog cap overflows to archive
 - **GIVEN** a changelog at the 500-entry cap

@@ -23,11 +23,11 @@ export interface RenderConfig {
 	background: string | null;
 	/**
 	 * Motion trails via a translucent background fill each frame. Requires an
-	 * opaque background — over a transparent canvas the fill would just
+	 * opaque background - over a transparent canvas the fill would just
 	 * accumulate to a solid slab.
 	 */
 	trails: boolean;
-	/** Additive compositing ("lighter") — the glow only reads on dark ground. */
+	/** Additive compositing ("lighter") - the glow only reads on dark ground. */
 	additive: boolean;
 	/** Alpha of the per-frame trail fill; higher = shorter trails. */
 	trailFade: number;

@@ -2,16 +2,16 @@ import type Anthropic from "@anthropic-ai/sdk";
 
 // The Dry-Run Oracle: a pre-flight simulator for AI agent plans. A cheap model
 // (Claude Haiku) reads a plan destined for an expensive model, predicts failure
-// modes, retry-loop probability, and per-step token ranges — and the user
+// modes, retry-loop probability, and per-step token ranges - and the user
 // approves, edits, or aborts before a single expensive token burns.
 //
 // Shared between the Vue app, the Cloudflare Worker (worker/index.ts), and the
 // eval suite. Keep the TypeScript interfaces and the tool JSON schema below in
-// 1:1 sync — the schema is what actually constrains the model.
+// 1:1 sync - the schema is what actually constrains the model.
 //
 // The design rule this file enforces: the model predicts ONLY tokens,
 // iterations, and risks. Every dollar figure is computed deterministically in
-// code (finalizeSimulation) from the pricing table below — the model never
+// code (finalizeSimulation) from the pricing table below - the model never
 // does money math.
 
 export type TargetModel = "claude-opus" | "claude-sonnet" | "claude-haiku";
@@ -79,7 +79,7 @@ export interface SimulateRequest {
 }
 
 // ---------------------------------------------------------------------------
-// Caps — enforced client-side for UX and server-side for spend control.
+// Caps - enforced client-side for UX and server-side for spend control.
 
 export const MAX_ORACLE_STEPS = 20;
 export const MAX_STEP_CHARS = 600;
@@ -88,12 +88,12 @@ export const MAX_ITERATIONS_GUESS = 50;
 export const MAX_ORACLE_TITLE_CHARS = 120;
 export const MAX_ORACLE_NOTES_CHARS = 2_000;
 export const MAX_FREEFORM_CHARS = 8_000;
-// Hard output cap — frugality is the product. A 20-step assessment fits well
+// Hard output cap - frugality is the product. A 20-step assessment fits well
 // under this; extractToolInput treats max_tokens truncation as a failure.
 export const SIMULATE_MAX_TOKENS = 1500;
 
 // ---------------------------------------------------------------------------
-// Pricing. VERIFY against https://claude.com/pricing before deploying —
+// Pricing. VERIFY against https://claude.com/pricing before deploying -
 // prices change. Values are Anthropic first-party API rates as of 2026-08,
 // per million tokens. Single source of truth for client chart math and the
 // server's response totals.
@@ -105,7 +105,7 @@ export const ORACLE_PRICING: Record<TargetModel, { inputPerMTok: number; outputP
 		"claude-haiku": { inputPerMTok: 1, outputPerMTok: 5 },
 	};
 
-// The oracle itself runs on Haiku — the whole point is that the forecast
+// The oracle itself runs on Haiku - the whole point is that the forecast
 // costs pocket change next to the run it de-risks.
 export const ORACLE_SELF_PRICING = { inputPerMTok: 1, outputPerMTok: 5 };
 
@@ -205,7 +205,7 @@ export function formatTokenCount(value: number): string {
 
 // ---------------------------------------------------------------------------
 // Request validation. Returns the normalized request or a human-readable
-// rejection — same contract as the other demos' validators.
+// rejection - same contract as the other demos' validators.
 
 function isTargetModel(value: unknown): value is TargetModel {
 	return typeof value === "string" && (TARGET_MODELS as string[]).includes(value);
@@ -304,7 +304,7 @@ export function validateSimulateRequest(value: unknown): SimulateRequest | strin
 
 // ---------------------------------------------------------------------------
 // Serialization + hashing. Compact on purpose: stripped empty fields, no
-// pretty-printing — every token in the prompt is a token billed.
+// pretty-printing - every token in the prompt is a token billed.
 
 export function serializeSimulateRequest(request: SimulateRequest): string {
 	if (request.freeform !== undefined) {
@@ -330,7 +330,7 @@ export function serializeSimulateRequest(request: SimulateRequest): string {
 	return JSON.stringify(out);
 }
 
-// SHA-256 via WebCrypto — available in the browser, Workers, and Node 20+,
+// SHA-256 via WebCrypto - available in the browser, Workers, and Node 20+,
 // so the same hash function serves the client cache and the server response.
 export async function sha256Hex(text: string): Promise<string> {
 	const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
@@ -350,7 +350,7 @@ export const SIMULATE_PLAN_SYSTEM_PROMPT =
 	"You are the Dry-Run Oracle: a pre-flight simulator for AI agent plans. You receive a JSON plan of steps an agent will execute on an expensive model. Mentally simulate execution. For each step, assess: likely failure modes (missing files, ambiguous instructions, unbounded scopes, external dependencies), probability of retry loops, and realistic token consumption ranges given the step's scope. Be pessimistic-realistic: agents re-read context every turn, retries multiply cost, vague steps balloon. If the plan arrives as freeform text, first infer discrete steps (ids s1..sN). Record your assessment via the tool. Token ranges are per-iteration; report realistic iteration counts. The forecast_headline is one sentence in a weather-forecast voice.";
 
 // Wire shape of the tool input (snake_case, mirrors StepAssessment). Token
-// ranges travel as {low, high} objects — strict schemas can't express tuples —
+// ranges travel as {low, high} objects - strict schemas can't express tuples -
 // and are converted to [low, high] pairs in finalizeSimulation. suggested_fix
 // uses "" (not null) when there is nothing to fix, keeping the schema
 // union-free under strict validation.

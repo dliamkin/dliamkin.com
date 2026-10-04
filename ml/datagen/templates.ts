@@ -3,11 +3,11 @@ import type { NoteSpec, TrickyFlag } from "./types";
 // The seeded diversity engine. Every axis of variation is sampled from a
 // deterministic PRNG so a run reproduces exactly and its distribution can be
 // audited (01-data-design.md). The generation model then writes prose to the
-// spec; the spec — not the model's mood — is what guarantees coverage of
+// spec; the spec - not the model's mood - is what guarantees coverage of
 // specialties, styles, abbreviation density, medication counts, and the hard
 // cases that make the set worth training on.
 
-// mulberry32 — tiny, fast, good enough for reproducible sampling. Not crypto.
+// mulberry32 - tiny, fast, good enough for reproducible sampling. Not crypto.
 export function mulberry32(seed: number): () => number {
 	let a = seed >>> 0;
 	return () => {
@@ -74,7 +74,7 @@ export const DRUGS: DrugEntry[] = [
 	{ name: "insulin glargine", doses: ["10 units", "20 units"], routes: ["subcutaneous", "SC"], freqs: ["at bedtime", "nightly"] },
 ];
 
-// Drugs used only as allergies (never as active meds) — the allergy-context
+// Drugs used only as allergies (never as active meds) - the allergy-context
 // trap. The teacher puts these in `allergies`, so a correct aligner leaves
 // them untagged; a naive one grabs the drug name as a MED_NAME.
 export const ALLERGY_DRUGS = ["penicillin", "sulfa", "codeine", "morphine", "aspirin"];
@@ -113,7 +113,7 @@ export function buildGenerationPrompt(spec: NoteSpec): string {
 		"discontinued-med": 'Discontinue one medication using an explicit cue word like "discontinued", "stopped", or "d/c".',
 		"prn-med": "Include at least one as-needed (PRN) medication with PRN-style frequency phrasing.",
 		"look-alike-names": "Use a look-alike drug name (e.g. hydralazine vs hydroxyzine) and spell it correctly and clearly.",
-		"allergy-context": "Name a drug ONLY in the allergy list (e.g. penicillin) — it must NOT appear as an active medication.",
+		"allergy-context": "Name a drug ONLY in the allergy list (e.g. penicillin) - it must NOT appear as an active medication.",
 		"new-med": 'Start one new medication using an explicit cue word like "start", "initiate", or "new".',
 	};
 
@@ -126,7 +126,7 @@ export function buildGenerationPrompt(spec: NoteSpec): string {
 			? "This note must mention ZERO medications in the active medication list (a hard negative). It may still mention vitals, assessment, and plan."
 			: `Include exactly ${spec.medCount} distinct active medication(s), each with a realistic dose, route, and frequency where appropriate.`,
 		...spec.tricky.map((t) => `- ${trickyLines[t]}`),
-		"Return ONLY the note text — no preamble, no headings like 'Note:', no commentary.",
+		"Return ONLY the note text - no preamble, no headings like 'Note:', no commentary.",
 		"Keep it under 300 words.",
 	];
 	return lines.join("\n");

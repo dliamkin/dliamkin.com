@@ -2,7 +2,7 @@ import type { HealthReport } from "../../src/lib/site-health";
 
 // Issue filing with dedupe: the report's issue_fingerprint is embedded in a
 // hidden HTML comment in the issue body. Before filing, open site-health
-// issues are searched for the same fingerprint — a match gets at most one
+// issues are searched for the same fingerprint - a match gets at most one
 // "still happening" comment per 7 days instead of a duplicate issue.
 
 const LABEL = "site-health";
@@ -24,7 +24,7 @@ interface GithubComment {
 function api(): { base: string; headers: Record<string, string>; runUrl: string } {
 	const token = process.env.GITHUB_TOKEN;
 	const repo = process.env.GITHUB_REPOSITORY ?? "dliamkin/dliamkin";
-	if (!token) throw new Error("GITHUB_TOKEN is not set — cannot manage issues.");
+	if (!token) throw new Error("GITHUB_TOKEN is not set - cannot manage issues.");
 	const server = process.env.GITHUB_SERVER_URL ?? "https://github.com";
 	const runId = process.env.GITHUB_RUN_ID;
 	return {
@@ -66,14 +66,14 @@ export async function fileOrUpdateIssue(report: HealthReport): Promise<void> {
 	const existing = open.find((issue) => issue.body?.includes(marker));
 
 	if (existing) {
-		// Same ongoing problem — comment at most once per 7 days.
+		// Same ongoing problem - comment at most once per 7 days.
 		const comments = await request<GithubComment[]>(
 			`${base}/issues/${existing.number}/comments?per_page=100`,
 			headers,
 		);
 		const last = comments[comments.length - 1];
 		if (last && Date.now() - new Date(last.created_at).getTime() < COMMENT_COOLDOWN_MS) {
-			console.log(`Issue #${existing.number} already has a recent comment — skipping.`);
+			console.log(`Issue #${existing.number} already has a recent comment - skipping.`);
 			return;
 		}
 		await request(`${base}/issues/${existing.number}/comments`, headers, {

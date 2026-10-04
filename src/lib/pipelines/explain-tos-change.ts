@@ -10,8 +10,8 @@ import { computeTosChangedBlocks, formatTosChangedBlocks } from "../tos-watch-di
 import { extractToolInput } from "./shared";
 
 // The diff-and-explain pipeline for the ToS watchdog: mechanical diff first,
-// model second. Invoked only on change days — the nightly hash comparison in
-// scripts/tos-watch/run.ts is the zero-cost common path — so volume is a few
+// model second. Invoked only on change days - the nightly hash comparison in
+// scripts/tos-watch/run.ts is the zero-cost common path - so volume is a few
 // calls a month at most. The eval suite (scripts/evals/suites/tos-watch.ts)
 // runs this exact function.
 
@@ -23,7 +23,7 @@ export const EXPLAIN_TOS_DEFAULT_MODEL = "claude-sonnet-5";
 // Bumped when prompt/schema/diff behavior changes meaningfully; stamped on
 // every published changelog entry so old entries stay attributable.
 // 1.1.1: excerpt cap enforced at the pipeline boundary (was publisher-only,
-// so eval runs saw uncapped model output — caught by tos-arbitration-added).
+// so eval runs saw uncapped model output - caught by tos-arbitration-added).
 export const TOS_PIPELINE_VERSION = "1.1.1";
 
 export interface TosDocumentMeta {
@@ -39,7 +39,7 @@ export async function explainTosChange(
 	model: string = EXPLAIN_TOS_DEFAULT_MODEL,
 ): Promise<TosChangeReport> {
 	// Only the changed blocks (with nearest unchanged context) go to the
-	// model — never both full documents. ToS run tens of thousands of words;
+	// model - never both full documents. ToS run tens of thousands of words;
 	// the diff-blocks approach keeps a change-day call in the low thousands
 	// of input tokens.
 	const diffSummary = formatTosChangedBlocks(computeTosChangedBlocks(previousText, currentText));

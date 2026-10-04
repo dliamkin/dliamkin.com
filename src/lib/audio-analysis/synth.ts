@@ -1,9 +1,9 @@
 // Deterministic signal synthesis with known ground truth. Used by the DSP unit
 // tests (generate a click train at exactly 3.0/sec, assert detection within
 // tolerance) and by the sample-generation script (the three committed demo
-// clips). Seeded PRNG throughout — same inputs, same waveform, forever.
+// clips). Seeded PRNG throughout - same inputs, same waveform, forever.
 
-/** mulberry32 — tiny seeded PRNG, plenty for noise synthesis. */
+/** mulberry32 - tiny seeded PRNG, plenty for noise synthesis. */
 export function mulberry32(seed: number): () => number {
 	let state = seed >>> 0;
 	return () => {
@@ -48,7 +48,7 @@ export function whiteNoise(
 }
 
 /**
- * Low-passed noise (single-pole IIR) — the "rumble" bed under machine sounds.
+ * Low-passed noise (single-pole IIR) - the "rumble" bed under machine sounds.
  * cutoffHz is approximate; good enough for a low-band synthetic fixture.
  */
 export function lowNoise(
@@ -75,7 +75,7 @@ export function lowNoise(
 }
 
 export interface ClickOptions {
-	/** Damped-sine carrier frequency of each click — sets its "metallic" pitch. */
+	/** Damped-sine carrier frequency of each click - sets its "metallic" pitch. */
 	clickFreqHz?: number;
 	/** Exponential decay time constant of each click, seconds. */
 	decayS?: number;
@@ -106,7 +106,7 @@ export function clicksAt(
 	return out;
 }
 
-/** Perfectly periodic click train at exactly `rateHz` — the regular-event ground-truth fixture. */
+/** Perfectly periodic click train at exactly `rateHz` - the regular-event ground-truth fixture. */
 export function clickTrain(
 	rateHz: number,
 	durationS: number,
@@ -121,7 +121,7 @@ export function clickTrain(
 	return clicksAt(times, durationS, sampleRate, options);
 }
 
-/** Poisson-timed clicks at `meanRateHz` — the erratic-event ground-truth fixture. */
+/** Poisson-timed clicks at `meanRateHz` - the erratic-event ground-truth fixture. */
 export function poissonClicks(
 	meanRateHz: number,
 	durationS: number,

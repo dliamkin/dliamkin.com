@@ -11,7 +11,7 @@ import { extractToolInput } from "./shared";
 // validation and rate limiting; scripts/generate-samples.mjs and the eval
 // suite in scripts/evals/ run it directly.
 
-// claude-haiku-4-5 is fast, cheap, and vision-capable — right-sized for a
+// claude-haiku-4-5 is fast, cheap, and vision-capable - right-sized for a
 // demo. claude-sonnet-5 is the drop-in upgrade if higher accuracy ever
 // matters more than latency/cost.
 export const STRUCTURE_NOTE_MODEL = "claude-haiku-4-5";

@@ -13,7 +13,7 @@ import { extractToolInput } from "./shared";
 // this with validation and rate limiting; scripts/generate-screenshot-samples.mjs
 // and the eval suite in scripts/evals/ run it directly.
 
-// claude-haiku-4-5 is fast, cheap, and vision-capable — right-sized for a
+// claude-haiku-4-5 is fast, cheap, and vision-capable - right-sized for a
 // demo. claude-sonnet-5 is the drop-in upgrade if higher accuracy ever
 // matters more than latency/cost.
 export const ANALYZE_SCREENSHOT_MODEL = "claude-haiku-4-5";

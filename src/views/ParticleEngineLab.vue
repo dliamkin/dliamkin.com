@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// Token Field playground — the project page for the particle system running
+// Token Field playground - the project page for the particle system running
 // behind the whole site. There is no second canvas here: the page takes
 // manual control of the one persistent engine (the director steps aside on
 // this route) and hands the visitor the controls.
@@ -90,7 +90,7 @@ function runIntroOnce(): void {
 	try {
 		sessionStorage.setItem(INTRO_SEEN_KEY, "1");
 	} catch {
-		// Storage unavailable — the intro just replays next visit.
+		// Storage unavailable - the intro just replays next visit.
 	}
 	introTimers.push(
 		setTimeout(() => {
@@ -135,7 +135,7 @@ onBeforeUnmount(() => {
 			<ProjectBreadcrumb current="Token Field" />
 			<h1>Token Field</h1>
 			<p class="tagline">
-				The particle system behind this site — {{ particleCount.toLocaleString() }}
+				The particle system behind this site - {{ particleCount.toLocaleString() }}
 				simulated tokens, one persistent canvas, zero libraries. Drive it.
 			</p>
 		</header>
@@ -146,7 +146,7 @@ onBeforeUnmount(() => {
 
 		<p v-if="isStatic" class="static-note">
 			<i class="fa-solid fa-circle-info" aria-hidden="true"></i>
-			Full simulation runs on desktop — this is a single composed frame of the field.
+			Full simulation runs on desktop - this is a single composed frame of the field.
 		</p>
 
 		<Card v-else class="control-card">
@@ -233,8 +233,8 @@ onBeforeUnmount(() => {
 
 					<Panel header="About this engine" toggleable collapsed class="about-panel">
 						<p>
-							Every particle lives in preallocated typed arrays — six
-							<code>Float32Array</code>s for position, velocity, and spring targets —
+							Every particle lives in preallocated typed arrays - six
+							<code>Float32Array</code>s for position, velocity, and spring targets -
 							so the frame loop touches contiguous memory and allocates nothing,
 							which is what keeps 60fps honest at thousands of particles. Particles
 							draw as 1–2px <code>fillRect</code> calls instead of <code>arc()</code>,
@@ -245,7 +245,7 @@ onBeforeUnmount(() => {
 							that runs behind the whole site: it mounts once, never unmounts on
 							navigation, and a director maps routes and scroll positions to
 							formations. On phones and for reduced-motion visitors the loop never
-							starts — one composed frame is rendered and kept as a static image.
+							starts - one composed frame is rendered and kept as a static image.
 						</p>
 					</Panel>
 				</div>
@@ -255,7 +255,7 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
-/* The page itself is transparent — the persistent canvas behind it paints
+/* The page itself is transparent - the persistent canvas behind it paints
    the dark ground (#0D0D12) while this route is active, in both site themes. */
 .lab-page {
 	font-family: "Raleway", sans-serif;
@@ -269,7 +269,7 @@ onBeforeUnmount(() => {
 	padding: 7.5rem 1rem 0;
 }
 
-/* Text sits on the dark canvas in both themes — force light ink. */
+/* Text sits on the dark canvas in both themes - force light ink. */
 .lab-overlay h1 {
 	font-size: 2.25rem;
 	font-weight: 700;

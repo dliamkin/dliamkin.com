@@ -1,6 +1,6 @@
 // DSP-domain types for the Noise Translator's measurement half. The
 // split-brain contract: MeasuredFeatures is computed by deterministic DSP in
-// the browser and passed through the whole pipeline verbatim — the model
+// the browser and passed through the whole pipeline verbatim - the model
 // reads it, quotes it, and is never allowed to restate a number. The
 // model-facing contract (NoiseDescription, prompt, tool schema) lives in
 // src/lib/noise-translator.ts.

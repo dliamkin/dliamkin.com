@@ -12,7 +12,7 @@
 //
 // Today's date is pinned to PAPERWORK_SAMPLE_TODAY (not the wall clock) so
 // in_past flags and any relative arithmetic in the committed results are
-// deterministic — the sample dates are planted in 2026-2027 around it.
+// deterministic - the sample dates are planted in 2026-2027 around it.
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";

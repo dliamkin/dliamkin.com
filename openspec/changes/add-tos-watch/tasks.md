@@ -19,7 +19,7 @@
 
 ## 4. Explain pipeline (checkpoint 4)
 
-- [x] 4.1 `src/lib/tos-watch-diff.ts`: paragraph-level `diffArrays` producing changed blocks with surrounding context (diff-blocks only to the model — never both full documents)
+- [x] 4.1 `src/lib/tos-watch-diff.ts`: paragraph-level `diffArrays` producing changed blocks with surrounding context (diff-blocks only to the model - never both full documents)
 - [x] 4.2 `src/lib/pipelines/explain-tos-change.ts`: approved system prompt verbatim, forced tool use, `claude-sonnet-5` default (house model, matches lease pipeline) with `TOS_WATCH_MODEL` override, max_tokens 4000; cosmetic gate handling
 - [x] 4.3 Post-processing in `scripts/tos-watch/editorial.ts`: 25-word hard truncation with ellipsis; forbidden loaded-language scan; violation path = log + deduped ops issue, no auto-publish; unit tests with adversarial fixture output (40-word excerpt containing "sneakily" must trip both guards)
 - [x] 4.4 Author synthetic "Acmecloud" fixture document pairs in authentic legalese: added arbitration clause, data-sharing expansion, user-favorable refund-window extension, liability cap change, cosmetic-only pair → owner reviews fixtures

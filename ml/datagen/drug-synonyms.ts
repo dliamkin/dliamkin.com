@@ -1,6 +1,6 @@
 // Surface-form variants for medication names, used by the aligner to locate a
 // teacher-extracted name back in the note even when the two disagree on
-// surface form. The teacher (Sonnet) tends to normalize — expanding
+// surface form. The teacher (Sonnet) tends to normalize - expanding
 // abbreviations the note wrote short ("HCTZ" → "hydrochlorothiazide"),
 // preferring generics over the brand the note used ("Tylenol" →
 // "acetaminophen"), or carrying a formulation/salt suffix ("Metoprolol
@@ -13,7 +13,7 @@
 // Bidirectional synonym groups. Kept deliberately small and curated to the
 // drugs this dataset actually generates (see templates.ts DRUGS) plus the most
 // common clinical brand/abbreviation confusables. Add to this as new discards
-// show up in the logs — it is not meant to be exhaustive.
+// show up in the logs - it is not meant to be exhaustive.
 const SYNONYM_GROUPS: string[][] = [
 	["acetaminophen", "tylenol", "apap", "paracetamol"],
 	["ibuprofen", "advil", "motrin"],
@@ -59,7 +59,7 @@ function stripFormulation(name: string): string {
 	return out.trim();
 }
 
-// Head tokens too generic to stand alone as a drug name — a bare match on
+// Head tokens too generic to stand alone as a drug name - a bare match on
 // these would bind the wrong drug (e.g. "insulin aspart" vs "insulin glargine").
 const AMBIGUOUS_HEADS = new Set(["insulin", "vitamin", "multivitamin", "sodium", "potassium"]);
 

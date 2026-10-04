@@ -21,11 +21,11 @@ import {
 import type { CheckResult } from "../../../src/lib/evals";
 
 // Eval suite for the Screenshot → PrimeVue demo. Positive cases are the three
-// generated demo sample PNGs (rendered from samples-src/ mock pages — the
+// generated demo sample PNGs (rendered from samples-src/ mock pages - the
 // ground truth is which components each mock obviously calls for). Negative
 // cases are two generated non-UI fixtures (an SVG landscape and a plain prose
 // document) that the pipeline must decline to treat as UI screenshots. All
-// PNGs come from `npm run generate:screenshot-samples` — nothing downloaded.
+// PNGs come from `npm run generate:screenshot-samples` - nothing downloaded.
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "../../..");
 
@@ -45,7 +45,7 @@ const renderMapping = (m: ComponentMapping) =>
 
 // "mappings set-contains a mapping to this component". Matched against the
 // primevue_component string, which the model sometimes qualifies
-// ("Button (outlined variant)") — hence regex, not equality.
+// ("Button (outlined variant)") - hence regex, not equality.
 function mapsTo(analysis: UiAnalysis, component: RegExp, expected: string): CheckResult {
 	return setContains(
 		analysis.mappings,
@@ -68,7 +68,7 @@ function scaffoldContains(analysis: UiAnalysis, tag: RegExp, expected: string): 
 	};
 }
 
-// Shared by both non-UI fixtures: rejection must be total — flag false,
+// Shared by both non-UI fixtures: rejection must be total - flag false,
 // reason given, nothing forced into mappings or scaffold.
 const negativeChecks: EvalCase<ScreenshotInput, UiAnalysis>["checks"] = [
 	{

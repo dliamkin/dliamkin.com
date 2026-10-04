@@ -53,7 +53,7 @@ jobs:
       - run: npm ci
 
       # The runner persists results and files issues BEFORE exiting nonzero,
-      # so a red run here is still a published run — the failure shows up on
+      # so a red run here is still a published run - the failure shows up on
       # the public dashboard and in this workflow's status simultaneously.
       - name: Run eval suites
         env:

@@ -1,11 +1,11 @@
 // Regenerates the Noise Translator's committed sample artifacts, in three
 // stages:
 //   1. Synthesize the three demo clips with exact known ground truth (seeded
-//      PRNG — same waveform every run, no real recordings) and write them as
+//      PRNG - same waveform every run, no real recordings) and write them as
 //      WAVs to src/assets/noise-samples/.
-//   2. Run each clip through the exact client pipeline headless — preprocess,
+//   2. Run each clip through the exact client pipeline headless - preprocess,
 //      feature measurement, spectrogram render (@napi-rs/canvas stands in for
-//      the browser canvas) — writing spectrogram PNGs next to the WAVs, plus
+//      the browser canvas) - writing spectrogram PNGs next to the WAVs, plus
 //      poor-quality eval fixtures (clipped / near-silent) into
 //      scripts/evals/fixtures/.
 //   3. Run spectrogram + features + context preset through the same
@@ -51,7 +51,7 @@ const dataDir = path.join(root, "src/data");
 
 const SR = 22050;
 
-// Synthesis recipes — the planted ground truth. Keep ids in sync with
+// Synthesis recipes - the planted ground truth. Keep ids in sync with
 // NOISE_SAMPLES in src/data/noise-samples.ts and with the eval suite's
 // expectations in scripts/evals/suites/noise-translator.ts.
 const RECIPES = {

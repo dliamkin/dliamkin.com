@@ -1,4 +1,4 @@
-# Token Field — the persistent particle layer
+# Token Field - the persistent particle layer
 
 A framework-free 2D-canvas particle engine ("tokens") that lives behind the
 entire site, plus a playground page at `/projects/particle-engine` where
@@ -15,7 +15,7 @@ App.vue
 │      │  lazy import (post-first-paint, idle)
 │      ▼
 │   engine/particles/
-│   ├── engine.ts        ParticleEngine — physics + rendering, framework-free
+│   ├── engine.ts        ParticleEngine - physics + rendering, framework-free
 │   ├── formations.ts    pure target generators (text/distribution/columns/converge)
 │   ├── noise.ts         cheap sin/cos flow field
 │   ├── snapshot.ts      static-frame fallback + benchmark gate
@@ -34,7 +34,7 @@ The playground page takes manual control on its route; the director steps
 aside.
 
 **Data layout:** particles live in six `Float32Array`s (x, y, vx, vy, targetX,
-targetY) plus `Uint8Array`s for palette/size class — no per-particle objects,
+targetY) plus `Uint8Array`s for palette/size class - no per-particle objects,
 zero allocations inside the frame loop. Particles draw as 1–2px `fillRect`
 (not `arc()`, ~4× slower at this count), bucketed by palette color so
 `fillStyle` changes 4× per frame, not 3000×.
@@ -66,7 +66,7 @@ fat-tailed cost curve).
 
 ## Fallback rules (non-negotiable)
 
-The loop never starts when any of these hold — instead ~90 simulation steps
+The loop never starts when any of these hold - instead ~90 simulation steps
 run synchronously and one composed frame stays on the canvas as a static
 image (`snapshot.ts`):
 
@@ -89,7 +89,7 @@ triangles + portfolio wall), and opaque section backgrounds. Decisions:
   transparent over the page background, trails disabled (they need an opaque
   fill), additive glow + default palette on dark theme, muted source-over
   inks (`#2E8F6F`/`#2E76B5`/`#5A52B8`/`#8A8778`) at lower alpha on light.
-- **The home hero was left untouched** — it already has two animated ideas
+- **The home hero was left untouched** - it already has two animated ideas
   (poly field, portfolio wall), and the brief's own restraint rule ("one idea
   per view") argues against stacking a third. The hero choreography
   (storm 2.2s → "DLIAMKIN" 2.8s → release) runs on the playground instead,
@@ -101,24 +101,24 @@ triangles + portfolio wall), and opaque section backgrounds. Decisions:
   the `pause()` in `applyPolicy`.
 - **Transparent roots so far:** `/projects` and `/evals` (their old
   backgrounds duplicated the body's). Cards/surfaces stay opaque, so body
-  text never sits directly on particles anywhere except page headers — at
+  text never sits directly on particles anywhere except page headers - at
   0.45–0.55 particle alpha and 1–2px sizes this stays comfortably readable.
 
 ## Level 2 seam (WebGL)
 
-The engine's public API — `setFormation` / `setAmbient` / `pause` / `resume`
-/ `setPointer` / `setRenderConfig` — is the contract. A future Three.js/TresJS
+The engine's public API - `setFormation` / `setAmbient` / `pause` / `resume`
+/ `setPointer` / `setRenderConfig` - is the contract. A future Three.js/TresJS
 renderer (instanced geometry, GLSL vertex-shader positions, 300k particles,
 UnrealBloom) implements the same interface behind the same director and host;
 nothing above `engine.ts` should need to change. Formation generators already
 produce plain `Float32Array` targets, which upload directly as attributes.
 The `converge` formation exists (used in tests) but is reserved for future
-route-transition choreography — deliberately unwired.
+route-transition choreography - deliberately unwired.
 
 ## Verifying the persistent-canvas invariant
 
 `[token-field] engine constructed` logs once from the engine constructor. It
-must appear **exactly once per session** no matter how much you navigate — a
+must appear **exactly once per session** no matter how much you navigate - a
 second log means the canvas remounted and the architecture regressed. The
 playground's particle-count slider reallocates the pool in place
 (`setParticleCount`) specifically to preserve this invariant.

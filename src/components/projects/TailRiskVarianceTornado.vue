@@ -41,7 +41,7 @@ const hasVariance = computed(() => rows.value.some((r) => r.share > 0));
 		<p class="caption">Where to spend your prompt-engineering effort first.</p>
 
 		<p v-if="!hasVariance" class="empty">
-			No variance — every parameter is deterministic (lo = hi, loop risk 0).
+			No variance - every parameter is deterministic (lo = hi, loop risk 0).
 		</p>
 
 		<ol v-else class="tornado-rows">

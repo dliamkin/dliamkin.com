@@ -1,4 +1,4 @@
-// Vite-resolved asset URLs for the bundled noise samples — kept separate from
+// Vite-resolved asset URLs for the bundled noise samples - kept separate from
 // noise-samples.ts so the metadata module stays importable from Node (the
 // generation script), same split as screenshot-sample-images.ts.
 import erraticRattlePng from "@/assets/noise-samples/erratic-rattle.png";

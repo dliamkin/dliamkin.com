@@ -16,7 +16,7 @@ import {
 } from "@/lib/upgrade-planner";
 
 // Renders the synthesized plan. Design rule made visible here: version data
-// on every row comes from the facts object (keyed by package name) — the
+// on every row comes from the facts object (keyed by package name) - the
 // model's output selects and orders packages, it never restates numbers.
 
 const props = defineProps<{
@@ -118,7 +118,7 @@ function copyMarkdown() {
 		</Message>
 
 		<Message v-if="plan.waves.length === 0" severity="success" :closable="false">
-			Nothing to do — every analyzed package is already current.
+			Nothing to do - every analyzed package is already current.
 		</Message>
 
 		<Timeline v-else :value="plan.waves" class="wave-timeline">
@@ -174,7 +174,7 @@ function copyMarkdown() {
 									>
 										{{ note.note }}
 										<span class="note-provenance">
-											from model knowledge, {{ note.confidence }} confidence —
+											from model knowledge, {{ note.confidence }} confidence -
 											verify against the changelog
 										</span>
 									</li>
@@ -245,7 +245,7 @@ function copyMarkdown() {
 		<p class="provenance-note">
 			Versions, deprecations, and peer conflicts are computed from npm registry data ({{
 				generatedNote
-			}}). Tiers, waves, and breaking-change notes are model judgment — notes come from
+			}}). Tiers, waves, and breaking-change notes are model judgment - notes come from
 			training knowledge and can be stale, so verify against each package's changelog before
 			upgrading.
 		</p>

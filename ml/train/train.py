@@ -6,7 +6,7 @@ Usage (from ml/train, inside the uv venv):
     .venv/bin/python train.py                # all candidates in config.yaml
     .venv/bin/python train.py --only bert-mini
 
-The test split is loaded but never used for model selection or early stopping —
+The test split is loaded but never used for model selection or early stopping -
 val F1 drives `load_best_model_at_end`; test is touched only for the final
 numbers. Seeded and reproducible.
 """
@@ -47,7 +47,7 @@ def resolve(path: str) -> str:
 
 
 def measure_cpu_latency(model, tokenizer, notes: list[str], max_length: int) -> float:
-    """Average single-note CPU inference latency (ms) — the fair analog of the
+    """Average single-note CPU inference latency (ms) - the fair analog of the
     browser WASM path, and the number that goes in the size-vs-F1 table."""
     model_cpu = model.to("cpu").eval()
     times: list[float] = []
@@ -147,7 +147,7 @@ def train_candidate(candidate: dict, cfg: dict, data: dict) -> dict:
     )
     trainer.train()
 
-    # Final numbers on the held-out test split — touched only here, once.
+    # Final numbers on the held-out test split - touched only here, once.
     test_pred = trainer.predict(test_ds)
     report = per_entity_report(test_pred.predictions, test_pred.label_ids)
 
@@ -189,7 +189,7 @@ def main() -> None:
     set_seed(cfg["seed"])
 
     data = {split: load_split(resolve(cfg["data_dir"]), split) for split in ("train", "val", "test")}
-    print(f"Loaded splits — train {len(data['train'])}, val {len(data['val'])}, test {len(data['test'])}")
+    print(f"Loaded splits - train {len(data['train'])}, val {len(data['val'])}, test {len(data['test'])}")
 
     candidates = cfg["candidates"]
     if cli.only:
@@ -214,7 +214,7 @@ def main() -> None:
     print("\n=== SIZE vs F1 (held-out test split) ===")
     print(table)
     with open(os.path.join(docs_dir, "size-vs-f1.md"), "w") as f:
-        f.write("# Size vs F1 — candidate comparison\n\n```\n" + table + "\n```\n")
+        f.write("# Size vs F1 - candidate comparison\n\n```\n" + table + "\n```\n")
     print(f"\nWrote table + curves to {docs_dir}")
 
 

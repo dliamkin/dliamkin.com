@@ -14,11 +14,11 @@ import { defineSuite, fieldEquals, normalized, setContains, setLacks, type EvalC
 import type { CheckResult } from "../../../src/lib/evals";
 
 // Eval suite for Paperwork → Calendar. Every document was authored with a
-// known list of planted dates, so the checks are ground-truth assertions —
+// known list of planted dates, so the checks are ground-truth assertions -
 // and the stakes are ordered: a fabricated date is the worst failure this
 // demo can have, so the unresolvable-date cases hard-fail if the model fills
 // one in. The headline is computed-date arithmetic across month and year
-// boundaries — the reason this pipeline runs Sonnet (Haiku computed
+// boundaries - the reason this pipeline runs Sonnet (Haiku computed
 // "2027-08-31 minus 60 days" as 2027-06-02 during sample generation).
 
 const dataDir = path.join(
@@ -27,7 +27,7 @@ const dataDir = path.join(
 );
 const fixtureDir = path.join(path.dirname(fileURLToPath(import.meta.url)), "../fixtures");
 
-// Must match PAPERWORK_SAMPLE_TODAY in src/data/paperwork-samples.ts — the
+// Must match PAPERWORK_SAMPLE_TODAY in src/data/paperwork-samples.ts - the
 // same anchor the pre-generated sample results were produced against.
 const SAMPLE_TODAY = "2026-07-01";
 
@@ -104,7 +104,7 @@ function excerptsAreVerbatim(
 // expanded into per-month instances. Only payment-category events are
 // counted (other clauses often quote the same words, e.g. "unpaid rent" in a
 // deposit clause); a separate "first payment" event alongside the recurring
-// one is defensible modeling, so the cap is 2 — three or more matches means
+// one is defensible modeling, so the cap is 2 - three or more matches means
 // the model expanded the pattern.
 function notExpanded(
 	extraction: ObligationExtraction,
@@ -138,7 +138,7 @@ const cases: EvalCase<PaperworkEvalInput, ObligationExtraction>[] = [
 	{
 		id: "paperwork-lease",
 		description:
-			"Bundled lease sample — stated end date, computed 60-day non-renewal deadline (month-boundary arithmetic), recurring rent, stated inspection date, and a deliberately unresolvable renewal-offer date (anniversary never defined)",
+			"Bundled lease sample - stated end date, computed 60-day non-renewal deadline (month-boundary arithmetic), recurring rent, stated inspection date, and a deliberately unresolvable renewal-offer date (anniversary never defined)",
 		input: { documentText: mapleVineText, todayIso: SAMPLE_TODAY },
 		checks: [
 			{
@@ -185,7 +185,7 @@ const cases: EvalCase<PaperworkEvalInput, ObligationExtraction>[] = [
 	{
 		id: "paperwork-scholarship",
 		description:
-			"Bundled scholarship sample — stated acceptance deadline, enrollment verification computed from the stated semester start, yearly GPA report recurrence, and one already-passed date",
+			"Bundled scholarship sample - stated acceptance deadline, enrollment verification computed from the stated semester start, yearly GPA report recurrence, and one already-passed date",
 		input: { documentText: scholarshipText, todayIso: SAMPLE_TODAY },
 		checks: [
 			{
@@ -232,7 +232,7 @@ const cases: EvalCase<PaperworkEvalInput, ObligationExtraction>[] = [
 	{
 		id: "paperwork-insurance",
 		description:
-			"Bundled insurance sample — stated policy expiration, cancellation notice computed across a YEAR boundary (2027-01-14 minus 30 days), monthly premium recurrence on the 15th",
+			"Bundled insurance sample - stated policy expiration, cancellation notice computed across a YEAR boundary (2027-01-14 minus 30 days), monthly premium recurrence on the 15th",
 		input: { documentText: insuranceText, todayIso: SAMPLE_TODAY },
 		checks: [
 			{
@@ -274,7 +274,7 @@ const cases: EvalCase<PaperworkEvalInput, ObligationExtraction>[] = [
 	{
 		id: "paperwork-gym-contract",
 		description:
-			"Gym contract — cancellation deadline computed 45 days before term end across February (2027-03-01 minus 45 days = 2027-01-15), monthly dues on the 5th, yearly maintenance fee",
+			"Gym contract - cancellation deadline computed 45 days before term end across February (2027-03-01 minus 45 days = 2027-01-15), monthly dues on the 5th, yearly maintenance fee",
 		input: { documentText: gymText, todayIso: SAMPLE_TODAY },
 		checks: [
 			{
@@ -312,7 +312,7 @@ const cases: EvalCase<PaperworkEvalInput, ObligationExtraction>[] = [
 	{
 		id: "paperwork-invoice-net30",
 		description:
-			"Invoice with net-30 terms from January 31, 2028 — leap-year arithmetic (2028-01-31 plus 30 days = 2028-03-01) plus an early-payment discount window",
+			"Invoice with net-30 terms from January 31, 2028 - leap-year arithmetic (2028-01-31 plus 30 days = 2028-03-01) plus an early-payment discount window",
 		input: { documentText: invoiceText, todayIso: SAMPLE_TODAY },
 		checks: [
 			{
@@ -342,7 +342,7 @@ const cases: EvalCase<PaperworkEvalInput, ObligationExtraction>[] = [
 	{
 		id: "paperwork-benefits-unresolvable",
 		description:
-			"Benefits notice whose deadlines all hinge on a hire date the document never states — everything datable must come back unresolved, never guessed",
+			"Benefits notice whose deadlines all hinge on a hire date the document never states - everything datable must come back unresolved, never guessed",
 		input: { documentText: benefitsText, todayIso: SAMPLE_TODAY },
 		checks: [
 			{
@@ -381,7 +381,7 @@ const cases: EvalCase<PaperworkEvalInput, ObligationExtraction>[] = [
 	{
 		id: "paperwork-jury-summons",
 		description:
-			"Jury summons with only stated dates — extraction restraint: both dates exact, nothing invented",
+			"Jury summons with only stated dates - extraction restraint: both dates exact, nothing invented",
 		input: { documentText: juryText, todayIso: SAMPLE_TODAY },
 		checks: [
 			{
@@ -419,7 +419,7 @@ const cases: EvalCase<PaperworkEvalInput, ObligationExtraction>[] = [
 	{
 		id: "paperwork-not-a-document",
 		description:
-			"A soup recipe — must be rejected as not an obligation document, with no events",
+			"A soup recipe - must be rejected as not an obligation document, with no events",
 		input: { documentText: recipeText, todayIso: SAMPLE_TODAY },
 		checks: [
 			{

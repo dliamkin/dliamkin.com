@@ -4,12 +4,12 @@ import Tag from "primevue/tag";
 import { HEALTH_STATUSES, type HealthReport, type HealthStatus } from "@/lib/site-health";
 
 // Reads the static JSON committed nightly by .github/workflows/site-health.yml
-// — no API, no key, no per-visitor cost. Before the first audit exists the
+// - no API, no key, no per-visitor cost. Before the first audit exists the
 // widget renders nothing: the SPA fallback answers unknown paths with
 // index.html (HTTP 200), so "missing" is detected by content-type + shape,
 // not status code.
 
-// The details dialog pulls in PrimeVue's DataTable + Dialog — by far the
+// The details dialog pulls in PrimeVue's DataTable + Dialog - by far the
 // heaviest components in the library. Loading them only on the first click
 // keeps them out of the main bundle every page ships.
 const SiteHealthDetailsDialog = defineAsyncComponent(
@@ -38,7 +38,7 @@ onMounted(async () => {
 		const data = await response.json();
 		if (isHealthReport(data)) report.value = data;
 	} catch {
-		// No report yet (or unreachable) — render nothing.
+		// No report yet (or unreachable) - render nothing.
 	}
 });
 
@@ -83,8 +83,8 @@ const averages = computed(() => {
 <template>
 	<div v-if="report && meta" class="site-health">
 		<!-- No aria-label: it hid the visible text from the accessible name
-		     (a WCAG 2.5.3 label-in-name failure); the button's own content —
-		     status tag, title, blurb, scores — already names it. -->
+		     (a WCAG 2.5.3 label-in-name failure); the button's own content -
+		     status tag, title, blurb, scores - already names it. -->
 		<button type="button" class="health-summary-btn" @click="openDetails">
 			<Tag :severity="meta.severity" :value="meta.label" class="health-tag" />
 			<span class="health-copy">

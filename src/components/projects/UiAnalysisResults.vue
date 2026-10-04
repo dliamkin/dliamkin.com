@@ -22,7 +22,7 @@ const rows = computed<MappingRow[]>(() => props.result.mappings.map((m, idx) => 
 
 const expandedRows = ref<Record<number, boolean>>({});
 
-// Only plain component names ("DataTable") get a docs link — entries like
+// Only plain component names ("DataTable") get a docs link - entries like
 // "None (plain HTML)" stay as text.
 const docsUrl = (component: string): string | null =>
 	/^[A-Za-z]+$/.test(component) ? `https://primevue.org/${component.toLowerCase()}/` : null;

@@ -25,7 +25,7 @@ import {
 } from "@/lib/tos-watch";
 
 // Everything this page shows comes from two static JSON files the nightly
-// workflow commits (public/tos-watch/) — no API, no key, no server. The SPA
+// workflow commits (public/tos-watch/) - no API, no key, no server. The SPA
 // fallback answers missing paths with index.html (HTTP 200), so absence is
 // detected by content shape, not status code.
 
@@ -52,7 +52,7 @@ onMounted(async () => {
 		if (isState(stateBody)) state.value = stateBody;
 		if (Array.isArray(logBody)) changelog.value = logBody as ChangelogEntry[];
 	} catch {
-		// state stays null — the pre-baseline notice renders
+		// state stays null - the pre-baseline notice renders
 	} finally {
 		loading.value = false;
 	}
@@ -222,7 +222,7 @@ const latestEntryJson = computed(() =>
 				<EvalBadge project-id="tos-watch" class="header-eval-badge" />
 				<p class="intro">
 					A standing public record of how terms-of-service and policy documents change.
-					Every night, this site checks each monitored document for text changes — most
+					Every night, this site checks each monitored document for text changes - most
 					nights nothing has changed and the check costs nothing. When a document does
 					change, a diff-and-explain pipeline publishes a dated, plain-English entry:
 					what changed, who it favors, and how much it matters.
@@ -238,7 +238,7 @@ const latestEntryJson = computed(() =>
 			</header>
 
 			<Message severity="warn" :closable="false" class="legal-warning">
-				This is automated analysis and may contain errors — it is not legal advice, and
+				This is automated analysis and may contain errors - it is not legal advice, and
 				impact and severity labels are automated assessments. This project is not
 				affiliated with or endorsed by any listed service. Entries record when a change
 				was <em>detected</em> by nightly monitoring, not when it was made. Always verify
@@ -337,7 +337,7 @@ const latestEntryJson = computed(() =>
 					<div v-if="changelog.length === 0" class="placeholder">
 						<i class="fa-solid fa-binoculars" aria-hidden="true"></i>
 						<p>
-							No changes detected yet — monitoring began
+							No changes detected yet - monitoring began
 							{{ state.monitoring_since.slice(0, 10) }}. That's the honest state of a
 							young monitor, not a malfunction: entries appear here the first night a
 							document actually changes.
@@ -359,7 +359,7 @@ const latestEntryJson = computed(() =>
 							<!-- Cosmetic entries: one muted line, no excerpts, no severity. -->
 							<p v-if="!entry.report.substantive" class="cosmetic-line">
 								<span class="entry-date">{{ entry.detected_at.slice(0, 10) }}</span>
-								{{ entry.service_name }} · {{ entry.document_label }} — cosmetic change
+								{{ entry.service_name }} · {{ entry.document_label }} - cosmetic change
 								detected ({{ entry.report.cosmetic_note ?? "formatting or wording only" }})
 							</p>
 
@@ -444,7 +444,7 @@ const latestEntryJson = computed(() =>
 					<AccordionContent>
 						<pre v-if="latestEntryJson" class="raw-json">{{ latestEntryJson }}</pre>
 						<p v-else class="empty">
-							No changelog entries yet — the latest entry's exact published JSON will
+							No changelog entries yet - the latest entry's exact published JSON will
 							appear here after the first detected change.
 						</p>
 					</AccordionContent>
@@ -455,7 +455,7 @@ const latestEntryJson = computed(() =>
 						<div class="architecture-notes">
 							<p>
 								The economics are the trick: a nightly monitor sounds expensive, but
-								almost every night every document is unchanged — and an unchanged
+								almost every night every document is unchanged - and an unchanged
 								document is detected by comparing content hashes, which costs nothing.
 								Each page's text is extracted, normalized (navigation stripped,
 								whitespace collapsed, volatile fragments like copyright years and
@@ -463,7 +463,7 @@ const latestEntryJson = computed(() =>
 								does the model get involved, and even then it sees only the changed
 								paragraphs with a little surrounding context, never the whole
 								document. A standing public monitor ends up nearly free to run,
-								invoking AI a few times a month at most — exactly when there's
+								invoking AI a few times a month at most - exactly when there's
 								something to explain.
 							</p>
 							<p>
@@ -471,11 +471,11 @@ const latestEntryJson = computed(() =>
 								valuable if it's trustworthy, so the editorial constraints are
 								engineered, not aspirational. The site never republishes document
 								text: entries carry generated summaries and quoted excerpts capped at
-								25 words — a cap enforced by code truncation after the model call, not
+								25 words - a cap enforced by code truncation after the model call, not
 								just requested in the prompt. The model's own prose is scanned against
 								a forbidden-language list ("quietly", "buried", "sneaky" and friends);
 								a violation blocks auto-publish and files a review issue instead.
-								Entries say a change was <em>detected</em> on a date — nightly
+								Entries say a change was <em>detected</em> on a date - nightly
 								monitoring can't know when a change was actually made, and the record
 								doesn't pretend otherwise. Cosmetic-only changes (renumbering,
 								identical-meaning rewording) are gated into minimal one-line entries
@@ -483,13 +483,13 @@ const latestEntryJson = computed(() =>
 							</p>
 							<p>
 								Almost nothing here was built from scratch. The diff-and-explain
-								pipeline generalizes the Lease Diff Explainer's hybrid design —
+								pipeline generalizes the Lease Diff Explainer's hybrid design -
 								mechanical diff for detection, model for explanation, forced tool call
 								with a schema the API itself validates. The nightly workflow reuses
 								the site-health audit's pattern: scheduled CI, results committed back
 								to the repo as static JSON with [skip ci], deduplicated ops issues
 								when something needs my attention. And like every project on this
-								site, the pipeline runs under a continuously-published eval suite —
+								site, the pipeline runs under a continuously-published eval suite -
 								synthetic policy documents with planted changes, including a
 								user-favorable one to catch directional bias, and a cosmetic-only
 								pair that must gate as non-substantive.
@@ -500,7 +500,7 @@ const latestEntryJson = computed(() =>
 								the real change date. Main-content extraction can miss text inside
 								scripts or PDFs. The monitored list is a curated sample, not
 								coverage. And automated analysis of legal text is a starting point
-								for reading the linked source document — never a substitute.
+								for reading the linked source document - never a substitute.
 							</p>
 						</div>
 					</AccordionContent>

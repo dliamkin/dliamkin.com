@@ -3,7 +3,7 @@ import { ALLOWED_UPLOAD_TYPES, MAX_CLIENT_IMAGE_BYTES, MAX_IMAGE_EDGE_PX } from 
 export interface PreparedImage {
 	base64: string;
 	mediaType: "image/jpeg";
-	previewUrl: string; // object URL — caller revokes when done
+	previewUrl: string; // object URL - caller revokes when done
 	bytes: number;
 }
 
@@ -11,7 +11,7 @@ export class ImagePrepError extends Error {}
 
 // Downscales so the longest edge is ≤ MAX_IMAGE_EDGE_PX and re-encodes as
 // JPEG. Re-encoding through a canvas produces brand-new image bytes, which
-// strips EXIF metadata (GPS, device info, etc.) as a side effect — nothing
+// strips EXIF metadata (GPS, device info, etc.) as a side effect - nothing
 // from the original file's metadata survives.
 export async function prepareScreenshot(file: File): Promise<PreparedImage> {
 	if (!ALLOWED_UPLOAD_TYPES.includes(file.type)) {
@@ -67,7 +67,7 @@ function blobToBase64(blob: Blob): Promise<string> {
 	return new Promise((resolve, reject) => {
 		const reader = new FileReader();
 		reader.onload = () => {
-			// result is "data:image/jpeg;base64,...." — strip the prefix.
+			// result is "data:image/jpeg;base64,...." - strip the prefix.
 			const dataUrl = reader.result as string;
 			resolve(dataUrl.slice(dataUrl.indexOf(",") + 1));
 		};

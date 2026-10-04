@@ -473,7 +473,7 @@
 							"peer": "oxlint",
 							"required_range": "~1.73.0",
 							"kind": "declared_range_excluded",
-							"message": "eslint-plugin-oxlint@1.73.0 requires oxlint ~1.73.0, but your declared range for oxlint is ~1.69.0 — upgrade oxlint first (its latest 1.73.0 satisfies the requirement)."
+							"message": "eslint-plugin-oxlint@1.73.0 requires oxlint ~1.73.0, but your declared range for oxlint is ~1.69.0 - upgrade oxlint first (its latest 1.73.0 satisfies the requirement)."
 						}
 					],
 					"npm_url": "https://www.npmjs.com/package/eslint-plugin-oxlint",
@@ -831,7 +831,7 @@
 							"peer": "vue",
 							"required_range": "^3.2.0",
 							"kind": "declared_range_excluded",
-							"message": "vuex@4.1.0 requires vue ^3.2.0, but your declared range for vue is ^2.6.10 — upgrade vue first (its latest 3.5.39 satisfies the requirement)."
+							"message": "vuex@4.1.0 requires vue ^3.2.0, but your declared range for vue is ^2.6.10 - upgrade vue first (its latest 3.5.39 satisfies the requirement)."
 						}
 					],
 					"npm_url": "https://www.npmjs.com/package/vuex",
@@ -857,7 +857,7 @@
 							"peer": "vue",
 							"required_range": "^3.5.34",
 							"kind": "declared_range_excluded",
-							"message": "vue-router@5.1.0 requires vue ^3.5.34, but your declared range for vue is ^2.6.10 — upgrade vue first (its latest 3.5.39 satisfies the requirement)."
+							"message": "vue-router@5.1.0 requires vue ^3.5.34, but your declared range for vue is ^2.6.10 - upgrade vue first (its latest 3.5.39 satisfies the requirement)."
 						}
 					],
 					"npm_url": "https://www.npmjs.com/package/vue-router",
@@ -937,7 +937,7 @@
 							"peer": "vue",
 							"required_range": "3.x",
 							"kind": "declared_range_excluded",
-							"message": "@vue/test-utils@2.4.11 requires vue 3.x, but your declared range for vue is ^2.6.10 — upgrade vue first (its latest 3.5.39 satisfies the requirement)."
+							"message": "@vue/test-utils@2.4.11 requires vue 3.x, but your declared range for vue is ^2.6.10 - upgrade vue first (its latest 3.5.39 satisfies the requirement)."
 						}
 					],
 					"npm_url": "https://www.npmjs.com/package/@vue/test-utils",
@@ -999,7 +999,7 @@
 							"peer": "webpack",
 							"required_range": "^5.101.0",
 							"kind": "declared_range_excluded",
-							"message": "webpack-cli@7.2.1 requires webpack ^5.101.0, but your declared range for webpack is ^4.46.0 — upgrade webpack first (its latest 5.108.4 satisfies the requirement)."
+							"message": "webpack-cli@7.2.1 requires webpack ^5.101.0, but your declared range for webpack is ^4.46.0 - upgrade webpack first (its latest 5.108.4 satisfies the requirement)."
 						}
 					],
 					"npm_url": "https://www.npmjs.com/package/webpack-cli",
@@ -1025,7 +1025,7 @@
 							"peer": "webpack",
 							"required_range": "^5.0.0",
 							"kind": "declared_range_excluded",
-							"message": "sass-loader@17.0.0 requires webpack ^5.0.0, but your declared range for webpack is ^4.46.0 — upgrade webpack first (its latest 5.108.4 satisfies the requirement)."
+							"message": "sass-loader@17.0.0 requires webpack ^5.0.0, but your declared range for webpack is ^4.46.0 - upgrade webpack first (its latest 5.108.4 satisfies the requirement)."
 						}
 					],
 					"npm_url": "https://www.npmjs.com/package/sass-loader",

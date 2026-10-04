@@ -33,7 +33,7 @@ function buildUserMessage(request: SimulateRequest): string {
 			`Target model: ${request.targetModel}${notes}\nPlan text:\n${request.freeform}`
 		);
 	}
-	// Compact serialization — stripped empty fields, no pretty-printing.
+	// Compact serialization - stripped empty fields, no pretty-printing.
 	return serializeSimulateRequest(request);
 }
 

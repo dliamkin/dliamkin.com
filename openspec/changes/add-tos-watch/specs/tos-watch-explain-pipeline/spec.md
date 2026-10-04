@@ -1,7 +1,7 @@
 ## ADDED Requirements
 
 ### Requirement: Mechanical diff before model
-The pipeline SHALL compute a paragraph-level mechanical diff between the previous and current normalized text and send the model only the changed blocks with surrounding context and document metadata — never both full documents (token-cost control; ToS documents run tens of thousands of words).
+The pipeline SHALL compute a paragraph-level mechanical diff between the previous and current normalized text and send the model only the changed blocks with surrounding context and document metadata - never both full documents (token-cost control; ToS documents run tens of thousands of words).
 
 #### Scenario: Model input is diff blocks, not full documents
 - **GIVEN** a detected change in a 30,000-word document with three changed paragraphs

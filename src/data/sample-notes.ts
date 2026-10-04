@@ -16,7 +16,7 @@ export const SAMPLE_NOTES: SampleNote[] = [
 	{
 		id: "new-patient",
 		label: "New patient",
-		text: "New pt intake, 34 y/o female. CC: recurrent headaches x 2 months, described as bilateral, pressure-like, 3-4x/week, worse late afternoon. Denies aura, vision changes, N/V. Works remote, reports high screen time and poor sleep (5-6 hrs). No current medications. Allergies: penicillin (hives), sulfa (unknown reaction per pt). Vitals: BP 118/74, HR 68, T 98.2F, SpO2 99%. Neuro exam grossly normal. Assessment: tension-type headache, likely lifestyle contributors; r/o refractive error. Plan: sleep hygiene counseling, trial of OTC ibuprofen 400mg PRN max 3x/week, recommend eye exam, headache diary. F/u 6 weeks or sooner if red flag sx (worst headache of life, focal deficits, fever w/ stiff neck) — pt educated on these.",
+		text: "New pt intake, 34 y/o female. CC: recurrent headaches x 2 months, described as bilateral, pressure-like, 3-4x/week, worse late afternoon. Denies aura, vision changes, N/V. Works remote, reports high screen time and poor sleep (5-6 hrs). No current medications. Allergies: penicillin (hives), sulfa (unknown reaction per pt). Vitals: BP 118/74, HR 68, T 98.2F, SpO2 99%. Neuro exam grossly normal. Assessment: tension-type headache, likely lifestyle contributors; r/o refractive error. Plan: sleep hygiene counseling, trial of OTC ibuprofen 400mg PRN max 3x/week, recommend eye exam, headache diary. F/u 6 weeks or sooner if red flag sx (worst headache of life, focal deficits, fever w/ stiff neck) - pt educated on these.",
 	},
 	{
 		id: "urgent-care",

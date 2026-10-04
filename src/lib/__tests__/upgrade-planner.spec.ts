@@ -178,7 +178,7 @@ describe("upgradePlanToMarkdown", () => {
 		const markdown = upgradePlanToMarkdown(result, FACTS, "registry data as of 2026-07-09");
 		expect(markdown).toContain("**vue** ^1.0.0 → 3.5.13");
 		expect(markdown).toContain("npm install vue@3.5.13");
-		expect(markdown).toContain("medium confidence — verify against the changelog");
+		expect(markdown).toContain("medium confidence - verify against the changelog");
 		expect(markdown).toContain("registry data as of 2026-07-09");
 	});
 });

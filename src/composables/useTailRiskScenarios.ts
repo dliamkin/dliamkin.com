@@ -41,7 +41,7 @@ export function useTailRiskScenarios() {
 		try {
 			localStorage.setItem(STORAGE_KEY, JSON.stringify(saved.value));
 		} catch {
-			// Quota exceeded / privacy mode — saving is a convenience, not a requirement.
+			// Quota exceeded / privacy mode - saving is a convenience, not a requirement.
 		}
 	}
 

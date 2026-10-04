@@ -100,7 +100,7 @@ describe("buildIcs", () => {
 		expect(ics).toContain("TRIGGER:-P14D");
 		expect(ics).toContain("ACTION:DISPLAY");
 		expect(ics.endsWith("END:VCALENDAR\r\n")).toBe(true);
-		// Every line is CRLF-terminated — no bare \n anywhere.
+		// Every line is CRLF-terminated - no bare \n anywhere.
 		expect(ics.replace(/\r\n/g, "").includes("\n")).toBe(false);
 	});
 

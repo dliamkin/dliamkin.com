@@ -46,7 +46,7 @@ onMounted(() => {
 		activeWord.value = next;
 		timer = setTimeout(cycle, 2000);
 	};
-	// The initial measure reads offsetWidth, which forces layout — done inside
+	// The initial measure reads offsetWidth, which forces layout - done inside
 	// the mount task (whole page dirty) it cost ~60ms of main-thread time
 	// right in the LCP window. Until it runs, the wrapper is width:auto around
 	// the same word, so deferring past first paint changes nothing visually.
@@ -71,7 +71,7 @@ const scrollToContact = () => {
 
 // The first four form the wall's top two rows. Desktop's LCP element is
 // usually in row one, but on mobile the wall shifts right so row TWO's left
-// image (index 3) becomes the largest visible element — index.html preloads
+// image (index 3) becomes the largest visible element - index.html preloads
 // all four, so keep the lists in sync.
 // Rendered width of one wall image in CSS px, mirroring the wall's breakpoint
 // styles below. High-DPR screens multiply this and land on the 500w file;
@@ -132,14 +132,14 @@ const bgTris = (() => {
 		// "U" shape: top is pure white; bottom corners are deepest blue; bottom center stays medium blue
 		// "edge" = how far from horizontal center (0=center, 1=edge)
 		const edge = Math.abs(nx - 0.5) * 2;
-		// power curve on shifted ny keeps transition feathered — no harsh white-to-gray step
+		// power curve on shifted ny keeps transition feathered - no harsh white-to-gray step
 		const ny2 = Math.pow(Math.max(0, (ny - 0.2) / 0.8), 1.5);
 		const t = Math.min(ny2 * 0.65 + edge * ny2 * 0.35, 1);
 		// per-polygon noise: amplitude is (1-t)*0.10 so it's strongest in the white zone and
-		// fades to zero at the deep-blue bottom — a few top shapes pick up a soft blue-gray tint
+		// fades to zero at the deep-blue bottom - a few top shapes pick up a soft blue-gray tint
 		const tc = Math.min(t + Math.random() * (1 - t) * 0.05, 1);
 		const hue = 200 + tc * 10; // 200 (ice blue) → 210 (deeper blue)
-		const sat = 40 + tc * 40; // 40% floor — transition zone reads as soft blue
+		const sat = 40 + tc * 40; // 40% floor - transition zone reads as soft blue
 		const lit = 99 - tc * 69; // 99% at top (white) → 30% at bottom corners
 		// Dark-scheme twin of the same "U": lightness runs the other way, so the
 		// headline zone is near-black slate and the bottom corners glow ice blue.
@@ -151,7 +151,7 @@ const bgTris = (() => {
 			fillDark: `hsl(${hue.toFixed(0)},${satDark.toFixed(0)}%,${litDark.toFixed(0)}%)`,
 			g: Math.floor(Math.random() * 8),
 			delay: +(Math.random() * 10).toFixed(2),
-			anim: ny >= 0.4, // top 40% is static — keeps headline zone readable
+			anim: ny >= 0.4, // top 40% is static - keeps headline zone readable
 		});
 	};
 
@@ -335,7 +335,7 @@ const bgTris = (() => {
 .contact-me-btn {
 	display: inline-block;
 	padding: 0.9rem 2rem;
-	/* AA-contrast green (5.5:1 with white) — keep in sync with .nav-cta and .submit-btn. */
+	/* AA-contrast green (5.5:1 with white) - keep in sync with .nav-cta and .submit-btn. */
 	background-color: #337733;
 	color: #fff;
 	text-decoration: none;
@@ -486,7 +486,7 @@ html.dark .headline {
 	z-index: 1;
 	transform: translateY(60px);
 	/* Transform-only entrance, deliberately no opacity fade: the browser only
-	   records a paint (and thus LCP — usually a wall image) once opacity is
+	   records a paint (and thus LCP - usually a wall image) once opacity is
 	   non-zero, so any fade-in delays the metric by its full duration while a
 	   translateY rise costs nothing. */
 	transition: transform 1s cubic-bezier(0.22, 0.61, 0.36, 1);

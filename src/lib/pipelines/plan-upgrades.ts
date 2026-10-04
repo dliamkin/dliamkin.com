@@ -19,7 +19,7 @@ import { extractToolInput } from "./shared";
 
 // Haiku, the house default for demos: this pipeline's inputs are pre-computed
 // facts and its failure mode (restating a version wrong) is caught and
-// stripped by validateUpgradePlan, so the cheap model is safe here — unlike
+// stripped by validateUpgradePlan, so the cheap model is safe here - unlike
 // the paperwork pipeline, nothing depends on the model's arithmetic. The
 // worker overrides this per-environment via UPGRADE_PLANNER_MODEL.
 export const PLAN_UPGRADES_DEFAULT_MODEL = "claude-haiku-4-5-20251001";

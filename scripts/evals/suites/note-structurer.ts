@@ -99,7 +99,7 @@ const cases: EvalCase<string, StructuredNote>[] = [
 			},
 			{
 				// The model defensibly files "pt to schedule lipid panel" under
-				// either plan or follow_ups — what must not happen is losing it.
+				// either plan or follow_ups - what must not happen is losing it.
 				name: "lipid panel action captured (plan or follow-ups)",
 				run: (note) =>
 					containsNormalized(
@@ -157,7 +157,7 @@ const cases: EvalCase<string, StructuredNote>[] = [
 				run: (note) => containsNormalized(note.vitals.heart_rate, "80"),
 			},
 			{
-				// "Return precautions" are conditional warnings — the model
+				// "Return precautions" are conditional warnings - the model
 				// defensibly files them under red_flags or plan, but must not
 				// drop them. (note-explicit-redflags covers the strict case.)
 				name: "return precautions captured (red flags or plan)",
@@ -187,9 +187,9 @@ const cases: EvalCase<string, StructuredNote>[] = [
 	{
 		id: "note-dose-change",
 		description:
-			"Dose change mid-note: atorvastatin increased 20→40 mg — the extracted dose must be the new one, not the old",
+			"Dose change mid-note: atorvastatin increased 20→40 mg - the extracted dose must be the new one, not the old",
 		input:
-			"Pt is a 63 y/o male here for f/u on hyperlipidemia and HTN. Lipid panel last week shows LDL 148 despite atorvastatin 20mg nightly — increasing to atorvastatin 40mg nightly starting tonight. Amlodipine 5mg daily continued unchanged. Home BP log running 120s-130s over 70s-80s. BP today 126/78, HR 66. No chest pain, no myalgias on statin. Assessment: hyperlipidemia suboptimally controlled on prior dose, HTN at goal. Plan: increase atorvastatin to 40mg nightly, continue amlodipine 5mg daily, repeat lipid panel in 12 weeks. RTC 3 months.",
+			"Pt is a 63 y/o male here for f/u on hyperlipidemia and HTN. Lipid panel last week shows LDL 148 despite atorvastatin 20mg nightly - increasing to atorvastatin 40mg nightly starting tonight. Amlodipine 5mg daily continued unchanged. Home BP log running 120s-130s over 70s-80s. BP today 126/78, HR 66. No chest pain, no myalgias on statin. Assessment: hyperlipidemia suboptimally controlled on prior dose, HTN at goal. Plan: increase atorvastatin to 40mg nightly, continue amlodipine 5mg daily, repeat lipid panel in 12 weeks. RTC 3 months.",
 		checks: [
 			{
 				name: "atorvastatin extracted at the NEW dose (40 mg nightly)",
@@ -232,9 +232,9 @@ const cases: EvalCase<string, StructuredNote>[] = [
 	{
 		id: "note-discontinued-med",
 		description:
-			"Discontinued medication: HCTZ stopped for hyponatremia — status must be discontinued, not active",
+			"Discontinued medication: HCTZ stopped for hyponatremia - status must be discontinued, not active",
 		input:
-			"Pt is a 71 y/o female here for f/u after recent admission for symptomatic hyponatremia. Hydrochlorothiazide 25mg daily was DISCONTINUED at hospital discharge due to low sodium — pt confirms she has stopped taking it. Continues losartan 50mg daily for HTN. Sodium today 138, up from 126 at admission. BP 134/80, HR 76. Denies dizziness, confusion, falls. Assessment: hyponatremia resolved off HCTZ, HTN acceptable on losartan alone. Plan: remain off hydrochlorothiazide, recheck BMP in 4 weeks, RTC 2 months.",
+			"Pt is a 71 y/o female here for f/u after recent admission for symptomatic hyponatremia. Hydrochlorothiazide 25mg daily was DISCONTINUED at hospital discharge due to low sodium - pt confirms she has stopped taking it. Continues losartan 50mg daily for HTN. Sodium today 138, up from 126 at admission. BP 134/80, HR 76. Denies dizziness, confusion, falls. Assessment: hyponatremia resolved off HCTZ, HTN acceptable on losartan alone. Plan: remain off hydrochlorothiazide, recheck BMP in 4 weeks, RTC 2 months.",
 		checks: [
 			{
 				name: "hydrochlorothiazide status is discontinued",
@@ -270,7 +270,7 @@ const cases: EvalCase<string, StructuredNote>[] = [
 	{
 		id: "note-no-allergies",
 		description:
-			"Allergies never mentioned: the allergies array must stay empty — not populated with NKDA or invented entries",
+			"Allergies never mentioned: the allergies array must stay empty - not populated with NKDA or invented entries",
 		input:
 			"Pt is a 45 y/o male here for annual physical. Feels well, no complaints. Takes omeprazole 20mg daily for GERD, well controlled. Ex-smoker, quit 5 years ago, 15 pack-year history. Exercises 2-3x/week. BP 121/79, HR 74. Exam unremarkable. Assessment: healthy adult male, GERD controlled on PPI. Plan: routine screening labs, continue omeprazole 20mg daily, discussed colonoscopy scheduling at 45. RTC 1 year.",
 		checks: [
@@ -295,7 +295,7 @@ const cases: EvalCase<string, StructuredNote>[] = [
 		description:
 			"Explicit urgency in the note: ED precautions for possible unstable angina must appear in red_flags",
 		input:
-			"Pt is a 66 y/o male reporting exertional chest tightness x 2 weeks, resolving within minutes of rest. Hx HTN on amlodipine 10mg daily. In-office ECG without acute changes. Given the symptom pattern, concern for possible unstable angina — pt instructed to go to the ED immediately if pain occurs at rest, lasts more than 10 minutes, or radiates to the arm or jaw. Urgent cardiology referral placed for this week. Aspirin 81mg daily started today. BP 142/88, HR 78. Assessment: exertional chest pain, urgent evaluation warranted. Plan: urgent cardiology referral, stress testing per cardiology, strict ED return precautions reviewed with pt.",
+			"Pt is a 66 y/o male reporting exertional chest tightness x 2 weeks, resolving within minutes of rest. Hx HTN on amlodipine 10mg daily. In-office ECG without acute changes. Given the symptom pattern, concern for possible unstable angina - pt instructed to go to the ED immediately if pain occurs at rest, lasts more than 10 minutes, or radiates to the arm or jaw. Urgent cardiology referral placed for this week. Aspirin 81mg daily started today. BP 142/88, HR 78. Assessment: exertional chest pain, urgent evaluation warranted. Plan: urgent cardiology referral, stress testing per cardiology, strict ED return precautions reviewed with pt.",
 		checks: [
 			{
 				name: "red flags present (note explicitly flags urgent ED precautions)",
@@ -326,7 +326,7 @@ const cases: EvalCase<string, StructuredNote>[] = [
 	{
 		id: "note-benign-complex-meds",
 		description:
-			"Nothing urgent but four chronic meds: all extracted with doses, and red_flags stays empty — no false alarms",
+			"Nothing urgent but four chronic meds: all extracted with doses, and red_flags stays empty - no false alarms",
 		input:
 			"Pt is a 52 y/o female here for stable f/u of T2DM, HTN, and hypothyroidism. All chronic conditions well controlled; no new complaints, feels well. Medications reviewed and unchanged: metformin 1000mg BID, glipizide 5mg daily before breakfast, lisinopril 10mg daily, levothyroxine 88mcg daily on empty stomach. A1c last week 6.8, TSH 2.1, both at goal. BP 124/76, HR 70. Foot exam normal, denies hypoglycemic episodes. Assessment: T2DM at goal, HTN controlled, hypothyroidism euthyroid on current dose. Plan: continue all current medications unchanged, routine labs in 6 months. RTC 6 months.",
 		checks: [
@@ -378,7 +378,7 @@ const cases: EvalCase<string, StructuredNote>[] = [
 		description:
 			"Telehealth visit with only a reported home BP: every unmeasured vital must be null, not invented",
 		input:
-			"Pt is a 29 y/o male, telehealth visit for seasonal allergic rhinitis. Sneezing, nasal congestion, itchy eyes x 2 weeks, consistent with prior spring seasons. No fever, no facial pain or pressure, no purulent discharge. Telehealth visit — no vitals obtained except home BP 119/75 reported by pt from his own cuff. Assessment: seasonal allergic rhinitis. Plan: OTC loratadine 10mg daily during pollen season, saline nasal rinses, return if fever or facial pain develops. RTC PRN.",
+			"Pt is a 29 y/o male, telehealth visit for seasonal allergic rhinitis. Sneezing, nasal congestion, itchy eyes x 2 weeks, consistent with prior spring seasons. No fever, no facial pain or pressure, no purulent discharge. Telehealth visit - no vitals obtained except home BP 119/75 reported by pt from his own cuff. Assessment: seasonal allergic rhinitis. Plan: OTC loratadine 10mg daily during pollen season, saline nasal rinses, return if fever or facial pain develops. RTC PRN.",
 		checks: [
 			{
 				name: "reported home BP 119/75 captured",
@@ -407,7 +407,7 @@ const cases: EvalCase<string, StructuredNote>[] = [
 		description:
 			"Ambiguous dose (25 vs 50 mg, records pending): must land in extraction_notes and must not be resolved by guessing",
 		input:
-			"Pt is a 60 y/o male, new to practice, transferring care from out of state. Reports taking 'a water pill' and metoprolol for blood pressure but is unsure of the metoprolol dose — thinks it is either 25mg or 50mg twice daily; pharmacy records requested and pending. Also takes atorvastatin 20mg nightly, confirmed from the bottle he brought in. BP 138/84, HR 58. Assessment: HTN on unconfirmed regimen, medication reconciliation pending. Plan: obtain pharmacy records, continue current regimen once confirmed, RTC 4 weeks with bottles.",
+			"Pt is a 60 y/o male, new to practice, transferring care from out of state. Reports taking 'a water pill' and metoprolol for blood pressure but is unsure of the metoprolol dose - thinks it is either 25mg or 50mg twice daily; pharmacy records requested and pending. Also takes atorvastatin 20mg nightly, confirmed from the bottle he brought in. BP 138/84, HR 58. Assessment: HTN on unconfirmed regimen, medication reconciliation pending. Plan: obtain pharmacy records, continue current regimen once confirmed, RTC 4 weeks with bottles.",
 		checks: [
 			{
 				name: "metoprolol dose is not silently guessed as exactly 25 or exactly 50",

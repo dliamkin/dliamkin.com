@@ -10,7 +10,7 @@ import {
 	type FetchLike,
 } from "../upgrade-facts";
 
-// The deterministic half of the Upgrade Planner — no model, no network. The
+// The deterministic half of the Upgrade Planner - no model, no network. The
 // registry is mocked with a tiny in-memory doc set so the version math and
 // peer-conflict detection are asserted against known ground truth.
 
@@ -236,7 +236,7 @@ describe("analyzeDependencies", () => {
 
 	it("detects a declared-range peer conflict end to end", async () => {
 		// vue-router 4.5.0's latest requires vue ^3.2.0, but the manifest caps
-		// vue at ^2.6.10 — the planted hard conflict.
+		// vue at ^2.6.10 - the planted hard conflict.
 		const result = await analyze({
 			dependencies: { vue: "^2.6.10", "vue-router": "^3.6.0" },
 		});

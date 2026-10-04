@@ -111,7 +111,7 @@ async function copyQuestions() {
 <template>
 	<div class="comparison">
 		<p class="disclaimer">
-			Automated comparison for demonstration purposes — not legal advice. Consult a licensed
+			Automated comparison for demonstration purposes - not legal advice. Consult a licensed
 			attorney for real lease decisions.
 		</p>
 
@@ -193,14 +193,14 @@ async function copyQuestions() {
 										<blockquote v-if="data.original_excerpt !== null">
 											{{ data.original_excerpt }}
 										</blockquote>
-										<p v-else class="not-present">— not present —</p>
+										<p v-else class="not-present">- not present -</p>
 									</div>
 									<div class="excerpt">
 										<h4>Revised</h4>
 										<blockquote v-if="data.revised_excerpt !== null">
 											{{ data.revised_excerpt }}
 										</blockquote>
-										<p v-else class="not-present">— not present —</p>
+										<p v-else class="not-present">- not present -</p>
 									</div>
 								</div>
 								<p class="explanation">{{ data.explanation }}</p>

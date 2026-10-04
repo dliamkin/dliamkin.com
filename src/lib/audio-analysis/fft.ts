@@ -46,7 +46,7 @@ export function fft(re: Float64Array, im: Float64Array): void {
 	}
 }
 
-/** Periodic Hann window of length n (cached per size — frame loops reuse it thousands of times). */
+/** Periodic Hann window of length n (cached per size - frame loops reuse it thousands of times). */
 const hannCache = new Map<number, Float64Array>();
 export function hannWindow(n: number): Float64Array {
 	const cached = hannCache.get(n);

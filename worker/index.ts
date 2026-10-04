@@ -50,24 +50,24 @@ interface Env {
 	LEASE_DIFF_MODEL?: string;
 	// Optional model override for the paperwork extraction endpoint. The
 	// pipeline defaults to Sonnet because Haiku missed month-boundary date
-	// arithmetic (see extract-obligations.ts) — don't downgrade without the
+	// arithmetic (see extract-obligations.ts) - don't downgrade without the
 	// eval suite's computed-date cases passing.
 	PAPERWORK_MODEL?: string;
 	// Optional model override for the upgrade-plan synthesis endpoint. Haiku
-	// by default — see plan-upgrades.ts for why the cheap model is safe here.
+	// by default - see plan-upgrades.ts for why the cheap model is safe here.
 	UPGRADE_PLANNER_MODEL?: string;
 	// Optional model override for the Dry-Run Oracle simulation endpoint.
-	// Haiku by default — the demo's entire premise is a cheap-model forecast.
+	// Haiku by default - the demo's entire premise is a cheap-model forecast.
 	DRY_RUN_ORACLE_MODEL?: string;
 	// Optional model override for the noise-description endpoint. Sonnet by
-	// default — spectrogram reading is hard perception work (see
+	// default - spectrogram reading is hard perception work (see
 	// describe-noise.ts); Haiku is the cheap fallback if cost ever matters
 	// more than characterization quality.
 	NOISE_TRANSLATOR_MODEL?: string;
 }
 
 // Simple in-memory limiters. Workers isolates are ephemeral and per-PoP, so
-// these are best-effort rather than global guarantees — fine for a demo whose
+// these are best-effort rather than global guarantees - fine for a demo whose
 // real cost ceilings are the input caps and the small model.
 function createRateLimiter(max: number, windowMs: number) {
 	const log = new Map<string, number[]>();
@@ -85,29 +85,29 @@ function createRateLimiter(max: number, windowMs: number) {
 }
 
 const noteLimiter = createRateLimiter(10, 60_000); // 10/min/IP
-// Vision calls cost more — stricter per-minute limit plus a modest daily cap.
+// Vision calls cost more - stricter per-minute limit plus a modest daily cap.
 const screenshotLimiter = createRateLimiter(5, 60_000); // 5/min/IP
 const screenshotDailyLimiter = createRateLimiter(40, 86_400_000); // 40/day/IP
 // Two full-length documents on Sonnet make this by far the most token-heavy
-// endpoint — tighter caps than the other demos bound the worst-case spend.
+// endpoint - tighter caps than the other demos bound the worst-case spend.
 const leaseLimiter = createRateLimiter(6, 60_000); // 6/min/IP
 const leaseDailyLimiter = createRateLimiter(20, 86_400_000); // 20/day/IP
-// Paperwork extraction accepts text or up to 3 vision images per request —
+// Paperwork extraction accepts text or up to 3 vision images per request -
 // vision-call pricing sets the daily cap, like the screenshot endpoint.
 const paperworkLimiter = createRateLimiter(6, 60_000); // 6/min/IP
 const paperworkDailyLimiter = createRateLimiter(30, 86_400_000); // 30/day/IP
 // Upgrade-plan synthesis is text-only Haiku with a hard-capped facts payload
-// — cheap per call, but the input is fully attacker-shapeable JSON, so the
+// - cheap per call, but the input is fully attacker-shapeable JSON, so the
 // same per-minute/daily pattern applies.
 const upgradePlanLimiter = createRateLimiter(6, 60_000); // 6/min/IP
 const upgradePlanDailyLimiter = createRateLimiter(30, 86_400_000); // 30/day/IP
-// The oracle is text-only Haiku with a 1.5K output cap — cheap per call, and
+// The oracle is text-only Haiku with a 1.5K output cap - cheap per call, and
 // the client also caches forecasts by plan hash, so repeat submissions of an
 // unchanged plan never reach this endpoint at all.
 const simulatePlanLimiter = createRateLimiter(6, 60_000); // 6/min/IP
 const simulatePlanDailyLimiter = createRateLimiter(40, 86_400_000); // 40/day/IP
 // One Sonnet vision call per request over a small fixed-size spectrogram PNG
-// — same cost profile as the other vision endpoints, same cap pattern.
+// - same cost profile as the other vision endpoints, same cap pattern.
 const describeNoiseLimiter = createRateLimiter(6, 60_000); // 6/min/IP
 const describeNoiseDailyLimiter = createRateLimiter(30, 86_400_000); // 30/day/IP
 
@@ -149,7 +149,7 @@ async function handleStructureNote(request: Request, env: Env): Promise<Response
 	const ip = request.headers.get("cf-connecting-ip") ?? "unknown";
 	if (noteLimiter(ip)) {
 		return json(
-			{ error: "Whoa — that's a lot of notes! Please wait a minute and try again." },
+			{ error: "Whoa - that's a lot of notes! Please wait a minute and try again." },
 			429,
 		);
 	}
@@ -233,7 +233,7 @@ async function handleAnalyzeScreenshot(request: Request, env: Env): Promise<Resp
 		);
 	}
 
-	// Privacy: the image is held in memory for this request only — never
+	// Privacy: the image is held in memory for this request only - never
 	// written to storage and never logged (metadata only, below).
 	const startedAt = Date.now();
 	const anthropic = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
@@ -300,12 +300,12 @@ async function handleCompareLeases(request: Request, env: Env): Promise<Response
 	// Defense in depth behind the client-side short-circuit.
 	if (originalText.trim() === revisedText.trim()) {
 		return json(
-			{ error: "The two documents are identical — there's nothing to compare." },
+			{ error: "The two documents are identical - there's nothing to compare." },
 			400,
 		);
 	}
 
-	// Privacy: both documents are held in memory for this request only —
+	// Privacy: both documents are held in memory for this request only -
 	// never written to storage and never logged (metadata only, below).
 	const startedAt = Date.now();
 	const anthropic = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
@@ -334,7 +334,7 @@ async function handleCompareLeases(request: Request, env: Env): Promise<Response
 }
 
 // Validates one image entry of the paperwork request body. Reuses the
-// screenshot endpoint's limits — the client sends the same canvas-re-encoded
+// screenshot endpoint's limits - the client sends the same canvas-re-encoded
 // JPEGs through the same prep pipeline.
 function validatePaperworkImage(value: unknown): PaperworkImage | string {
 	if (value === null || typeof value !== "object") {
@@ -421,7 +421,7 @@ async function handleExtractObligations(request: Request, env: Env): Promise<Res
 	}
 
 	// Privacy: the document (text or photos) is held in memory for this
-	// request only — never written to storage and never logged (metadata
+	// request only - never written to storage and never logged (metadata
 	// only, below).
 	const startedAt = Date.now();
 	const anthropic = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
@@ -470,14 +470,14 @@ async function handlePlanUpgrades(request: Request, env: Env): Promise<Response>
 	}
 
 	// The payload is the distilled DependencyFact projection the browser
-	// computed against the npm registry — validated field by field (shape,
+	// computed against the npm registry - validated field by field (shape,
 	// entry cap, per-string caps, total size) before it can reach the prompt.
 	const facts = validatePlanRequestFacts(rawFacts);
 	if (typeof facts === "string") {
 		return json({ error: facts }, 400);
 	}
 
-	// Privacy: the dependency list is held in memory for this request only —
+	// Privacy: the dependency list is held in memory for this request only -
 	// never written to storage and never logged (metadata only, below).
 	const startedAt = Date.now();
 	const anthropic = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
@@ -508,7 +508,7 @@ async function handleSimulatePlan(request: Request, env: Env): Promise<Response>
 	const ip = request.headers.get("cf-connecting-ip") ?? "unknown";
 	if (simulatePlanLimiter(ip)) {
 		return json(
-			{ error: "The oracle needs a breather — please wait a minute between forecasts." },
+			{ error: "The oracle needs a breather - please wait a minute between forecasts." },
 			429,
 		);
 	}
@@ -533,7 +533,7 @@ async function handleSimulatePlan(request: Request, env: Env): Promise<Response>
 		return json({ error: simulateRequest }, 400);
 	}
 
-	// Privacy: the plan is held in memory for this request only — never
+	// Privacy: the plan is held in memory for this request only - never
 	// written to storage and never logged (metadata only, below).
 	const startedAt = Date.now();
 	const anthropic = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
@@ -599,7 +599,7 @@ async function handleDescribeNoise(request: Request, env: Env): Promise<Response
 	}
 
 	// Defense in depth: the browser runs this same gate before ever calling
-	// the API, but a hand-crafted request could skip it — a danger phrase in
+	// the API, but a hand-crafted request could skip it - a danger phrase in
 	// the context answers must never reach the model from any caller.
 	const safety = evaluateSafetyGate(noiseRequest.context);
 	if (safety.blocked) {
@@ -612,7 +612,7 @@ async function handleDescribeNoise(request: Request, env: Env): Promise<Response
 		);
 	}
 
-	// Privacy: only the derived artifacts ever arrive here — spectrogram PNG,
+	// Privacy: only the derived artifacts ever arrive here - spectrogram PNG,
 	// measured features, and form answers; raw audio never leaves the browser.
 	// All of it is held in memory for this request only, never written to
 	// storage and never logged (metadata only, below).
@@ -628,7 +628,7 @@ async function handleDescribeNoise(request: Request, env: Env): Promise<Response
 			env.NOISE_TRANSLATOR_MODEL,
 		);
 		if (result.stripped.length > 0) {
-			// The deny-list fired — log the count (never the content) so drift
+			// The deny-list fired - log the count (never the content) so drift
 			// in the model's discipline is visible in the logs.
 			console.log(`describe-noise stripped=${result.stripped.length}`);
 		}
@@ -652,7 +652,7 @@ export default {
 	async fetch(request: Request, env: Env): Promise<Response> {
 		const url = new URL(request.url);
 		// Static assets handle everything else (see wrangler.jsonc
-		// run_worker_first) — the Worker only ever sees /api/* requests.
+		// run_worker_first) - the Worker only ever sees /api/* requests.
 		if (url.pathname === "/api/structure-note") {
 			if (request.method !== "POST") {
 				return json({ error: "Method not allowed." }, 405);

@@ -5,7 +5,7 @@ import type { ParticleEngine } from "./engine";
  * simulation never runs when:
  *  - the visitor asked for reduced motion,
  *  - the viewport is phone-sized (most recruiters open links on their phone
- *    first — they get a clean static composition, not 3000-particle physics
+ *    first - they get a clean static composition, not 3000-particle physics
  *    on a mid-range SoC), or
  *  - the live 60-frame benchmark after startup averages under 45fps
  *    (BENCHMARK_MIN_FPS, checked by the host via engine.onBenchmark).
@@ -38,7 +38,7 @@ export function shouldUseSnapshot(): boolean {
  *
  * Composition runs on exactly the devices the fallback exists for, so it is
  * budgeted two ways: only draws that contribute to the final image happen
- * (transparent modes clear every frame — one final draw suffices; trail
+ * (transparent modes clear every frame - one final draw suffices; trail
  * modes fade old frames below visibility after ~30 fills), and steps are
  * chunked across the event loop so no single task blocks long enough to
  * register against TBT during page load.

@@ -21,21 +21,21 @@ const pillars: Pillar[] = [
 		icon: "fa-solid fa-wand-magic-sparkles",
 		accent: "#c08552",
 		title: "Precision UI & UX Engineering",
-		body: "Great data is useless if it's hard to read. I obsess over the micro-interactions that remove friction — customizing component libraries like PrimeVue, engineering custom CSS layouts, and prototyping original assets in Adobe Creative Cloud.",
+		body: "Great data is useless if it's hard to read. I obsess over the micro-interactions that remove friction - customizing component libraries like PrimeVue, engineering custom CSS layouts, and prototyping original assets in Adobe Creative Cloud.",
 		tags: ["PrimeVue", "CSS Flex/Grid", "Adobe CC", "Accessibility"],
 	},
 	{
 		icon: "fa-solid fa-cloud-arrow-up",
 		accent: "#5cb85c",
 		title: "Cloud Infrastructure & DevOps",
-		body: "I don't just build the interface — I make the system behind it bulletproof. I architect end-to-end CI/CD pipelines and disaster-recovery protocols for AWS serverless, and manage Azure Data Factory pipelines and Function Apps.",
+		body: "I don't just build the interface - I make the system behind it bulletproof. I architect end-to-end CI/CD pipelines and disaster-recovery protocols for AWS serverless, and manage Azure Data Factory pipelines and Function Apps.",
 		tags: ["AWS Lambda", "DynamoDB", "CI/CD", "Azure"],
 	},
 	{
 		icon: "fa-solid fa-chart-line",
 		accent: "#9b59b6",
 		title: "Data Integration & Analytics",
-		body: "I securely bridge applications and business intelligence — engineering token-based API integrations for platforms like Google Ads and Meta to transform raw data into comprehensive revenue and marketing reports.",
+		body: "I securely bridge applications and business intelligence - engineering token-based API integrations for platforms like Google Ads and Meta to transform raw data into comprehensive revenue and marketing reports.",
 		tags: ["REST APIs", "OAuth", "QuickSight", "DataDog"],
 	},
 ];
@@ -49,7 +49,7 @@ const { target, inView } = useInView({ threshold: 0.15 });
 			<p class="eyebrow">// What I Do</p>
 			<h2>Four pillars of full-stack delivery</h2>
 			<p class="sub">
-				From the pixels a user touches to the serverless functions behind them — I own the
+				From the pixels a user touches to the serverless functions behind them - I own the
 				whole stack.
 			</p>
 		</div>

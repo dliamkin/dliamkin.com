@@ -39,7 +39,7 @@ import {
 } from "@/lib/upgrade-facts";
 import { toPlanRequestFacts, type UpgradePlanResult } from "@/lib/upgrade-planner";
 
-// One Haiku call with a distilled facts payload — generous headroom for cold
+// One Haiku call with a distilled facts payload - generous headroom for cold
 // starts.
 const REQUEST_TIMEOUT_MS = 90_000;
 
@@ -48,7 +48,7 @@ const toast = useToast();
 const activeTab = ref("paste");
 const manifestText = ref("");
 
-// Phase 1 — facts. Streamed rows land in streamedFacts; the finished
+// Phase 1 - facts. Streamed rows land in streamedFacts; the finished
 // DependencyFacts (with peer conflicts, failures, skipped) lands in factsResult.
 const factsStatus = ref<"idle" | "analyzing" | "done" | "error">("idle");
 const factsError = ref("");
@@ -58,7 +58,7 @@ const progress = ref<{ settled: number; total: number } | null>(null);
 const factsSource = ref<"sample" | "live" | null>(null);
 const sampleId = ref<string | null>(null);
 
-// Phase 2 — plan.
+// Phase 2 - plan.
 const planStatus = ref<"idle" | "loading" | "done" | "error">("idle");
 const planError = ref("");
 const plan = ref<UpgradePlanResult | null>(null);
@@ -97,7 +97,7 @@ function resetResults() {
 	plan.value = null;
 }
 
-// Bundled samples render their snapshot facts instantly — no registry
+// Bundled samples render their snapshot facts instantly - no registry
 // traffic, and the snapshot date is shown since live registry state drifts.
 function loadSample(id: string) {
 	const sample = UPGRADE_SAMPLES.find((s) => s.id === id);
@@ -126,7 +126,7 @@ function onFileSelect(event: FileUploadSelectEvent) {
 		toast.add({
 			severity: "error",
 			summary: "File too large",
-			detail: "That doesn't look like a package.json — it's over 50KB.",
+			detail: "That doesn't look like a package.json - it's over 50KB.",
 			life: 5000,
 		});
 		return;
@@ -138,13 +138,13 @@ function onFileSelect(event: FileUploadSelectEvent) {
 		toast.add({
 			severity: "success",
 			summary: "File loaded in your browser",
-			detail: "The file never leaves your machine — analyze when ready.",
+			detail: "The file never leaves your machine - analyze when ready.",
 			life: 4000,
 		});
 	});
 }
 
-// Phase 1: parse, then stream registry lookups. All client-side — the only
+// Phase 1: parse, then stream registry lookups. All client-side - the only
 // network traffic is the visitor's browser talking to registry.npmjs.org.
 async function analyze() {
 	if (!canAnalyze.value) return;
@@ -187,7 +187,7 @@ async function analyze() {
 }
 
 // Phase 2: the one API call. Bundled samples render their pre-generated plan
-// instead — the live endpoint is never spent on them.
+// instead - the live endpoint is never spent on them.
 async function generatePlan() {
 	if (!canPlan.value || factsResult.value === null) return;
 
@@ -221,7 +221,7 @@ async function generatePlan() {
 		try {
 			payload = await response.json();
 		} catch {
-			// fall through — handled by response.ok check below
+			// fall through - handled by response.ok check below
 		}
 
 		if (!response.ok) {
@@ -235,7 +235,7 @@ async function generatePlan() {
 			planError.value =
 				serverError ??
 				(response.status === 429
-					? "Too many requests right now — please wait a minute and try again."
+					? "Too many requests right now - please wait a minute and try again."
 					: "Something went wrong generating the plan. Please try again.");
 			planStatus.value = "error";
 			return;
@@ -272,8 +272,8 @@ async function generatePlan() {
 				<h1>Dependency Upgrade Planner</h1>
 				<EvalBadge project-id="upgrade-planner" class="header-eval-badge" />
 				<p class="intro">
-					Paste a package.json and get two things: hard facts about every dependency —
-					versions behind, deprecations, peer conflicts — computed in your browser
+					Paste a package.json and get two things: hard facts about every dependency -
+					versions behind, deprecations, peer conflicts - computed in your browser
 					straight from the npm registry, and then, only if you ask, an AI-synthesized
 					upgrade plan: risk tiers, ordered upgrade waves, and the commands to run. Facts
 					are computed; only the judgment is generated.
@@ -281,7 +281,7 @@ async function generatePlan() {
 			</header>
 
 			<Message severity="warn" :closable="false" class="planner-warning">
-				A planning aid, not a substitute for release notes —
+				A planning aid, not a substitute for release notes -
 				<strong>always verify against each package's changelog before upgrading.</strong>
 				Your dependency list is analyzed in your browser; only the computed facts are sent
 				(transiently, never stored) if you request a plan.
@@ -356,7 +356,7 @@ async function generatePlan() {
 									@select="onFileSelect"
 								/>
 								<p class="formats">
-									Read entirely in your browser — the file never leaves it. The
+									Read entirely in your browser - the file never leaves it. The
 									contents land in the paste tab for review first.
 								</p>
 							</div>
@@ -373,7 +373,7 @@ async function generatePlan() {
 						@click="analyze"
 					/>
 					<span class="phase-note">
-						Free &amp; browser-side: your browser queries the npm registry directly — no
+						Free &amp; browser-side: your browser queries the npm registry directly - no
 						AI, and nothing touches this site's server.
 					</span>
 				</div>
@@ -391,13 +391,13 @@ async function generatePlan() {
 
 				<template v-else>
 					<div class="section-heading">
-						<h2>The facts — computed, not generated</h2>
+						<h2>The facts - computed, not generated</h2>
 						<p class="section-sub">
 							Everything below is deterministic: registry data plus semver math in
 							tested code, no model involved.
 							<span v-if="factsSource === 'sample'" class="snapshot-note">
 								<i class="fa-solid fa-bolt" aria-hidden="true"></i>
-								Bundled snapshot — {{ generatedNote }}, zero network calls.
+								Bundled snapshot - {{ generatedNote }}, zero network calls.
 							</span>
 							<span v-else>
 								Without a lockfile, the declared ranges are the source of truth.
@@ -417,7 +417,7 @@ async function generatePlan() {
 							v-tooltip.bottom="
 								analyzing
 									? 'Available once all registry lookups finish'
-									: 'One AI call — the computed facts above are sent, never your raw package.json'
+									: 'One AI call - the computed facts above are sent, never your raw package.json'
 							"
 							label="Generate upgrade plan"
 							icon="fa-solid fa-wand-magic-sparkles"
@@ -427,7 +427,7 @@ async function generatePlan() {
 						/>
 						<span class="phase-note">
 							This is the demo's single AI step: the facts go to a serverless endpoint
-							for one model call that tiers, sequences, and annotates — it cannot
+							for one model call that tiers, sequences, and annotates - it cannot
 							change the numbers.
 						</span>
 					</div>
@@ -452,7 +452,7 @@ async function generatePlan() {
 				<template v-else-if="planStatus === 'done' && plan">
 					<p v-if="factsSource === 'sample'" class="source-note">
 						<i class="fa-solid fa-bolt" aria-hidden="true"></i>
-						Rendered from the bundled pre-generated plan — zero API calls.
+						Rendered from the bundled pre-generated plan - zero API calls.
 					</p>
 					<UpgradePlanResults
 						:plan="plan"
@@ -475,7 +475,7 @@ async function generatePlan() {
 							</template>
 						</template>
 						<p v-else class="empty">
-							Analyze a package.json first — the exact facts object (and, after phase
+							Analyze a package.json first - the exact facts object (and, after phase
 							2, the plan the model returned) will appear here.
 						</p>
 					</AccordionContent>
@@ -488,12 +488,12 @@ async function generatePlan() {
 								This demo has a deliberately split brain. Facts are computed, never
 								generated: version numbers, versions-behind counts, deprecation
 								flags, and peer conflicts all come from the npm registry
-								(CORS-enabled and keyless, so your browser queries it directly — the
+								(CORS-enabled and keyless, so your browser queries it directly - the
 								facts phase makes zero calls to my infrastructure and costs nothing)
 								plus deterministic semver math in unit-tested TypeScript. Judgment
 								is synthesized: one guarded model call turns those facts into risk
 								tiers, ordered waves, and rationale. The design rule is that the
-								model selects and orders but never restates numbers — the UI renders
+								model selects and orders but never restates numbers - the UI renders
 								every version from the facts object keyed by package name, the
 								server strips any plan entry whose target doesn't equal the computed
 								latest, and the install commands are rebuilt in code from the facts
@@ -503,16 +503,16 @@ async function generatePlan() {
 								The peer-conflict detector is the clearest example of putting
 								deterministic code where determinism is possible. "@vue/test-utils'
 								latest requires vue 3.x but your declared range caps at ^2.6" is a
-								fact, computable with semver range intersection — so it's computed,
+								fact, computable with semver range intersection - so it's computed,
 								in code with unit tests, and handed to the model as ground truth to
 								sequence around. An LLM could guess at this and would sometimes be
 								wrong; range math is never wrong.
 							</p>
 							<p>
 								The model's breaking-change notes are the one place its training
-								knowledge enters — and training data ages, so each note carries a
+								knowledge enters - and training data ages, so each note carries a
 								model-assigned confidence, the UI labels every note "from model
-								knowledge — verify," and every package row links to its npm page and
+								knowledge - verify," and every package row links to its npm page and
 								repository. Those links are deterministic, from registry metadata,
 								precisely because a model-generated changelog URL is the kind of
 								thing that gets hallucinated.
@@ -523,7 +523,7 @@ async function generatePlan() {
 								transitive dependency analysis, and no monorepo workspaces. A
 								production version would parse the lockfile, retrieve real changelog
 								entries instead of relying on model memory, and hook into CI to open
-								the upgrade PRs wave by wave — the two-phase architecture stays the
+								the upgrade PRs wave by wave - the two-phase architecture stays the
 								same.
 							</p>
 						</div>

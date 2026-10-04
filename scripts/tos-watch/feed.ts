@@ -1,6 +1,6 @@
 import type { ChangelogEntry } from "../../src/lib/tos-watch";
 
-// RSS 2.0 feed of changelog entries — a first-class deliverable, not an
+// RSS 2.0 feed of changelog entries - a first-class deliverable, not an
 // afterthought: the whole point of a standing monitor is that people can
 // subscribe and forget it. Regenerated from the full changelog on every
 // change day and served as a static file, like everything else public here.
@@ -28,14 +28,14 @@ function itemDescription(entry: ChangelogEntry): string {
 		return entry.report.cosmetic_note ?? "Cosmetic change detected (formatting or wording only).";
 	}
 	const counts = entry.report.changes.length;
-	return `${entry.report.summary} (${counts} change${counts === 1 ? "" : "s"} detected by automated comparison — see the full entry for excerpts and details.)`;
+	return `${entry.report.summary} (${counts} change${counts === 1 ? "" : "s"} detected by automated comparison - see the full entry for excerpts and details.)`;
 }
 
 export function buildFeed(entries: ChangelogEntry[], generatedAt: Date = new Date()): string {
 	const items = entries
 		.slice(0, FEED_ITEM_LIMIT)
 		.map((entry) => {
-			const title = `${entry.service_name} · ${entry.document_label} — change detected ${entry.detected_at.slice(0, 10)}`;
+			const title = `${entry.service_name} · ${entry.document_label} - change detected ${entry.detected_at.slice(0, 10)}`;
 			return [
 				"    <item>",
 				`      <title>${escapeXml(title)}</title>`,
@@ -52,7 +52,7 @@ export function buildFeed(entries: ChangelogEntry[], generatedAt: Date = new Dat
 		`<?xml version="1.0" encoding="UTF-8"?>`,
 		`<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">`,
 		"  <channel>",
-		"    <title>ToS Watchdog — dliamkin.com</title>",
+		"    <title>ToS Watchdog - dliamkin.com</title>",
 		`    <link>${escapeXml(PAGE_URL)}</link>`,
 		"    <description>Automated nightly monitoring of terms-of-service and policy documents. Entries describe detected changes in neutral, plain English. Not legal advice; not affiliated with any monitored service.</description>",
 		"    <language>en-us</language>",

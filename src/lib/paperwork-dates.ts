@@ -4,7 +4,7 @@ import type { DateResolution, ObligationExtraction } from "./paperwork";
 // This is the deterministic half of the date-integrity design: the model only
 // identifies what math is needed (paperwork.ts DateResolution); the actual
 // resolution runs here, in tested code. Everything works on calendar dates as
-// UTC to sidestep local-timezone hazards — obligations are date-scoped, never
+// UTC to sidestep local-timezone hazards - obligations are date-scoped, never
 // time-scoped.
 
 const ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
@@ -38,7 +38,7 @@ export function addDays(iso: string, days: number): string {
 
 // Month arithmetic clamps to the target month's last day (Jan 31 + 1 month =
 // Feb 28/29), matching how contract language like "six months after the start
-// date" is conventionally read — it never spills into the following month.
+// date" is conventionally read - it never spills into the following month.
 export function addMonths(iso: string, months: number): string {
 	const date = toUtc(iso);
 	const day = date.getUTCDate();
@@ -52,7 +52,7 @@ export function addMonths(iso: string, months: number): string {
 }
 
 // Applies a model-identified offset to a user-supplied anchor date. Months
-// first, then days — "6 months and 10 days after" reads as month arithmetic
+// first, then days - "6 months and 10 days after" reads as month arithmetic
 // refined by days, and the two operations only interact at month-end clamps.
 export function resolveDate(anchorIso: string, resolution: DateResolution): string {
 	const sign = resolution.direction === "before" ? -1 : 1;
@@ -91,7 +91,7 @@ export function describeResolution(anchorIso: string, resolution: DateResolution
 
 // The date-integrity backstop for computed dates: the model reports the
 // anchor date and offset it found (its language strength), and the actual
-// arithmetic runs here, overriding the model's own — LLM day-counting is
+// arithmetic runs here, overriding the model's own - LLM day-counting is
 // unreliable around month lengths and leap years (observed: Sonnet computed
 // "2028-01-31 plus 30 days" as 2028-03-02 in CI). Only events the model
 // already marked computed with a stated anchor are touched: unresolved dates
