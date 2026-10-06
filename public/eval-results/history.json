@@ -1,47 +1,5 @@
 [
   {
-    "run_at": "2026-07-12T11:05:14.825Z",
-    "trigger": "schedule",
-    "overall_pass_rate": 0.9688,
-    "suites": [
-      {
-        "project_id": "note-structurer",
-        "pass_count": 10,
-        "total": 10,
-        "model": "claude-haiku-4-5",
-        "prompt_hash": "9f57f5519459"
-      },
-      {
-        "project_id": "lease-diff",
-        "pass_count": 3,
-        "total": 3,
-        "model": "claude-sonnet-5",
-        "prompt_hash": "bdec4c8e9099"
-      },
-      {
-        "project_id": "screenshot-to-primevue",
-        "pass_count": 5,
-        "total": 5,
-        "model": "claude-haiku-4-5",
-        "prompt_hash": "926274c81ec9"
-      },
-      {
-        "project_id": "paperwork-to-calendar",
-        "pass_count": 8,
-        "total": 8,
-        "model": "claude-sonnet-5",
-        "prompt_hash": "c4d919f2673b"
-      },
-      {
-        "project_id": "upgrade-planner",
-        "pass_count": 5,
-        "total": 6,
-        "model": "claude-haiku-4-5-20251001",
-        "prompt_hash": "76ddedc1d0b2"
-      }
-    ]
-  },
-  {
     "run_at": "2026-07-13T12:28:34.994Z",
     "trigger": "schedule",
     "overall_pass_rate": 0.9063,
@@ -4363,116 +4321,56 @@
         "pass_count": 10,
         "total": 10,
         "model": "claude-haiku-4-5",
-        "prompt_hash": "9f57f5519459",
-        "cases": {
-          "note-followup-htn": true,
-          "note-newpatient-headache": true,
-          "note-urgentcare-ankle": true,
-          "note-dose-change": true,
-          "note-discontinued-med": true,
-          "note-no-allergies": true,
-          "note-explicit-redflags": true,
-          "note-benign-complex-meds": true,
-          "note-sparse-vitals": true,
-          "note-ambiguous-dose": true
-        }
+        "prompt_hash": "9f57f5519459"
       },
       {
         "project_id": "lease-diff",
         "pass_count": 3,
         "total": 3,
         "model": "claude-sonnet-5",
-        "prompt_hash": "bdec4c8e9099",
-        "cases": {
-          "lease-residential-renewal": true,
-          "lease-month-to-month": true,
-          "lease-late-fee-rewording": true
-        }
+        "prompt_hash": "bdec4c8e9099"
       },
       {
         "project_id": "screenshot-to-primevue",
         "pass_count": 5,
         "total": 5,
         "model": "claude-haiku-4-5",
-        "prompt_hash": "926274c81ec9",
-        "cases": {
-          "shot-login": true,
-          "shot-dashboard": true,
-          "shot-pricing": true,
-          "shot-landscape-rejected": true,
-          "shot-text-document-rejected": true
-        }
+        "prompt_hash": "926274c81ec9"
       },
       {
         "project_id": "paperwork-to-calendar",
         "pass_count": 8,
         "total": 8,
         "model": "claude-sonnet-5",
-        "prompt_hash": "c4d919f2673b",
-        "cases": {
-          "paperwork-lease": true,
-          "paperwork-scholarship": true,
-          "paperwork-insurance": true,
-          "paperwork-gym-contract": true,
-          "paperwork-invoice-net30": true,
-          "paperwork-benefits-unresolvable": true,
-          "paperwork-jury-summons": true,
-          "paperwork-not-a-document": true
-        }
+        "prompt_hash": "c4d919f2673b"
       },
       {
         "project_id": "upgrade-planner",
         "pass_count": 6,
         "total": 6,
         "model": "claude-haiku-4-5-20251001",
-        "prompt_hash": "d507dd9bacde",
-        "cases": {
-          "planner-legacy-vue-stack": true,
-          "planner-coupled-ecosystem": true,
-          "planner-quiet-current": true,
-          "planner-patch-utilities": true,
-          "planner-deprecated-package": true,
-          "planner-react-majors": true
-        }
+        "prompt_hash": "d507dd9bacde"
       },
       {
         "project_id": "tos-watch",
         "pass_count": 5,
         "total": 5,
         "model": "claude-sonnet-5",
-        "prompt_hash": "93f232ed8d50",
-        "cases": {
-          "tos-arbitration-added": true,
-          "tos-data-sharing-expanded": true,
-          "tos-refund-window-extended": true,
-          "tos-liability-cap-lowered": true,
-          "tos-cosmetic-only": true
-        }
+        "prompt_hash": "93f232ed8d50"
       },
       {
         "project_id": "dry-run-oracle",
         "pass_count": 3,
         "total": 3,
         "model": "claude-haiku-4-5-20251001",
-        "prompt_hash": "871f863a98de",
-        "cases": {
-          "oracle-unbounded-test-loop": true,
-          "oracle-bounded-single-step": true,
-          "oracle-freeform-structuring": true
-        }
+        "prompt_hash": "871f863a98de"
       },
       {
         "project_id": "noise-translator",
         "pass_count": 4,
         "total": 4,
         "model": "claude-sonnet-5",
-        "prompt_hash": "97f818258737",
-        "cases": {
-          "noise-dryer-thump": true,
-          "noise-car-whine": true,
-          "noise-furnace-rattle": true,
-          "noise-clipped-recording": true
-        }
+        "prompt_hash": "97f818258737"
       }
     ]
   },
@@ -5954,6 +5852,129 @@
   },
   {
     "run_at": "2026-10-05T18:54:53.172Z",
+    "trigger": "schedule",
+    "overall_pass_rate": 1,
+    "suites": [
+      {
+        "project_id": "note-structurer",
+        "pass_count": 10,
+        "total": 10,
+        "model": "claude-haiku-4-5",
+        "prompt_hash": "af330c4b2d0b",
+        "cases": {
+          "note-followup-htn": true,
+          "note-newpatient-headache": true,
+          "note-urgentcare-ankle": true,
+          "note-dose-change": true,
+          "note-discontinued-med": true,
+          "note-no-allergies": true,
+          "note-explicit-redflags": true,
+          "note-benign-complex-meds": true,
+          "note-sparse-vitals": true,
+          "note-ambiguous-dose": true
+        }
+      },
+      {
+        "project_id": "lease-diff",
+        "pass_count": 3,
+        "total": 3,
+        "model": "claude-sonnet-5",
+        "prompt_hash": "fbed0590c43f",
+        "cases": {
+          "lease-residential-renewal": true,
+          "lease-month-to-month": true,
+          "lease-late-fee-rewording": true
+        }
+      },
+      {
+        "project_id": "screenshot-to-primevue",
+        "pass_count": 5,
+        "total": 5,
+        "model": "claude-haiku-4-5",
+        "prompt_hash": "5ee82da67180",
+        "cases": {
+          "shot-login": true,
+          "shot-dashboard": true,
+          "shot-pricing": true,
+          "shot-landscape-rejected": true,
+          "shot-text-document-rejected": true
+        }
+      },
+      {
+        "project_id": "paperwork-to-calendar",
+        "pass_count": 8,
+        "total": 8,
+        "model": "claude-sonnet-5",
+        "prompt_hash": "4d5b23a90959",
+        "cases": {
+          "paperwork-lease": true,
+          "paperwork-scholarship": true,
+          "paperwork-insurance": true,
+          "paperwork-gym-contract": true,
+          "paperwork-invoice-net30": true,
+          "paperwork-benefits-unresolvable": true,
+          "paperwork-jury-summons": true,
+          "paperwork-not-a-document": true
+        }
+      },
+      {
+        "project_id": "upgrade-planner",
+        "pass_count": 6,
+        "total": 6,
+        "model": "claude-haiku-4-5-20251001",
+        "prompt_hash": "51c5f439cb34",
+        "cases": {
+          "planner-legacy-vue-stack": true,
+          "planner-coupled-ecosystem": true,
+          "planner-quiet-current": true,
+          "planner-patch-utilities": true,
+          "planner-deprecated-package": true,
+          "planner-react-majors": true
+        }
+      },
+      {
+        "project_id": "tos-watch",
+        "pass_count": 5,
+        "total": 5,
+        "model": "claude-sonnet-5",
+        "prompt_hash": "f75f277deeea",
+        "cases": {
+          "tos-arbitration-added": true,
+          "tos-data-sharing-expanded": true,
+          "tos-refund-window-extended": true,
+          "tos-liability-cap-lowered": true,
+          "tos-cosmetic-only": true
+        }
+      },
+      {
+        "project_id": "dry-run-oracle",
+        "pass_count": 3,
+        "total": 3,
+        "model": "claude-haiku-4-5-20251001",
+        "prompt_hash": "871f863a98de",
+        "cases": {
+          "oracle-unbounded-test-loop": true,
+          "oracle-bounded-single-step": true,
+          "oracle-freeform-structuring": true
+        }
+      },
+      {
+        "project_id": "noise-translator",
+        "pass_count": 4,
+        "total": 4,
+        "model": "claude-sonnet-5",
+        "prompt_hash": "146b04467546",
+        "cases": {
+          "noise-dryer-thump": true,
+          "noise-car-whine": true,
+          "noise-furnace-rattle": true,
+          "noise-clipped-recording": true
+        }
+      }
+    ]
+  },
+  {
+    "run_at": "2026-10-06T16:21:32.541Z",
     "trigger": "schedule",
     "overall_pass_rate": 1,
     "suites": [
