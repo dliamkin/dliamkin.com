@@ -5,8 +5,16 @@
     <link>https://dliamkin.com/projects/tos-watch</link>
     <description>Automated nightly monitoring of terms-of-service and policy documents. Entries describe detected changes in neutral, plain English. Not legal advice; not affiliated with any monitored service.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 06 Oct 2026 16:51:25 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 14:55:00 GMT</lastBuildDate>
     <atom:link href="https://dliamkin.com/tos-watch/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Google · Privacy Policy - change detected 2026-10-16</title>
+      <link>https://dliamkin.com/projects/tos-watch</link>
+      <guid isPermaLink="false">google/privacy-policy/2026-10-16</guid>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Google's Privacy Policy was updated to describe new cross-service data sharing options, including a feature called Personal Intelligence, that let data from services like Gmail, Drive, and Photos be used by other services such as Search or Gemini to personalize content and, in some cases, ads. The previous blanket statement that Drive, Gmail, and Photos content is never used for ad personalization was qualified with an opt-in exception.&lt;/summary&gt;
+ (4 changes detected by automated comparison - see the full entry for excerpts and details.)</description>
+    </item>
     <item>
       <title>GitHub · General Privacy Statement - change detected 2026-10-06</title>
       <link>https://dliamkin.com/projects/tos-watch</link>
