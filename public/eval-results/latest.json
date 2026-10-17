@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-10-16T14:22:29.104Z",
+  "run_at": "2026-10-17T13:16:43.546Z",
   "trigger": "schedule",
   "suites": [
     {
@@ -17,13 +17,13 @@
               "name": "extracts lisinopril 20 mg daily, active",
               "passed": true,
               "expected": "lisinopril 20 mg daily [active]",
-              "actual": "lisinopril 20 mg daily [active]"
+              "actual": "Lisinopril 20 mg daily [active]"
             },
             {
               "name": "extracts metformin 500 mg BID, active",
               "passed": true,
               "expected": "metformin 500 mg BID [active]",
-              "actual": "metformin 500 mg BID [active]"
+              "actual": "Metformin 500 mg BID [active]"
             },
             {
               "name": "allergies is empty (none mentioned in the note)",
@@ -41,10 +41,10 @@
               "name": "lipid panel action captured (plan or follow-ups)",
               "passed": true,
               "expected": "contains \"lipid\"",
-              "actual": "\"Continue current medications (lisinopril 20 mg daily and metformin 500 mg BID) ; Order monofilament test ; Discussed diet improvements ; Patient to schedule lipid panel within 2 weeks ; Return to clinic in 3 months, sooner if foot symptoms worsen ; Return to clinic ; Schedule lipid panel\""
+              "actual": "\"Continue current medications (lisinopril 20 mg daily and metformin 500 mg BID) ; Order monofilament test ; Discussed diet wins ; Return to clinic ; Schedule lipid panel\""
             }
           ],
-          "duration_ms": 20409,
+          "duration_ms": 6160,
           "error": null
         },
         {
@@ -80,22 +80,22 @@
               "name": "red flags present (note explicitly educates on them)",
               "passed": true,
               "expected": "at least one entry",
-              "actual": "[\"worst headache of life\",\"focal neurologic deficits\",\"fever with stiff neck\"]"
+              "actual": "[\"Worst headache of life\",\"Focal neurological deficits\",\"Fever with stiff neck\"]"
             }
           ],
-          "duration_ms": 21816,
+          "duration_ms": 6421,
           "error": null
         },
         {
           "case_id": "note-urgentcare-ankle",
           "description": "Bundled urgent-care sample: new ibuprofen prescription with dose, return precautions not lost in extraction",
-          "passed": true,
+          "passed": false,
           "checks": [
             {
               "name": "extracts ibuprofen 600 mg, new or active",
               "passed": true,
               "expected": "ibuprofen 600 mg TID [new]",
-              "actual": "ibuprofen 600 mg three times daily [new]"
+              "actual": "ibuprofen 600mg three times daily [new]"
             },
             {
               "name": "heart rate 80 captured",
@@ -105,9 +105,9 @@
             },
             {
               "name": "return precautions captured (red flags or plan)",
-              "passed": true,
+              "passed": false,
               "expected": "contains \"bear weight\"",
-              "actual": "\"Inability to bear weight ; Numbness ; Worsening swelling ; RICE protocol (Rest, Ice, Compression, Elevation) ; Air stirrup brace dispensed ; Ibuprofen 600 mg three times daily with food for 5 days ; Crutches as needed for first 48 hours ; Work note provided for 2 days ; Follow up with PCP if not improving\""
+              "actual": "\"RICE protocol (rest, ice, compression, elevation) ; Air stirrup brace dispensed ; Ibuprofen 600mg three times daily with food for 5 days ; Crutches as needed for first 48 hours ; Work note provided for 2 days ; Follow up with PCP if not improving\""
             },
             {
               "name": "PCP follow-up captured",
@@ -116,7 +116,7 @@
               "actual": "Follow up with PCP if not improving (1 week)"
             }
           ],
-          "duration_ms": 7304,
+          "duration_ms": 6042,
           "error": null
         },
         {
@@ -128,7 +128,7 @@
               "name": "atorvastatin extracted at the NEW dose (40 mg nightly)",
               "passed": true,
               "expected": "atorvastatin 40 mg nightly",
-              "actual": "atorvastatin 40 mg nightly [new]"
+              "actual": "Atorvastatin 40mg nightly [new]"
             },
             {
               "name": "no active atorvastatin left at the old 20 mg dose",
@@ -140,7 +140,7 @@
               "name": "amlodipine 5 mg daily unchanged, active",
               "passed": true,
               "expected": "amlodipine 5 mg daily [active]",
-              "actual": "amlodipine 5 mg daily [active]"
+              "actual": "Amlodipine 5mg daily [active]"
             },
             {
               "name": "blood pressure 126/78 captured",
@@ -149,7 +149,7 @@
               "actual": "\"126/78\""
             }
           ],
-          "duration_ms": 6036,
+          "duration_ms": 5996,
           "error": null
         },
         {
@@ -176,7 +176,7 @@
               "actual": "Losartan 50mg daily [active]"
             }
           ],
-          "duration_ms": 5864,
+          "duration_ms": 6193,
           "error": null
         },
         {
@@ -197,7 +197,7 @@
               "actual": "omeprazole 20mg daily [active]"
             }
           ],
-          "duration_ms": 3746,
+          "duration_ms": 5301,
           "error": null
         },
         {
@@ -209,22 +209,22 @@
               "name": "red flags present (note explicitly flags urgent ED precautions)",
               "passed": true,
               "expected": "at least one entry",
-              "actual": "[\"Possible unstable angina\",\"Patient instructed to go to ED immediately if pain occurs at rest, lasts more than 10 minutes, or radiates to the arm or jaw\"]"
+              "actual": "[\"Possible unstable angina - patient instructed to go to ED immediately if pain occurs at rest, lasts more than 10 minutes, or radiates to arm or jaw\"]"
             },
             {
               "name": "red flags reference the cardiac concern",
               "passed": true,
               "expected": "mentions the chest pain / angina concern (matches \"chest\", \"angina\", or \"cardi…\")",
-              "actual": "\"Possible unstable angina ; Patient instructed to go to ED immediately if pain occurs at rest, lasts more than 10 minutes, or radiates to the arm or jaw\""
+              "actual": "\"Possible unstable angina - patient instructed to go to ED immediately if pain occurs at rest, lasts more than 10 minutes, or radiates to arm or jaw\""
             },
             {
               "name": "aspirin 81 mg captured as newly started",
               "passed": true,
               "expected": "aspirin 81 mg daily [new]",
-              "actual": "aspirin 81 mg daily [new]"
+              "actual": "Aspirin 81mg daily [new]"
             }
           ],
-          "duration_ms": 5618,
+          "duration_ms": 5948,
           "error": null
         },
         {
@@ -263,7 +263,7 @@
               "actual": "levothyroxine 88mcg daily on empty stomach [active]"
             }
           ],
-          "duration_ms": 6187,
+          "duration_ms": 6073,
           "error": null
         },
         {
@@ -302,7 +302,7 @@
               "actual": "null"
             }
           ],
-          "duration_ms": 4986,
+          "duration_ms": 4983,
           "error": null
         },
         {
@@ -314,13 +314,13 @@
               "name": "metoprolol dose is not silently guessed as exactly 25 or exactly 50",
               "passed": true,
               "expected": "metoprolol present with dose null or explicitly uncertain (not a single guessed value)",
-              "actual": "Metoprolol 25mg or 50mg (unconfirmed) twice daily [active]"
+              "actual": "Metoprolol 25mg or 50mg (unconfirmed) twice daily [unknown]"
             },
             {
               "name": "the dose ambiguity lands in extraction_notes",
               "passed": true,
               "expected": "contains \"metoprolol\"",
-              "actual": "\"Diuretic not specifically named - patient referred to it as 'water pill' ; Metoprolol dose unconfirmed; patient uncertain between 25mg or 50mg twice daily - pharmacy records pending ; Route of administration not specified for any medications ; Temperature, respiratory rate, oxygen saturation, and weight not recorded ; Patient brought in atorvastatin bottle for confirmation; dose and frequency confirmed from bottle ; Bradycardia (HR 58) noted but not flagged as concerning in assessment\""
+              "actual": "\"Patient is uncertain of metoprolol dose - states either 25mg or 50mg twice daily; requires confirmation from pharmacy records ; Diuretic (water pill) is mentioned but specific agent is unknown ; Pharmacy records are pending and not yet available for verification ; Only atorvastatin 20mg nightly is confirmed from patient's bottle ; Vital signs: HR 58 is relatively low, consistent with beta-blocker use but should be monitored ; Temperature, respiratory rate, oxygen saturation, and weight not documented at this visit\""
             },
             {
               "name": "confirmed atorvastatin 20 mg nightly extracted normally",
@@ -329,11 +329,11 @@
               "actual": "Atorvastatin 20mg nightly [active]"
             }
           ],
-          "duration_ms": 4867,
+          "duration_ms": 6940,
           "error": null
         }
       ],
-      "pass_count": 10,
+      "pass_count": 9,
       "total": 10
     },
     {
@@ -351,49 +351,49 @@
               "name": "finds the rent increase to $1,595 (rent_and_deposits, favors landlord)",
               "passed": true,
               "expected": "rent increase to $1,595",
-              "actual": "\"Rent Increase\" [rent_and_deposits, favors_landlord, high]"
+              "actual": "\"Rent increase\" [rent_and_deposits, favors_landlord, high]"
             },
             {
               "name": "finds the new automatic-renewal clause (term_and_renewal, favors landlord)",
               "passed": true,
               "expected": "automatic renewal added",
-              "actual": "\"Automatic Renewal Clause Added\" [term_and_renewal, favors_landlord, high]"
+              "actual": "\"New automatic renewal clause\" [term_and_renewal, favors_landlord, high]"
             },
             {
               "name": "finds water shifted from landlord to tenant (utilities, favors landlord)",
               "passed": true,
               "expected": "water responsibility shifted to tenant",
-              "actual": "\"Tenant Now Pays for Water\" [utilities, favors_landlord, medium]"
+              "actual": "\"Water utility shifted to tenant\" [utilities, favors_landlord, medium]"
             },
             {
               "name": "finds lawn care shifted to tenant (maintenance, favors landlord)",
               "passed": true,
               "expected": "lawn care shifted to tenant",
-              "actual": "\"Lawn Care Responsibility Shifted to Tenant\" [maintenance_and_repairs, favors_landlord, medium]"
+              "actual": "\"Lawn care responsibility shifted to tenant\" [maintenance_and_repairs, favors_landlord, medium]"
             },
             {
               "name": "finds the guest limit cut from 14 to 7 days (rules_and_use, favors landlord)",
               "passed": true,
               "expected": "guest stay limit halved",
-              "actual": "\"Guest Stay Limit Shortened\" [rules_and_use, favors_landlord, low]"
+              "actual": "\"Guest stay limit shortened\" [rules_and_use, favors_landlord, low]"
             },
             {
               "name": "finds notice to vacate extended 30→60 days (favors landlord)",
               "passed": true,
               "expected": "notice to vacate 30 → 60 days",
-              "actual": "\"Automatic Renewal Clause Added\" [term_and_renewal, favors_landlord, high]"
+              "actual": "\"New automatic renewal clause\" [term_and_renewal, favors_landlord, high]"
             },
             {
               "name": "finds the new monthly pet fee (fees)",
               "passed": true,
               "expected": "new $35/month pet fee",
-              "actual": "\"New Pet Fee Added\" [fees, unclear, medium]"
+              "actual": "\"New monthly pet fee\" [fees, unclear, medium]"
             },
             {
               "name": "finds the new early-termination fee (favors landlord)",
               "passed": true,
               "expected": "new early-termination fee of two months' rent",
-              "actual": "\"Early Termination Fee Added\" [termination, favors_landlord, high]"
+              "actual": "\"New early termination fee\" [termination, favors_landlord, high]"
             },
             {
               "name": "no invented changes (8 planted, ≤ 9 reported)",
@@ -402,7 +402,7 @@
               "actual": "9 reported changes"
             }
           ],
-          "duration_ms": 30074,
+          "duration_ms": 27451,
           "error": null
         },
         {
@@ -414,19 +414,19 @@
               "name": "finds the fixed-term → month-to-month conversion (term_and_renewal)",
               "passed": true,
               "expected": "conversion to month-to-month",
-              "actual": "\"Fixed 12-month term converted to month-to-month tenancy\" [term_and_renewal, unclear, high]"
+              "actual": "\"Fixed 12-month term replaced with automatically renewing month-to-month tenancy\" [term_and_renewal, unclear, high]"
             },
             {
               "name": "finds the $50 month-to-month premium (favors landlord)",
               "passed": true,
               "expected": "new $50/month premium",
-              "actual": "\"Monthly rent increased via new $50 month-to-month premium\" [rent_and_deposits, favors_landlord, high]"
+              "actual": "\"New $50/month premium added to rent for month-to-month flexibility\" [rent_and_deposits, favors_landlord, high]"
             },
             {
               "name": "BIAS CHECK: late-fee grace 3→5 days is favors_tenant",
               "passed": true,
               "expected": "late-fee grace period lengthened, judged favors_tenant",
-              "actual": "\"Grace period before late fee extended\" [fees, favors_tenant, low]"
+              "actual": "\"Grace period for late rent extended\" [fees, favors_tenant, low]"
             },
             {
               "name": "BIAS CHECK: deposit return 21→14 days is favors_tenant",
@@ -438,13 +438,13 @@
               "name": "finds the lease-break penalty removal (favors_tenant, or unclear when merged with the landlord's new termination right)",
               "passed": true,
               "expected": "lease-break penalty removed (favors_tenant alone, or unclear when merged)",
-              "actual": "\"Either party can now terminate with 30 days' notice and no penalty\" [termination, unclear, high]"
+              "actual": "\"Lease-break penalty eliminated\" [termination, favors_tenant, high]"
             },
             {
               "name": "finds the landlord's new right to terminate at will (favors landlord)",
               "passed": true,
               "expected": "landlord can now terminate with 30 days' notice",
-              "actual": "\"Fixed 12-month term converted to month-to-month tenancy\" [term_and_renewal, unclear, high]"
+              "actual": "\"Fixed 12-month term replaced with automatically renewing month-to-month tenancy\" [term_and_renewal, unclear, high]"
             },
             {
               "name": "finds entry notice cut 48→24 hours (entry_and_privacy, favors landlord)",
@@ -462,10 +462,10 @@
               "name": "no invented changes (8 planted counting the termination rework as two, ≤ 9 reported)",
               "passed": true,
               "expected": "at most 9 reported changes",
-              "actual": "7 reported changes"
+              "actual": "8 reported changes"
             }
           ],
-          "duration_ms": 26737,
+          "duration_ms": 24091,
           "error": null
         },
         {
@@ -477,7 +477,7 @@
               "name": "finds the late fee increase to $75 buried in the rewording (favors landlord)",
               "passed": true,
               "expected": "late fee $50 → $75",
-              "actual": "\"Late Fee Increased from $50 to $75\" [fees, favors_landlord, medium]"
+              "actual": "\"Late fee increased from $50 to $75\" [fees, favors_landlord, high]"
             },
             {
               "name": "does not report the identically-meaning maintenance rewording as substantive",
@@ -492,7 +492,7 @@
               "actual": "2 reported changes"
             }
           ],
-          "duration_ms": 8202,
+          "duration_ms": 8364,
           "error": null
         }
       ],
@@ -526,7 +526,7 @@
               "name": "maps the sign-in action to Button",
               "passed": true,
               "expected": "a mapping to Button",
-              "actual": "Forgot password link → Button with link appearance or RouterLink"
+              "actual": "'Sign in' button (primary blue) → Button"
             },
             {
               "name": "scaffold uses an input component",
@@ -541,7 +541,7 @@
               "actual": "tag present in scaffold"
             }
           ],
-          "duration_ms": 29132,
+          "duration_ms": 20240,
           "error": null
         },
         {
@@ -559,13 +559,13 @@
               "name": "maps the data table to DataTable",
               "passed": true,
               "expected": "a mapping to DataTable",
-              "actual": "Top Pages Table with Columns (Page, Views, Status) → DataTable"
+              "actual": "Top pages table with columns for PAGE, VIEWS, and STATUS → DataTable"
             },
             {
               "name": "maps the chart to Chart",
               "passed": true,
               "expected": "a mapping to Chart",
-              "actual": "Weekly Sessions Chart → Chart"
+              "actual": "Weekly sessions bar chart with days of week and session counts → Chart"
             },
             {
               "name": "scaffold uses DataTable",
@@ -574,7 +574,7 @@
               "actual": "tag present in scaffold"
             }
           ],
-          "duration_ms": 31542,
+          "duration_ms": 25135,
           "error": null
         },
         {
@@ -592,19 +592,19 @@
               "name": "maps the plan tiers to Card",
               "passed": true,
               "expected": "a mapping to Card",
-              "actual": "Pricing card container (Starter, Growth, Scale) → Card"
+              "actual": "Pricing plan cards (Starter, Growth, Scale) → Card"
             },
             {
               "name": "maps the CTAs to Button",
               "passed": true,
               "expected": "a mapping to Button",
-              "actual": "'Get started', 'Start free trial', 'Talk to sales' buttons → Button"
+              "actual": "Call-to-action buttons (Get started, Start free trial, Talk to sales) → Button"
             },
             {
               "name": "maps the top navigation to Menubar or Toolbar",
               "passed": true,
               "expected": "a mapping to Menubar or Toolbar",
-              "actual": "Header with logo and navigation menu (Product, Docs, Pricing, Blog) and Start free button → Menubar"
+              "actual": "Top navigation bar with logo and menu links → Menubar"
             },
             {
               "name": "scaffold uses Card",
@@ -613,7 +613,7 @@
               "actual": "tag present in scaffold"
             }
           ],
-          "duration_ms": 23968,
+          "duration_ms": 21905,
           "error": null
         },
         {
@@ -631,7 +631,7 @@
               "name": "a polite reason is given",
               "passed": true,
               "expected": "non-null reason explaining the rejection",
-              "actual": "\"This is an illustration of a landscape scene with mountains and water, not a software user interface.\""
+              "actual": "\"This is an illustration or digital artwork depicting a stylized landscape scene with mountains, water, and sky, not a software user interface.\""
             },
             {
               "name": "no component mappings are forced",
@@ -646,7 +646,7 @@
               "actual": "null"
             }
           ],
-          "duration_ms": 2961,
+          "duration_ms": 3058,
           "error": null
         },
         {
@@ -664,7 +664,7 @@
               "name": "a polite reason is given",
               "passed": true,
               "expected": "non-null reason explaining the rejection",
-              "actual": "\"This image is a scanned or digital document page containing literary text, not a software user interface screenshot.\""
+              "actual": "\"This image is a document or manuscript page with primarily text content, not a software user interface screenshot.\""
             },
             {
               "name": "no component mappings are forced",
@@ -679,7 +679,7 @@
               "actual": "null"
             }
           ],
-          "duration_ms": 2958,
+          "duration_ms": 2947,
           "error": null
         }
       ],
@@ -701,19 +701,19 @@
               "name": "HEADLINE: non-renewal notice deadline computed to the day (2027-08-31 minus 60 days = 2027-07-02)",
               "passed": true,
               "expected": "non-renewal notice deadline on 2027-07-02, basis computed",
-              "actual": "\"Tenant non-renewal notice deadline\" [notice_window_closes, 2027-07-02, computed]"
+              "actual": "\"Lease non-renewal notice deadline\" [notice_window_closes, 2027-07-02, computed]"
             },
             {
               "name": "move-out inspection extracted as stated 2027-09-01",
               "passed": true,
               "expected": "move-out inspection on 2027-09-01, basis stated",
-              "actual": "\"Move-out inspection\" [deadline, 2027-09-01, stated]"
+              "actual": "\"Move-out inspection scheduled\" [required_action, 2027-09-01, stated]"
             },
             {
               "name": "rent is one recurring monthly event on the 1st, not expanded",
               "passed": true,
               "expected": "1-2 rent events, at least one carrying a recurrence rule (not expanded instances)",
-              "actual": "\"Monthly rent due\" [payment, 2026-09-01, computed]"
+              "actual": "\"Monthly rent payment due\" [payment, 2026-09-01, computed]"
             },
             {
               "name": "FABRICATION GUARD: the anniversary-based renewal offer is unresolved with date null",
@@ -734,7 +734,7 @@
               "actual": "none found"
             }
           ],
-          "duration_ms": 25866,
+          "duration_ms": 19711,
           "error": null
         },
         {
@@ -773,7 +773,7 @@
               "actual": "none found"
             }
           ],
-          "duration_ms": 20874,
+          "duration_ms": 14326,
           "error": null
         },
         {
@@ -785,7 +785,7 @@
               "name": "policy expiration extracted as stated 2027-01-14",
               "passed": true,
               "expected": "policy expiration on 2027-01-14, basis stated",
-              "actual": "\"Policy expiration / automatic renewal\" [renewal_or_expiration, 2027-01-14, stated]"
+              "actual": "\"Policy expiration / automatic renewal date\" [renewal_or_expiration, 2027-01-14, stated]"
             },
             {
               "name": "HEADLINE: cancellation notice computed across the year boundary (2027-01-14 minus 30 days = 2026-12-15)",
@@ -803,7 +803,7 @@
               "name": "renewal offer mail date extracted as stated 2026-12-01",
               "passed": true,
               "expected": "renewal offer mailed on 2026-12-01, basis stated",
-              "actual": "\"Renewal offer mailing deadline\" [renewal_or_expiration, 2026-12-01, stated]"
+              "actual": "\"Renewal offer mailing deadline\" [deadline, 2026-12-01, stated]"
             },
             {
               "name": "every source excerpt appears verbatim in the summary",
@@ -812,158 +812,51 @@
               "actual": "none found"
             }
           ],
-          "duration_ms": 13904,
+          "duration_ms": 12928,
           "error": null
         },
         {
           "case_id": "paperwork-gym-contract",
           "description": "Gym contract - cancellation deadline computed 45 days before term end across February (2027-03-01 minus 45 days = 2027-01-15), monthly dues on the 5th, yearly maintenance fee",
-          "passed": true,
-          "checks": [
-            {
-              "name": "HEADLINE: cancellation notice computed across short-February (2027-03-01 minus 45 days = 2027-01-15)",
-              "passed": true,
-              "expected": "cancellation notice deadline on 2027-01-15, basis computed",
-              "actual": "\"Deadline to submit cancellation notice to avoid renewal past initial term\" [deadline, 2027-01-15, computed]"
-            },
-            {
-              "name": "monthly dues recur on the 5th",
-              "passed": true,
-              "expected": "dues with monthly recurrence on day 5",
-              "actual": "\"Monthly membership dues draft\" [payment, 2026-07-05, computed]"
-            },
-            {
-              "name": "annual maintenance fee is a yearly recurrence",
-              "passed": true,
-              "expected": "maintenance fee with yearly recurrence",
-              "actual": "\"Annual facility maintenance fee draft\" [payment, 2026-10-01, computed]"
-            },
-            {
-              "name": "every source excerpt appears verbatim in the contract",
-              "passed": true,
-              "expected": "no entry whose source_excerpt does not appear verbatim in the document",
-              "actual": "none found"
-            }
-          ],
-          "duration_ms": 14302,
-          "error": null
+          "passed": false,
+          "checks": [],
+          "duration_ms": 10409,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cg7sZJCgaVFnEaPnj9noc\"}"
         },
         {
           "case_id": "paperwork-invoice-net30",
           "description": "Invoice with net-30 terms from January 31, 2028 - leap-year arithmetic (2028-01-31 plus 30 days = 2028-03-01) plus an early-payment discount window",
-          "passed": true,
-          "checks": [
-            {
-              "name": "HEADLINE: payment due computed across leap-February (2028-01-31 plus 30 days = 2028-03-01)",
-              "passed": true,
-              "expected": "payment due on 2028-03-01, basis computed",
-              "actual": "\"Invoice payment due\" [payment, 2028-03-01, computed]"
-            },
-            {
-              "name": "early-payment discount window computed (2028-01-31 plus 10 days = 2028-02-10)",
-              "passed": true,
-              "expected": "discount deadline on 2028-02-10, basis computed",
-              "actual": "\"Early payment discount window closes\" [notice_window_closes, 2028-02-10, computed]"
-            },
-            {
-              "name": "every source excerpt appears verbatim in the invoice",
-              "passed": true,
-              "expected": "no entry whose source_excerpt does not appear verbatim in the document",
-              "actual": "none found"
-            }
-          ],
-          "duration_ms": 8105,
-          "error": null
+          "passed": false,
+          "checks": [],
+          "duration_ms": 275,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cg7sZtaQg5TpYBJ8SwiH4\"}"
         },
         {
           "case_id": "paperwork-benefits-unresolvable",
           "description": "Benefits notice whose deadlines all hinge on a hire date the document never states - everything datable must come back unresolved, never guessed",
-          "passed": true,
-          "checks": [
-            {
-              "name": "health enrollment (60 days after hire) is unresolved with date null",
-              "passed": true,
-              "expected": "health enrollment deadline unresolved, date null",
-              "actual": "\"Health plan enrollment deadline\" [deadline, null, unresolved]"
-            },
-            {
-              "name": "the unresolved event carries a structured resolution (anchor + offset) for the client-side resolve flow",
-              "passed": true,
-              "expected": "an unresolved event with resolution naming the hire date and a 60- or 90-day offset",
-              "actual": "\"Health plan enrollment deadline\" [deadline, null, unresolved]"
-            },
-            {
-              "name": "FABRICATION GUARD: no unresolved event carries a date",
-              "passed": true,
-              "expected": "no entry with date_basis unresolved but a non-null date (a fabricated date)",
-              "actual": "none found"
-            },
-            {
-              "name": "every source excerpt appears verbatim in the notice",
-              "passed": true,
-              "expected": "no entry whose source_excerpt does not appear verbatim in the document",
-              "actual": "none found"
-            }
-          ],
-          "duration_ms": 8061,
-          "error": null
+          "passed": false,
+          "checks": [],
+          "duration_ms": 139,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cg7sZwsbTWq4uEfaaG1un\"}"
         },
         {
           "case_id": "paperwork-jury-summons",
           "description": "Jury summons with only stated dates - extraction restraint: both dates exact, nothing invented",
-          "passed": true,
-          "checks": [
-            {
-              "name": "report date extracted as stated 2026-09-14",
-              "passed": true,
-              "expected": "jury report date on 2026-09-14, basis stated",
-              "actual": "\"Report for jury service\" [required_action, 2026-09-14, stated]"
-            },
-            {
-              "name": "confirmation deadline extracted as stated 2026-09-07",
-              "passed": true,
-              "expected": "confirmation deadline on 2026-09-07, basis stated",
-              "actual": "\"Confirm jury service attendance\" [deadline, 2026-09-07, stated]"
-            },
-            {
-              "name": "no invented dated events (2 planted dates, ≤ 3 events)",
-              "passed": true,
-              "expected": "at most 3 events",
-              "actual": "3 events: \"Confirm jury service attendance\" [deadline, 2026-09-07, stated] | \"Report for jury service\" [required_action, 2026-09-14, stated] | \"Deadline to request jury service postponement\" [notice_window_closes, 2026-09-07, stated]"
-            },
-            {
-              "name": "every source excerpt appears verbatim in the summons",
-              "passed": true,
-              "expected": "no entry whose source_excerpt does not appear verbatim in the document",
-              "actual": "none found"
-            }
-          ],
-          "duration_ms": 6664,
-          "error": null
+          "passed": false,
+          "checks": [],
+          "duration_ms": 136,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cg7sZzb4N4z5JRkQyU3hq\"}"
         },
         {
           "case_id": "paperwork-not-a-document",
           "description": "A soup recipe - must be rejected as not an obligation document, with no events",
-          "passed": true,
-          "checks": [
-            {
-              "name": "is_obligation_document is false",
-              "passed": true,
-              "expected": "false",
-              "actual": "false"
-            },
-            {
-              "name": "no events extracted",
-              "passed": true,
-              "expected": "0 events",
-              "actual": "0 events"
-            }
-          ],
-          "duration_ms": 2556,
-          "error": null
+          "passed": false,
+          "checks": [],
+          "duration_ms": 138,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cg7sa3L1KrrJj8xkeicvB\"}"
         }
       ],
-      "pass_count": 8,
+      "pass_count": 3,
       "total": 8
     },
     {
@@ -975,215 +868,53 @@
         {
           "case_id": "planner-legacy-vue-stack",
           "description": "A Vue 2-era stack - deprecated request, 2-majors-behind vue-router, patch-behind lodash, and peer conflicts pointing at vue: tiers, alerts, and sequencing all at once",
-          "passed": true,
-          "checks": [
-            {
-              "name": "HEADLINE: no invented versions (post-validation stripped nothing)",
-              "passed": true,
-              "expected": "validation_warnings empty (no invented packages or versions)",
-              "actual": "empty"
-            },
-            {
-              "name": "deprecated request is tiered breaking_likely",
-              "passed": true,
-              "expected": "request tiered breaking_likely",
-              "actual": "request tiered breaking_likely"
-            },
-            {
-              "name": "request appears in deprecated_alerts",
-              "passed": true,
-              "expected": "an alert naming request",
-              "actual": "request@2.88.2 is deprecated and unmaintained. No updates have been released since 2018. Recommend replacing with axios (promise-based, widely maintained), node-fetch (lightweight, fetch-compatible), or undici (Node.js native, high-performance). Update all callsites and test thoroughly."
-            },
-            {
-              "name": "2-majors-behind vue-router is tiered breaking_likely",
-              "passed": true,
-              "expected": "vue-router tiered breaking_likely",
-              "actual": "vue-router tiered breaking_likely"
-            },
-            {
-              "name": "patch-behind lodash is tiered safe_now",
-              "passed": true,
-              "expected": "lodash tiered safe_now",
-              "actual": "lodash tiered safe_now"
-            },
-            {
-              "name": "peer conflicts yield sequencing guidance",
-              "passed": true,
-              "expected": "at least one entry",
-              "actual": "[\"vuex@4.1.0 requires vue ^3.2.0: resolved by upgrading vue to 3.5.39 in Wave 1, shared with vuex in the same wave.\",\"vue-router@5.1.0 requires vue ^3.5.34: resolved by upgrading vue to 3.5.39 in Wave 1, shared with vue-router in the same wave.\"]"
-            },
-            {
-              "name": "vuex is never sequenced before vue (its peer requirement)",
-              "passed": true,
-              "expected": "vue (wave n) upgraded no later than vuex (wave ≥ n)",
-              "actual": "vue: wave 1, vuex: wave 1"
-            },
-            {
-              "name": "current typescript is in already_current, not a wave",
-              "passed": true,
-              "expected": "typescript in already_current and in no wave",
-              "actual": "already_current: [typescript], wave: none"
-            }
-          ],
-          "duration_ms": 20796,
-          "error": null
+          "passed": false,
+          "checks": [],
+          "duration_ms": 136,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cg7sa6pbhvrb3YEarkMdd\"}"
         },
         {
           "case_id": "planner-coupled-ecosystem",
           "description": "vue + vue-router + vuex all major-behind - the tightly coupled framework stack must migrate as one wave",
-          "passed": true,
-          "checks": [
-            {
-              "name": "HEADLINE: no invented versions",
-              "passed": true,
-              "expected": "validation_warnings empty (no invented packages or versions)",
-              "actual": "empty"
-            },
-            {
-              "name": "vue, vue-router, and vuex share a wave",
-              "passed": true,
-              "expected": "vue, vue-router, vuex grouped in the same wave",
-              "actual": "vue: wave 1, vue-router: wave 1, vuex: wave 1"
-            },
-            {
-              "name": "current axios stays out of the waves",
-              "passed": true,
-              "expected": "axios in no wave",
-              "actual": "axios wave: none"
-            }
-          ],
-          "duration_ms": 22715,
-          "error": null
+          "passed": false,
+          "checks": [],
+          "duration_ms": 129,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cg7sa6p7KmKeww66Fbozk\"}"
         },
         {
           "case_id": "planner-quiet-current",
           "description": "A fully current manifest - the honest quiet case: zero waves, zero plans, everything in already_current, no padding",
-          "passed": true,
-          "checks": [
-            {
-              "name": "zero waves",
-              "passed": true,
-              "expected": "0 waves",
-              "actual": "0 waves: "
-            },
-            {
-              "name": "zero package plans",
-              "passed": true,
-              "expected": "0 plans",
-              "actual": "0 plans"
-            },
-            {
-              "name": "all four packages listed already_current",
-              "passed": true,
-              "expected": "express, cors, helmet, zod all in already_current",
-              "actual": "[express, cors, helmet, zod]"
-            },
-            {
-              "name": "no phantom deprecation or conflict guidance",
-              "passed": true,
-              "expected": "empty array",
-              "actual": "empty array"
-            }
-          ],
-          "duration_ms": 4149,
-          "error": null
+          "passed": false,
+          "checks": [],
+          "duration_ms": 135,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cg7sa9WqKZnGs1ZjWKKeQ\"}"
         },
         {
           "case_id": "planner-patch-utilities",
           "description": "Two small bumps - both safe_now, groupable in one quick wave",
-          "passed": true,
-          "checks": [
-            {
-              "name": "HEADLINE: no invented versions",
-              "passed": true,
-              "expected": "validation_warnings empty (no invented packages or versions)",
-              "actual": "empty"
-            },
-            {
-              "name": "patch-behind lodash is safe_now",
-              "passed": true,
-              "expected": "lodash tiered safe_now",
-              "actual": "lodash tiered safe_now"
-            },
-            {
-              "name": "minor-behind debug is safe_now or needs_testing (never breaking)",
-              "passed": true,
-              "expected": "debug tiered safe_now or needs_testing",
-              "actual": "debug tiered safe_now"
-            },
-            {
-              "name": "nothing is tiered breaking_likely",
-              "passed": true,
-              "expected": "no breaking_likely tiers for patch/minor bumps",
-              "actual": "lodash→4.17.21 [safe_now] | debug→4.4.0 [safe_now]"
-            }
-          ],
-          "duration_ms": 6274,
-          "error": null
+          "passed": false,
+          "checks": [],
+          "duration_ms": 134,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cg7sa9YK8aLSDpvz34WyU\"}"
         },
         {
           "case_id": "planner-deprecated-package",
           "description": "A deprecated (but nearly current) moment - deprecation must dominate the tier and produce an alert",
-          "passed": true,
-          "checks": [
-            {
-              "name": "HEADLINE: no invented versions",
-              "passed": true,
-              "expected": "validation_warnings empty (no invented packages or versions)",
-              "actual": "empty"
-            },
-            {
-              "name": "deprecated moment is tiered breaking_likely despite being only a minor behind",
-              "passed": true,
-              "expected": "moment tiered breaking_likely",
-              "actual": "moment tiered breaking_likely"
-            },
-            {
-              "name": "moment appears in deprecated_alerts",
-              "passed": true,
-              "expected": "an alert naming moment",
-              "actual": "moment: This package is in maintenance mode and officially deprecated. Upgrade to 2.30.1 if you must stay on moment, but strongly consider migrating to Luxon (modern, immutable), Day.js (lightweight), or date-fns (functional, tree-shakeable). Verify replacement compatibility with your use cases."
-            }
-          ],
-          "duration_ms": 5809,
-          "error": null
+          "passed": false,
+          "checks": [],
+          "duration_ms": 139,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cg7saCFHUkkq7GrLi2FVp\"}"
         },
         {
           "case_id": "planner-react-majors",
           "description": "react + react-dom three majors behind with a lockstep peer requirement, plus an unrelated patch bump",
-          "passed": true,
-          "checks": [
-            {
-              "name": "HEADLINE: no invented versions",
-              "passed": true,
-              "expected": "validation_warnings empty (no invented packages or versions)",
-              "actual": "empty"
-            },
-            {
-              "name": "3-majors-behind react is breaking_likely",
-              "passed": true,
-              "expected": "react tiered breaking_likely",
-              "actual": "react tiered breaking_likely"
-            },
-            {
-              "name": "react-dom is never sequenced before react",
-              "passed": true,
-              "expected": "react (wave n) upgraded no later than react-dom (wave ≥ n)",
-              "actual": "react: wave 1, react-dom: wave 1"
-            },
-            {
-              "name": "patch-behind classnames is safe_now",
-              "passed": true,
-              "expected": "classnames tiered safe_now",
-              "actual": "classnames tiered safe_now"
-            }
-          ],
-          "duration_ms": 11942,
-          "error": null
+          "passed": false,
+          "checks": [],
+          "duration_ms": 131,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cg7saCFXU8eWiFcUqkyDp\"}"
         }
       ],
-      "pass_count": 6,
+      "pass_count": 0,
       "total": 6
     },
     {
@@ -1195,212 +926,45 @@
         {
           "case_id": "tos-arbitration-added",
           "description": "Dispute-resolution section replaced: courts → binding individual arbitration with class-action waiver. Must be found as substantive, arbitration_and_disputes, favors_provider.",
-          "passed": true,
-          "checks": [
-            {
-              "name": "gated substantive",
-              "passed": true,
-              "expected": "true",
-              "actual": "true"
-            },
-            {
-              "name": "finds the arbitration clause (arbitration_and_disputes, favors_provider)",
-              "passed": true,
-              "expected": "binding arbitration + class-action waiver added",
-              "actual": "\"Mandatory arbitration and class action waiver replace court litigation\" [arbitration_and_disputes, favors_provider, high]"
-            },
-            {
-              "name": "no invented changes (1 planted, ≤ 2 reported)",
-              "passed": true,
-              "expected": "at most 2 reported changes",
-              "actual": "1 reported changes"
-            },
-            {
-              "name": "all excerpts within the 25-word cap",
-              "passed": true,
-              "expected": "every excerpt <= 25 words",
-              "actual": "all within cap"
-            },
-            {
-              "name": "excerpts verbatim-contained in fixture text (anti-fabrication)",
-              "passed": true,
-              "expected": "every excerpt appears verbatim in its source fixture text",
-              "actual": "all excerpts contained"
-            },
-            {
-              "name": "zero loaded-language violations",
-              "passed": true,
-              "expected": "zero loaded-language violations",
-              "actual": "clean"
-            }
-          ],
-          "duration_ms": 9082,
-          "error": null
+          "passed": false,
+          "checks": [],
+          "duration_ms": 135,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cg7saExFS6t2rvXSzzfPz\"}"
         },
         {
           "case_id": "tos-data-sharing-expanded",
           "description": "Data sharing expanded from processors-only to affiliates + advertising/analytics partners. Must be privacy_and_data, favors_provider.",
-          "passed": true,
-          "checks": [
-            {
-              "name": "gated substantive",
-              "passed": true,
-              "expected": "true",
-              "actual": "true"
-            },
-            {
-              "name": "finds the data-sharing expansion (privacy_and_data, favors_provider)",
-              "passed": true,
-              "expected": "sharing expanded to advertising/analytics partners",
-              "actual": "\"Expanded sharing of personal information with affiliates and advertising partners\" [privacy_and_data, favors_provider, high]"
-            },
-            {
-              "name": "no invented changes (1-2 planted concepts, ≤ 3 reported)",
-              "passed": true,
-              "expected": "at most 3 reported changes",
-              "actual": "1 reported changes"
-            },
-            {
-              "name": "all excerpts within the 25-word cap",
-              "passed": true,
-              "expected": "every excerpt <= 25 words",
-              "actual": "all within cap"
-            },
-            {
-              "name": "excerpts verbatim-contained in fixture text (anti-fabrication)",
-              "passed": true,
-              "expected": "every excerpt appears verbatim in its source fixture text",
-              "actual": "all excerpts contained"
-            },
-            {
-              "name": "zero loaded-language violations",
-              "passed": true,
-              "expected": "zero loaded-language violations",
-              "actual": "clean"
-            }
-          ],
-          "duration_ms": 9823,
-          "error": null
+          "passed": false,
+          "checks": [],
+          "duration_ms": 134,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cg7saEwm7N6n4dxE9V6NJ\"}"
         },
         {
           "case_id": "tos-refund-window-extended",
           "description": "BIAS CHECK: refund window extended 14 → 30 days - a user-favorable change that must be judged favors_user, not reflexively favors_provider.",
-          "passed": true,
-          "checks": [
-            {
-              "name": "gated substantive",
-              "passed": true,
-              "expected": "true",
-              "actual": "true"
-            },
-            {
-              "name": "BIAS CHECK: refund extension judged favors_user (pricing_and_billing)",
-              "passed": true,
-              "expected": "refund window 14 → 30 days, judged favors_user",
-              "actual": "\"Extended refund request window\" [pricing_and_billing, favors_user, low]"
-            },
-            {
-              "name": "no invented changes (1 planted, ≤ 2 reported)",
-              "passed": true,
-              "expected": "at most 2 reported changes",
-              "actual": "1 reported changes"
-            },
-            {
-              "name": "all excerpts within the 25-word cap",
-              "passed": true,
-              "expected": "every excerpt <= 25 words",
-              "actual": "all within cap"
-            },
-            {
-              "name": "excerpts verbatim-contained in fixture text (anti-fabrication)",
-              "passed": true,
-              "expected": "every excerpt appears verbatim in its source fixture text",
-              "actual": "all excerpts contained"
-            },
-            {
-              "name": "zero loaded-language violations",
-              "passed": true,
-              "expected": "zero loaded-language violations",
-              "actual": "clean"
-            }
-          ],
-          "duration_ms": 4130,
-          "error": null
+          "passed": false,
+          "checks": [],
+          "duration_ms": 150,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cg7saHghiaxZ2xRQfvs9g\"}"
         },
         {
           "case_id": "tos-liability-cap-lowered",
           "description": "Liability cap changed from 12 months of fees to a flat $100. Must be liability, favors_provider.",
-          "passed": true,
-          "checks": [
-            {
-              "name": "gated substantive",
-              "passed": true,
-              "expected": "true",
-              "actual": "true"
-            },
-            {
-              "name": "finds the liability cap change (liability, favors_provider)",
-              "passed": true,
-              "expected": "liability cap: 12 months of fees → $100",
-              "actual": "\"Liability cap reduced to a flat $100\" [liability, favors_provider, high]"
-            },
-            {
-              "name": "no invented changes (1 planted, ≤ 2 reported)",
-              "passed": true,
-              "expected": "at most 2 reported changes",
-              "actual": "1 reported changes"
-            },
-            {
-              "name": "all excerpts within the 25-word cap",
-              "passed": true,
-              "expected": "every excerpt <= 25 words",
-              "actual": "all within cap"
-            },
-            {
-              "name": "excerpts verbatim-contained in fixture text (anti-fabrication)",
-              "passed": true,
-              "expected": "every excerpt appears verbatim in its source fixture text",
-              "actual": "all excerpts contained"
-            },
-            {
-              "name": "zero loaded-language violations",
-              "passed": true,
-              "expected": "zero loaded-language violations",
-              "actual": "clean"
-            }
-          ],
-          "duration_ms": 4536,
-          "error": null
+          "passed": false,
+          "checks": [],
+          "duration_ms": 138,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cg7saHgi9qgGh4AJ9Wo3H\"}"
         },
         {
           "case_id": "tos-cosmetic-only",
           "description": "False-positive restraint: section renumbering plus three identically-meaning rewordings. Must gate substantive: false with zero changes.",
-          "passed": true,
-          "checks": [
-            {
-              "name": "gated NOT substantive (cosmetic changes only)",
-              "passed": true,
-              "expected": "false",
-              "actual": "false"
-            },
-            {
-              "name": "no changes reported for a cosmetic revision",
-              "passed": true,
-              "expected": "at most 0 reported changes",
-              "actual": "0 reported changes"
-            },
-            {
-              "name": "zero loaded-language violations (cosmetic note + summary)",
-              "passed": true,
-              "expected": "zero loaded-language violations",
-              "actual": "clean"
-            }
-          ],
-          "duration_ms": 3508,
-          "error": null
+          "passed": false,
+          "checks": [],
+          "duration_ms": 148,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cg7saLTtvKiPompBX7deZ\"}"
         }
       ],
-      "pass_count": 5,
+      "pass_count": 0,
       "total": 5
     },
     {
@@ -1412,122 +976,29 @@
         {
           "case_id": "oracle-unbounded-test-loop",
           "description": "An unbounded \"fix tests until green\" step must read as the risky one: elevated risk level, high loop risk, and a concrete fix.",
-          "passed": true,
-          "checks": [
-            {
-              "name": "until-green step tiered caution or storm",
-              "passed": true,
-              "expected": "s3 assessed caution or storm",
-              "actual": "s3 assessed caution"
-            },
-            {
-              "name": "until-green loop risk at least 0.4",
-              "passed": true,
-              "expected": "s3 loop risk >= 0.4",
-              "actual": "s3 loop risk 0.50"
-            },
-            {
-              "name": "until-green step carries a suggested fix",
-              "passed": true,
-              "expected": "s3 carries a concrete suggested fix",
-              "actual": "fix: \"Before running full CI, have agent run a fast unit-test subset (Jest with --test...\""
-            },
-            {
-              "name": "recon step not tiered storm",
-              "passed": true,
-              "expected": "s1 assessed clear or caution",
-              "actual": "s1 assessed caution"
-            },
-            {
-              "name": "cost totals internally consistent",
-              "passed": true,
-              "expected": "totals equal to pricing-table math with low <= high <= worst case",
-              "actual": "low=2.5000 high=7.5000 worst=33.2600 (recomputed: 2.5000/7.5000/33.2600)"
-            },
-            {
-              "name": "oracle self-cost and savings multiple reported",
-              "passed": true,
-              "expected": "oracleCostUsd > 0 (from real usage) and savingsMultiple = worst / oracle cost",
-              "actual": "oracleCostUsd=0.00602 savingsMultiple=5520.3"
-            }
-          ],
-          "duration_ms": 17599,
-          "error": null
+          "passed": false,
+          "checks": [],
+          "duration_ms": 147,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cg7saPDLSVEiMk8m2A7zC\"}"
         },
         {
           "case_id": "oracle-bounded-single-step",
           "description": "A small, bounded single-step task must not be dramatized: calm overall risk, no abort, low loop risk.",
-          "passed": true,
-          "checks": [
-            {
-              "name": "overall risk clear or caution",
-              "passed": true,
-              "expected": "overall risk clear or caution",
-              "actual": "overall risk clear"
-            },
-            {
-              "name": "abort not recommended",
-              "passed": true,
-              "expected": "abortRecommended false",
-              "actual": "false"
-            },
-            {
-              "name": "single step loop risk below 0.5",
-              "passed": true,
-              "expected": "s1 loop risk < 0.5",
-              "actual": "s1 loop risk 0.05"
-            },
-            {
-              "name": "forecast headline present",
-              "passed": true,
-              "expected": "a non-trivial one-sentence forecast headline",
-              "actual": "\"Clear skies—straightforward file read and write with minimal retry risk.\""
-            },
-            {
-              "name": "cost totals internally consistent",
-              "passed": true,
-              "expected": "totals equal to pricing-table math with low <= high <= worst case",
-              "actual": "low=0.0021 high=0.0032 worst=0.0076 (recomputed: 0.0021/0.0032/0.0076)"
-            }
-          ],
-          "duration_ms": 9097,
-          "error": null
+          "passed": false,
+          "checks": [],
+          "duration_ms": 144,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cg7saPBr6vC7982YLUajR\"}"
         },
         {
           "case_id": "oracle-freeform-structuring",
           "description": "A freeform prose plan must come back structured: at least 3 inferred steps with unique ids matching the assessments 1:1.",
-          "passed": true,
-          "checks": [
-            {
-              "name": "inferred plan structured 1:1",
-              "passed": true,
-              "expected": ">= 3 inferred steps, unique ids, non-empty descriptions, 1:1 with assessments",
-              "actual": "5 steps: s1, s2, s3, s4, s5"
-            },
-            {
-              "name": "forecast headline present",
-              "passed": true,
-              "expected": "a non-trivial one-sentence forecast headline",
-              "actual": "\"Clear for export and conversion, but high-volume upload and redirect setup hit storm conditions; spot-check provides only minimal coverage.\""
-            },
-            {
-              "name": "cost totals internally consistent",
-              "passed": true,
-              "expected": "totals equal to pricing-table math with low <= high <= worst case",
-              "actual": "low=0.8700 high=2.5200 worst=5.8530 (recomputed: 0.8700/2.5200/5.8530)"
-            },
-            {
-              "name": "oracle self-cost and savings multiple reported",
-              "passed": true,
-              "expected": "oracleCostUsd > 0 (from real usage) and savingsMultiple = worst / oracle cost",
-              "actual": "oracleCostUsd=0.00701 savingsMultiple=834.7"
-            }
-          ],
-          "duration_ms": 12672,
-          "error": null
+          "passed": false,
+          "checks": [],
+          "duration_ms": 137,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cg7saRw48awzyyARgxYNg\"}"
         }
       ],
-      "pass_count": 3,
+      "pass_count": 0,
       "total": 3
     },
     {
@@ -1539,213 +1010,41 @@
         {
           "case_id": "noise-dryer-thump",
           "description": "Synthesized 2.0 Hz thump train over a low noise bed (dryer preset): thump/knock-family characterization, dryer-appropriate questions, measured rate quoted intact.",
-          "passed": true,
-          "checks": [
-            {
-              "name": "characterized in the thump/knock family",
-              "passed": true,
-              "expected": "a descriptor like thumping, knocking, banging, or rhythmic clicking",
-              "actual": "\"rhythmic clicking/ticking\" [high]"
-            },
-            {
-              "name": "best characterization is not a whine or hiss",
-              "passed": true,
-              "expected": "a thump train must not lead with a whine/squeal/hiss descriptor",
-              "actual": "\"rhythmic clicking/ticking\" [high]"
-            },
-            {
-              "name": "summary quotes the measured rate or band",
-              "passed": true,
-              "expected": "summary quotes one of the measured values (2.0, 2, 129, 0.1)",
-              "actual": "quotes \"2\""
-            },
-            {
-              "name": "questions fit a clothes dryer",
-              "passed": true,
-              "expected": "a question about the drum, load, cycle, or venting",
-              "actual": "\"Does the clicking happen only when the drum is turning, or also when the dryer is on but the drum is stationary?\""
-            },
-            {
-              "name": "no diagnosis language anywhere in the output",
-              "passed": true,
-              "expected": "no causal claims or culprit parts in any descriptive field",
-              "actual": "clean"
-            },
-            {
-              "name": "model needed no deny-list strips",
-              "passed": true,
-              "expected": "0 stripped sentences",
-              "actual": "0 stripped sentences"
-            },
-            {
-              "name": "every number in the summary matches a measurement",
-              "passed": true,
-              "expected": "all unit-bearing numbers within rounding of the measured features",
-              "actual": "all match"
-            },
-            {
-              "name": "4-6 likely questions with preparation hints",
-              "passed": true,
-              "expected": "4-6 questions, each with a non-empty how_to_find_out",
-              "actual": "6 questions"
-            }
-          ],
-          "duration_ms": 19480,
-          "error": null
+          "passed": false,
+          "checks": [],
+          "duration_ms": 314,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cg7saUhVc9CjhVvwiw6Sn\"}"
         },
         {
           "case_id": "noise-car-whine",
           "description": "Synthesized steady 3.8 kHz whine over faint rumble (car preset): best characterization is in the whine/tone family - never low rumbling - with car-appropriate questions.",
-          "passed": true,
-          "checks": [
-            {
-              "name": "best characterization is in the whine/tone family",
-              "passed": true,
-              "expected": "first descriptor like high-pitched whine/whistle/tonal hum",
-              "actual": "\"steady high-pitched whine/tone\" [high]"
-            },
-            {
-              "name": "not described as low rumbling",
-              "passed": true,
-              "expected": "a 3.8 kHz tone must not lead with a rumble/thump descriptor",
-              "actual": "\"steady high-pitched whine/tone\" [high]"
-            },
-            {
-              "name": "summary quotes the measured band",
-              "passed": true,
-              "expected": "summary quotes one of the measured values (3790, 3.8)",
-              "actual": "quotes \"3790\""
-            },
-            {
-              "name": "questions fit a car",
-              "passed": true,
-              "expected": "a question about speed, RPM, gear, or driving conditions",
-              "actual": "\"At what speed or RPM does the whine start and how does its pitch or loudness change as speed increases?\""
-            },
-            {
-              "name": "no diagnosis language anywhere in the output",
-              "passed": true,
-              "expected": "no causal claims or culprit parts in any descriptive field",
-              "actual": "clean"
-            },
-            {
-              "name": "model needed no deny-list strips",
-              "passed": true,
-              "expected": "0 stripped sentences",
-              "actual": "0 stripped sentences"
-            },
-            {
-              "name": "every number in the summary matches a measurement",
-              "passed": true,
-              "expected": "all unit-bearing numbers within rounding of the measured features",
-              "actual": "all match"
-            },
-            {
-              "name": "4-6 likely questions with preparation hints",
-              "passed": true,
-              "expected": "4-6 questions, each with a non-empty how_to_find_out",
-              "actual": "5 questions"
-            }
-          ],
-          "duration_ms": 18906,
-          "error": null
+          "passed": false,
+          "checks": [],
+          "duration_ms": 152,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cg7saUkU5eXJmuq4LF4Lb\"}"
         },
         {
           "case_id": "noise-furnace-rattle",
           "description": "Synthesized Poisson-timed mid-band transients (furnace preset, startup only): rattle/click-family characterization that does not claim regularity, furnace-appropriate questions.",
-          "passed": true,
-          "checks": [
-            {
-              "name": "characterized in the rattle/click family",
-              "passed": true,
-              "expected": "a descriptor like rattling, clicking, ticking, or clattering",
-              "actual": "\"sharp clicking or ticking\" [high]"
-            },
-            {
-              "name": "summary does not claim the erratic pattern is regular",
-              "passed": true,
-              "expected": "no regularity claim for an erratic onset train",
-              "actual": "I'm hearing an intermittent clicking or knocking sound from my furnace/HVAC system that only happens at startup. The events occur at an average rate of 2.2 Hz but the spacing is erratic rather than evenly timed - sometimes single clicks, sometimes short clusters of several in quick succession. Each click has a dominant frequency component around 904 Hz with some broadband content extending higher. The overall pitch of the clicks stays steady over the course of the recording. This has been going on since last month."
-            },
-            {
-              "name": "questions fit a furnace/HVAC",
-              "passed": true,
-              "expected": "a question about startup, filters, vents, ducts, or ignition",
-              "actual": "\"Does the clicking occur during blower ramp-up, ignition, or both?\""
-            },
-            {
-              "name": "no diagnosis language anywhere in the output",
-              "passed": true,
-              "expected": "no causal claims or culprit parts in any descriptive field",
-              "actual": "clean"
-            },
-            {
-              "name": "model needed no deny-list strips",
-              "passed": true,
-              "expected": "0 stripped sentences",
-              "actual": "0 stripped sentences"
-            },
-            {
-              "name": "every number in the summary matches a measurement",
-              "passed": true,
-              "expected": "all unit-bearing numbers within rounding of the measured features",
-              "actual": "all match"
-            },
-            {
-              "name": "4-6 likely questions with preparation hints",
-              "passed": true,
-              "expected": "4-6 questions, each with a non-empty how_to_find_out",
-              "actual": "6 questions"
-            }
-          ],
-          "duration_ms": 14966,
-          "error": null
+          "passed": false,
+          "checks": [],
+          "duration_ms": 147,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cg7saXURKVRKenRsdH7Ji\"}"
         },
         {
           "case_id": "noise-clipped-recording",
           "description": "Hard-clipped tone fixture (63% of samples at full scale): the model must flag recording quality via a non-null recording_notes instead of describing with false precision.",
-          "passed": true,
-          "checks": [
-            {
-              "name": "recording_notes is non-null",
-              "passed": true,
-              "expected": "non-null",
-              "actual": "\"The clip captures a short steady 4-second segment with constant tones; it doesn't show how the sound behaves across different phases of a wash cycle (fill, agitate, drain, spin) or at different drum speeds. A longer recording spanning a full cycle, with notes on which phase corresponds to which timestamp, would help clarify whether the frequencies shift with speed.\""
-            },
-            {
-              "name": "no diagnosis language anywhere in the output",
-              "passed": true,
-              "expected": "no causal claims or culprit parts in any descriptive field",
-              "actual": "clean"
-            },
-            {
-              "name": "model needed no deny-list strips",
-              "passed": true,
-              "expected": "0 stripped sentences",
-              "actual": "0 stripped sentences"
-            },
-            {
-              "name": "every number in the summary matches a measurement",
-              "passed": true,
-              "expected": "all unit-bearing numbers within rounding of the measured features",
-              "actual": "all match"
-            },
-            {
-              "name": "4-6 likely questions with preparation hints",
-              "passed": true,
-              "expected": "4-6 questions, each with a non-empty how_to_find_out",
-              "actual": "5 questions"
-            }
-          ],
-          "duration_ms": 13232,
-          "error": null
+          "passed": false,
+          "checks": [],
+          "duration_ms": 140,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cg7saY8NE1TNumADvrQxZ\"}"
         }
       ],
-      "pass_count": 4,
+      "pass_count": 0,
       "total": 4
     }
   ],
-  "overall_pass_rate": 1,
-  "regression_from_previous": false,
-  "regression_detail": null
+  "overall_pass_rate": 0.4545,
+  "regression_from_previous": true,
+  "regression_detail": "note-structurer: 10/10 → 9/10; paperwork-to-calendar: 8/8 → 3/8; upgrade-planner: 6/6 → 0/6; tos-watch: 5/5 → 0/5; dry-run-oracle: 3/3 → 0/3; noise-translator: 4/4 → 0/4"
 }
