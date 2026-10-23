@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-10-22T14:41:41.961Z",
+  "run_at": "2026-10-23T14:28:20.895Z",
   "trigger": "schedule",
   "suites": [
     {
@@ -13,80 +13,80 @@
           "description": "Bundled follow-up sample: two active meds extracted exactly, no invented allergies, vitals and the lipid-panel follow-up captured",
           "passed": false,
           "checks": [],
-          "duration_ms": 396,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT5mvGDu8KqUCnPrE7G\"}"
+          "duration_ms": 325,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKsiv3ayw3nawbsWfVq\"}"
         },
         {
           "case_id": "note-newpatient-headache",
           "description": "Bundled new-patient sample: both allergies with reactions, vitals transcribed exactly, explicitly-educated red flags surfaced",
           "passed": false,
           "checks": [],
-          "duration_ms": 623,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT5msnyQoaVwaoXgQCt\"}"
+          "duration_ms": 308,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKsiwn7ZbkEzbo3U1V5\"}"
         },
         {
           "case_id": "note-urgentcare-ankle",
           "description": "Bundled urgent-care sample: new ibuprofen prescription with dose, return precautions not lost in extraction",
           "passed": false,
           "checks": [],
-          "duration_ms": 141,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT5qJR6P91ZD83iLY2q\"}"
+          "duration_ms": 134,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKsn7n54fHVjG38sfCf\"}"
         },
         {
           "case_id": "note-dose-change",
           "description": "Dose change mid-note: atorvastatin increased 20→40 mg - the extracted dose must be the new one, not the old",
           "passed": false,
           "checks": [],
-          "duration_ms": 149,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT5rHwvyKedB2XuAoBM\"}"
+          "duration_ms": 140,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKsnAWbFWcFdMwdJdbC\"}"
         },
         {
           "case_id": "note-discontinued-med",
           "description": "Discontinued medication: HCTZ stopped for hyponatremia - status must be discontinued, not active",
           "passed": false,
           "checks": [],
-          "duration_ms": 480,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT5t1PHZ1q5q8mkc5YU\"}"
+          "duration_ms": 137,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKsppFu7TZoHYaNCPiq\"}"
         },
         {
           "case_id": "note-no-allergies",
           "description": "Allergies never mentioned: the allergies array must stay empty - not populated with NKDA or invented entries",
           "passed": false,
           "checks": [],
-          "duration_ms": 488,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT5u7rS2NiRCQ9QMMgv\"}"
+          "duration_ms": 130,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKsppFrroc6xhwMa7MG\"}"
         },
         {
           "case_id": "note-explicit-redflags",
           "description": "Explicit urgency in the note: ED precautions for possible unstable angina must appear in red_flags",
           "passed": false,
           "checks": [],
-          "duration_ms": 131,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT5xC9dqxkMpBEZ8zXF\"}"
+          "duration_ms": 134,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKssXyFSmLEvgyEtMzM\"}"
         },
         {
           "case_id": "note-benign-complex-meds",
           "description": "Nothing urgent but four chronic meds: all extracted with doses, and red_flags stays empty - no false alarms",
           "passed": false,
           "checks": [],
-          "duration_ms": 138,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT5yJsUeCnzcuqbwn3x\"}"
+          "duration_ms": 133,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKssYDoRPdEfKw7N8QT\"}"
         },
         {
           "case_id": "note-sparse-vitals",
           "description": "Telehealth visit with only a reported home BP: every unmeasured vital must be null, not invented",
           "passed": false,
           "checks": [],
-          "duration_ms": 158,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT5zwMB4ifvvNSYtEjE\"}"
+          "duration_ms": 134,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKsvHB1gcHYCBNHGC2i\"}"
         },
         {
           "case_id": "note-ambiguous-dose",
           "description": "Ambiguous dose (25 vs 50 mg, records pending): must land in extraction_notes and must not be resolved by guessing",
           "passed": false,
           "checks": [],
-          "duration_ms": 210,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT628nUmXNS6n8NA14x\"}"
+          "duration_ms": 119,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKsvFRzqKeaXjyog7Gb\"}"
         }
       ],
       "pass_count": 0,
@@ -103,24 +103,24 @@
           "description": "Bundled renewal pair - 8 planted landlord-favoring changes: rent +$145, auto-renewal added, water shifted to tenant, lawn care shifted to tenant, guest limit halved, notice 30→60 days, new pet fee, new early-termination fee",
           "passed": false,
           "checks": [],
-          "duration_ms": 169,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT65D5MGSvk3tnLfRYf\"}"
+          "duration_ms": 172,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKsy37j4G3a4pRwxmyN\"}"
         },
         {
           "case_id": "lease-month-to-month",
           "description": "Bundled month-to-month pair - 7 planted concepts including two tenant-favorable changes that must not be mislabeled: term conversion, +$50 premium, late grace 3→5 days (favors tenant), deposit return 21→14 days (favors tenant), termination rework, entry notice 48→24h, new insurance requirement",
           "passed": false,
           "checks": [],
-          "duration_ms": 134,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT656PFG89996K2D2vi\"}"
+          "duration_ms": 150,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKsy7Koz88qbg3PEBZa\"}"
         },
         {
           "case_id": "lease-late-fee-rewording",
           "description": "False-positive restraint pair - the maintenance clause is reworded with identical meaning (must NOT be reported); the late fee quietly rises $50→$75 inside similar rewording (must be reported)",
           "passed": false,
           "checks": [],
-          "duration_ms": 135,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT67pqXjQKKDXw24Kpm\"}"
+          "duration_ms": 140,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKt1nZgTnL5Vs7L7NME\"}"
         }
       ],
       "pass_count": 0,
@@ -137,40 +137,40 @@
           "description": "Generated login mock: recognized as UI; the form maps to input + button components and the scaffold uses them",
           "passed": false,
           "checks": [],
-          "duration_ms": 388,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6Ac28EaUzgGkoTRfV\"}"
+          "duration_ms": 135,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKt4ZFXC1PVBQz1Xd8H\"}"
         },
         {
           "case_id": "shot-dashboard",
           "description": "Generated analytics-dashboard mock: recognized as UI; the table and chart map to DataTable and Chart",
           "passed": false,
           "checks": [],
-          "duration_ms": 142,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6AbH1uzD6sAExQp5m\"}"
+          "duration_ms": 184,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKt4dDgC6hbFr9cf85i\"}"
         },
         {
           "case_id": "shot-pricing",
           "description": "Generated pricing-page mock: recognized as UI; plan cards map to Card, CTAs to Button, the top nav to Menubar/Toolbar",
           "passed": false,
           "checks": [],
-          "duration_ms": 244,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6DFWfurgY6BMCb718\"}"
+          "duration_ms": 124,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKt7CVkuVGySnpsLCZs\"}"
         },
         {
           "case_id": "shot-landscape-rejected",
           "description": "Generated SVG landscape (no UI elements at all): must be rejected, with no mappings and no scaffold",
           "passed": false,
           "checks": [],
-          "duration_ms": 136,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6ELzn6ev89GQAKwj1\"}"
+          "duration_ms": 134,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKt7U7eXpdQ7QjLtfjy\"}"
         },
         {
           "case_id": "shot-text-document-rejected",
           "description": "Generated plain prose document (text but no interface): must be rejected, with no mappings and no scaffold",
           "passed": false,
           "checks": [],
-          "duration_ms": 136,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6GTjynDNBwcEYQfzZ\"}"
+          "duration_ms": 134,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKt9tDVcEZqNEzhw1ui\"}"
         }
       ],
       "pass_count": 0,
@@ -187,64 +187,64 @@
           "description": "Bundled lease sample - stated end date, computed 60-day non-renewal deadline (month-boundary arithmetic), recurring rent, stated inspection date, and a deliberately unresolvable renewal-offer date (anniversary never defined)",
           "passed": false,
           "checks": [],
-          "duration_ms": 132,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6KBD11wUEtJ8Jt3GF\"}"
+          "duration_ms": 124,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtCbgkX1E5zxDGL7Qa\"}"
         },
         {
           "case_id": "paperwork-scholarship",
           "description": "Bundled scholarship sample - stated acceptance deadline, enrollment verification computed from the stated semester start, yearly GPA report recurrence, and one already-passed date",
           "passed": false,
           "checks": [],
-          "duration_ms": 139,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6KBDPefwJGiWVr35h\"}"
+          "duration_ms": 136,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtCcS1Btag2VNyQJ8e\"}"
         },
         {
           "case_id": "paperwork-insurance",
           "description": "Bundled insurance sample - stated policy expiration, cancellation notice computed across a YEAR boundary (2027-01-14 minus 30 days), monthly premium recurrence on the 15th",
           "passed": false,
           "checks": [],
-          "duration_ms": 135,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6MsSQFuyvXmaHiUcg\"}"
+          "duration_ms": 116,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtFEwUyURnNy39mGW1\"}"
         },
         {
           "case_id": "paperwork-gym-contract",
           "description": "Gym contract - cancellation deadline computed 45 days before term end across February (2027-03-01 minus 45 days = 2027-01-15), monthly dues on the 5th, yearly maintenance fee",
           "passed": false,
           "checks": [],
-          "duration_ms": 153,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6MvA8P65mRJ1HpGjt\"}"
+          "duration_ms": 156,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtFMNsEsEMxaeNRaut\"}"
         },
         {
           "case_id": "paperwork-invoice-net30",
           "description": "Invoice with net-30 terms from January 31, 2028 - leap-year arithmetic (2028-01-31 plus 30 days = 2028-03-01) plus an early-payment discount window",
           "passed": false,
           "checks": [],
-          "duration_ms": 165,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6QZAX7JmrmrUR1js1\"}"
+          "duration_ms": 121,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtHsBzMgqctzGVqygt\"}"
         },
         {
           "case_id": "paperwork-benefits-unresolvable",
           "description": "Benefits notice whose deadlines all hinge on a hire date the document never states - everything datable must come back unresolved, never guessed",
           "passed": false,
           "checks": [],
-          "duration_ms": 128,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6QgMz9dVKuJSkt2iU\"}"
+          "duration_ms": 122,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtJ85S7RQyy8PWABUy\"}"
         },
         {
           "case_id": "paperwork-jury-summons",
           "description": "Jury summons with only stated dates - extraction restraint: both dates exact, nothing invented",
           "passed": false,
           "checks": [],
-          "duration_ms": 128,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6TNqNYx8G9QB3Y2bk\"}"
+          "duration_ms": 121,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtLZAVTWfWhxuD38Fv\"}"
         },
         {
           "case_id": "paperwork-not-a-document",
           "description": "A soup recipe - must be rejected as not an obligation document, with no events",
           "passed": false,
           "checks": [],
-          "duration_ms": 148,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6TQZmXyQTiPGiRkoF\"}"
+          "duration_ms": 125,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtLo4A1vYk72Kd3CNQ\"}"
         }
       ],
       "pass_count": 0,
@@ -261,48 +261,48 @@
           "description": "A Vue 2-era stack - deprecated request, 2-majors-behind vue-router, patch-behind lodash, and peer conflicts pointing at vue: tiers, alerts, and sequencing all at once",
           "passed": false,
           "checks": [],
-          "duration_ms": 137,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6WCk5ZKYZJqdc1B9o\"}"
+          "duration_ms": 126,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtPSoBkRNf1E1xzjiV\"}"
         },
         {
           "case_id": "planner-coupled-ecosystem",
           "description": "vue + vue-router + vuex all major-behind - the tightly coupled framework stack must migrate as one wave",
           "passed": false,
           "checks": [],
-          "duration_ms": 153,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6WEE9rMiFHRKgg5FR\"}"
+          "duration_ms": 129,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtPU3CPaYQnMTcRRX2\"}"
         },
         {
           "case_id": "planner-quiet-current",
           "description": "A fully current manifest - the honest quiet case: zero waves, zero plans, everything in already_current, no padding",
           "passed": false,
           "checks": [],
-          "duration_ms": 146,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6YuiL36rJtEx9niii\"}"
+          "duration_ms": 130,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtS7YN8VHrvtcdZERN\"}"
         },
         {
           "case_id": "planner-patch-utilities",
           "description": "Two small bumps - both safe_now, groupable in one quick wave",
           "passed": false,
           "checks": [],
-          "duration_ms": 140,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6YzREdnHPS6zoyDhm\"}"
+          "duration_ms": 129,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtSBkqh1vXYjfNQWMm\"}"
         },
         {
           "case_id": "planner-deprecated-package",
           "description": "A deprecated (but nearly current) moment - deprecation must dominate the tier and produce an alert",
           "passed": false,
           "checks": [],
-          "duration_ms": 137,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6bfu6SbXBSKhQmPAU\"}"
+          "duration_ms": 139,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtUuTQQxuSnQFA2uYV\"}"
         },
         {
           "case_id": "planner-react-majors",
           "description": "react + react-dom three majors behind with a lockstep peer requirement, plus an unrelated patch bump",
           "passed": false,
           "checks": [],
-          "duration_ms": 136,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6biPHUxWbRTVQTNjM\"}"
+          "duration_ms": 117,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtUokoW9nPSzyAsMtZ\"}"
         }
       ],
       "pass_count": 0,
@@ -319,40 +319,40 @@
           "description": "Dispute-resolution section replaced: courts → binding individual arbitration with class-action waiver. Must be found as substantive, arbitration_and_disputes, favors_provider.",
           "passed": false,
           "checks": [],
-          "duration_ms": 162,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6eUZqvYXSL4gYxqsD\"}"
+          "duration_ms": 146,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtXcw8zaRR1qvw65ED\"}"
         },
         {
           "case_id": "tos-data-sharing-expanded",
           "description": "Data sharing expanded from processors-only to affiliates + advertising/analytics partners. Must be privacy_and_data, favors_provider.",
           "passed": false,
           "checks": [],
-          "duration_ms": 132,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6eUL8puFpCqfbLTfs\"}"
+          "duration_ms": 118,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtXXyFzQ323pNPFk9D\"}"
         },
         {
           "case_id": "tos-refund-window-extended",
           "description": "BIAS CHECK: refund window extended 14 → 30 days - a user-favorable change that must be judged favors_user, not reflexively favors_provider.",
           "passed": false,
           "checks": [],
-          "duration_ms": 148,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6hEGNVLe1WWeTeTiD\"}"
+          "duration_ms": 128,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtaDSgCQfUY9fn1qzd\"}"
         },
         {
           "case_id": "tos-liability-cap-lowered",
           "description": "Liability cap changed from 12 months of fees to a flat $100. Must be liability, favors_provider.",
           "passed": false,
           "checks": [],
-          "duration_ms": 168,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6hFkcatKbUZAtz5Xn\"}"
+          "duration_ms": 144,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtaKQXm9osjaNWPJ5e\"}"
         },
         {
           "case_id": "tos-cosmetic-only",
           "description": "False-positive restraint: section renumbering plus three identically-meaning rewordings. Must gate substantive: false with zero changes.",
           "passed": false,
           "checks": [],
-          "duration_ms": 166,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6jyxzA7NXdWg3CMwz\"}"
+          "duration_ms": 137,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtcxPrNad58xnrtEkN\"}"
         }
       ],
       "pass_count": 0,
@@ -369,24 +369,24 @@
           "description": "An unbounded \"fix tests until green\" step must read as the risky one: elevated risk level, high loop risk, and a concrete fix.",
           "passed": false,
           "checks": [],
-          "duration_ms": 131,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6nm9Uk6jVZZYHnXDo\"}"
+          "duration_ms": 115,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtfctgQoVB3fo5mCkM\"}"
         },
         {
           "case_id": "oracle-bounded-single-step",
           "description": "A small, bounded single-step task must not be dramatized: calm overall risk, no abort, low loop risk.",
           "passed": false,
           "checks": [],
-          "duration_ms": 161,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6nodEYdxrE2XfbjpH\"}"
+          "duration_ms": 133,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtfeP4QpF3mpguWWyq\"}"
         },
         {
           "case_id": "oracle-freeform-structuring",
           "description": "A freeform prose plan must come back structured: at least 3 inferred steps with unique ids matching the assessments 1:1.",
           "passed": false,
           "checks": [],
-          "duration_ms": 149,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6qXLxtw9WGSFJ65b3\"}"
+          "duration_ms": 145,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtiF91QXqtMZWbKMrA\"}"
         }
       ],
       "pass_count": 0,
@@ -403,32 +403,32 @@
           "description": "Synthesized 2.0 Hz thump train over a low noise bed (dryer preset): thump/knock-family characterization, dryer-appropriate questions, measured rate quoted intact.",
           "passed": false,
           "checks": [],
-          "duration_ms": 223,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6tMjwcRdYJvXH73HQ\"}"
+          "duration_ms": 166,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtm5JuTGm877V3befY\"}"
         },
         {
           "case_id": "noise-car-whine",
           "description": "Synthesized steady 3.8 kHz whine over faint rumble (car preset): best characterization is in the whine/tone family - never low rumbling - with car-appropriate questions.",
           "passed": false,
           "checks": [],
-          "duration_ms": 220,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6tNEdJZXKTw5JjPRn\"}"
+          "duration_ms": 147,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtm7HaZeiicAoe8c4h\"}"
         },
         {
           "case_id": "noise-furnace-rattle",
           "description": "Synthesized Poisson-timed mid-band transients (furnace preset, startup only): rattle/click-family characterization that does not claim regularity, furnace-appropriate questions.",
           "passed": false,
           "checks": [],
-          "duration_ms": 203,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6wK6Kt3gumdrke4BK\"}"
+          "duration_ms": 115,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtomXf1FdNyrKtE152\"}"
         },
         {
           "case_id": "noise-clipped-recording",
           "description": "Hard-clipped tone fixture (63% of samples at full scale): the model must flag recording quality via a non-null recording_notes instead of describing with false precision.",
           "passed": false,
           "checks": [],
-          "duration_ms": 146,
-          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgHT6wKr1om2kEzauA5fd\"}"
+          "duration_ms": 124,
+          "error": "Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKKtosEhM7DX1Dj5cbEZ\"}"
         }
       ],
       "pass_count": 0,
