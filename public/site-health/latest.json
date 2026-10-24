@@ -1,5 +1,5 @@
 {
-  "audited_at": "2026-10-23T13:23:47.360Z",
+  "audited_at": "2026-10-24T12:43:04.406Z",
   "status": "audit_error",
   "summary": "Tonight's automated audit could not complete; no findings were recorded.",
   "pages": [
@@ -10,9 +10,9 @@
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 3986.83,
+        "lcp_ms": 4097.441,
         "cls": 0.015,
-        "tbt_ms": 196
+        "tbt_ms": 191
       },
       "visual_findings": [],
       "visual_fingerprint": ""
@@ -20,13 +20,13 @@
     {
       "path": "/about",
       "lighthouse": {
-        "performance": 91,
+        "performance": 92,
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 3243.803,
+        "lcp_ms": 3136.521,
         "cls": 0,
-        "tbt_ms": 45.5
+        "tbt_ms": 46
       },
       "visual_findings": [],
       "visual_fingerprint": ""
@@ -34,13 +34,13 @@
     {
       "path": "/projects",
       "lighthouse": {
-        "performance": 86,
+        "performance": 88,
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 3708.356,
+        "lcp_ms": 3594.592,
         "cls": 0,
-        "tbt_ms": 147
+        "tbt_ms": 75.5
       },
       "visual_findings": [],
       "visual_fingerprint": ""
@@ -48,13 +48,13 @@
     {
       "path": "/projects/note-structurer",
       "lighthouse": {
-        "performance": 80,
+        "performance": 85,
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 4325.002,
+        "lcp_ms": 3828.646,
         "cls": 0,
-        "tbt_ms": 155.5
+        "tbt_ms": 76.5
       },
       "visual_findings": [],
       "visual_fingerprint": ""
@@ -66,9 +66,9 @@
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 4347.156,
+        "lcp_ms": 4511.617,
         "cls": 0,
-        "tbt_ms": 139.5
+        "tbt_ms": 110.5
       },
       "visual_findings": [],
       "visual_fingerprint": ""
@@ -80,5 +80,5 @@
   "issue_title": null,
   "issue_body": null,
   "issue_fingerprint": null,
-  "error_reason": "400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgKEyJPFQJNbNpsoExZa6\"}"
+  "error_reason": "400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgM5g8mHsFVwH5PsJiXjg\"}"
 }
