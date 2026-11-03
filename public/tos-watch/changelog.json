@@ -1,5 +1,102 @@
 [
   {
+    "id": "anthropic/privacy-policy/2026-11-03",
+    "service_id": "anthropic",
+    "service_name": "Anthropic",
+    "document_label": "Privacy Policy",
+    "document_url": "https://www.anthropic.com/legal/privacy",
+    "detected_at": "2026-11-03",
+    "report": {
+      "substantive": true,
+      "cosmetic_note": null,
+      "changes": [
+        {
+          "title": "New legitimate interest justifications added throughout data use table",
+          "category": "privacy_and_data",
+          "new_excerpt": "It is in our and our users' legitimate interests to expand our product features and deliver additional services that enhance platform functionality",
+          "old_excerpt": null,
+          "explanation": "The policy adds multiple new statements explaining the 'legitimate interests' legal basis Anthropic relies on for various data processing purposes, such as expanding features, marketing, investigating misconduct, handling complaints, security, and service reliability. These appear to be added explanatory text rather than changes to what data is collected.",
+          "practical_effect": "Users gain more detail about why Anthropic believes it is legally permitted to process their data for these purposes, without changes to what data is actually used.",
+          "impact": "neutral",
+          "severity": "low"
+        },
+        {
+          "title": "New legitimate interest basis for direct marketing",
+          "category": "privacy_and_data",
+          "new_excerpt": "It is in our legitimate interests to promote our Services that may be of interest to you, including sending direct marketing.",
+          "old_excerpt": null,
+          "explanation": "A new justification is added stating that sending direct marketing to users is based on Anthropic's legitimate interests rather than a different legal basis.",
+          "practical_effect": "This clarifies the legal basis under which users may receive marketing communications from Anthropic.",
+          "impact": "neutral",
+          "severity": "low"
+        },
+        {
+          "title": "New legitimate interest basis for addressing illegal activity and cooperating with authorities",
+          "category": "privacy_and_data",
+          "new_excerpt": "It is in our legitimate interests to protect our business, employees and users from illegal activities, inappropriate behavior or violations of terms that would be…",
+          "old_excerpt": null,
+          "explanation": "A new statement explains that protecting against illegal or inappropriate behavior and cooperating with authorities is justified as a legitimate interest, alongside an added note of a duty to cooperate with authorities.",
+          "practical_effect": "This provides more explicit disclosure that Anthropic may share information with authorities as part of addressing illegal or inappropriate conduct.",
+          "impact": "favors_provider",
+          "severity": "low"
+        },
+        {
+          "title": "New legitimate interest basis for handling complaints",
+          "category": "privacy_and_data",
+          "new_excerpt": "It is in our legitimate interests to fully understand and make reasonable efforts to resolve customer complaints in order to improve user satisfaction.",
+          "old_excerpt": null,
+          "explanation": "A new explanation clarifies the legal basis for processing data related to customer complaints, also noting a legal obligation may apply in some cases.",
+          "practical_effect": "Users are given more detail about how and why their complaint-related data may be processed.",
+          "impact": "neutral",
+          "severity": "low"
+        },
+        {
+          "title": "New legitimate interest basis for security monitoring",
+          "category": "privacy_and_data",
+          "new_excerpt": "It is in our legitimate interests to protect user data and our systems from intrusion or compromise through monitoring and swift response.",
+          "old_excerpt": null,
+          "explanation": "A new statement adds justification for security-related data processing based on legitimate interests and a legal obligation to maintain adequate safeguards.",
+          "practical_effect": "This clarifies the basis for security monitoring activities that involve user data but does not indicate a change in the monitoring itself.",
+          "impact": "neutral",
+          "severity": "low"
+        },
+        {
+          "title": "New legitimate interest basis for service reliability and error correction",
+          "category": "privacy_and_data",
+          "new_excerpt": "It is in our legitimate interests to maintain continuous functioning of our services and rapid correction of problems to ensure a positive user experience",
+          "old_excerpt": null,
+          "explanation": "A new explanation is added clarifying the legal basis for processing data to maintain service functionality and fix errors.",
+          "practical_effect": "This adds transparency about why Anthropic processes data for debugging and reliability purposes.",
+          "impact": "neutral",
+          "severity": "low"
+        },
+        {
+          "title": "Expanded description and apparent separation of model-training research purpose",
+          "category": "ai_and_automated_processing",
+          "new_excerpt": "Our research also benefits the AI industry and society: it investigates the safety, inner workings, and societal impact of AI models",
+          "old_excerpt": "To improve the Services and conduct research (including model training). See our Non-User Privacy Policy for more details on the data used to train our…",
+          "explanation": "The policy restructures and expands the explanation of research purposes, splitting what was previously a single combined purpose (service improvement and research, including model training) into separate entries, one of which explicitly excludes model training and another that explicitly includes it, each with added justifications about benefits to users, the AI industry, and society.",
+          "practical_effect": "Users can better distinguish between data used for general service/feature improvement versus data used specifically for training AI models, though the overall scope of research-related data use does not appear reduced.",
+          "impact": "neutral",
+          "severity": "medium"
+        },
+        {
+          "title": "New legitimate interest basis for enforcing Terms of Service outside contract performance",
+          "category": "account_and_termination",
+          "new_excerpt": "It is in our legitimate interests to enforce the rules and policies governing use of our services, to maintain intended functionality and value for users.",
+          "old_excerpt": null,
+          "explanation": "A new clause explains that outside of contractual performance, Anthropic may rely on legitimate interests to justify processing data for enforcing its Terms of Service and usage policies.",
+          "practical_effect": "This provides additional legal justification for data processing related to enforcement actions, such as account restrictions or investigations into policy violations.",
+          "impact": "favors_provider",
+          "severity": "low"
+        }
+      ],
+      "summary": "Anthropic's Privacy Policy was updated primarily to add detailed explanations of the 'legitimate interests' legal basis it relies on for various data processing activities, including marketing, security, complaint handling, service reliability, and enforcement of terms. It also restructured and expanded the description of research-related data use, including model training, providing more specificity about the purposes and societal justifications of such research."
+    },
+    "model": "claude-sonnet-5",
+    "pipeline_version": "1.1.1"
+  },
+  {
     "id": "google/privacy-policy/2026-10-16",
     "service_id": "google",
     "service_name": "Google",

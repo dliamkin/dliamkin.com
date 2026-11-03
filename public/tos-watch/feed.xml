@@ -5,8 +5,15 @@
     <link>https://dliamkin.com/projects/tos-watch</link>
     <description>Automated nightly monitoring of terms-of-service and policy documents. Entries describe detected changes in neutral, plain English. Not legal advice; not affiliated with any monitored service.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 16 Oct 2026 14:55:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2026 17:54:46 GMT</lastBuildDate>
     <atom:link href="https://dliamkin.com/tos-watch/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Anthropic · Privacy Policy - change detected 2026-11-03</title>
+      <link>https://dliamkin.com/projects/tos-watch</link>
+      <guid isPermaLink="false">anthropic/privacy-policy/2026-11-03</guid>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Anthropic's Privacy Policy was updated primarily to add detailed explanations of the 'legitimate interests' legal basis it relies on for various data processing activities, including marketing, security, complaint handling, service reliability, and enforcement of terms. It also restructured and expanded the description of research-related data use, including model training, providing more specificity about the purposes and societal justifications of such research. (8 changes detected by automated comparison - see the full entry for excerpts and details.)</description>
+    </item>
     <item>
       <title>Google · Privacy Policy - change detected 2026-10-16</title>
       <link>https://dliamkin.com/projects/tos-watch</link>
