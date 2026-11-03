@@ -1,35 +1,37 @@
 {
-  "audited_at": "2026-11-02T18:19:07.526Z",
-  "status": "audit_error",
-  "summary": "Tonight's automated audit could not complete; no findings were recorded.",
+  "audited_at": "2026-11-03T16:15:01.728Z",
+  "status": "warnings",
+  "summary": "All pages are visually intact on desktop and mobile with no layout breakage detected. Home page performance remains below 85 (81) on mobile, consistent with prior measurement, and warrants attention.",
   "pages": [
     {
       "path": "/",
       "lighthouse": {
-        "performance": 82,
+        "performance": 81,
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 3798.234,
+        "lcp_ms": 3783.141,
         "cls": 0.015,
-        "tbt_ms": 219.5
+        "tbt_ms": 265.5
       },
       "visual_findings": [],
-      "visual_fingerprint": ""
+      "visual_fingerprint": "Dark full-page portfolio home with a hero 'App' section showing device mockups, followed by alternating sections for skills, timeline, case studies, and a contact form at the bottom."
     },
     {
       "path": "/about",
       "lighthouse": {
-        "performance": 90,
+        "performance": 91,
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 3178.715,
+        "lcp_ms": 3291.847,
         "cls": 0,
-        "tbt_ms": 117
+        "tbt_ms": 49
       },
-      "visual_findings": [],
-      "visual_fingerprint": ""
+      "visual_findings": [
+        "On mobile, the 'About Me' hero section appears to have a large blank/empty area between the intro text and the Engineering Culture sub-section — possible content that failed to render or a very tall decorative element."
+      ],
+      "visual_fingerprint": "About page with dark theme, 'About Me' heading, code-block bio panel, stat counters (12+, 16+, 2, 7), Engineering Culture section, and a contact form footer; mobile shows an extended blank gap in the hero area."
     },
     {
       "path": "/projects",
@@ -38,47 +40,58 @@
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 3326.095,
+        "lcp_ms": 3386.215,
         "cls": 0,
-        "tbt_ms": 183.5
+        "tbt_ms": 159.848
       },
       "visual_findings": [],
-      "visual_fingerprint": ""
+      "visual_fingerprint": "Projects index with dark header, AI-powered 'Keep these projects alive' funding banner, three featured project cards (Token Field, Noise Translator, Tail Risk Lab) with waveform/canvas visuals, followed by a 3-column 'All Projects' grid and contact form footer."
     },
     {
       "path": "/projects/note-structurer",
       "lighthouse": {
-        "performance": 79,
+        "performance": 82,
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 4327.165,
+        "lcp_ms": 3916.555,
         "cls": 0,
-        "tbt_ms": 192
+        "tbt_ms": 172.51
       },
       "visual_findings": [],
-      "visual_fingerprint": ""
+      "visual_fingerprint": "Clinical Note Structurer demo page with breadcrumb nav, PHI disclaimer banner, two-column visit-note/structured-result panel, action buttons, collapsible JSON and architecture sections, and a contact footer."
     },
     {
       "path": "/projects/screenshot-to-primevue",
       "lighthouse": {
-        "performance": 77,
+        "performance": 80,
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 4559.808,
+        "lcp_ms": 4250.828,
         "cls": 0,
-        "tbt_ms": 199.5
+        "tbt_ms": 147
       },
       "visual_findings": [],
-      "visual_fingerprint": ""
+      "visual_fingerprint": "Screenshot → PrimeVue demo page with drag-and-drop upload zone, three sample screenshot thumbnails (Login form, Analytics dashboard, Pricing page), empty mapping output area, collapsible sections, and a contact footer."
     }
   ],
-  "score_deltas": [],
-  "top_fix": null,
-  "should_file_issue": false,
-  "issue_title": null,
-  "issue_body": null,
-  "issue_fingerprint": null,
-  "error_reason": "400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgeZagzCJSwwCVb3p11YN\"}"
+  "score_deltas": [
+    "/ performance 82 → 81 (within jitter)",
+    "/ LCP 3798ms → 3783ms (stable)",
+    "/ TBT 219ms → 266ms (within jitter)",
+    "/about performance 90 → 91 (within jitter)",
+    "/about TBT 117ms → 49ms (improved)",
+    "/projects performance 88 → 88 (stable)",
+    "/projects/note-structurer performance 79 → 82 (improved)",
+    "/projects/note-structurer LCP 4327ms → 3917ms (improved)",
+    "/projects/screenshot-to-primevue performance 77 → 80 (improved)",
+    "/projects/screenshot-to-primevue LCP 4560ms → 4251ms (improved)"
+  ],
+  "top_fix": "Home page (/) mobile performance is 81, below the 85 threshold — audit LCP (3.8 s) by ensuring the hero image/video is preloaded or converted to a more efficient format, and review TBT (266 ms) by deferring or splitting non-critical JS bundles.",
+  "should_file_issue": true,
+  "issue_title": "Home page mobile performance score below 85 (currently 81)",
+  "issue_body": "## Home Page Mobile Performance Below Threshold\n\n**Audit date:** 2026-11-03  \n**Page:** `/`  \n**Score:** 81 (threshold: 85)\n\n### Key metrics\n| Metric | Value |\n|--------|-------|\n| Performance | **81** |\n| LCP | 3 783 ms |\n| TBT | 266 ms |\n| CLS | 0.015 |\n\n### Context\nThe score has hovered around 81–82 across the last two audits, indicating this is a persistent issue rather than transient jitter. LCP at ~3.8 s and TBT at ~266 ms are the primary contributors.\n\n### Suggested fixes\n1. **LCP** – Preload the hero image/video asset (`<link rel=\"preload\">`), or convert it to a next-gen format (WebP/AVIF) and serve it at an appropriately sized breakpoint for mobile.\n2. **TBT** – Profile and defer or code-split any non-critical JavaScript that executes on initial load (canvas animations, particle effects visible in the hero are likely candidates).\n3. **CLS 0.015** – Minor; ensure hero image dimensions are declared to avoid any residual layout shift.\n\n### Not a blocker but worth addressing this sprint\nAll other pages score 80–91 with the project detail pages trending upward — the home page is the primary entry point and the underperformer.",
+  "issue_fingerprint": "home-mobile-performance-below-85",
+  "error_reason": null
 }
