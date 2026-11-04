@@ -1,51 +1,51 @@
 {
-  "audited_at": "2026-11-03T16:15:01.728Z",
-  "status": "warnings",
-  "summary": "All pages are visually intact on desktop and mobile with no layout breakage detected. Home page performance remains below 85 (81) on mobile, consistent with prior measurement, and warrants attention.",
+  "audited_at": "2026-11-04T16:17:35.221Z",
+  "status": "healthy",
+  "summary": "All pages are visually intact on desktop and mobile with no layout breakage detected. Home page performance has recovered to 90, clearing the 85 threshold for the first time in recent audits; all other scores remain stable or improved.",
   "pages": [
     {
       "path": "/",
       "lighthouse": {
-        "performance": 81,
+        "performance": 90,
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 3783.141,
+        "lcp_ms": 3061.493,
         "cls": 0.015,
-        "tbt_ms": 265.5
+        "tbt_ms": 197.174
       },
       "visual_findings": [],
-      "visual_fingerprint": "Dark full-page portfolio home with a hero 'App' section showing device mockups, followed by alternating sections for skills, timeline, case studies, and a contact form at the bottom."
+      "visual_fingerprint": "Dark full-page portfolio home with a hero 'App Design' section showing device mockups, followed by alternating sections for skills, a vertical timeline, case studies, technologies, conferences, and a contact form at the bottom."
     },
     {
       "path": "/about",
       "lighthouse": {
-        "performance": 91,
+        "performance": 90,
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 3291.847,
+        "lcp_ms": 3415.98,
         "cls": 0,
-        "tbt_ms": 49
+        "tbt_ms": 36
       },
       "visual_findings": [
-        "On mobile, the 'About Me' hero section appears to have a large blank/empty area between the intro text and the Engineering Culture sub-section — possible content that failed to render or a very tall decorative element."
+        "On mobile, a large blank area persists between the intro text and the Engineering Culture sub-section, consistent with the prior audit — likely a tall decorative or animated element that does not render visibly."
       ],
-      "visual_fingerprint": "About page with dark theme, 'About Me' heading, code-block bio panel, stat counters (12+, 16+, 2, 7), Engineering Culture section, and a contact form footer; mobile shows an extended blank gap in the hero area."
+      "visual_fingerprint": "About page with dark theme, 'About Me' heading, inline code-block bio panel, stat counters (12+, 16+, 2, 7), Engineering Culture section, and a contact form footer; mobile shows an extended blank gap in the hero area."
     },
     {
       "path": "/projects",
       "lighthouse": {
-        "performance": 88,
+        "performance": 89,
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 3386.215,
+        "lcp_ms": 3416.842,
         "cls": 0,
-        "tbt_ms": 159.848
+        "tbt_ms": 99
       },
       "visual_findings": [],
-      "visual_fingerprint": "Projects index with dark header, AI-powered 'Keep these projects alive' funding banner, three featured project cards (Token Field, Noise Translator, Tail Risk Lab) with waveform/canvas visuals, followed by a 3-column 'All Projects' grid and contact form footer."
+      "visual_fingerprint": "Projects index with dark header, AI-powered 'Keep these projects alive' funding banner, three featured project cards (Token Field, Noise Translator, Tail Risk Lab) with canvas/waveform visuals, followed by a 3-column 'All Projects' grid and a contact form footer."
     },
     {
       "path": "/projects/note-structurer",
@@ -54,44 +54,49 @@
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 3916.555,
+        "lcp_ms": 4134.278,
         "cls": 0,
-        "tbt_ms": 172.51
+        "tbt_ms": 106.5
       },
       "visual_findings": [],
-      "visual_fingerprint": "Clinical Note Structurer demo page with breadcrumb nav, PHI disclaimer banner, two-column visit-note/structured-result panel, action buttons, collapsible JSON and architecture sections, and a contact footer."
+      "visual_fingerprint": "Clinical Note Structurer demo page with breadcrumb nav, 'Evals: 10/10 passing' badge, PHI disclaimer banner, two-column visit-note/structured-result panel, action buttons, collapsible JSON and architecture sections, and a contact footer."
     },
     {
       "path": "/projects/screenshot-to-primevue",
       "lighthouse": {
-        "performance": 80,
+        "performance": 81,
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 4250.828,
+        "lcp_ms": 4340.217,
         "cls": 0,
-        "tbt_ms": 147
+        "tbt_ms": 72.179
       },
       "visual_findings": [],
-      "visual_fingerprint": "Screenshot → PrimeVue demo page with drag-and-drop upload zone, three sample screenshot thumbnails (Login form, Analytics dashboard, Pricing page), empty mapping output area, collapsible sections, and a contact footer."
+      "visual_fingerprint": "Screenshot → PrimeVue demo page with drag-and-drop upload zone, three sample screenshot thumbnails (Login form, Analytics dashboard, Pricing page), empty mapping output area, collapsible 'View raw JSON' and 'How this works' sections, and a contact footer."
     }
   ],
   "score_deltas": [
-    "/ performance 82 → 81 (within jitter)",
-    "/ LCP 3798ms → 3783ms (stable)",
-    "/ TBT 219ms → 266ms (within jitter)",
-    "/about performance 90 → 91 (within jitter)",
-    "/about TBT 117ms → 49ms (improved)",
-    "/projects performance 88 → 88 (stable)",
-    "/projects/note-structurer performance 79 → 82 (improved)",
-    "/projects/note-structurer LCP 4327ms → 3917ms (improved)",
-    "/projects/screenshot-to-primevue performance 77 → 80 (improved)",
-    "/projects/screenshot-to-primevue LCP 4560ms → 4251ms (improved)"
+    "/ performance 81 → 90 (+9, recovered above 85 threshold)",
+    "/ LCP 3783ms → 3061ms (improved)",
+    "/ TBT 266ms → 197ms (improved)",
+    "/about performance 91 → 90 (within jitter)",
+    "/about LCP 3292ms → 3416ms (within jitter)",
+    "/about TBT 49ms → 36ms (improved)",
+    "/projects performance 88 → 89 (within jitter)",
+    "/projects LCP 3386ms → 3417ms (stable)",
+    "/projects TBT 160ms → 99ms (improved)",
+    "/projects/note-structurer performance 82 → 82 (stable)",
+    "/projects/note-structurer LCP 3917ms → 4134ms (within jitter)",
+    "/projects/note-structurer TBT 173ms → 107ms (improved)",
+    "/projects/screenshot-to-primevue performance 80 → 81 (within jitter)",
+    "/projects/screenshot-to-primevue LCP 4251ms → 4340ms (within jitter)",
+    "/projects/screenshot-to-primevue TBT 147ms → 72ms (improved)"
   ],
-  "top_fix": "Home page (/) mobile performance is 81, below the 85 threshold — audit LCP (3.8 s) by ensuring the hero image/video is preloaded or converted to a more efficient format, and review TBT (266 ms) by deferring or splitting non-critical JS bundles.",
-  "should_file_issue": true,
-  "issue_title": "Home page mobile performance score below 85 (currently 81)",
-  "issue_body": "## Home Page Mobile Performance Below Threshold\n\n**Audit date:** 2026-11-03  \n**Page:** `/`  \n**Score:** 81 (threshold: 85)\n\n### Key metrics\n| Metric | Value |\n|--------|-------|\n| Performance | **81** |\n| LCP | 3 783 ms |\n| TBT | 266 ms |\n| CLS | 0.015 |\n\n### Context\nThe score has hovered around 81–82 across the last two audits, indicating this is a persistent issue rather than transient jitter. LCP at ~3.8 s and TBT at ~266 ms are the primary contributors.\n\n### Suggested fixes\n1. **LCP** – Preload the hero image/video asset (`<link rel=\"preload\">`), or convert it to a next-gen format (WebP/AVIF) and serve it at an appropriately sized breakpoint for mobile.\n2. **TBT** – Profile and defer or code-split any non-critical JavaScript that executes on initial load (canvas animations, particle effects visible in the hero are likely candidates).\n3. **CLS 0.015** – Minor; ensure hero image dimensions are declared to avoid any residual layout shift.\n\n### Not a blocker but worth addressing this sprint\nAll other pages score 80–91 with the project detail pages trending upward — the home page is the primary entry point and the underperformer.",
-  "issue_fingerprint": "home-mobile-performance-below-85",
+  "top_fix": "The persistent large blank gap in the /about mobile hero (between intro text and Engineering Culture section) is the most visible remaining rough edge — investigate whether a canvas/WebGL animation or oversized spacer element is responsible and either fix its mobile rendering or reduce its height on small viewports.",
+  "should_file_issue": false,
+  "issue_title": null,
+  "issue_body": null,
+  "issue_fingerprint": null,
   "error_reason": null
 }
