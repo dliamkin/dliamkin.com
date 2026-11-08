@@ -1,18 +1,18 @@
 {
-  "audited_at": "2026-11-07T14:55:23.339Z",
+  "audited_at": "2026-11-08T15:11:17.868Z",
   "status": "warnings",
-  "summary": "All pages are visually intact on desktop and mobile with no new layout breakage. Performance scores remain below the 85 threshold on three pages (/, /projects/note-structurer, /projects/screenshot-to-primevue), though the home page recovered slightly (80 → 84) and TBT improved materially; the two project detail pages are stable at their prior levels.",
+  "summary": "All pages are visually intact on desktop and mobile with no new layout breakage. Performance scores on three pages (/, /projects/note-structurer, /projects/screenshot-to-primevue) remain below the 85 threshold; the home page dipped slightly (84 → 82) and TBT rose (104 → 237 ms), which is worth watching, but other metrics are largely stable.",
   "pages": [
     {
       "path": "/",
       "lighthouse": {
-        "performance": 84,
+        "performance": 82,
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 3956.178,
+        "lcp_ms": 3754.688,
         "cls": 0.015,
-        "tbt_ms": 104
+        "tbt_ms": 237
       },
       "visual_findings": [],
       "visual_fingerprint": "Dark full-page portfolio home with a hero 'App Design' section showing device mockups, followed by alternating sections for skills, a vertical timeline, case studies, technologies, conferences, and a contact form at the bottom."
@@ -20,13 +20,13 @@
     {
       "path": "/about",
       "lighthouse": {
-        "performance": 90,
+        "performance": 89,
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 3307.38,
+        "lcp_ms": 3320.008,
         "cls": 0,
-        "tbt_ms": 83
+        "tbt_ms": 130
       },
       "visual_findings": [
         "On mobile, a large blank area persists between the intro text and the Engineering Culture sub-section, consistent with prior audits — likely a tall decorative or animated element that does not render visibly on mobile."
@@ -40,9 +40,9 @@
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 3303.533,
+        "lcp_ms": 3319.4,
         "cls": 0,
-        "tbt_ms": 164.5
+        "tbt_ms": 165.95
       },
       "visual_findings": [],
       "visual_fingerprint": "Projects index with dark header, AI-powered 'Keep these projects alive' funding banner, three featured project cards (Token Field, Noise Translator, Tail Risk Lab) with canvas/waveform visuals, followed by a 3-column 'All Projects' grid and a contact form footer."
@@ -50,13 +50,13 @@
     {
       "path": "/projects/note-structurer",
       "lighthouse": {
-        "performance": 80,
+        "performance": 79,
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 4265.376,
+        "lcp_ms": 4308.019,
         "cls": 0,
-        "tbt_ms": 162
+        "tbt_ms": 171.5
       },
       "visual_findings": [],
       "visual_fingerprint": "Clinical Note Structurer demo page with breadcrumb nav, 'Evals: 10/10 passing' badge, PHI disclaimer banner, two-column visit-note/structured-result panel, action buttons, collapsible JSON and architecture sections, and a contact footer."
@@ -64,36 +64,36 @@
     {
       "path": "/projects/screenshot-to-primevue",
       "lighthouse": {
-        "performance": 76,
+        "performance": 78,
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 4523.543,
+        "lcp_ms": 4534.759,
         "cls": 0,
-        "tbt_ms": 224
+        "tbt_ms": 181
       },
       "visual_findings": [],
       "visual_fingerprint": "Screenshot → PrimeVue demo page with drag-and-drop upload zone, three sample screenshot thumbnails (Login form, Analytics dashboard, Pricing page), empty mapping output area, collapsible 'View raw JSON' and 'How this works' sections, and a contact footer."
     }
   ],
   "score_deltas": [
-    "/ performance 80 → 84 (recovering, still below 85 threshold — within jitter but trending up)",
-    "/ LCP 3993ms → 3956ms (stable)",
-    "/ TBT 260ms → 104ms (significant improvement, main regression easing)",
-    "/about performance 87 → 90 (improvement, above threshold)",
-    "/about LCP 3477ms → 3307ms (slight improvement)",
-    "/about TBT 121ms → 83ms (improvement)",
+    "/ performance 84 → 82 (slight dip, within jitter, still below 85 threshold)",
+    "/ LCP 3956ms → 3755ms (improvement)",
+    "/ TBT 104ms → 237ms (notable increase — worth monitoring)",
+    "/about performance 90 → 89 (within jitter, above threshold)",
+    "/about LCP 3307ms → 3320ms (stable)",
+    "/about TBT 83ms → 130ms (increase but within acceptable range)",
     "/projects performance 88 → 88 (stable)",
-    "/projects LCP 3321ms → 3304ms (stable)",
-    "/projects TBT 169ms → 165ms (stable)",
-    "/projects/note-structurer performance 78 → 80 (slight improvement, still below 85 threshold)",
-    "/projects/note-structurer LCP 4297ms → 4265ms (stable)",
-    "/projects/note-structurer TBT 211ms → 162ms (improvement)",
-    "/projects/screenshot-to-primevue performance 76 → 76 (stable, below 85 threshold)",
-    "/projects/screenshot-to-primevue LCP 4550ms → 4524ms (stable)",
-    "/projects/screenshot-to-primevue TBT 216ms → 224ms (stable, within jitter)"
+    "/projects LCP 3304ms → 3319ms (stable)",
+    "/projects TBT 165ms → 166ms (stable)",
+    "/projects/note-structurer performance 80 → 79 (within jitter, still below 85 threshold)",
+    "/projects/note-structurer LCP 4265ms → 4308ms (stable)",
+    "/projects/note-structurer TBT 162ms → 172ms (stable, within jitter)",
+    "/projects/screenshot-to-primevue performance 76 → 78 (slight improvement, still below 85 threshold)",
+    "/projects/screenshot-to-primevue LCP 4524ms → 4535ms (stable)",
+    "/projects/screenshot-to-primevue TBT 224ms → 181ms (improvement)"
   ],
-  "top_fix": "The two project detail pages (/projects/note-structurer at 80, /projects/screenshot-to-primevue at 76) remain persistently below the 85 performance threshold with LCPs above 4.2 s and TBTs above 160 ms — investigate deferred loading of demo-page JS (canvas/AI worker initialisation) and lazy-load below-the-fold assets to bring both pages above 85.",
+  "top_fix": "The two project detail pages (/projects/note-structurer at 79, /projects/screenshot-to-primevue at 78) remain persistently below the 85 performance threshold with LCPs above 4.3 s — investigate deferred loading of demo-page JS (canvas/AI worker initialisation) and lazy-load below-the-fold assets to bring both pages above 85; also monitor the home page TBT which jumped from 104 ms to 237 ms this run.",
   "should_file_issue": false,
   "issue_title": null,
   "issue_body": null,
