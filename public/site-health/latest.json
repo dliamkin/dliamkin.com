@@ -1,102 +1,84 @@
 {
-  "audited_at": "2026-11-10T16:25:51.383Z",
-  "status": "warnings",
-  "summary": "All pages are visually intact on desktop and mobile with no new layout breakage. The two project detail pages remain below the 85 performance threshold (note-structurer 84, screenshot-to-primevue 82), though note-structurer gained 1 point; the home page performance improved to 92 with LCP and TBT both down from the prior audit.",
+  "audited_at": "2026-11-12T16:48:49.356Z",
+  "status": "audit_error",
+  "summary": "Tonight's automated audit could not complete; no findings were recorded.",
   "pages": [
     {
       "path": "/",
       "lighthouse": {
-        "performance": 92,
+        "performance": 81,
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 3114.002,
+        "lcp_ms": 4068.099,
         "cls": 0.015,
-        "tbt_ms": 64.5
+        "tbt_ms": 195.5
       },
       "visual_findings": [],
-      "visual_fingerprint": "Dark full-page portfolio home with a hero 'App Design' section showing device mockups, followed by alternating sections for skills, a vertical timeline, case studies, technologies, conferences, and a contact form at the bottom."
+      "visual_fingerprint": ""
     },
     {
       "path": "/about",
-      "lighthouse": {
-        "performance": 91,
-        "accessibility": 100,
-        "best_practices": 100,
-        "seo": 100,
-        "lcp_ms": 3175.411,
-        "cls": 0,
-        "tbt_ms": 12.5
-      },
-      "visual_findings": [
-        "On mobile, a large blank area persists between the intro text and the Engineering Culture sub-section, consistent with prior audits — likely a tall decorative or animated element that does not render visibly on mobile."
-      ],
-      "visual_fingerprint": "About page with dark theme, 'About Me' heading, inline code-block bio panel, stat counters (12+, 16+, 2, 7), Engineering Culture section, and a contact form footer; mobile shows an extended blank gap in the hero area."
-    },
-    {
-      "path": "/projects",
       "lighthouse": {
         "performance": 90,
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 3365.697,
+        "lcp_ms": 3183.001,
         "cls": 0,
-        "tbt_ms": 57
+        "tbt_ms": 139
       },
       "visual_findings": [],
-      "visual_fingerprint": "Projects index with dark header, AI-powered 'Keep these projects alive' funding banner, three featured project cards (Token Field, Noise Translator, Tail Risk Lab) with canvas/waveform visuals, followed by a 3-column 'All Projects' grid and a contact form footer."
+      "visual_fingerprint": ""
+    },
+    {
+      "path": "/projects",
+      "lighthouse": {
+        "performance": 88,
+        "accessibility": 100,
+        "best_practices": 100,
+        "seo": 100,
+        "lcp_ms": 3330.982,
+        "cls": 0,
+        "tbt_ms": 173.5
+      },
+      "visual_findings": [],
+      "visual_fingerprint": ""
     },
     {
       "path": "/projects/note-structurer",
       "lighthouse": {
-        "performance": 84,
+        "performance": 83,
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 4046.242,
+        "lcp_ms": 3857.614,
         "cls": 0,
-        "tbt_ms": 56
+        "tbt_ms": 145.258
       },
       "visual_findings": [],
-      "visual_fingerprint": "Clinical Note Structurer demo page with breadcrumb nav, 'Evals: 10/10 passing' badge, PHI disclaimer banner, two-column visit-note/structured-result panel, action buttons, collapsible JSON and architecture sections, and a contact footer."
+      "visual_fingerprint": ""
     },
     {
       "path": "/projects/screenshot-to-primevue",
       "lighthouse": {
-        "performance": 82,
+        "performance": 80,
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 4178.788,
+        "lcp_ms": 4180.81,
         "cls": 0,
-        "tbt_ms": 87.5
+        "tbt_ms": 166.359
       },
       "visual_findings": [],
-      "visual_fingerprint": "Screenshot → PrimeVue demo page with drag-and-drop upload zone, three sample screenshot thumbnails (Login form, Analytics dashboard, Pricing page), empty mapping output area, collapsible 'View raw JSON' and 'How this works' sections, and a contact footer."
+      "visual_fingerprint": ""
     }
   ],
-  "score_deltas": [
-    "/ performance 89 → 92 (improvement)",
-    "/ LCP 3450ms → 3114ms (improvement)",
-    "/ TBT 93ms → 65ms (improvement)",
-    "/about performance 91 → 91 (stable)",
-    "/about LCP 3172ms → 3175ms (stable)",
-    "/about TBT 44ms → 13ms (significant improvement)",
-    "/projects performance 90 → 90 (stable)",
-    "/projects LCP 3322ms → 3366ms (within jitter)",
-    "/projects TBT 67ms → 57ms (improvement)",
-    "/projects/note-structurer performance 83 → 84 (marginal improvement, still below 85 threshold)",
-    "/projects/note-structurer LCP 4020ms → 4046ms (stable)",
-    "/projects/note-structurer TBT 96ms → 56ms (improvement)",
-    "/projects/screenshot-to-primevue performance 82 → 82 (stable, below 85 threshold)",
-    "/projects/screenshot-to-primevue LCP 4177ms → 4179ms (stable)",
-    "/projects/screenshot-to-primevue TBT 84ms → 88ms (within jitter)"
-  ],
-  "top_fix": "The two project detail pages (/projects/note-structurer at 84, /projects/screenshot-to-primevue at 82) remain persistently below the 85 performance threshold with LCPs above 4 s — investigate deferred loading of demo-page JS (canvas/AI worker initialisation) and lazy-load below-the-fold assets to push both pages above 85.",
+  "score_deltas": [],
+  "top_fix": null,
   "should_file_issue": false,
   "issue_title": null,
   "issue_body": null,
   "issue_fingerprint": null,
-  "error_reason": null
+  "error_reason": "400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgyNnT6Po3D9uBrGVcrzp\"}"
 }
