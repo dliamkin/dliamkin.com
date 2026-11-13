@@ -1,15 +1,5 @@
 [
   {
-    "audited_at": "2026-08-12T09:32:40.656Z",
-    "status": "warnings",
-    "scores": {
-      "performance": 85,
-      "accessibility": 100,
-      "best_practices": 100,
-      "seo": 100
-    }
-  },
-  {
     "audited_at": "2026-08-13T09:35:35.728Z",
     "status": "warnings",
     "scores": {
@@ -894,6 +884,16 @@
     "status": "audit_error",
     "scores": {
       "performance": 84,
+      "accessibility": 100,
+      "best_practices": 100,
+      "seo": 100
+    }
+  },
+  {
+    "audited_at": "2026-11-13T16:18:38.367Z",
+    "status": "audit_error",
+    "scores": {
+      "performance": 85,
       "accessibility": 100,
       "best_practices": 100,
       "seo": 100
