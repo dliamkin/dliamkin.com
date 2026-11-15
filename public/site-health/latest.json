@@ -1,21 +1,21 @@
 {
-  "audited_at": "2026-11-14T15:03:14.694Z",
-  "status": "audit_error",
-  "summary": "Tonight's automated audit could not complete; no findings were recorded.",
+  "audited_at": "2026-11-15T15:41:34.345Z",
+  "status": "warnings",
+  "summary": "All pages are visually intact on desktop and mobile with no layout breakage detected. The home page performance score (81) has dropped below 85 and warrants attention, driven by elevated LCP and TBT.",
   "pages": [
     {
       "path": "/",
       "lighthouse": {
-        "performance": 86,
+        "performance": 81,
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 3709.799,
+        "lcp_ms": 3845.62,
         "cls": 0.015,
-        "tbt_ms": 115
+        "tbt_ms": 238.727
       },
       "visual_findings": [],
-      "visual_fingerprint": ""
+      "visual_fingerprint": "Dark-themed single-page portfolio with a hero 'App Design' headline, stacked sections for skills, timeline, case studies, and a contact form at the bottom, all rendering correctly on desktop and mobile."
     },
     {
       "path": "/about",
@@ -24,61 +24,68 @@
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 3301.827,
+        "lcp_ms": 3335.089,
         "cls": 0,
-        "tbt_ms": 54
+        "tbt_ms": 76
       },
       "visual_findings": [],
-      "visual_fingerprint": ""
+      "visual_fingerprint": "About page with 'About Me' heading, a code-block card showing developer const object, stat counters (12+, 16+, 2, 7), an Engineering Culture section with a large empty particle canvas, and a contact form footer — all correct on desktop and mobile."
     },
     {
       "path": "/projects",
       "lighthouse": {
-        "performance": 88,
+        "performance": 89,
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 3625.17,
+        "lcp_ms": 3332.612,
         "cls": 0,
-        "tbt_ms": 85
+        "tbt_ms": 140.5
       },
       "visual_findings": [],
-      "visual_fingerprint": ""
+      "visual_fingerprint": "Projects index with 'My Projects' heading, three featured/latest builds (Token Field, Noise Translator, Tail Risk Lab) followed by a 3-column grid of all project cards, plus a contact form footer — intact on desktop and mobile."
     },
     {
       "path": "/projects/note-structurer",
       "lighthouse": {
-        "performance": 84,
+        "performance": 81,
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 3839.45,
+        "lcp_ms": 4119.34,
         "cls": 0,
-        "tbt_ms": 121
+        "tbt_ms": 152.5
       },
       "visual_findings": [],
-      "visual_fingerprint": ""
+      "visual_fingerprint": "Clinical Note Structurer detail page with breadcrumb nav, 'Evals: 10/10 passing' badge, two-panel demo (visit note textarea left, structured result placeholder right), collapsible JSON/architecture sections, and a contact form footer — intact on desktop and mobile."
     },
     {
       "path": "/projects/screenshot-to-primevue",
       "lighthouse": {
-        "performance": 82,
+        "performance": 80,
         "accessibility": 100,
         "best_practices": 100,
         "seo": 100,
-        "lcp_ms": 4177.312,
+        "lcp_ms": 4233.4,
         "cls": 0,
-        "tbt_ms": 98.563
+        "tbt_ms": 152.3
       },
       "visual_findings": [],
-      "visual_fingerprint": ""
+      "visual_fingerprint": "Screenshot → PrimeVue detail page with 'Evals: 5/5 passing' badge, dashed-border image drop zone, three sample screenshot thumbnails (Login form, Analytics dashboard, Pricing page), output placeholder, collapsible sections, and a contact form footer — intact on desktop and mobile."
     }
   ],
-  "score_deltas": [],
-  "top_fix": null,
-  "should_file_issue": false,
-  "issue_title": null,
-  "issue_body": null,
-  "issue_fingerprint": null,
-  "error_reason": "400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Ch32MKmbwqUaF1xjP5Mut\"}"
+  "score_deltas": [
+    "Home performance 86 → 81 (below 85 threshold)",
+    "Home TBT 115 ms → 238.7 ms (material increase)",
+    "About performance 90 → 90 (stable)",
+    "Projects performance 88 → 89 (stable)",
+    "Note Structurer performance 84 → 81 (within jitter, but now below 85)",
+    "Screenshot→PrimeVue performance 82 → 80 (below 85, within jitter)"
+  ],
+  "top_fix": "Investigate and reduce main-thread blocking on the home page (TBT jumped from 115 ms to 239 ms) — likely a third-party script or undeferred JS bundle; deferring or code-splitting it should recover the performance score above 85.",
+  "should_file_issue": true,
+  "issue_title": "Home page performance below 85 — TBT regression (115 ms → 239 ms)",
+  "issue_body": "## Home page performance regression\n\n**Audit date:** 2026-11-15T15:40:54.324Z\n**Page:** `/`\n\n### Scores\n| Metric | Previous | Current | Δ |\n|---|---|---|---|\n| Performance | 86 | 81 | **−5** (below 85 threshold) |\n| TBT | 115 ms | 238.7 ms | **+123.7 ms** |\n| LCP | 3709 ms | 3845 ms | +136 ms |\n| CLS | 0.015 | 0.015 | stable |\n\n### Impact\nPerformance has fallen below the 85 alert threshold. TBT has more than doubled, indicating a main-thread blocking regression, likely a newly added or un-deferred JS bundle.\n\n### Suggested fix\n1. Run a Lighthouse trace locally to identify the longest tasks.\n2. Defer or async-load any non-critical scripts (analytics, particles, animations).\n3. Consider code-splitting heavy demo/interactive modules so they load only on project pages.\n\n### Also noted (below 85, within single-run jitter but worth watching)\n- `/projects/note-structurer` performance: 84 → 81\n- `/projects/screenshot-to-primevue` performance: 82 → 80",
+  "issue_fingerprint": "home-performance-tbt-regression",
+  "error_reason": null
 }
